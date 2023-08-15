@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Authors | Integrating Theory and Data in Plant-Pollinator Interactions</title>
-    <link>https://models4data2theory.github.io/authors/</link>
-      <atom:link href="https://models4data2theory.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
-    <description>Authors</description>
+    <title>Apply | Integrating Theory and Data in Plant-Pollinator Interactions</title>
+    <link>https://models4data2theory.github.io/apply/</link>
+      <atom:link href="https://models4data2theory.github.io/apply/index.xml" rel="self" type="application/rss+xml" />
+    <description>Apply</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language>
     <image>
       <url>https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png</url>
-      <title>Authors</title>
-      <link>https://models4data2theory.github.io/authors/</link>
+      <title>Apply</title>
+      <link>https://models4data2theory.github.io/apply/</link>
     </image>
     
   </channel>

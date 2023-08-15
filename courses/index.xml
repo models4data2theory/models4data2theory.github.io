@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Integrating Theory and Data in Plant-Pollinator Interactions</title>
-    <link>https://models4data2theory.github.io/</link>
-      <atom:link href="https://models4data2theory.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <description>Integrating Theory and Data in Plant-Pollinator Interactions</description>
+    <title>Course Topics | Integrating Theory and Data in Plant-Pollinator Interactions</title>
+    <link>https://models4data2theory.github.io/courses/</link>
+      <atom:link href="https://models4data2theory.github.io/courses/index.xml" rel="self" type="application/rss+xml" />
+    <description>Course Topics</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 24 Jan 2023 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png</url>
-      <title>Integrating Theory and Data in Plant-Pollinator Interactions</title>
-      <link>https://models4data2theory.github.io/</link>
+      <title>Course Topics</title>
+      <link>https://models4data2theory.github.io/courses/</link>
     </image>
     
     <item>
@@ -101,22 +101,6 @@ The variance of the distribution is $\sigma^{2}$.
   &lt;summary&gt;What is the eigenvalue $\lambda$ of $\textbf{A}$?&lt;/summary&gt;
   &lt;p&gt;It&amp;rsquo;s whatever you&amp;rsquo;d like it to be.&lt;/p&gt;
 &lt;/details&gt;</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://models4data2theory.github.io/admin/config.yml</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://models4data2theory.github.io/admin/config.yml</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://models4data2theory.github.io/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://models4data2theory.github.io/contact/</guid>
-      <description></description>
     </item>
     
   </channel>
