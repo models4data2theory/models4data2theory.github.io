@@ -1,0 +1,1921 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Mark Novak" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Fitting models to data" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://models4data2theory.github.io/courses/wkshp_interactions/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#0072ff" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.c5fb49caf56e2b73a0f72d0102f2d0ca.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://models4data2theory.github.io/courses/wkshp_interactions/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Integrating Theory and Data in Plant-Pollinator Interactions" />
+  <meta property="og:url" content="https://models4data2theory.github.io/courses/wkshp_interactions/" />
+  <meta property="og:title" content="Interactions | Integrating Theory and Data in Plant-Pollinator Interactions" />
+  <meta property="og:description" content="Fitting models to data" /><meta property="og:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-08-14T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-08-14T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Interactions | Integrating Theory and Data in Plant-Pollinator Interactions</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="ec2c5709147baed9ba2f496c320224e9" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.14a0ed61c6dbd594b9c75193b25be179.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Integrating Theory and Data in Plant-Pollinator Interactions</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Integrating Theory and Data in Plant-Pollinator Interactions</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/schedule"><span>Schedule</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/courses"><span>Content</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+              
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="https://www.rmbl.org" target="_blank" rel="noopener"><span>Venue</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/faqs"><span>FAQs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>Contact</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/models4data2theory.pdf"><span>Flier</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+              
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="https://rmbl.wufoo.com/forms/my090j60znahiz/" target="_blank" rel="noopener"><span>Apply</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+        
+          Workshop Content
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+
+    
+      
+
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <ul class="nav docs-sidenav">
+        <li class=""><a href="/courses/">Workshop Content</a></li>
+    
+      
+
+
+  <li class=""><a href="/courses/prework_01_install_r/">Prework - R and RStudio</a></li>
+
+
+
+  <li class=""><a href="/courses/prework_02_data_basics/">Prework - R Data Basics</a></li>
+
+
+
+  <li class="active"><a href="/courses/wkshp_interactions/">Interactions</a></li>
+
+      
+    
+
+    
+      </ul>
+    
+
+  
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#overview">Overview</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#fundamentals">Fundamentals</a>
+      <ul>
+        <li><a href="#prob_dist">Probability distributions</a></li>
+        <li><a href="#lik_fun">Likelihood functions</a></li>
+      </ul>
+    </li>
+    <li><a href="#max_lik">Maximum likelihood</a>
+      <ul>
+        <li><a href="#intuition">Intuition</a></li>
+        <li><a href="#why-the-negative-log-likelihood">Why the negative log-likelihood?</a></li>
+        <li><a href="#finding-the-mles">Finding the MLEs</a></li>
+        <li><a href="#max_lik_class">Let&rsquo;s try it</a></li>
+      </ul>
+    </li>
+    <li><a href="#model-fitting">Model fitting</a>
+      <ul>
+        <li><a href="#mechanistic-models">Mechanistic models</a></li>
+        <li><a href="#modifying-the-likelihood">Modifying the likelihood</a></li>
+        <li><a href="#lets-try-it">Let&rsquo;s try it</a></li>
+      </ul>
+    </li>
+    <li><a href="#mod_comp">Model comparison</a>
+      <ul>
+        <li><a href="#inf_crit">AIC &amp; BIC</a></li>
+        <li><a href="#lets-try-it-1">Let&rsquo;s try it</a></li>
+        <li><a href="#alternatives">Alternatives</a></li>
+        <li><a href="#philosophies">Philosophies</a></li>
+      </ul>
+    </li>
+    <li><a href="#uncertainty">Uncertainty</a>
+      <ul>
+        <li><a href="#likelihood-surfaces">Likelihood surfaces</a></li>
+        <li><a href="#par_ident">Identifiability</a></li>
+        <li><a href="#quantifying-uncertainty">Quantifying uncertainty</a></li>
+      </ul>
+    </li>
+    <li><a href="#end_result">End result</a></li>
+    <li><a href="#final-thoughts">Final thoughts</a></li>
+    <li><a href="#readings">Readings</a></li>
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#session-info">Session Info</a></li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+
+          <h1>Interactions</h1>
+
+          <div class="article-style">
+            <p><em>Fitting models to data</em></p>
+<p>$$
+\newcommand{\L}{\mathcal{L}}
+$$</p>
+<h2 id="motivation">Motivation</h2>
+<p>A powerful approach to theory-data integration is the use of statistical methods that directly combine empirical data with the mechanistic models of theoretical ecology.
+This is the world of model-fitting.</p>
+<p>Perhaps we performed a study in which we counted the number of pollinator visits the flowers of a focal plant species received over a range of different plant densities and now wish to characterize the relationship between these variables.
+(To keep things simple, we&rsquo;ll assume each plant has only a single flower.)
+Or perhaps we performed an experiment in which we varied the number of pollinator visits that the flowers of the plant species received and are now interested in characterizing how this variation in visits influenced ovule fertilization success (i.e. the proportion of ovules in each flower that were successfully fertilized).</p>
+<img src="/courses/wkshp_interactions_files/figure-html/motivation-1.png" width="768" />
+<p>In the past, the common way to characterize any such relationship among variables was to use linear or non-linear least-squares regression (including polynomial regression), extending more recently to mixed effects models.
+Generalized linear models and generalized additive models have also become popular, largely because they can accommodate non-Gaussian error structures and flexible, non-linear relationships.</p>
+<p>But these types of statistical models are generally not &ldquo;mechanistic&rdquo;;
+their functional forms are not derived from &ldquo;first-principles&rdquo; ecological theory.
+Instead, these types of models are by and large only &ldquo;descriptive&rdquo; in nature.</p>
+<p>Theoreticians, on the other hand, have derived many non-statistical (deterministic) mathematical equations to encapsulate how different biological processes should/could influence the patterns we see in nature.
+Our goal is to develop the skills to (1) fit such <em>mechanistic models</em> to data in order to obtain <em>best-fitting parameter estimates</em> while accommodating <em>process-appropriate error structures</em>, and (2) compare the <em>relative performance</em> of several such models in order to identify those that <em>perform best</em> at representing the data.</p>
+<p>We will achieve these things using the principle of <strong>maximum likelihood</strong> and an <strong>information-theoretic</strong> model-comparison approach.
+Other approaches for model fitting and comparison &mdash; such as Bayesian statistics &mdash; are often used to accommodate complex data structures and for other pragmatic and epistomological reasons, but those are beyond what we will cover.
+That said, most of the principles that we will cover are directly relevant to these other approaches as well.</p>
+<h2 id="overview">Overview</h2>
+<p>To understand the principle of maximum likelihood, we first need to understand some fundamentals regarding <a href="#prob_dist">probability distributions</a> and <a href="#lik_fun">likelihood functions</a>.
+We&rsquo;ll then see how theory models can be incorporated into likelihood functions to convert them from deterministic models to statistical models.
+It&rsquo;s this conversion that permits us to fit them to data.
+We will then develop our intuition for <a href="#max_lik">maximum likelihood parameter estimation</a> (i.e. model fitting) by first doing it <a href="#max_lik_math">analytically</a> and then learning to use <a href="#max_lik_optim">numerical optimization</a>.</p>
+<p>Having fit several models to a dataset, we will then dip our toes into the methods of comparing their relative performance using <a href="#mod_comp">information criteria</a>.</p>
+<p>Skip down to the <a href="#end_result">end result</a> to see where we&rsquo;re headed.</p>
+<h4 id="required-r-packages">Required R-packages</h4>
+<p>In principle, everything we&rsquo;ll discuss can be accomplished using functions that come pre-loaded in base R, but we&rsquo;ll make use of the <em>bbmle</em> package for a few conveniences at the very end.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># install.packages(&#39;bbmle&#39;, dependencies = TRUE) # use to install if needed</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">bbmle</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## Loading required package: stats4
+</code></pre><h2 id="fundamentals">Fundamentals</h2>
+<p>We&rsquo;re going to start by assuming our focal response variable doesn&rsquo;t vary in response to any possible covariates at all.
+Doing so is useful in helping us think about the different types of probability distributions there are, and which may be best in representing the type of stochastic processes that are likely to have generated our data.</p>
+<h3 id="prob_dist">Probability distributions</h3>
+<p>Our two example data sets above share some things in common because they both represent (or are derived from) counts of things.
+Counts are integer-valued (i.e. 0, 1, 2, 3, &hellip;) and can&rsquo;t be negative.
+The proportion of fertilized ovules is derived from two counts:
+the count of fertilized ovules and the total count of available ovules.
+Count data are a very common type of data in ecology, so we&rsquo;ll focus on them for our purposes.</p>
+<p>Among the simplest and most appropriate probability distributions to represent such data are the <em>Poisson</em> and <em>binomial</em> probability distributions.
+Because they represent counts, they are <em>discrete</em> distributions.</p>
+<h4 id="the-poisson-distribution">The Poisson distribution</h4>
+<p>The <em>Poisson distribution</em> would be appropriate for our dataset in which the count of visitations is our response variable.
+It is written as
+$$ Pr(k|\lambda) = \frac{\lambda^k e^{-\lambda}}{k!}$$
+and expresses the probability that <code>\(k\)</code> events will occur in some interval of time (i.e. that the count of events will be equal to <code>\(k\)</code>) given that the process responsible for generating the events occurs at a constant mean rate <code>\(\lambda\)</code>.
+You can read <code>\(Pr(k|\lambda)\)</code> as the probability of <code>\(k\)</code> events <em>given</em> parameter <code>\(\lambda\)</code>.
+The symbol <code>\(e\)</code> represents an exponential (i.e. Euler&rsquo;s number: 2.718&hellip;) and the symbol <code>\(!\)</code> represents the factorial function (e.g., <code>\(4! = 4 \times 3 \times 2 \times 1\)</code>).</p>
+<p>Below, with data on replicate counts of <code>\(k\)</code>, we will presume that the Poisson applies and then estimate the value of <em>parameter</em> <code>\(\lambda\)</code> that is most likely to have generated those counts.
+Intuitively, a higher underlying value of parameter <code>\(\lambda\)</code> will result in higher <code>\(k\)</code> counts when we draw from this distribution repeatedly
+(i.e. when we obtain samples from the data-generating process).
+In fact, <code>\(\lambda\)</code> reflects the count that we <em>expect</em> to observe on average across many such draws (a fact that we will prove later).</p>
+<img src="/courses/wkshp_interactions_files/figure-html/prob_Poiss-1.png" width="576" />
+<h4 id="the-binomial-distribution">The Binomial distribution</h4>
+<p>The <em>binomial distribution</em> would be appropriate for our dataset in which the proportion of fertilized ovules is our response variable.
+More specifically, it will be appropriate after we re-express the number of counts (number of fertilized ovules) expected under the binomial distribution as a proportion of the maximum number of counts possible (the total number of ovules in a flower).
+The binomial is written as
+$$
+Pr(k, n|p) = {n \choose k} p^k (1-p)^{n-k} = \frac{n!}{k!(n-k)!} p^k (1-p)^{n-k}
+$$
+and expresses the probability of observing <code>\(k\)</code> events in a total of <code>\(n\)</code> tries given that each event either does or does not happen with constant probabilities <code>\(p\)</code> and <code>\(1-p\)</code> respectively.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>
+The first part of the equation, <code>\({n \choose k}\)</code>, is read as &ldquo;$n$ choose <code>\(k\)</code>&rdquo;.
+For example, given <code>\(n\)</code> available ovules in a flower, <code>\(k\)</code> of them are successfully pollinated.
+(The proportion <code>\(k/n\)</code> thus corresponds to our measure of fertilization success.) The larger the probability <code>\(p\)</code> of success and the larger the number of <code>\(n\)</code> tries, the larger that the average count of <code>\(k\)</code> successes will be over replicate samples from the data-generating process.</p>
+<img src="/courses/wkshp_interactions_files/figure-html/prob_Binom-1.png" width="576" />
+<p>Note that in contrast to the Poisson distribution where the potential count <code>\(k\)</code> could be arbitrarily high, <code>\(k\)</code> is bounded by the maximum possible value of <code>\(n\)</code> under the binomial distribution.
+Although the average process rate is assumed constant under both distributions, a flower can be visited many times ($k \geq 0$), making the Poisson more appropriate.
+On the other hand, an ovule that has already been fertilized can&rsquo;t be fertilized again (thus <code>\(0 \leq k \leq n\)</code>), making the binomial more appropriate for our second experiment.</p>
+<h4 id="other-probability-distributions">Other probability distributions</h4>
+<p>There are <a href="https://distribution-explorer.github.io/index.html" target="_blank" rel="noopener">dozens of probability distributions available</a>, but the Poisson and binomial are arguably the simplest and most useful (and thus among the most commonly assumed in ecology).
+One reason for this is that they have only a single free parameter ($\lambda$ and <code>\(p\)</code>, respectively) given that <code>\(n\)</code> is usually known.
+These parameters determines not only the expected (mean) value of the distribution of the <code>\(k\)</code> counts but also their variance.
+(For the Poisson, both the mean and the variance equal <code>\(\lambda\)</code>,
+while for the binomial the mean is <code>\(np\)</code> and the variance is <code>\(np(1-p)\)</code>.)</p>
+<p>Other distributions allow the mean and the variance to be separated.
+For example, the <em>negative binomial</em> and <em>beta-binomial</em> are discrete examples that generalize the Poisson and binomial distributions to accommodate the common occurrence of over-dispersion (e.g., a variance that is larger than the mean).</p>
+<p>Another distribution that you&rsquo;re probably much more familiar with is the <em>Normal</em> (a.k.a. <em>Gaussian</em>) distribution.
+The Normal distribution has two parameters <code>\(\mu\)</code> and <code>\(\sigma\)</code> that respectively determine its mean and variance.
+The Normal distribution has a long history of use in ecology and statistics, and is a biologically-appropriate distribution in many circumstances (thanks to the power of the Central Limit Theorem).
+It could even be appropriate in the circumstances of our two example data sets because both the Poisson distribution and the binomial distribution converge on the Normal distribution (see the figures above).
+But that is only true for sufficiently large <code>\(\lambda\)</code>, and sufficiently large <code>\(n\)</code> and intermediate <code>\(p\)</code>, respectively.</p>
+<p>In our context of &ldquo;mechanistic&rdquo; models, we often have data from situations where the conditions that lead to a Normal distribution are far from satisfied.
+For example, when flower abundances are very low, visitation rates ($\lambda$) will be very low. For small <code>\(\mu\)</code> and large <code>\(\sigma\)</code>, the Normal distribution will also give negative values, which often don&rsquo;t make sense for ecological data sets (you can&rsquo;t have negative counts).
+Finally, in the context of fitting mechanistic models, we often don&rsquo;t care about estimating the variance; our goal is typically to estimate the parameter values that maximize a model&rsquo;s fit to the mean of our data.
+In that sense, having an extra variance parameter, such as <code>\(\sigma\)</code> of the Normal distribution, is actually a nuisance (they&rsquo;re often called &ldquo;nuisance parameters&rdquo;) because it means the model is more complex and thus potentially more challenging to fit.
+Just as (or even more) importantly, these nuisance parameters can lead to biased estimates of the other &ldquo;mechanistic&rdquo; parameters that we actually do care about, especially when sample sizes are not large (as is often the case in Ecology).</p>
+<h3 id="lik_fun">Likelihood functions</h3>
+<p>Probability distributions express the probability of an outcome given their parameter(s).
+For the Poisson distribution we therefore wrote <code>\(Pr(k, n | \lambda)\)</code>, but more generically for any discrete distribution we&rsquo;ll write <code>\(Pr(y | \theta)\)</code>,
+using <code>\(y\)</code> to represent outcomes and <code>\(\theta\)</code> the parameter(s).
+<code>\(Pr(y | \theta)\)</code> is referred to as a <em>probability mass function</em>;
+the input is the parameter values in <code>\(\theta\)</code> and the output is the probability of any potential outcome <code>\(y\)</code>.</p>
+<p>In contrast, when we have data and want to estimate the parameters of a presumed model, we want the reverse.
+We then talk of wanting to quantify the <em>likelihood</em> of any potential parameter value given the data.
+We therefore write <code>\(\L(\theta | y)\)</code>.
+<code>\(\L(\theta | y)\)</code> is referred to as the <em>likelihood function</em>;
+the input is an outcome and the output is the likelihood that a potential parameter value could have generated that outcome.</p>
+<p><strong>If we observe a given outcome then the <em>most likely</em> parameter value to have generated that outcome is the one that <em>maximizes</em> the probability of the outcome.</strong>
+We therefore define the likelihood function to be the probability mass function, setting
+$$
+\L(\theta | y) = Pr(y | \theta).
+$$
+This may seem silly, but it&rsquo;s a conceptually important step.</p>
+<p>Assuming the Poisson specifically, we therefore have
+$$
+\L(\lambda | k)  = Pr(k | \lambda) = \frac{\lambda^k e^{-\lambda}}{k!}.
+$$</p>
+<p>The method of maximum likelihood is a matter of finding the value of the parameter that will maximize the output of the likelihood function when we input observed outcomes.</p>
+<p><a href="#Prob_mass_dens">Note on discrete vs. continuous probability distributions</a>.</p>
+<h2 id="max_lik">Maximum likelihood</h2>
+<h3 id="intuition">Intuition</h3>
+<p>As just stated,
+maximum likelihood estimation is a matter of the finding the value of the parameter(s) that maximize the likelihood of having observed our data.
+Let&rsquo;s walk through how we would do that, first assuming we have only a single data point and then assuming we have many.</p>
+<h4 id="single-observation">Single observation</h4>
+<p>Let&rsquo;s say that we sat in a meadow,
+watched a single flower for some amount of time,
+and observed a total of <code>\(k=10\)</code> pollinator visits in that time.
+Presuming the Poisson to be an appropriate representation of the visitation process,
+we can use our data to determine the most likely value for <code>\(\lambda\)</code>.</p>
+<p>Remember that <code>\(\lambda\)</code> reflects the underlying visitation rate (visits per time) of the process and then think about the following plots of</p>
+<ul>
+<li>the probability mass <code>\(Pr(k | \lambda )\)</code> as a function of potential <code>\(k\)</code> values (with our data <code>\(k=10\)</code> highlighted) for various values of <code>\(\lambda\)</code>,
+and</li>
+<li>the likelihood <code>\(\L(\lambda | k)\)</code> as a function of <code>\(\lambda\)</code> for <code>\(k=10\)</code>.</li>
+</ul>
+<p>Notice that the illustrated likelihood function on the right has a maximum at a count of exactly <code>\(k=10\)</code>.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>
+That is, given our observation of <code>\(k=10\)</code> visits, the most likely value of the rate parameter <code>\(\lambda\)</code> is 10.
+(Hopefully that&rsquo;s not all too surprising;
+remember that <code>\(\lambda\)</code> reflects the expected (mean) value of a Poisson-distributed variable.)</p>
+<img src="/courses/wkshp_interactions_files/figure-html/lik_Poiss_single-1.png" width="768" />
+<h4 id="multiple-observations">Multiple observations</h4>
+<p>What do we do when we have not just one but multiple observations?
+That is, what if we had a field assistant who also watched a single flower
+and counted <code>\(k=15\)</code> visits in the same amount of time?
+We therefore have two observations, <code>\(k = \{10, 15\}\)</code>, to consider.</p>
+<p>If the probability of the first observation is <code>\(Pr(k=10 | \lambda)\)</code>
+and the probability of the second observation is <code>\(Pr(k=15 | \lambda)\)</code>,
+then the probability of observing both is their product,
+<code>\(Pr(k=\{10, 15\} | \lambda) = Pr(10 | \lambda) \cdot Pr(15 | \lambda)\)</code>.</p>
+<p>The same is true for likelihoods.
+To get the overall (&ldquo;joint&rdquo;) likelihood of <code>\(\lambda\)</code> given <em>both</em> observations,
+we simply multiply their likelihoods.
+Thus
+<code>\(\L(\lambda | k=\{10, 15\}) = \L(\lambda | k=10) \cdot  \L( \lambda | k=15)\)</code>.
+More specifically,
+$$
+\L(\lambda | k={10, 15})  =
+\frac{\lambda^{10} e^{-\lambda}}{10!}
+\cdot
+\frac{\lambda^{15} e^{-\lambda}}{15!}.
+$$
+As the next figure shows,
+<code>\(\L{\lambda | k=\{10, 15\})\)</code> has a maximum at <code>\(\lambda = 12.5\)</code>
+(which corresponds to the average of the two observations).</p>
+<img src="/courses/wkshp_interactions_files/figure-html/lik_Poiss_two-1.png" width="384" />
+<p>For an arbitrary number of <code>\(n\)</code> observations (i.e. <code>\(k=\{ k_1, k_2, \ldots, k_n\}\)</code>),
+we have a product of <code>\(n\)</code> observation-specific likelihoods.
+Our joint likelihood function with which to determine <code>\(\lambda\)</code> thus becomes a function of these observation-specific likelihoods,
+$$
+\L(\lambda |k)
+= \prod_{i=1}^n \frac{\lambda^{k_i} e^{-\lambda}}{k_i!}
+$$
+where the symbol <code>\(\prod_{i=1}^n\)</code> denotes the product of elements <code>\(i=1\)</code> to <code>\(n\)</code>.
+That is,
+$$
+\prod_{i=1}^n \frac{\lambda^{k_i} e^{-\lambda}}{k_i!}
+= \frac{\lambda^{k_1} e^{-\lambda}}{k_1!}
+\cdot
+\frac{\lambda^{k_2} e^{-\lambda}}{k_2!}
+\cdot
+\ldots
+\cdot
+\frac{\lambda^{k_n} e^{-\lambda}}{k_n!}.
+$$</p>
+<h3 id="why-the-negative-log-likelihood">Why the negative log-likelihood?</h3>
+<p>We want the value of <code>\(\lambda\)</code> that maximizes the joint likelihood over all our observations.
+But we&rsquo;ve created a numerical problem in the previous step.
+Probabilities are numbers bounded by 0 and 1,
+and therefore so are likelihoods.
+As a result, by multiplying all those likelihoods together, our joint likelihood will become a smaller and smaller number with every data point we add to our dataset!
+In fact, as our number of observations grows their joint likelihood becomes a vanishingly small number that neither our heads nor computers can deal with!</p>
+<p>The solution is the logarithm.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>
+Processes that are multiplicative on the natural scale become additive on the logarithmic scale, i.e.
+$$
+\ln ( x\cdot y \cdot z) = \ln(x) + \ln(y) + \ln(z).
+$$
+Therefore,
+$$
+\ln \L(\lambda |k)
+= \ln \left (\prod_{i=1}^n \frac{\lambda^{k_i} e^{-\lambda}}{k_i!} \right)
+= \sum_i^n \ln \left (\frac{\lambda^{k_i} e^{-\lambda}}{k_i!} \right)
+$$
+where
+$$
+\sum_i^n \ln \left (\frac{\lambda^{k_i} e^{-\lambda}}{k_i!} \right)
+= \ln \left(\frac{\lambda^{k_1} e^{-\lambda}}{k_1!} \right )
++
+\ln \left( \frac{\lambda^{k_2} e^{-\lambda}}{k_2!} \right)
++
+\ldots
++
+\ln \left (\frac{\lambda^{k_n} e^{-\lambda}}{k_n!} \right ).
+$$
+Thus the <em>log-likelihood</em> increases (rather than decreases) in value as the number of observations increases.
+Big numbers are no problem to deal with, so we&rsquo;ve successfully avoided our numerical problem.</p>
+<img src="/courses/wkshp_interactions_files/figure-html/neglog-1.png" width="384" />
+<p>But taking the logarithm has a side effect because the logarithm of a number between 0 and 1 returns a <em>negative</em> number.
+Since each of the individual likelihoods is between 0 and 1,
+a side-effect of taking <code>\(\ln \L\)</code> is that we&rsquo;re now adding up lots of negative numbers.
+That&rsquo;s not a problem because we can just take the negative log-likelihood to get back to a positive number.
+But importantly, as a consequence,
+<strong>in order to <em>maximize</em> the likelihood <code>\(\L\)</code>, we need to <em>minimize</em> the negative log-likelihood <code>\(-\ln \L\)</code></strong>
+to find the parameter value that best fits the data.</p>
+<img src="/courses/wkshp_interactions_files/figure-html/nlnlik_Poiss-1.png" width="384" />
+<h3 id="finding-the-mles">Finding the MLEs</h3>
+<p>For some models it is possible to determine the values of the parameters that maximize the likelihood function analytically.
+That is, it&rsquo;s possible to solve for the maximum likelihood parameters
+(i.e. the maximum likelihood estimators (&ldquo;MLEs&rdquo;)).
+Doing so for <code>\(\lambda\)</code> of the Poisson, we can
+(i) build intuition to better understand what numerical methods (&ldquo;optimizers&rdquo;) are about, and
+(ii) prove that the MLE for <code>\(\lambda\)</code> of the Poisson is the mean of the <code>\(k\)</code> observations (as I simply proclaimed above).
+However, I&rsquo;ll relegate the latter of these to the <a href="of_potential_utility_or_interest">Of Potential Utility or Interest</a> page.</p>
+<h4 id="max_lik_math">Analytical intuition</h4>
+<p>We&rsquo;ll do this rather abstractly&hellip;</p>
+<p>Suppose we have some arbitrary function, like this polynomial describing a parabola
+<code>\(f(x) = a + b (x-c)^2\)</code> depicted in the following figure.
+The way to find the value of <code>\(x\)</code> where <code>\(f(x)\)</code> is at its minimum value is to find the value of <code>\(x\)</code> where the slope of <code>\(f(x)\)</code> (with respect to <code>\(x\)</code>) is zero.</p>
+<img src="/courses/wkshp_interactions_files/figure-html/fig_poly-1.png" width="384" />
+<p>How do we determine the slope of <code>\(f(x)\)</code> as a function of <code>\(x\)</code>?
+We take the derivative of <code>\(f(x)\)</code> with respect to <code>\(x\)</code>: <code>\(\frac{d \; f(x)}{dx}\)</code>.
+For our polynomial, <code>\(\frac{d \; f(x)}{dx} = 2b(x-c)\)</code>,
+which even R has the ability to solve symbolically:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">D</span><span class="p">(</span><span class="nf">expression</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">c</span><span class="p">)</span><span class="n">^2</span><span class="p">),</span> <span class="s">&#39;x&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## b * (2 * (x - c))
+</code></pre><p>Setting <code>\(\frac{d\; f(x)}{dx} = 2b(x-c) = 0\)</code>
+(since that&rsquo;s where <code>\(f(x)\)</code> will have its minima (or maxima)<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>),
+we use a little algebra to solve for <code>\(x\)</code>:
+$$
+2b(x-c)=0 \implies 2bx-2bc=0 \implies 2bx = 2bc \implies x=c
+$$
+(which correctly equals the location of the minimum at <code>\(x=2\)</code>,
+as shown in the above figure).
+We can do the same thing for likelihood functions to obtain their MLEs.
+Doing so often leads to useful insight into the processes and variables that cause parameter estimates to change in value.</p>
+<h4 id="max_lik_optim">Numerical optimization</h4>
+<p>There are two basic parts to finding the MLE by numerical means:
+coding the negative log-likelihood function and choosing the optimization method to find its minimum.</p>
+<h5 id="coding-the-likelihood">Coding the likelihood</h5>
+<p>For the Poisson, we have the negative log-likelihood function</p>
+<p>$$
+-\ln \L(\lambda | k) =
+\sum_i^n \ln \left (\frac{\lambda^{k_i} e^{-\lambda}}{k_i!} \right).
+$$
+You could certainly write code to define an R function to implement this calculation
+(see the <a href="of_potential_utility_or_interest">Of Potential Utility or Interest</a> page),
+and sometimes it&rsquo;s necessary to do that for more complex likelihoods.
+But R has built-in functions for most probability distributions that are robust, fast, and easy to use.
+These R functions are the &ldquo;density functions&rdquo; of the probability distributions.</p>
+<p>For example, while R&rsquo;s function <code>runif(n, min, max)</code> draws <code>n</code> random values from the uniform probability distribution bounded by <code>min</code> and <code>max</code> parameter values,
+the corresponding density function <code>dunif(x, min, max)</code> returns the likelihood of the value <code>x</code> given <code>min</code> and <code>max</code>.
+For the Poisson, we have <code>dpois(x, lambda)</code>.</p>
+<p>Note that, by default, the likelihood is returned on the natural scale.
+To obtain the <em>negative log</em>-likelihood of <code>x</code>, we use <code>-dpois(x, lambda, log = TRUE)</code>.</p>
+<p>When <code>x</code> represents a vector of values (multiple observations), we obtain a vector of corresponding negative log-likelihoods (one for each observation).
+Since we want the overall joint negative log-likelihood of all the observations,
+we have to sum their negative log-likelihoods together: <code>-sum(dpois(x, lambda, log = TRUE))</code>.
+We can define our own R function to implement this and use it more conveniently.
+Notice that we define the function with only <code>lambda</code> as an argument.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Define the negative log-likelihood</span>
+</span></span><span class="line"><span class="cl"><span class="n">nlL.pois</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">lambda</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span><span class="nf">sum</span><span class="p">(</span><span class="nf">dpois</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">lambda</span><span class="p">,</span> <span class="n">log</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Continuing with our dataset of <code>\(k = \{10, 15\}\)</code> observations from above,
+we can apply our function as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Define k globally for our nlL.pois() function to use.</span>
+</span></span><span class="line"><span class="cl"><span class="n">k</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Demonstrate use of nlL.pois() for two hypothetical values of lambda.</span>
+</span></span><span class="line"><span class="cl"><span class="nf">nlL.pois</span><span class="p">(</span><span class="m">11</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## [1] 5.056302
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">nlL.pois</span><span class="p">(</span><span class="m">12.4</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## [1] 4.861272
+</code></pre><h5 id="optimization">Optimization</h5>
+<p>Given data <code>\(k=\{10, 15\}\)</code>, we now need to find the value of <code>\(\lambda\)</code> that minimizes our negative log-likelihood function <code>nlL.pois()</code>.
+For many circumstances, the R function <code>optim()</code> is the go-to function for doing so because it is robust and has several standard optimization methods and control options to choose from.
+It comes in base R, so there&rsquo;s no package to load.</p>
+<p>At minimum, we have to pass <code>optim(par, fn, ...)</code> where <code>fn</code> is the function we wish to minimize and <code>par</code> is a guess at an initial parameter value at which the optimizer will start its search.
+(You can ignore the warning message in the following example.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">init.par</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">lambda</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">optim</span><span class="p">(</span><span class="n">init.par</span><span class="p">,</span> <span class="n">nlL.pois</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## Warning in optim(init.par, nlL.pois): one-dimensional optimization by Nelder-Mead is unreliable:
+## use &#34;Brent&#34; or optimize() directly
+</code></pre><pre tabindex="0"><code>## $par
+## lambda 
+##   12.5 
+## 
+## $value
+## [1] 4.860468
+## 
+## $counts
+## function gradient 
+##       34       NA 
+## 
+## $convergence
+## [1] 0
+## 
+## $message
+## NULL
+</code></pre><p>The output of <code>optim()</code> includes the MLE for our parameter <code>\(\lambda\)</code>,
+the <code>value</code> of our negative log-likelihood function at the MLE,
+and a <code>convergence</code> error code (with 0 indicating success).</p>
+<h3 id="max_lik_class">Let&rsquo;s try it</h3>
+<h5 id="repeat-for-yourself">Repeat for yourself</h5>
+<p>In-class 
+  <i class="fas fa-clock  pr-1 fa-fw"></i> 10-15 minutes</p>
+<p>Download <a href="/courses_Rscripts/ModelFitting_1.R">ModelFitting_1.R</a> to implement what we just did with the <code>\(k=\{10, 15\}\)</code> data set and Poisson distribution.
+Then try generating different data sets that vary in their sample size to see how close you get to the true value of <code>\(\lambda\)</code> with which you generated the data.
+(We&rsquo;ll address estimation uncertainty through the use of confidence intervals later.)</p>
+<h5 id="real-binomial-data">Real binomial data</h5>
+<p>Your actual challenge, however, is to generate your own data and write your own code to analyse it.</p>
+<p>The data set will be contributed to by everyone in the class.
+Each of you will take one (or more) <em>Delphinium</em> seed pods and count both the total number of ovules and the number that were successfully fertilized.
+Enter your data on <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTyyqthYKtedUdgRCOE37ec-oA4TzY6Mq8glR9bWr8ORhGQjWZlkeIuM5AgdGa8-zHE9pJma8C3n4_n/pub?gid=0&amp;single=true&amp;output=csv" target="_blank" rel="noopener">this GoogleSheet</a>.</p>
+<p>As soon as you&rsquo;re done with data entry, download the data as a <em>csv</em> file and start analyzing it.
+(You can re-download it again after everyone&rsquo;s finished entering their data.
+You only need one data point to start fitting this one-parameter model!)</p>
+<p>Rather than using a Poisson, you&rsquo;ll want to assume a binomial process.
+Your goal is to estimate <code>\(p\)</code>, the average probability of fertilization success.
+Download <a href="/courses_Rscripts/ModelFitting_2.R">ModelFitting_2.R</a> to help you get going.</p>
+<h2 id="model-fitting">Model fitting</h2>
+<p>Up to this point, we have assumed that the process that is reflected in our data,
+be it the flower visitation rate <code>\(\lambda\)</code> or the fertilization success probability <code>\(p\)</code>,
+is well-represented as being a constant value that is independent of any other contributing factor.
+Visually, if we actually had data like that introduced at the very start of today, our models so far would correspond to the horizontal lines in the following figures.
+That is, we&rsquo;d be assuming that visitation counts are independent of plant density,
+and that the proportions of ovules fertilized are independent of visitation count.
+All variation is noise.</p>
+<img src="/courses/wkshp_interactions_files/figure-html/motivation_constant-1.png" width="768" />
+<p>We can think of these models of constant <code>\(\lambda\)</code> and <code>\(p\)</code> as being our simplest 1-parameter &ldquo;null&rdquo; models;
+if you didn&rsquo;t have any other information, your best prediction for the expected value of a future data point would be the mean of current data.
+Clearly, these data visualizations indicate that these null models do not capture all the information that a more complex model could potentially capture.
+Although there is plenty of noise, the visitation rate and the fertilization success probability appear to be increasing functions of plant density and visitation count, respectively.
+That is, <code>\(\lambda\)</code> would probably be better considered to be a function of plant density and <code>\(p\)</code> would probably be better considered to be a function of visitation count.
+So how do we go about encoding that in our models?</p>
+<p>Well, there are many ways that we could do it.
+We could go the route of using <em>GLMs</em> and <em>GAMs</em> that permit us to continue to appropriately represent non-Gaussian error structures and potentially non-linear relationships
+(see the <a href="of_potential_utility_or_interest">Of Potential Utility or Interest</a>).
+But, as motivated above, our goal is to fit mechanistic models instead.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></p>
+<h3 id="mechanistic-models">Mechanistic models</h3>
+<p>Let&rsquo;s consider our visitation count vs. plant density dataset.
+Even if the total number of pollinators that are flying in the sky is invariant (constant) with respect to the density of our focal plant species, it seems somewhat intuitive that we should see more total visits to the focal plant in areas where the focal plant&rsquo;s density is higher.
+That is, setting aside targeted searching and all other kinds of potential pollinator behavior, it should be true that the more plants there are, the greater the chance that a pollinator will bump into any one of them by random chance alone.
+The mathematically simplest model, we&rsquo;ll call it <code>\(f_1\)</code>, to describe such a presumed dependence of <code>\(\lambda\)</code> on <code>\(P\)</code> would be
+$$
+\text{Visitation rate }\lambda = f_1(P) = a P,
+$$
+where a new parameter <code>\(a\)</code> encapsulating what may potentially be several aspects of the pollinator&rsquo;s search effort, including its flying speed, its preference for the focal plant, etc..
+The higher the value of <code>\(a\)</code>, the steeper the slope of the assumed biological relationship between <code>\(\lambda\)</code> and <code>\(P\)</code> and hence the steeper the slope of observed visitation counts versus plant density we expect to see in our data.
+In the literature on Consumer-Resource theory, this model is referred to as the <em>Holling Type I functional response</em>.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></p>
+<img src="/courses/wkshp_interactions_files/figure-html/motivation_prop-1.png" width="336" />
+<p>A more flexible (and possibly more realistic) second model describes <code>\(\lambda\)</code> as increasing with <code>\(P\)</code> in a monotonically-saturating fashion to encode the hypothesis that visitation rates can&rsquo;t increase with <code>\(P\)</code> forever.
+That is, while visitation rates are likely determined by search effort and plant density at low <code>\(P\)</code> (just like for model <code>\(f_1\)</code>), they are probably bounded at some maximum possible visitation rate at high values of <code>\(P\)</code>.
+If, for example, a pollinator spends <code>\(h\)</code> minutes per visit to each encountered flower, then the maximum possible visitation rate at high values of <code>\(P\)</code> (where there is effectively no time needed to search and find the next flower) is <code>\(1/h\)</code> visits per minute.
+The two-parameter model
+$$
+\text{Visitation rate }\lambda = f_2(P) = \frac{a P}{1 + a h P}
+$$
+encapsulates this.
+The more plants there are, the more that each pollinator spends time &ldquo;handling&rdquo; rather than searching and encountering more plants.
+In the literature, this model is referred to as the <em>Holling Type II functional response</em>.
+(An alternative but deterministically-equivalent parameterization is referred to as the <em>Michaelis-Menten</em> model.)
+Note that when <code>\(h=0\)</code>, model <code>\(f_2\)</code> collapses back to model <code>\(f_1\)</code>.
+Model <code>\(f_1\)</code> is therefore nested within <code>\(f_2\)</code>.</p>
+<p>Lastly, an even more flexible (and possibly even more realistic) third model describes <code>\(\lambda\)</code> as increasing with <code>\(P\)</code> in a sigmoidal fashion to encode the hypothesis that a pollinator&rsquo;s search rate may additionally be limited at low <code>\(P\)</code>.
+For example, the rate at which a pollinator searches for plants may itself increase with plant density; they may develop an ever better &ldquo;search image&rdquo; as they encounter more plants.
+The three-parameter model
+$$
+\text{Visitation rate }\lambda = f_3(P) = \frac{a P^\theta}{1 + a h P^{\theta}}
+$$
+encapsulates this when the new parameter <code>\(\theta\)</code> (theta) takes on values greater than 1.
+This model is most appropriately referred to as the <em>Holling-Real Type III functional response</em>.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>
+Note that when <code>\(\theta=1\)</code>, model <code>\(f_3\)</code> collapses back to model <code>\(f_2\)</code> since <code>\(x^1 = x\)</code>.</p>
+<h3 id="modifying-the-likelihood">Modifying the likelihood</h3>
+<p>To fit the three <code>\(f_1-f_3\)</code> models to our data we need to incorporate them into our likelihood function.
+To do so we insert each of them in for <code>\(\lambda\)</code>.
+Many refer to the resulting statistical model (i.e. the likelihood function) as being composed of a <em>deterministic skeleton</em> and a <em>stochastic shell</em>.
+For example, for model <code>\(f_1\)</code> we have
+$$
+-\ln \L_1(a | k, P)
+= \sum_i^n \ln \left (\frac{f_1^{k_i} e^{-f_1}}{k_i!} \right)
+= \sum_i^n \ln \left (\frac{(a P)^{k_i} e^{-a P}}{k_i!} \right).
+$$
+Notably, unlike our original negative log-likelihood function to which we supplied only the response variable data (visitation counts <code>\(k = \{k_1, k_2, \ldots, k_n \}\)</code>) in order to estimate the constant <code>\(\lambda\)</code>, we must now supply the both response variable data and the covariate data (of corresponding plant densities <code>\(P = \{P_1, P_2, \ldots, P_n \}\)</code>) in order to estimate up to three constants ($a$, <code>\(h\)</code>, and <code>\(\theta\)</code>) for the three models.<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup>
+But because <code>\(P\)</code> is the same for all models, we can just leave it defined in R&rsquo;s global environment (rather than defining it within the function&rsquo;s internal environment).</p>
+<p>We&rsquo;ll need a little more dummy data, so let&rsquo;s create it using <code>runif()</code> and <code>rpois()</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">a</span> <span class="o">&lt;-</span> <span class="m">0.33</span> <span class="c1"># True value of &#39;a&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">&lt;-</span> <span class="m">10</span> <span class="c1"># Sample size</span>
+</span></span><span class="line"><span class="cl"><span class="n">P</span> <span class="o">&lt;-</span> <span class="nf">runif</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span> <span class="c1"># Plant densities</span>
+</span></span><span class="line"><span class="cl"><span class="n">k</span> <span class="o">&lt;-</span> <span class="kc">NULL</span> <span class="c1"># Visitation counts</span>
+</span></span><span class="line"><span class="cl"><span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">k[i]</span> <span class="o">&lt;-</span> <span class="nf">rpois</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">a</span> <span class="o">*</span> <span class="n">P[i]</span><span class="p">)</span> <span class="c1"># Generate a k for each P assuming Type 1</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nf">print</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">P</span> <span class="o">=</span> <span class="nf">round</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span> <span class="n">k</span><span class="p">))</span>
+</span></span></code></pre></div><pre tabindex="0"><code>##       P  k
+## 1  26.6  6
+## 2  37.2  9
+## 3  57.3 22
+## 4  90.8 33
+## 5  20.2  6
+## 6  89.8 33
+## 7  94.5 26
+## 8  66.1 18
+## 9  62.9 19
+## 10  6.2  1
+</code></pre><p>Now we define the negative log-likelihood for the <code>\(f_1\)</code> and use <code>optim()</code> to estimate the MLE for its <code>\(a\)</code> parameter.
+(Again we&rsquo;ll ignore the warning for this 1-dimensional model.)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">nlL.pois.f1</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">par</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span> <span class="o">&lt;-</span> <span class="n">par[</span><span class="s">&#39;a&#39;</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span><span class="nf">sum</span><span class="p">(</span><span class="nf">dpois</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">a</span> <span class="o">*</span> <span class="n">P</span><span class="p">,</span> <span class="n">log</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Estimate &#39;a&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">fit</span> <span class="o">&lt;-</span> <span class="nf">optim</span><span class="p">(</span><span class="n">par</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">a</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">             <span class="n">fn</span> <span class="o">=</span> <span class="n">nlL.pois.f1</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## Warning in optim(par = list(a = 0.2), fn = nlL.pois.f1): one-dimensional optimization by Nelder-Mead is unreliable:
+## use &#34;Brent&#34; or optimize() directly
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">print</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span> 
+</span></span></code></pre></div><pre tabindex="0"><code>## $par
+##         a 
+## 0.3136914 
+## 
+## $value
+## [1] 24.37161
+## 
+## $counts
+## function gradient 
+##       28       NA 
+## 
+## $convergence
+## [1] 0
+## 
+## $message
+## NULL
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># True &#39;a&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nf">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## [1] 0.33
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Estimated &#39;a&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">fit</span><span class="o">$</span><span class="n">par</span>
+</span></span></code></pre></div><pre tabindex="0"><code>##         a 
+## 0.3136914
+</code></pre><img src="/courses/wkshp_interactions_files/figure-html/motivation_type1-1.png" width="336" />
+<h3 id="lets-try-it">Let&rsquo;s try it</h3>
+<h5 id="repeat-for-yourself-1">Repeat for yourself</h5>
+<p>In-class 
+  <i class="fas fa-clock  pr-1 fa-fw"></i> 30-45 minutes</p>
+<p>Download <a href="/courses_Rscripts/ModelFitting_3.R">ModelFitting_3.R</a>.
+The first part generates a random dataset.
+It then repeats the fitting of the <code>\(f_1\)</code> model that we just did.</p>
+<p>Your challenge is expand on the script to fit the <code>\(f_2\)</code> and <code>\(f_3\)</code> models to the same dataset.
+Summarize what you learn by comparing the three models'
+(1) parameter MLEs to each other and the values with which the dataset was generated, and
+(2) their minimized negative log-likelihoods (i.e. the value of their negative log-likelihood at their parameter MLEs).
+Which model&rsquo;s parameters got closest to the truth?
+Which model is the <em>best-fitting</em>?
+(Is it a higher or a lower negative log-likelihood that is better?)
+Which model is the <em>best-performing</em>?</p>
+<p>But before you get going, take note of two things about</p>
+<ol>
+<li>Coding the likelihood, and</li>
+<li>Initial values &amp; NaNs.</li>
+</ol>
+<h4 id="coding-the-likelihood-1">Coding the likelihood</h4>
+<p>The function we used to define the negative log-likelihood for the <code>\(f_1\)</code> model above had only a single <code>par</code> argument from which we &ldquo;extract&rdquo; parameter <code>a</code> using <code>a &lt;- par['a']</code>.
+(That is, we&rsquo;ve added a line of code relative to what we did when we were just focused on <code>\(\lambda\)</code>.)
+You&rsquo;ll want to do the same thing when defining the likelihood functions for models <code>\(f_2\)</code> and <code>\(f_3\)</code>; your likelihood functions must have only one <code>par</code> argument from which each parameter is extracted.</p>
+<h4 id="initial-values--nans">Initial values &amp; NaNs</h4>
+<p>In general, the more data you have and the simpler the model, the less sensitive the optimization will be to your initial parameter value guess.
+In our simple example case involving <code>\(f_1\)</code> and a linear relationship, almost any reasonable initial value for <code>\(a\)</code> would have worked.</p>
+<p>In slightly more complex cases, you can often get a good enough guess by eyeballing your data and thinking about how the parameters of your deterministic function should influence its shape.
+For example, for the <code>\(f_2\)</code> model, parameter <code>\(a\)</code> controls the slope at the origin at <code>\(P=0\)</code> while parameter <code>\(h\)</code> controls the level of the asymptotic maximum value of <code>\(1/h\)</code> as <code>\(P\rightarrow \infty\)</code>, both of which can be read of a plot of the data.
+Otherwise, the best way to proceed is to fit a simpler model and to use its MLEs to inform your guess for the next more complex model.
+(That is, fit <code>\(f_1\)</code> first and use its estimate for <code>\(a\)</code> to inform the initial value for <code>\(a\)</code> in model <code>\(f_2\)</code>, etc.)</p>
+<p>In complex cases, it&rsquo;s often wise to try out several different starting values to ensure that you always arrive at the same MLE values.
+Otherwise you run the risk of your optimizer finding a <em>local</em> (rather than <em>global</em>) minimum in the likelihood surface (see below).</p>
+<p>You may get a negative log-likelihood output of <code>NaN</code> if your initial guess (or a value attempted during the optimization) is incompatible with the data.
+<code>optim()</code> will tell you when that happens.
+If that happens for the initial value, try again with a different value.
+If it happens during the optimization, it&rsquo;s typically not a problem if a convergence code of 0 is obtained.</p>
+<h2 id="mod_comp">Model comparison</h2>
+<p>In general, the more parameters a model has (i.e. the more <em>parametrically complex</em> it is), the better it will fit the data.
+Indeed, a little simplistically speaking, if you have a model that has as many free parameters as you have data points, then your model can fit the data perfectly with no unexplained residual variation leftover!<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup>
+A model&rsquo;s <em>fit</em> to the data as reflected by its likelihood (or its <code>\(R^2\)</code> value) is thus rarely useful on its own when we want to compete different models against each other to ask which is &ldquo;the best&rdquo;.
+Rather, the principle of parsimony (Occam&rsquo;s razor) motivates us to identify the best-<em>performing</em> model.
+Typically the best-performing model is the one that <em>maximizes fit while minimizing complexity</em> relative to the other considered models.
+If two models fit the data equally well but one uses fewer parameters to achieve that fit, then it is the better-performing model.
+Currently, the most widely used tools for quantifying relative model performance are based on <em>information theory</em>.</p>
+<h3 id="inf_crit">AIC &amp; BIC</h3>
+<p>Two information-theoretic indices of model performance are by far the most popularly used in ecology:
+the Akaike Information Criterion (<em>AIC</em>)
+and the Bayesian Information Criterion (<em>BIC</em>, a.k.a. the Schwartz Information Criterion).
+The practical difference between these three criteria is in how they quantify model complexity.</p>
+<p>The <em>AIC</em> score of a model is calculated as twice the minimized negative log-likelihood plus twice the number of parameters <code>\(p\)</code>:
+$$
+AIC = - 2 \ln \hat{\L} + 2 p.
+$$
+Note two things:<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup></p>
+<ol>
+<li>We&rsquo;re using the modified symbol <code>\(\hat{\L}\)</code> rather than just <code>\(\L\)</code> to indicate that we are using the <em>minimized</em> value of negative log-likelihood (i.e. its value at the model&rsquo;s parameter MLEs).</li>
+<li>Because a lower <code>\(-\ln \hat{\L}\)</code> value reflects a better fit to the data, adding a model&rsquo;s parameter count with <code>\(+2p\)</code> reflects a <em>complexity penalty</em> that makes a model&rsquo;s <em>AIC</em> value larger.</li>
+</ol>
+<p>Similarly, the <code>\(BIC\)</code> score of a model is calculated as</p>
+<!-- $$ -->
+<!-- AICc =  - 2 \ln \hat{\L} + 2 p + \frac{2 p (p + 1)}{n-p-1} -->
+<!-- $$ -->
+<!-- and -->
+<p>$$
+BIC = - 2 \ln \hat{\L} +  \ln(n) p,
+$$
+where the logarithm of the dataset&rsquo;s sample size <code>\(n\)</code> also contributes to the complexity penalty term.
+Therefore, larger datasets impose a greater penalty on more parametrically-complex models for <em>BIC</em>.</p>
+<p>For both criteria, the model with the <em>lowest</em> score is considered the best-performing model.
+Note that when comparing models the dataset cannot change.
+All models have to be fit to the same dataset.
+More specifically, although the covariates can be different for different models, the response variable data (e.g., our visitation counts) must remain the same.</p>
+<h4 id="relative-performance">Relative performance</h4>
+<p>Having identified the best-performing model, it is natural to ask just how much better the best-performing model is relative to the others.
+We can do that by calculating their <code>\(\Delta\)</code> differences.
+That is, the performance of the <code>\(i^{th}\)</code> model relative to the best performing model is calculated as
+$$
+\Delta_i = AIC_i - AIC_{min}.
+$$
+The best-performing model will thus have <code>\(\Delta_i = 0\)</code> and all others will have <code>\(\Delta_i &gt; 0\)</code>.
+The bigger the difference, the better the best-performing model.
+Because we like cut-offs<sup id="fnref:12"><a href="#fn:12" class="footnote-ref" role="doc-noteref">12</a></sup>,
+by rule-of-thumb convention,
+a difference of at least 2 units is deemed to reflect &ldquo;substantial&rdquo; support in favor of the best-performing model,
+a 2-4 unit difference is deemed as providing &ldquo;strong&rdquo; support<sup id="fnref:13"><a href="#fn:13" class="footnote-ref" role="doc-noteref">13</a></sup>,
+a 4-7 unit difference as &ldquo;considerably less&rdquo; support,
+while models having <code>\(\Delta_i &gt; 10\)</code> are deemed to have essentially no support.</p>
+<h3 id="lets-try-it-1">Let&rsquo;s try it</h3>
+<p>In-class 
+  <i class="fas fa-clock  pr-1 fa-fw"></i> 10-15 minutes</p>
+<p>Adding to your updated copy of <a href="/courses_Rscripts/ModelFitting_3.R">ModelFitting_3.R</a>, write functions for <code>\(AIC\)</code> and <code>\(BIC\)</code> and use them to identify the best-performing model among our three <code>\(f_1\)</code> - <code>\(f_3\)</code> models.
+Do your inferences differ from your earlier evaluation of the models?</p>
+<h3 id="alternatives">Alternatives</h3>
+<p>Information criteria like <em>AIC</em> and <em>BIC</em> are popular because they are super easy to implement.
+They also have the benefit of enabling the comparison of any set of models for which a likelihood can be calculated and the parameters can be counted (or estimated).
+In particular, the models in the set need not be nested subsets of each other as is necessary for the alternative model-comparison approach of <em>Likelihood Ratio Tests</em>.  (Our <code>\(f_1\)</code> - <code>\(f_3\)</code> models <em>are</em> nested subsets, because <code>\(f_3\)</code> can be reduced to <code>\(f_2\)</code> which can be reduced to <code>\(f_1\)</code>, so likelihood ratio tests could be used.)</p>
+<p>There are also several other information criteria available.
+The commonly-used <em>AICc</em> attempts to account for a bias towards more complex models that occurs for <em>AIC</em> when sample sizes are small.
+For models that are linear in their parameters and have residuals that are well-approximated by a Normal distribution,
+$$
+AIC_c = AIC + \frac{2k(k+1)}{n-k-1}.
+$$
+Unfortunately there is no similarly simple equation for nonlinear models with non-Normal residuals.</p>
+<p>Other approaches for balancing fit and complexity include the
+<em>Fisher Information Approximation</em> (FIA) which considers not just a model&rsquo;s parametric complexity but also its geometric complexity (i.e. how flexible it is),
+and various forms of <em>cross-validation</em> whereby subsets of a given data set are repeatedly left out of the fitting (&ldquo;training&rdquo;) process to be used as &ldquo;test data&rdquo; with which to evaluate the model&rsquo;s predictive ability.
+In the latter, unnecessarily complex models will over-fit the training data and will therefore perform poorly on the test data.</p>
+<h3 id="philosophies">Philosophies</h3>
+<p>Much has been written about the pros and cons, foundations and assumptions, epistomological and pragmatic differences between the various approaches to model comparison.
+That&rsquo;s particularly true for AIC vs. BIC.
+The comparison is often framed as being rather absolute and clear (especially in the ecological literature), but my sense is that it is far more nuanced and muddy.</p>
+<p>Much of the discussion pertains to questions of motivation in comparing alternative models.
+Is it to describe your data?  Is it to predict new data?  Is it to explain your data?
+If it&rsquo;s to predict, then what kind of prediction are you wanting to make (e.g., within-sample, out-of-sample, out-of-range, forecast, etc.)?
+Conceptually, all questions will arrive at the same conclusion regarding which model is &ldquo;best&rdquo; when your data set is very large and sufficiently representative of all possibilities, but that is rarely if ever the case.
+Therefore, choices about which approach to take have to be made.
+For example, the derivation of AIC is motivated by a desire to maximize out-of-sample predictive ability
+(i.e. minimizing the prediction error when predicting what equivalent data sets would look like).
+Asymptotically (as sample sizes increase), AIC is equivalent to the leave-one-out form of cross-validation.
+In contrast, the derivation of BIC is motivated by a desire to identify the &ldquo;true&rdquo; model
+(i.e. to interpret or draw inferences about biology), and in that sense are more similar to leave-many-out forms of cross-validation and asymptotically converge on criteria like FIA.</p>
+<p>That said, most of the mathematical and statistical basis for contrasting the different approaches is limited to linear regression type models.
+Thus, while I consider it important to go beyond what most ecologists seem to be doing
+(i.e. ignore the differences and just go with AIC because everyone else is using it)
+by thinking about your motivations and the trade-offs among them,
+I would say that a fair degree of pragmatism remains warranted.</p>
+<h2 id="uncertainty">Uncertainty</h2>
+<h3 id="likelihood-surfaces">Likelihood surfaces</h3>
+<p>When we have more than one parameter, we talk about the likelihood function as describing a &ldquo;likelihood surface&rdquo;.
+For a model with 2 parameters, we can easily visualize that surface in a single plot.
+When a model has <code>\(p\)</code> parameters there are <code>\(p\)</code> dimensions to the likelihood surface.
+Minimizing the negative log-likelihood to obtain the parameter MLEs is equivalent to finding the lowest point of that surface.
+Doing so is not a problem when the surface is like a smooth, unimodal, round bowl shape with only one well-defined minimum point,
+but such a shape is far from guaranteed for all models and datasets.
+In fact, depending on the data and/or the model, a likelihood surface could exhibit many shapes that are different from that of a (multidimensional) bowl.</p>
+<p>The shape of the likelihood surface relates to issues of parameter- (and model-) identifiability,
+and to attempts to quantify parameter uncertainty.</p>
+<h3 id="par_ident">Identifiability</h3>
+<p>The likelihood surface could be wavy and have multiple minima.
+In that case our optimizer could potentially get stuck in a <em>local</em> minimum,
+unable to find the true MLE associated with the <em>global</em> (lowest) minimum.
+Different optimizers attempt to deal with this potential problem in different ways, but as alluded to above, it is often wise to start at different initial parameter values to confirm convergence to the same optimum.</p>
+<p>The surface could be relatively flat in one or more parameters.
+The reasons for this include that there may be insufficient information in the data to constrain the values of the parameter(s) (i.e. all values are similarly likely);
+a parameter&rsquo;s MLE would thus come with large uncertainty.</p>
+<p>The surface could be relatively or even entirely flat for some combination of parameters.
+This could happen because the model (or the data) are structured in such a way that two or more parameters are not (sufficiently) identifiable.
+That is, parameters (or covariates) may co-vary in such a way that their independent effects cannot be distinguished.
+In two-dimensions, this would look like a likelihood surface that has a valley running through it.
+Each individual parameters apparent MLE could thus appear to be well-constrained (i.e. appear to have low uncertainty), but there could nonetheless be considerable uncertainty in their values.</p>
+<p>My sense is that likelihood surfaces with multiple minima most commonly occur for datasets that are too small for the task.
+For small data sets, noise predominates and different parameter combinations fit different data points similarly well.</p>
+<p>Flat surfaces or surfaces with valleys, on the other hand, will not be resolved simply by having more data (if it is similar to the data already available).
+Rather, what is typically needed is either more information and/or an alternatively formulated model structure.
+More information can come from better-designed &rsquo;experiments&rsquo; that, for example,
+(i) increase the range of values that the predictor variables exhibit (e.g., beyond what is &ldquo;natural&rdquo;), and
+(ii) increase the independence (decreases the co-variation) among predictor variables.
+Examples of alternative model structures include
+(i) replacing two parameters that always co-occur as a product by a single compound parameter, and
+(ii) rewritting a model in a mathematically equivalent (but statistically non-equivalent) formulation
+(e.g., the Holling Type II versus the Michaelis-Menten models).
+That said, these are relatively extreme, simple examples that represent a range of potential issues and solutions relating to identifability that you may encounter and where expert experience is often required.</p>
+<h3 id="quantifying-uncertainty">Quantifying uncertainty</h3>
+<p>When our goal is to make comparisons of model performance using information criteria,
+then all we need from model fitting are the values of each model&rsquo;s minimum negative log-likelihood associated with their parameter MLEs.
+However, many times we&rsquo;re not only interested in just doing model comparison or just obtaining the MLE values of the parameters.
+Rather, we often would also like to characterize the statistical uncertainty (&ldquo;clarity&rdquo;) of the parameter estimates.
+The most common way to do that is by determining the 95% confidence intervals of the MLEs.</p>
+<p>For that, we&rsquo;ll make use of the <code>mle2()</code> and <code>confint()</code> functions from the <code>bbmle</code> package. <code>mle2()</code> uses <code>optim()</code> as the default optimizer to determine the parameter MLEs, and <code>confint()</code> takes the result and returns the parameter confidence intervals.</p>
+<p>We&rsquo;ll continue on with the small <code>\(n=10\)</code> dataset we generated when we demonstrated the fitting of the <code>\(f_1\)</code> model.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">print</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">P</span> <span class="o">=</span> <span class="nf">round</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="m">1</span><span class="p">),</span> <span class="n">k</span><span class="p">))</span>
+</span></span></code></pre></div><pre tabindex="0"><code>##       P  k
+## 1  26.6  6
+## 2  37.2  9
+## 3  57.3 22
+## 4  90.8 33
+## 5  20.2  6
+## 6  89.8 33
+## 7  94.5 26
+## 8  66.1 18
+## 9  62.9 19
+## 10  6.2  1
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">bbmle</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">nlL.pois.f1.bbmle</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span><span class="nf">sum</span><span class="p">(</span><span class="nf">dpois</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">a</span> <span class="o">*</span> <span class="n">P</span><span class="p">,</span> <span class="n">log</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">fit</span> <span class="o">&lt;-</span> <span class="nf">mle2</span><span class="p">(</span><span class="n">nlL.pois.f1.bbmle</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">start</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">a</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">print</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## 
+## Call:
+## mle2(minuslogl = nlL.pois.f1.bbmle, start = list(a = 0.2))
+## 
+## Coefficients:
+##         a 
+## 0.3136831 
+## 
+## Log-likelihood: -24.37
+</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">confint</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>##     2.5 %    97.5 % 
+## 0.2692366 0.3627788
+</code></pre><p>Notice that</p>
+<ul>
+<li><code>mle2()</code> wants the negative log-likelihood function to have (all) the parameters as arguments (unlike <code>optim()</code> which wanted a single <code>par</code> argument containing the parameters);</li>
+<li><code>mle2()</code> has the order of the arguments for the negative log-likelihood and the list of initial parameter values reversed relative to <code>optim()</code>; and</li>
+<li><code>mle2()</code> returns the (positive) log-likelihood rather than the negative log-likelihood. (I don&rsquo;t know why.)</li>
+</ul>
+<p>The <code>bbmle</code> package also has several other potentially useful functions that we won&rsquo;t get into.
+Note that the above code is included at the bottom of <a href="/courses_Rscripts/ModelFitting_3.R">ModelFitting_3.R</a>.</p>
+<h2 id="end_result">End result</h2>
+<p>We used our visitation count data (introduced at the very start) to fit three models relating visitation rates to plant density.
+These models had either one, two, or three biologically-reasoned parameters that enabled the models to describe different types of relationships between observed visitation counts and plant density:  linear, saturating, and sigmoid.
+The three models therefore reflected different expectations/hypotheses about the deterministic biological processes that could have generated the data,
+but in fitting them we also attempted to stay true to the likely stochastic processes that introduced noise to the data.</p>
+<p>The results of our efforts are as follows:</p>
+<img src="/courses/wkshp_interactions_files/figure-html/endresult_fit-1.png" width="384" />
+<p>We obtained maximum likelihood point estimates and their 95% confidence intervals for each of the three models.</p>
+<pre tabindex="0"><code>## [1] &#34;f1 parameters&#34;
+</code></pre><pre tabindex="0"><code>##  est.a  2.5 % 97.5 % 
+##  0.276  0.262  0.289
+</code></pre><pre tabindex="0"><code>## [1] &#34;f2 parameters&#34;
+</code></pre><pre tabindex="0"><code>##     est 2.5 % 97.5 %
+## a 0.485 0.412  0.576
+## h 0.021 0.016  0.026
+</code></pre><pre tabindex="0"><code>## [1] &#34;f3 parameters&#34;
+</code></pre><pre tabindex="0"><code>##         est 2.5 % 97.5 %
+## a     0.044 0.010  0.161
+## h     0.038 0.031  0.043
+## theta 1.812 1.385  2.310
+</code></pre><p>Comparing the performance of the three models using <em>AIC</em>,
+we conclude that there is &ldquo;substantial&rdquo; support for model <code>\(f_3\)</code> over the other two models.</p>
+<pre tabindex="0"><code>##        AIC   dAIC  df
+## fit.f3 538.4   0.0 3 
+## fit.f2 552.0  13.6 2 
+## fit.f1 613.1  74.7 1
+</code></pre><p>Jump back to the <a href="#overview">Overview section</a>.</p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>There is much that we have only touched on and even more we have swept under the rug, but hopefully we&rsquo;re leaving you with a good enough starting point for your own interests.
+Most importantly, don&rsquo;t get discouraged or frustrated by the challenge that model fitting can be.
+The process of model fitting has often been described as an &ldquo;art&rdquo;.
+It is a skill that is learned through practice and accumulated experience, and therefore through perseverance.
+And it&rsquo;s worth pointing out that it&rsquo;s a skill to be learned not only in regards to statistical and mathematical knowledge and comfort
+(e.g., experience with probability distributions and deterministic functions, respectively),
+but also in terms of empirical knowledge of the data and the biological (and data collection) processes that are likely responsible for having generated the data.
+Statisticians and mathematicians have just as hard a time thinking about biology as biologists do with the statistics and math!
+It&rsquo;s in the challenge of gaining a balanced expertise in all three where the fun and excitement lies.</p>
+<h2 id="readings">Readings</h2>
+<p>Aho, Derryberry, and Peterson (2014) Model selection for ecologists: the worldviews of AIC and BIC. Ecology, 95(3):631–636</p>
+<p>Bolker (2008) Ecological models and data in R. Princeton University Press</p>
+<p>Höge, Wöhling, and Nowak (2018) A primer for model selection: The decisive role of model complexity. Water Resources Research, 54(3):1688–1715</p>
+<p>Murtaugh (2014) In defense of p values. Ecology, 95(3):611–617</p>
+<p>Novak and Stouffer (2021) Geometric complexity and the information-theoretic comparison of functional-response models. Frontiers in Ecology and Evolution, 9:776</p>
+<p>Novak and Stouffer (2021) Systematic bias in studies of consumer functional responses. Ecology Letters, 24(3):580–593</p>
+<h2 id="solutions">Solutions</h2>
+<p><a href="/courses_Rscripts/ModelFitting_1.R">ModelFitting_1.R</a> (no &lsquo;key&rsquo;)</p>
+<p><a href="/courses_Rscripts/ModelFitting_2_key.R">ModelFitting_2_key.R</a></p>
+<p><a href="/courses_Rscripts/ModelFitting_3_key.R">ModelFitting_3_key.R</a></p>
+<p><a href="/courses_Rscripts/ModelFitting_4.R">ModelFitting_4_key.R</a></p>
+<h2 id="session-info">Session Info</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">sessionInfo</span><span class="p">()</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## R version 4.4.1 (2024-06-14)
+## Platform: aarch64-apple-darwin20
+## Running under: macOS Sonoma 14.5
+## 
+## Matrix products: default
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## time zone: America/Los_Angeles
+## tzcode source: internal
+## 
+## attached base packages:
+## [1] stats4    stats     graphics  grDevices utils     datasets  methods  
+## [8] base     
+## 
+## other attached packages:
+## [1] bbmle_1.0.25.1
+## 
+## loaded via a namespace (and not attached):
+##  [1] cli_3.6.3           knitr_1.48          rlang_1.1.4        
+##  [4] xfun_0.46           highr_0.11          jsonlite_1.8.8     
+##  [7] htmltools_0.5.8.1   sass_0.4.9          rmarkdown_2.27     
+## [10] grid_4.4.1          evaluate_0.24.0     jquerylib_0.1.4    
+## [13] MASS_7.3-60.2       fastmap_1.2.0       mvtnorm_1.2-5      
+## [16] yaml_2.3.9          lifecycle_1.0.4     numDeriv_2016.8-1.1
+## [19] bookdown_0.40       compiler_4.4.1      rstudioapi_0.16.0  
+## [22] blogdown_1.19       lattice_0.22-6      digest_0.6.36      
+## [25] R6_2.5.1            bslib_0.7.0         Matrix_1.7-0       
+## [28] tools_4.4.1         bdsmatrix_1.3-7     cachem_1.1.0
+</code></pre><section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Note that you&rsquo;ll more typically see the probability of the binomial written as <code>\(P(k |n, p)\)</code> with <code>\(n\)</code> treated as a parameter rather than a known variable, but we&rsquo;re going to use <code>\(P(k, n|p)\)</code> since <code>\(k\)</code> and <code>\(n\)</code> both come from data to better contrast probabilities with likelihoods.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Some of you may know (or notice in the lefthand figure) that it&rsquo;s possible for <code>\(Pr(k | \lambda) = Pr(k-1 | \lambda )\)</code> (i.e. there is no single maximum to the probability mass function <code>\(Pr(k | \lambda)\)</code>) <em>when <code>\(\lambda\)</code> is an integer</em>. (See <a href="https://math.stackexchange.com/questions/4144800/poisson-distribution-with-an-integer-lambda-value" target="_blank" rel="noopener">this StackExchange post</a> for an explanation.)
+However, this is <em>not</em> the case for the likelihood function (i.e. there is a single maximum) when we plot the likelihood as a function of the parameter (as shown in the righthand figure).&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>By convention we use the natural logarithm, <code>\(\ln = \log_{e}\)</code>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>For simple models, the likelihood will typically only have one minimum and no maximum (or maxima) to worry about.  But we&rsquo;ll come back to this below.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p><code>optim()</code> will work in one-dimensional (single-parameter) situations, as we are working with at present, but the default <code>Nelder–Mead</code> method that works very well in most higher-dimensional situations often does not work well for one-dimensional situations and thus issues a warning.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6" role="doc-endnote">
+<p>We here focus on theoretical models that generate predictions for the <em>expected</em> value (the mean) of the response variable as a function of the covariate(s).
+These are by far the most common type of theoretical models. However, there are models that generate predictions for the variance, etc. as well, which can be just as useful in fitting models to data through the choice of appropriate probability distributions (i.e. likelihood functions).
+As noted above, the mean and variance of the Poisson are in fact the same, and they are entirely dependent for the binomial, so we are making &mdash; and making use of &mdash; that assumption when we&rsquo;re fitting out data with them.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7" role="doc-endnote">
+<p>&hellip;when visitation rates are expressed on a <em>per pollinator</em> basis!   For our exercise, we can think of having arbitrarily set the pollinator abundance to <code>\(A=1\)</code> for all visitation counts. In an empirical dataset the total number of visits would be <code>\(f(P) \cdot A\)</code> and we&rsquo;d have to supply the vector of pollinator abundances to our likelihood function as well.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8" role="doc-endnote">
+<p>The model is also called the <em>generalized Holling Type III</em>.  The original two-parameter <em>Holling Type III</em> has <code>\(\theta = 2\)</code> corresponding to a search rate that increases linearly with <code>\(P\)</code>.&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9" role="doc-endnote">
+<p>Recall that, for simplicity, we&rsquo;re here assuming that the number of pollinators is constant across all our observations.&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:10" role="doc-endnote">
+<p>This touches on issues central to an active discussion between and within the worlds of statistics and machine learning.&#160;<a href="#fnref:10" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:11" role="doc-endnote">
+<p>Also note that the literature often uses <code>\(k\)</code> to represent the count of the parameters.  We&rsquo;ll use <code>\(p\)</code> here to avoid confusion with our prior usage of <code>\(k\)</code> as the count of pollinator visits.&#160;<a href="#fnref:11" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:12" role="doc-endnote">
+<p>The issues are similar to those involved in how to evaluate &ldquo;significance&rdquo; using p-values.&#160;<a href="#fnref:12" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:13" role="doc-endnote">
+<p>For linear models this cutoff has been shown to correspond closely to considering a <code>\(p &lt; 0.05\)</code> to be statistically &ldquo;significant&rdquo;.&#160;<a href="#fnref:13" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+          </div>
+
+          
+
+
+
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/courses/prework_02_data_basics/" rel="next">Prework - R Data Basics</a>
+  </div>
+  
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Aug 14, 2024</p>
+
+          
+
+
+
+          
+
+
+
+
+          
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>
