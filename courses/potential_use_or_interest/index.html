@@ -64,10 +64,10 @@
   
     
   
-  <meta name="description" content="Integrating Theory and Data in Plant-Pollinator Interactions." />
+  <meta name="description" content="" />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://models4data2theory.github.io/courses/" />
+  <link rel="alternate" hreflang="en-us" href="https://models4data2theory.github.io/courses/potential_use_or_interest/" />
 
   
   
@@ -277,8 +277,6 @@
   
 
   
-    <link rel="alternate" href="/courses/index.xml" type="application/rss+xml" title="Integrating Theory and Data in Plant-Pollinator Interactions" />
-  
 
   
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -287,7 +285,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://models4data2theory.github.io/courses/" />
+  <link rel="canonical" href="https://models4data2theory.github.io/courses/potential_use_or_interest/" />
 
   
   
@@ -310,14 +308,18 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="Integrating Theory and Data in Plant-Pollinator Interactions" />
-  <meta property="og:url" content="https://models4data2theory.github.io/courses/" />
-  <meta property="og:title" content="Workshop Content | Integrating Theory and Data in Plant-Pollinator Interactions" />
-  <meta property="og:description" content="Integrating Theory and Data in Plant-Pollinator Interactions." /><meta property="og:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:url" content="https://models4data2theory.github.io/courses/potential_use_or_interest/" />
+  <meta property="og:title" content="Of Potential Interest | Integrating Theory and Data in Plant-Pollinator Interactions" />
+  <meta property="og:description" content="" /><meta property="og:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="og:updated_time" content="2024-08-14T00:00:00&#43;00:00" />
+      <meta
+        property="article:published_time"
+        content="2024-08-14T00:00:00&#43;00:00"
+      />
     
+    <meta property="article:modified_time" content="2024-08-14T00:00:00&#43;00:00">
   
 
   
@@ -328,15 +330,17 @@
 
   
 
+  
 
 
 
 
-  <title>Workshop Content | Integrating Theory and Data in Plant-Pollinator Interactions</title>
+
+  <title>Of Potential Interest | Integrating Theory and Data in Plant-Pollinator Interactions</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="a98a8836220067f37599a398a7c77b75" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="07207b860dd0272a9774dc620d3ec93e" >
 
   
   
@@ -774,7 +778,7 @@
 
     
       <ul class="nav docs-sidenav">
-        <li class="active"><a href="/courses/">Workshop Content</a></li>
+        <li class=""><a href="/courses/">Workshop Content</a></li>
     
       
 
@@ -791,7 +795,7 @@
 
 
 
-  <li class=""><a href="/courses/potential_use_or_interest/">Of Potential Interest</a></li>
+  <li class="active"><a href="/courses/potential_use_or_interest/">Of Potential Interest</a></li>
 
       
     
@@ -816,8 +820,12 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#overview">Overview</a></li>
-    <li><a href="#topics">Topics</a></li>
+    <li><a href="#probability-distributions">Probability distributions</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#max_lik_math_poisson">Analytical MLE for Poisson</a></li>
   </ul>
 </nav>
 
@@ -832,57 +840,65 @@
         <div class="docs-article-container">
           
 
-          <h1>Workshop Content</h1>
+          <h1>Of Potential Interest</h1>
 
           <div class="article-style">
-            <details class="toc-inpage d-print-none d-xl-none " open>
-  <summary class="font-weight-bold">Table of Contents</summary>
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#overview">Overview</a></li>
-    <li><a href="#topics">Topics</a></li>
-  </ul>
-</nav>
-</details>
-
-<h2 id="overview">Overview</h2>
-<p>This workshop will help applied researchers better integrate ecological theory and sophisticated data analysis into the study of plant-pollinator networks. We cover the basics of ecological network analysis, with a focus on the statistical and mathematical tools needed to analyze and interpret ecological networks.  We&rsquo;ll cover the basics of network structure, how to fit models to network data, and how to use these models to make predictions about network stability.</p>
-<p>We&rsquo;d like participants to spend a bit of time before the workshop getting familiar with the basics of R and RStudio, as well as reviewing some fundamental mathematical concepts we will rely on heavily in the workshop. We&rsquo;ve provided some self-study modules to help everyone get up to speed, and we ask that participants reserve time before the workshop to work through these &ldquo;prework&rdquo; modules.</p>
-<p>During the 3-day workshop, we&rsquo;ll start big (describing <em>network</em> structure), go small (model-fitting for characterizing pairwise <em>interactions</em>), and go big again (linking structure and interaction strengths to understand network stability). We&rsquo;ll move between data processing, statistical methods, and mathematical theory.  We&rsquo;ll mix lectures, hands-on exercises, and coding sessions.</p>
-<h2 id="topics">Topics</h2>
-
-
-  <ul class="list-unstyled">
-    
-      <li>
-        <h5><a href="/courses/prework_01_install_r/">Prework - R and RStudio</a></h5>
-        <p>Before you arrive at RMBL.
-Tutorial on setting up R and Rstudio.
-</p>
-      </li>
-    
-      <li>
-        <h5><a href="/courses/prework_02_data_basics/">Prework - R Data Basics</a></h5>
-        <p>Before you arrive at RMBL.
-Intro to data structures, help pages, and variable types in R.
-</p>
-      </li>
-    
-      <li>
-        <h5><a href="/courses/wkshp_interactions/">Interactions</a></h5>
-        <p>Fitting models to data
-</p>
-      </li>
-    
-      <li>
-        <h5><a href="/courses/potential_use_or_interest/">Of Potential Interest</a></h5>
-        
-      </li>
-    
-  </ul>
-
-
-
+            <p>$$
+\newcommand{\L}{\mathcal{L}}
+$$</p>
+<h2 id="probability-distributions">Probability distributions</h2>
+<h4 id="Prob_mass_dens">Mass vs. density</h4>
+<p>For discrete probability distributions,
+$P(O | \theta)$ is typically referred to as a <em>probability mass function</em>.
+Given the parameter(s) $\theta$, each integer value of an outcome $O$
+(i.e. the discrete random variable) has some probability (some &ldquo;mass&rdquo;) of occurring.</p>
+<p>In contrast, for continuous probability distributions,
+we instead refer to <em>probability density functions</em>, $f(O | \theta)$.
+That&rsquo;s because the probability of any specific value of a continuous random variable is zero!
+Instead, there is only a non-zero probability of the random variable falling <em>within some interval</em> of values.
+The higher the probability density over that interval,
+the higher the probability of observing a measurable value from within it.</p>
+<h4 id="likelihood-functions">Likelihood functions</h4>
+<p>The distinction between probability mass functions and probability density functions is relevant to the likelihood functions for discrete and continuous random variables.
+For discrete variables (as we will focus on in class), the likelihood of the parameter(s) given the data is equal to the probability of the data given the parameter(s),
+$$
+L(\theta | O) = P(O | \theta).
+$$
+For continuous variables, we maximize the likelihood of the parameter given the data by finding the parameter that maximizes the probability density function.
+That is, we maximize
+$$
+L(\theta | O) = f(O | \theta).
+$$</p>
+<h2 id="max_lik_math_poisson">Analytical MLE for Poisson</h2>
+<p>Given $n$ observations (counts) from a process presumed to be well-described by the Poisson, we have that
+$$
+-\ln \L(\lambda |k)
+= -\sum_i^n \ln \left (\frac{\lambda^{k_i} e^{-\lambda}}{k_i!} \right) .
+$$
+Remembering that logarithms transform multiplicative processes into additive processes,
+we can write this as
+$$
+-\ln \L(\lambda |k)
+= -\sum_i^n \left ( \ln ( \lambda^{k_i} ) + \ln (e^{-\lambda} ) - \ln (k_i!)  \right).
+$$
+Since $\ln x^y = y \ln x$ and $\ln e^x = x$, we can simplify this to
+$$
+-\ln \L(\lambda |k)  = -\sum_i^n \left ( k_i \ln (\lambda) -\lambda - \ln (k_i!)  \right).
+$$
+Distributing the summation, we get
+$$
+-\ln \L(\lambda |k)  = -\sum_i^n \left ( k_i \ln \lambda \right)  + n\lambda + \sum_i^n  \ln (k_i!).
+$$
+Now take the derivative with respect to $\lambda$, set it equal to zero, and solve for $\lambda$:
+$$
+\frac{d -\ln \L(\lambda | k)}{d \lambda} = - \frac{1}{\lambda} \sum_i^n k_i + n = 0 \implies \lambda = \frac{\sum_i^n k_i}{n},
+$$
+which is the mean value of all the $k_i$ counts!</p>
+<p>Our analytically-solved maximum likelihood estimator for $\lambda$, which we will symbolize by $\hat{\lambda}$, is therefore
+$$
+\hat{\lambda} = \frac{\sum_i^n k_i}{n}.
+$$
+This is nothing more than a function, think $\hat{\lambda}(k,n)$, to which we provide a vector of observed $k$ counts and their $n$ number (the vector&rsquo;s length) as inputs.</p>
           </div>
 
           
@@ -894,6 +910,13 @@ Intro to data structures, help pages, and variable types in R.
           <div class="article-widget">
             
 <div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/courses/wkshp_interactions/" rel="next">Interactions</a>
+  </div>
   
   
 </div>

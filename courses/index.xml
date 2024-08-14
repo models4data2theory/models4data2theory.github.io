@@ -1016,5 +1016,68 @@ As noted above, the mean and variance of the Poisson are in fact the same, and t
 &lt;/section&gt;</description>
     </item>
     
+    <item>
+      <title>Of Potential Interest</title>
+      <link>https://models4data2theory.github.io/courses/potential_use_or_interest/</link>
+      <pubDate>Wed, 14 Aug 2024 00:00:00 +0000</pubDate>
+      <guid>https://models4data2theory.github.io/courses/potential_use_or_interest/</guid>
+      <description>&lt;p&gt;$$
+\newcommand{\L}{\mathcal{L}}
+$$&lt;/p&gt;
+&lt;h2 id=&#34;probability-distributions&#34;&gt;Probability distributions&lt;/h2&gt;
+&lt;h4 id=&#34;Prob_mass_dens&#34;&gt;Mass vs. density&lt;/h4&gt;
+&lt;p&gt;For discrete probability distributions,
+$P(O | \theta)$ is typically referred to as a &lt;em&gt;probability mass function&lt;/em&gt;.
+Given the parameter(s) $\theta$, each integer value of an outcome $O$
+(i.e. the discrete random variable) has some probability (some &amp;ldquo;mass&amp;rdquo;) of occurring.&lt;/p&gt;
+&lt;p&gt;In contrast, for continuous probability distributions,
+we instead refer to &lt;em&gt;probability density functions&lt;/em&gt;, $f(O | \theta)$.
+That&amp;rsquo;s because the probability of any specific value of a continuous random variable is zero!
+Instead, there is only a non-zero probability of the random variable falling &lt;em&gt;within some interval&lt;/em&gt; of values.
+The higher the probability density over that interval,
+the higher the probability of observing a measurable value from within it.&lt;/p&gt;
+&lt;h4 id=&#34;likelihood-functions&#34;&gt;Likelihood functions&lt;/h4&gt;
+&lt;p&gt;The distinction between probability mass functions and probability density functions is relevant to the likelihood functions for discrete and continuous random variables.
+For discrete variables (as we will focus on in class), the likelihood of the parameter(s) given the data is equal to the probability of the data given the parameter(s),
+$$
+L(\theta | O) = P(O | \theta).
+$$
+For continuous variables, we maximize the likelihood of the parameter given the data by finding the parameter that maximizes the probability density function.
+That is, we maximize
+$$
+L(\theta | O) = f(O | \theta).
+$$&lt;/p&gt;
+&lt;h2 id=&#34;max_lik_math_poisson&#34;&gt;Analytical MLE for Poisson&lt;/h2&gt;
+&lt;p&gt;Given $n$ observations (counts) from a process presumed to be well-described by the Poisson, we have that
+$$
+-\ln \L(\lambda |k)
+= -\sum_i^n \ln \left (\frac{\lambda^{k_i} e^{-\lambda}}{k_i!} \right) .
+$$
+Remembering that logarithms transform multiplicative processes into additive processes,
+we can write this as
+$$
+-\ln \L(\lambda |k)
+= -\sum_i^n \left ( \ln ( \lambda^{k_i} ) + \ln (e^{-\lambda} ) - \ln (k_i!)  \right).
+$$
+Since $\ln x^y = y \ln x$ and $\ln e^x = x$, we can simplify this to
+$$
+-\ln \L(\lambda |k)  = -\sum_i^n \left ( k_i \ln (\lambda) -\lambda - \ln (k_i!)  \right).
+$$
+Distributing the summation, we get
+$$
+-\ln \L(\lambda |k)  = -\sum_i^n \left ( k_i \ln \lambda \right)  + n\lambda + \sum_i^n  \ln (k_i!).
+$$
+Now take the derivative with respect to $\lambda$, set it equal to zero, and solve for $\lambda$:
+$$
+\frac{d -\ln \L(\lambda | k)}{d \lambda} = - \frac{1}{\lambda} \sum_i^n k_i + n = 0 \implies \lambda = \frac{\sum_i^n k_i}{n},
+$$
+which is the mean value of all the $k_i$ counts!&lt;/p&gt;
+&lt;p&gt;Our analytically-solved maximum likelihood estimator for $\lambda$, which we will symbolize by $\hat{\lambda}$, is therefore
+$$
+\hat{\lambda} = \frac{\sum_i^n k_i}{n}.
+$$
+This is nothing more than a function, think $\hat{\lambda}(k,n)$, to which we provide a vector of observed $k$ counts and their $n$ number (the vector&amp;rsquo;s length) as inputs.&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>
