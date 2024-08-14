@@ -263,13 +263,13 @@ Because they represent counts, they are &lt;em&gt;discrete&lt;/em&gt; distributi
 &lt;p&gt;The &lt;em&gt;Poisson distribution&lt;/em&gt; would be appropriate for our dataset in which the count of visitations is our response variable.
 It is written as
 $$ Pr(k|\lambda) = \frac{\lambda^k e^{-\lambda}}{k!}$$
-and expresses the probability that &lt;code&gt;\(k\)&lt;/code&gt; events will occur in some interval of time (i.e. that the count of events will be equal to &lt;code&gt;\(k\)&lt;/code&gt;) given that the process responsible for generating the events occurs at a constant mean rate &lt;code&gt;\(\lambda\)&lt;/code&gt;.
-You can read &lt;code&gt;\(Pr(k|\lambda)\)&lt;/code&gt; as the probability of &lt;code&gt;\(k\)&lt;/code&gt; events &lt;em&gt;given&lt;/em&gt; parameter &lt;code&gt;\(\lambda\)&lt;/code&gt;.
-The symbol &lt;code&gt;\(e\)&lt;/code&gt; represents an exponential (i.e. Euler&amp;rsquo;s number: 2.718&amp;hellip;) and the symbol &lt;code&gt;\(!\)&lt;/code&gt; represents the factorial function (e.g., &lt;code&gt;\(4! = 4 \times 3 \times 2 \times 1\)&lt;/code&gt;).&lt;/p&gt;
-&lt;p&gt;Below, with data on replicate counts of &lt;code&gt;\(k\)&lt;/code&gt;, we will presume that the Poisson applies and then estimate the value of &lt;em&gt;parameter&lt;/em&gt; &lt;code&gt;\(\lambda\)&lt;/code&gt; that is most likely to have generated those counts.
-Intuitively, a higher underlying value of parameter &lt;code&gt;\(\lambda\)&lt;/code&gt; will result in higher &lt;code&gt;\(k\)&lt;/code&gt; counts when we draw from this distribution repeatedly
+and expresses the probability that $k$ events will occur in some interval of time (i.e. that the count of events will be equal to $k$) given that the process responsible for generating the events occurs at a constant mean rate $\lambda$.
+You can read $Pr(k|\lambda)$ as the probability of $k$ events &lt;em&gt;given&lt;/em&gt; parameter $\lambda$.
+The symbol $e$ represents an exponential (i.e. Euler&amp;rsquo;s number: 2.718&amp;hellip;) and the symbol $!$ represents the factorial function (e.g., $4! = 4 \times 3 \times 2 \times 1$).&lt;/p&gt;
+&lt;p&gt;Below, with data on replicate counts of $k$, we will presume that the Poisson applies and then estimate the value of &lt;em&gt;parameter&lt;/em&gt; $\lambda$ that is most likely to have generated those counts.
+Intuitively, a higher underlying value of parameter $\lambda$ will result in higher $k$ counts when we draw from this distribution repeatedly
 (i.e. when we obtain samples from the data-generating process).
-In fact, &lt;code&gt;\(\lambda\)&lt;/code&gt; reflects the count that we &lt;em&gt;expect&lt;/em&gt; to observe on average across many such draws (a fact that we will prove later).&lt;/p&gt;
+In fact, $\lambda$ reflects the count that we &lt;em&gt;expect&lt;/em&gt; to observe on average across many such draws (a fact that we will prove later).&lt;/p&gt;
 &lt;img src=&#34;https://models4data2theory.github.io/courses/wkshp_interactions_files/figure-html/prob_Poiss-1.png&#34; width=&#34;576&#34; /&gt;
 &lt;h4 id=&#34;the-binomial-distribution&#34;&gt;The Binomial distribution&lt;/h4&gt;
 &lt;p&gt;The &lt;em&gt;binomial distribution&lt;/em&gt; would be appropriate for our dataset in which the proportion of fertilized ovules is our response variable.
@@ -278,42 +278,42 @@ The binomial is written as
 $$
 Pr(k, n|p) = {n \choose k} p^k (1-p)^{n-k} = \frac{n!}{k!(n-k)!} p^k (1-p)^{n-k}
 $$
-and expresses the probability of observing &lt;code&gt;\(k\)&lt;/code&gt; events in a total of &lt;code&gt;\(n\)&lt;/code&gt; tries given that each event either does or does not happen with constant probabilities &lt;code&gt;\(p\)&lt;/code&gt; and &lt;code&gt;\(1-p\)&lt;/code&gt; respectively.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
-The first part of the equation, &lt;code&gt;\({n \choose k}\)&lt;/code&gt;, is read as &amp;ldquo;$n$ choose &lt;code&gt;\(k\)&lt;/code&gt;&amp;rdquo;.
-For example, given &lt;code&gt;\(n\)&lt;/code&gt; available ovules in a flower, &lt;code&gt;\(k\)&lt;/code&gt; of them are successfully pollinated.
-(The proportion &lt;code&gt;\(k/n\)&lt;/code&gt; thus corresponds to our measure of fertilization success.) The larger the probability &lt;code&gt;\(p\)&lt;/code&gt; of success and the larger the number of &lt;code&gt;\(n\)&lt;/code&gt; tries, the larger that the average count of &lt;code&gt;\(k\)&lt;/code&gt; successes will be over replicate samples from the data-generating process.&lt;/p&gt;
+and expresses the probability of observing $k$ events in a total of $n$ tries given that each event either does or does not happen with constant probabilities $p$ and $1-p$ respectively.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
+The first part of the equation, ${n \choose k}$, is read as &amp;ldquo;$n$ choose $k$&amp;rdquo;.
+For example, given $n$ available ovules in a flower, $k$ of them are successfully pollinated.
+(The proportion $k/n$ thus corresponds to our measure of fertilization success.) The larger the probability $p$ of success and the larger the number of $n$ tries, the larger that the average count of $k$ successes will be over replicate samples from the data-generating process.&lt;/p&gt;
 &lt;img src=&#34;https://models4data2theory.github.io/courses/wkshp_interactions_files/figure-html/prob_Binom-1.png&#34; width=&#34;576&#34; /&gt;
-&lt;p&gt;Note that in contrast to the Poisson distribution where the potential count &lt;code&gt;\(k\)&lt;/code&gt; could be arbitrarily high, &lt;code&gt;\(k\)&lt;/code&gt; is bounded by the maximum possible value of &lt;code&gt;\(n\)&lt;/code&gt; under the binomial distribution.
+&lt;p&gt;Note that in contrast to the Poisson distribution where the potential count $k$ could be arbitrarily high, $k$ is bounded by the maximum possible value of $n$ under the binomial distribution.
 Although the average process rate is assumed constant under both distributions, a flower can be visited many times ($k \geq 0$), making the Poisson more appropriate.
-On the other hand, an ovule that has already been fertilized can&amp;rsquo;t be fertilized again (thus &lt;code&gt;\(0 \leq k \leq n\)&lt;/code&gt;), making the binomial more appropriate for our second experiment.&lt;/p&gt;
+On the other hand, an ovule that has already been fertilized can&amp;rsquo;t be fertilized again (thus $0 \leq k \leq n$), making the binomial more appropriate for our second experiment.&lt;/p&gt;
 &lt;h4 id=&#34;other-probability-distributions&#34;&gt;Other probability distributions&lt;/h4&gt;
 &lt;p&gt;There are &lt;a href=&#34;https://distribution-explorer.github.io/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;dozens of probability distributions available&lt;/a&gt;, but the Poisson and binomial are arguably the simplest and most useful (and thus among the most commonly assumed in ecology).
-One reason for this is that they have only a single free parameter ($\lambda$ and &lt;code&gt;\(p\)&lt;/code&gt;, respectively) given that &lt;code&gt;\(n\)&lt;/code&gt; is usually known.
-These parameters determines not only the expected (mean) value of the distribution of the &lt;code&gt;\(k\)&lt;/code&gt; counts but also their variance.
-(For the Poisson, both the mean and the variance equal &lt;code&gt;\(\lambda\)&lt;/code&gt;,
-while for the binomial the mean is &lt;code&gt;\(np\)&lt;/code&gt; and the variance is &lt;code&gt;\(np(1-p)\)&lt;/code&gt;.)&lt;/p&gt;
+One reason for this is that they have only a single free parameter ($\lambda$ and $p$, respectively) given that $n$ is usually known.
+These parameters determines not only the expected (mean) value of the distribution of the $k$ counts but also their variance.
+(For the Poisson, both the mean and the variance equal $\lambda$,
+while for the binomial the mean is $np$ and the variance is $np(1-p)$.)&lt;/p&gt;
 &lt;p&gt;Other distributions allow the mean and the variance to be separated.
 For example, the &lt;em&gt;negative binomial&lt;/em&gt; and &lt;em&gt;beta-binomial&lt;/em&gt; are discrete examples that generalize the Poisson and binomial distributions to accommodate the common occurrence of over-dispersion (e.g., a variance that is larger than the mean).&lt;/p&gt;
 &lt;p&gt;Another distribution that you&amp;rsquo;re probably much more familiar with is the &lt;em&gt;Normal&lt;/em&gt; (a.k.a. &lt;em&gt;Gaussian&lt;/em&gt;) distribution.
-The Normal distribution has two parameters &lt;code&gt;\(\mu\)&lt;/code&gt; and &lt;code&gt;\(\sigma\)&lt;/code&gt; that respectively determine its mean and variance.
+The Normal distribution has two parameters $\mu$ and $\sigma$ that respectively determine its mean and variance.
 The Normal distribution has a long history of use in ecology and statistics, and is a biologically-appropriate distribution in many circumstances (thanks to the power of the Central Limit Theorem).
 It could even be appropriate in the circumstances of our two example data sets because both the Poisson distribution and the binomial distribution converge on the Normal distribution (see the figures above).
-But that is only true for sufficiently large &lt;code&gt;\(\lambda\)&lt;/code&gt;, and sufficiently large &lt;code&gt;\(n\)&lt;/code&gt; and intermediate &lt;code&gt;\(p\)&lt;/code&gt;, respectively.&lt;/p&gt;
+But that is only true for sufficiently large $\lambda$, and sufficiently large $n$ and intermediate $p$, respectively.&lt;/p&gt;
 &lt;p&gt;In our context of &amp;ldquo;mechanistic&amp;rdquo; models, we often have data from situations where the conditions that lead to a Normal distribution are far from satisfied.
-For example, when flower abundances are very low, visitation rates ($\lambda$) will be very low. For small &lt;code&gt;\(\mu\)&lt;/code&gt; and large &lt;code&gt;\(\sigma\)&lt;/code&gt;, the Normal distribution will also give negative values, which often don&amp;rsquo;t make sense for ecological data sets (you can&amp;rsquo;t have negative counts).
+For example, when flower abundances are very low, visitation rates ($\lambda$) will be very low. For small $\mu$ and large $\sigma$, the Normal distribution will also give negative values, which often don&amp;rsquo;t make sense for ecological data sets (you can&amp;rsquo;t have negative counts).
 Finally, in the context of fitting mechanistic models, we often don&amp;rsquo;t care about estimating the variance; our goal is typically to estimate the parameter values that maximize a model&amp;rsquo;s fit to the mean of our data.
-In that sense, having an extra variance parameter, such as &lt;code&gt;\(\sigma\)&lt;/code&gt; of the Normal distribution, is actually a nuisance (they&amp;rsquo;re often called &amp;ldquo;nuisance parameters&amp;rdquo;) because it means the model is more complex and thus potentially more challenging to fit.
+In that sense, having an extra variance parameter, such as $\sigma$ of the Normal distribution, is actually a nuisance (they&amp;rsquo;re often called &amp;ldquo;nuisance parameters&amp;rdquo;) because it means the model is more complex and thus potentially more challenging to fit.
 Just as (or even more) importantly, these nuisance parameters can lead to biased estimates of the other &amp;ldquo;mechanistic&amp;rdquo; parameters that we actually do care about, especially when sample sizes are not large (as is often the case in Ecology).&lt;/p&gt;
 &lt;h3 id=&#34;lik_fun&#34;&gt;Likelihood functions&lt;/h3&gt;
 &lt;p&gt;Probability distributions express the probability of an outcome given their parameter(s).
-For the Poisson distribution we therefore wrote &lt;code&gt;\(Pr(k, n | \lambda)\)&lt;/code&gt;, but more generically for any discrete distribution we&amp;rsquo;ll write &lt;code&gt;\(Pr(y | \theta)\)&lt;/code&gt;,
-using &lt;code&gt;\(y\)&lt;/code&gt; to represent outcomes and &lt;code&gt;\(\theta\)&lt;/code&gt; the parameter(s).
-&lt;code&gt;\(Pr(y | \theta)\)&lt;/code&gt; is referred to as a &lt;em&gt;probability mass function&lt;/em&gt;;
-the input is the parameter values in &lt;code&gt;\(\theta\)&lt;/code&gt; and the output is the probability of any potential outcome &lt;code&gt;\(y\)&lt;/code&gt;.&lt;/p&gt;
+For the Poisson distribution we therefore wrote $Pr(k, n | \lambda)$, but more generically for any discrete distribution we&amp;rsquo;ll write $Pr(y | \theta)$,
+using $y$ to represent outcomes and $\theta$ the parameter(s).
+$Pr(y | \theta)$ is referred to as a &lt;em&gt;probability mass function&lt;/em&gt;;
+the input is the parameter values in $\theta$ and the output is the probability of any potential outcome $y$.&lt;/p&gt;
 &lt;p&gt;In contrast, when we have data and want to estimate the parameters of a presumed model, we want the reverse.
 We then talk of wanting to quantify the &lt;em&gt;likelihood&lt;/em&gt; of any potential parameter value given the data.
-We therefore write &lt;code&gt;\(\L(\theta | y)\)&lt;/code&gt;.
-&lt;code&gt;\(\L(\theta | y)\)&lt;/code&gt; is referred to as the &lt;em&gt;likelihood function&lt;/em&gt;;
+We therefore write $\L(\theta | y)$.
+$\L(\theta | y)$ is referred to as the &lt;em&gt;likelihood function&lt;/em&gt;;
 the input is an outcome and the output is the likelihood that a potential parameter value could have generated that outcome.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;If we observe a given outcome then the &lt;em&gt;most likely&lt;/em&gt; parameter value to have generated that outcome is the one that &lt;em&gt;maximizes&lt;/em&gt; the probability of the outcome.&lt;/strong&gt;
 We therefore define the likelihood function to be the probability mass function, setting
@@ -335,34 +335,34 @@ Let&amp;rsquo;s walk through how we would do that, first assuming we have only a
 &lt;h4 id=&#34;single-observation&#34;&gt;Single observation&lt;/h4&gt;
 &lt;p&gt;Let&amp;rsquo;s say that we sat in a meadow,
 watched a single flower for some amount of time,
-and observed a total of &lt;code&gt;\(k=10\)&lt;/code&gt; pollinator visits in that time.
+and observed a total of $k=10$ pollinator visits in that time.
 Presuming the Poisson to be an appropriate representation of the visitation process,
-we can use our data to determine the most likely value for &lt;code&gt;\(\lambda\)&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Remember that &lt;code&gt;\(\lambda\)&lt;/code&gt; reflects the underlying visitation rate (visits per time) of the process and then think about the following plots of&lt;/p&gt;
+we can use our data to determine the most likely value for $\lambda$.&lt;/p&gt;
+&lt;p&gt;Remember that $\lambda$ reflects the underlying visitation rate (visits per time) of the process and then think about the following plots of&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;the probability mass &lt;code&gt;\(Pr(k | \lambda )\)&lt;/code&gt; as a function of potential &lt;code&gt;\(k\)&lt;/code&gt; values (with our data &lt;code&gt;\(k=10\)&lt;/code&gt; highlighted) for various values of &lt;code&gt;\(\lambda\)&lt;/code&gt;,
+&lt;li&gt;the probability mass $Pr(k | \lambda )$ as a function of potential $k$ values (with our data $k=10$ highlighted) for various values of $\lambda$,
 and&lt;/li&gt;
-&lt;li&gt;the likelihood &lt;code&gt;\(\L(\lambda | k)\)&lt;/code&gt; as a function of &lt;code&gt;\(\lambda\)&lt;/code&gt; for &lt;code&gt;\(k=10\)&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;the likelihood $\L(\lambda | k)$ as a function of $\lambda$ for $k=10$.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Notice that the illustrated likelihood function on the right has a maximum at a count of exactly &lt;code&gt;\(k=10\)&lt;/code&gt;.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;
-That is, given our observation of &lt;code&gt;\(k=10\)&lt;/code&gt; visits, the most likely value of the rate parameter &lt;code&gt;\(\lambda\)&lt;/code&gt; is 10.
+&lt;p&gt;Notice that the illustrated likelihood function on the right has a maximum at a count of exactly $k=10$.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;
+That is, given our observation of $k=10$ visits, the most likely value of the rate parameter $\lambda$ is 10.
 (Hopefully that&amp;rsquo;s not all too surprising;
-remember that &lt;code&gt;\(\lambda\)&lt;/code&gt; reflects the expected (mean) value of a Poisson-distributed variable.)&lt;/p&gt;
+remember that $\lambda$ reflects the expected (mean) value of a Poisson-distributed variable.)&lt;/p&gt;
 &lt;img src=&#34;https://models4data2theory.github.io/courses/wkshp_interactions_files/figure-html/lik_Poiss_single-1.png&#34; width=&#34;768&#34; /&gt;
 &lt;h4 id=&#34;multiple-observations&#34;&gt;Multiple observations&lt;/h4&gt;
 &lt;p&gt;What do we do when we have not just one but multiple observations?
 That is, what if we had a field assistant who also watched a single flower
-and counted &lt;code&gt;\(k=15\)&lt;/code&gt; visits in the same amount of time?
-We therefore have two observations, &lt;code&gt;\(k = \{10, 15\}\)&lt;/code&gt;, to consider.&lt;/p&gt;
-&lt;p&gt;If the probability of the first observation is &lt;code&gt;\(Pr(k=10 | \lambda)\)&lt;/code&gt;
-and the probability of the second observation is &lt;code&gt;\(Pr(k=15 | \lambda)\)&lt;/code&gt;,
+and counted $k=15$ visits in the same amount of time?
+We therefore have two observations, $k = {10, 15}$, to consider.&lt;/p&gt;
+&lt;p&gt;If the probability of the first observation is $Pr(k=10 | \lambda)$
+and the probability of the second observation is $Pr(k=15 | \lambda)$,
 then the probability of observing both is their product,
-&lt;code&gt;\(Pr(k=\{10, 15\} | \lambda) = Pr(10 | \lambda) \cdot Pr(15 | \lambda)\)&lt;/code&gt;.&lt;/p&gt;
+$Pr(k={10, 15} | \lambda) = Pr(10 | \lambda) \cdot Pr(15 | \lambda)$.&lt;/p&gt;
 &lt;p&gt;The same is true for likelihoods.
-To get the overall (&amp;ldquo;joint&amp;rdquo;) likelihood of &lt;code&gt;\(\lambda\)&lt;/code&gt; given &lt;em&gt;both&lt;/em&gt; observations,
+To get the overall (&amp;ldquo;joint&amp;rdquo;) likelihood of $\lambda$ given &lt;em&gt;both&lt;/em&gt; observations,
 we simply multiply their likelihoods.
 Thus
-&lt;code&gt;\(\L(\lambda | k=\{10, 15\}) = \L(\lambda | k=10) \cdot  \L( \lambda | k=15)\)&lt;/code&gt;.
+$\L(\lambda | k={10, 15}) = \L(\lambda | k=10) \cdot  \L( \lambda | k=15)$.
 More specifically,
 $$
 \L(\lambda | k={10, 15})  =
@@ -371,17 +371,17 @@ $$
 \frac{\lambda^{15} e^{-\lambda}}{15!}.
 $$
 As the next figure shows,
-&lt;code&gt;\(\L{\lambda | k=\{10, 15\})\)&lt;/code&gt; has a maximum at &lt;code&gt;\(\lambda = 12.5\)&lt;/code&gt;
+$\L{\lambda | k={10, 15})$ has a maximum at $\lambda = 12.5$
 (which corresponds to the average of the two observations).&lt;/p&gt;
 &lt;img src=&#34;https://models4data2theory.github.io/courses/wkshp_interactions_files/figure-html/lik_Poiss_two-1.png&#34; width=&#34;384&#34; /&gt;
-&lt;p&gt;For an arbitrary number of &lt;code&gt;\(n\)&lt;/code&gt; observations (i.e. &lt;code&gt;\(k=\{ k_1, k_2, \ldots, k_n\}\)&lt;/code&gt;),
-we have a product of &lt;code&gt;\(n\)&lt;/code&gt; observation-specific likelihoods.
-Our joint likelihood function with which to determine &lt;code&gt;\(\lambda\)&lt;/code&gt; thus becomes a function of these observation-specific likelihoods,
+&lt;p&gt;For an arbitrary number of $n$ observations (i.e. $k={ k_1, k_2, \ldots, k_n}$),
+we have a product of $n$ observation-specific likelihoods.
+Our joint likelihood function with which to determine $\lambda$ thus becomes a function of these observation-specific likelihoods,
 $$
 \L(\lambda |k)
 = \prod_{i=1}^n \frac{\lambda^{k_i} e^{-\lambda}}{k_i!}
 $$
-where the symbol &lt;code&gt;\(\prod_{i=1}^n\)&lt;/code&gt; denotes the product of elements &lt;code&gt;\(i=1\)&lt;/code&gt; to &lt;code&gt;\(n\)&lt;/code&gt;.
+where the symbol $\prod_{i=1}^n$ denotes the product of elements $i=1$ to $n$.
 That is,
 $$
 \prod_{i=1}^n \frac{\lambda^{k_i} e^{-\lambda}}{k_i!}
@@ -394,7 +394,7 @@ $$
 \frac{\lambda^{k_n} e^{-\lambda}}{k_n!}.
 $$&lt;/p&gt;
 &lt;h3 id=&#34;why-the-negative-log-likelihood&#34;&gt;Why the negative log-likelihood?&lt;/h3&gt;
-&lt;p&gt;We want the value of &lt;code&gt;\(\lambda\)&lt;/code&gt; that maximizes the joint likelihood over all our observations.
+&lt;p&gt;We want the value of $\lambda$ that maximizes the joint likelihood over all our observations.
 But we&amp;rsquo;ve created a numerical problem in the previous step.
 Probabilities are numbers bounded by 0 and 1,
 and therefore so are likelihoods.
@@ -427,39 +427,39 @@ Big numbers are no problem to deal with, so we&amp;rsquo;ve successfully avoided
 &lt;img src=&#34;https://models4data2theory.github.io/courses/wkshp_interactions_files/figure-html/neglog-1.png&#34; width=&#34;384&#34; /&gt;
 &lt;p&gt;But taking the logarithm has a side effect because the logarithm of a number between 0 and 1 returns a &lt;em&gt;negative&lt;/em&gt; number.
 Since each of the individual likelihoods is between 0 and 1,
-a side-effect of taking &lt;code&gt;\(\ln \L\)&lt;/code&gt; is that we&amp;rsquo;re now adding up lots of negative numbers.
+a side-effect of taking $\ln \L$ is that we&amp;rsquo;re now adding up lots of negative numbers.
 That&amp;rsquo;s not a problem because we can just take the negative log-likelihood to get back to a positive number.
 But importantly, as a consequence,
-&lt;strong&gt;in order to &lt;em&gt;maximize&lt;/em&gt; the likelihood &lt;code&gt;\(\L\)&lt;/code&gt;, we need to &lt;em&gt;minimize&lt;/em&gt; the negative log-likelihood &lt;code&gt;\(-\ln \L\)&lt;/code&gt;&lt;/strong&gt;
+&lt;strong&gt;in order to &lt;em&gt;maximize&lt;/em&gt; the likelihood $\L$, we need to &lt;em&gt;minimize&lt;/em&gt; the negative log-likelihood $-\ln \L$&lt;/strong&gt;
 to find the parameter value that best fits the data.&lt;/p&gt;
 &lt;img src=&#34;https://models4data2theory.github.io/courses/wkshp_interactions_files/figure-html/nlnlik_Poiss-1.png&#34; width=&#34;384&#34; /&gt;
 &lt;h3 id=&#34;finding-the-mles&#34;&gt;Finding the MLEs&lt;/h3&gt;
 &lt;p&gt;For some models it is possible to determine the values of the parameters that maximize the likelihood function analytically.
 That is, it&amp;rsquo;s possible to solve for the maximum likelihood parameters
 (i.e. the maximum likelihood estimators (&amp;ldquo;MLEs&amp;rdquo;)).
-Doing so for &lt;code&gt;\(\lambda\)&lt;/code&gt; of the Poisson, we can
+Doing so for $\lambda$ of the Poisson, we can
 (i) build intuition to better understand what numerical methods (&amp;ldquo;optimizers&amp;rdquo;) are about, and
-(ii) prove that the MLE for &lt;code&gt;\(\lambda\)&lt;/code&gt; of the Poisson is the mean of the &lt;code&gt;\(k\)&lt;/code&gt; observations (as I simply proclaimed above).
+(ii) prove that the MLE for $\lambda$ of the Poisson is the mean of the $k$ observations (as I simply proclaimed above).
 However, I&amp;rsquo;ll relegate the latter of these to the &lt;a href=&#34;of_potential_utility_or_interest&#34;&gt;Of Potential Utility or Interest&lt;/a&gt; page.&lt;/p&gt;
 &lt;h4 id=&#34;max_lik_math&#34;&gt;Analytical intuition&lt;/h4&gt;
 &lt;p&gt;We&amp;rsquo;ll do this rather abstractly&amp;hellip;&lt;/p&gt;
 &lt;p&gt;Suppose we have some arbitrary function, like this polynomial describing a parabola
-&lt;code&gt;\(f(x) = a + b (x-c)^2\)&lt;/code&gt; depicted in the following figure.
-The way to find the value of &lt;code&gt;\(x\)&lt;/code&gt; where &lt;code&gt;\(f(x)\)&lt;/code&gt; is at its minimum value is to find the value of &lt;code&gt;\(x\)&lt;/code&gt; where the slope of &lt;code&gt;\(f(x)\)&lt;/code&gt; (with respect to &lt;code&gt;\(x\)&lt;/code&gt;) is zero.&lt;/p&gt;
+$f(x) = a + b (x-c)^2$ depicted in the following figure.
+The way to find the value of $x$ where $f(x)$ is at its minimum value is to find the value of $x$ where the slope of $f(x)$ (with respect to $x$) is zero.&lt;/p&gt;
 &lt;img src=&#34;https://models4data2theory.github.io/courses/wkshp_interactions_files/figure-html/fig_poly-1.png&#34; width=&#34;384&#34; /&gt;
-&lt;p&gt;How do we determine the slope of &lt;code&gt;\(f(x)\)&lt;/code&gt; as a function of &lt;code&gt;\(x\)&lt;/code&gt;?
-We take the derivative of &lt;code&gt;\(f(x)\)&lt;/code&gt; with respect to &lt;code&gt;\(x\)&lt;/code&gt;: &lt;code&gt;\(\frac{d \; f(x)}{dx}\)&lt;/code&gt;.
-For our polynomial, &lt;code&gt;\(\frac{d \; f(x)}{dx} = 2b(x-c)\)&lt;/code&gt;,
+&lt;p&gt;How do we determine the slope of $f(x)$ as a function of $x$?
+We take the derivative of $f(x)$ with respect to $x$: $\frac{d ; f(x)}{dx}$.
+For our polynomial, $\frac{d ; f(x)}{dx} = 2b(x-c)$,
 which even R has the ability to solve symbolically:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;expression&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;^2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#39;x&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;## b * (2 * (x - c))
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Setting &lt;code&gt;\(\frac{d\; f(x)}{dx} = 2b(x-c) = 0\)&lt;/code&gt;
-(since that&amp;rsquo;s where &lt;code&gt;\(f(x)\)&lt;/code&gt; will have its minima (or maxima)&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;),
-we use a little algebra to solve for &lt;code&gt;\(x\)&lt;/code&gt;:
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Setting $\frac{d; f(x)}{dx} = 2b(x-c) = 0$
+(since that&amp;rsquo;s where $f(x)$ will have its minima (or maxima)&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;),
+we use a little algebra to solve for $x$:
 $$
 2b(x-c)=0 \implies 2bx-2bc=0 \implies 2bx = 2bc \implies x=c
 $$
-(which correctly equals the location of the minimum at &lt;code&gt;\(x=2\)&lt;/code&gt;,
+(which correctly equals the location of the minimum at $x=2$,
 as shown in the above figure).
 We can do the same thing for likelihood functions to obtain their MLEs.
 Doing so often leads to useful insight into the processes and variables that cause parameter estimates to change in value.&lt;/p&gt;
@@ -491,7 +491,7 @@ Notice that we define the function with only &lt;code&gt;lambda&lt;/code&gt; as 
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;nlL.pois&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lambda&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;sum&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;dpois&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lambda&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;log&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Continuing with our dataset of &lt;code&gt;\(k = \{10, 15\}\)&lt;/code&gt; observations from above,
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Continuing with our dataset of $k = {10, 15}$ observations from above,
 we can apply our function as follows:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Define k globally for our nlL.pois() function to use.&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
@@ -502,7 +502,7 @@ we can apply our function as follows:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;nlL.pois&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;12.4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;## [1] 4.861272
 &lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&#34;optimization&#34;&gt;Optimization&lt;/h5&gt;
-&lt;p&gt;Given data &lt;code&gt;\(k=\{10, 15\}\)&lt;/code&gt;, we now need to find the value of &lt;code&gt;\(\lambda\)&lt;/code&gt; that minimizes our negative log-likelihood function &lt;code&gt;nlL.pois()&lt;/code&gt;.
+&lt;p&gt;Given data $k={10, 15}$, we now need to find the value of $\lambda$ that minimizes our negative log-likelihood function &lt;code&gt;nlL.pois()&lt;/code&gt;.
 For many circumstances, the R function &lt;code&gt;optim()&lt;/code&gt; is the go-to function for doing so because it is robust and has several standard optimization methods and control options to choose from.
 It comes in base R, so there&amp;rsquo;s no package to load.&lt;/p&gt;
 &lt;p&gt;At minimum, we have to pass &lt;code&gt;optim(par, fn, ...)&lt;/code&gt; where &lt;code&gt;fn&lt;/code&gt; is the function we wish to minimize and &lt;code&gt;par&lt;/code&gt; is a guess at an initial parameter value at which the optimizer will start its search.
@@ -527,15 +527,15 @@ It comes in base R, so there&amp;rsquo;s no package to load.&lt;/p&gt;
 ## 
 ## $message
 ## NULL
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The output of &lt;code&gt;optim()&lt;/code&gt; includes the MLE for our parameter &lt;code&gt;\(\lambda\)&lt;/code&gt;,
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The output of &lt;code&gt;optim()&lt;/code&gt; includes the MLE for our parameter $\lambda$,
 the &lt;code&gt;value&lt;/code&gt; of our negative log-likelihood function at the MLE,
 and a &lt;code&gt;convergence&lt;/code&gt; error code (with 0 indicating success).&lt;/p&gt;
 &lt;h3 id=&#34;max_lik_class&#34;&gt;Let&amp;rsquo;s try it&lt;/h3&gt;
 &lt;h5 id=&#34;repeat-for-yourself&#34;&gt;Repeat for yourself&lt;/h5&gt;
 &lt;p&gt;In-class 
   &lt;i class=&#34;fas fa-clock  pr-1 fa-fw&#34;&gt;&lt;/i&gt; 10-15 minutes&lt;/p&gt;
-&lt;p&gt;Download &lt;a href=&#34;https://models4data2theory.github.io/courses_Rscripts/ModelFitting_1.R&#34;&gt;ModelFitting_1.R&lt;/a&gt; to implement what we just did with the &lt;code&gt;\(k=\{10, 15\}\)&lt;/code&gt; data set and Poisson distribution.
-Then try generating different data sets that vary in their sample size to see how close you get to the true value of &lt;code&gt;\(\lambda\)&lt;/code&gt; with which you generated the data.
+&lt;p&gt;Download &lt;a href=&#34;https://models4data2theory.github.io/courses_Rscripts/ModelFitting_1.R&#34;&gt;ModelFitting_1.R&lt;/a&gt; to implement what we just did with the $k={10, 15}$ data set and Poisson distribution.
+Then try generating different data sets that vary in their sample size to see how close you get to the true value of $\lambda$ with which you generated the data.
 (We&amp;rsquo;ll address estimation uncertainty through the use of confidence intervals later.)&lt;/p&gt;
 &lt;h5 id=&#34;real-binomial-data&#34;&gt;Real binomial data&lt;/h5&gt;
 &lt;p&gt;Your actual challenge, however, is to generate your own data and write your own code to analyse it.&lt;/p&gt;
@@ -546,22 +546,22 @@ Enter your data on &lt;a href=&#34;https://docs.google.com/spreadsheets/d/e/2PAC
 (You can re-download it again after everyone&amp;rsquo;s finished entering their data.
 You only need one data point to start fitting this one-parameter model!)&lt;/p&gt;
 &lt;p&gt;Rather than using a Poisson, you&amp;rsquo;ll want to assume a binomial process.
-Your goal is to estimate &lt;code&gt;\(p\)&lt;/code&gt;, the average probability of fertilization success.
+Your goal is to estimate $p$, the average probability of fertilization success.
 Download &lt;a href=&#34;https://models4data2theory.github.io/courses_Rscripts/ModelFitting_2.R&#34;&gt;ModelFitting_2.R&lt;/a&gt; to help you get going.&lt;/p&gt;
 &lt;h2 id=&#34;model-fitting&#34;&gt;Model fitting&lt;/h2&gt;
 &lt;p&gt;Up to this point, we have assumed that the process that is reflected in our data,
-be it the flower visitation rate &lt;code&gt;\(\lambda\)&lt;/code&gt; or the fertilization success probability &lt;code&gt;\(p\)&lt;/code&gt;,
+be it the flower visitation rate $\lambda$ or the fertilization success probability $p$,
 is well-represented as being a constant value that is independent of any other contributing factor.
 Visually, if we actually had data like that introduced at the very start of today, our models so far would correspond to the horizontal lines in the following figures.
 That is, we&amp;rsquo;d be assuming that visitation counts are independent of plant density,
 and that the proportions of ovules fertilized are independent of visitation count.
 All variation is noise.&lt;/p&gt;
 &lt;img src=&#34;https://models4data2theory.github.io/courses/wkshp_interactions_files/figure-html/motivation_constant-1.png&#34; width=&#34;768&#34; /&gt;
-&lt;p&gt;We can think of these models of constant &lt;code&gt;\(\lambda\)&lt;/code&gt; and &lt;code&gt;\(p\)&lt;/code&gt; as being our simplest 1-parameter &amp;ldquo;null&amp;rdquo; models;
+&lt;p&gt;We can think of these models of constant $\lambda$ and $p$ as being our simplest 1-parameter &amp;ldquo;null&amp;rdquo; models;
 if you didn&amp;rsquo;t have any other information, your best prediction for the expected value of a future data point would be the mean of current data.
 Clearly, these data visualizations indicate that these null models do not capture all the information that a more complex model could potentially capture.
 Although there is plenty of noise, the visitation rate and the fertilization success probability appear to be increasing functions of plant density and visitation count, respectively.
-That is, &lt;code&gt;\(\lambda\)&lt;/code&gt; would probably be better considered to be a function of plant density and &lt;code&gt;\(p\)&lt;/code&gt; would probably be better considered to be a function of visitation count.
+That is, $\lambda$ would probably be better considered to be a function of plant density and $p$ would probably be better considered to be a function of visitation count.
 So how do we go about encoding that in our models?&lt;/p&gt;
 &lt;p&gt;Well, there are many ways that we could do it.
 We could go the route of using &lt;em&gt;GLMs&lt;/em&gt; and &lt;em&gt;GAMs&lt;/em&gt; that permit us to continue to appropriately represent non-Gaussian error structures and potentially non-linear relationships
@@ -571,17 +571,17 @@ But, as motivated above, our goal is to fit mechanistic models instead.&lt;sup i
 &lt;p&gt;Let&amp;rsquo;s consider our visitation count vs. plant density dataset.
 Even if the total number of pollinators that are flying in the sky is invariant (constant) with respect to the density of our focal plant species, it seems somewhat intuitive that we should see more total visits to the focal plant in areas where the focal plant&amp;rsquo;s density is higher.
 That is, setting aside targeted searching and all other kinds of potential pollinator behavior, it should be true that the more plants there are, the greater the chance that a pollinator will bump into any one of them by random chance alone.
-The mathematically simplest model, we&amp;rsquo;ll call it &lt;code&gt;\(f_1\)&lt;/code&gt;, to describe such a presumed dependence of &lt;code&gt;\(\lambda\)&lt;/code&gt; on &lt;code&gt;\(P\)&lt;/code&gt; would be
+The mathematically simplest model, we&amp;rsquo;ll call it $f_1$, to describe such a presumed dependence of $\lambda$ on $P$ would be
 $$
 \text{Visitation rate }\lambda = f_1(P) = a P,
 $$
-where a new parameter &lt;code&gt;\(a\)&lt;/code&gt; encapsulating what may potentially be several aspects of the pollinator&amp;rsquo;s search effort, including its flying speed, its preference for the focal plant, etc..
-The higher the value of &lt;code&gt;\(a\)&lt;/code&gt;, the steeper the slope of the assumed biological relationship between &lt;code&gt;\(\lambda\)&lt;/code&gt; and &lt;code&gt;\(P\)&lt;/code&gt; and hence the steeper the slope of observed visitation counts versus plant density we expect to see in our data.
+where a new parameter $a$ encapsulating what may potentially be several aspects of the pollinator&amp;rsquo;s search effort, including its flying speed, its preference for the focal plant, etc..
+The higher the value of $a$, the steeper the slope of the assumed biological relationship between $\lambda$ and $P$ and hence the steeper the slope of observed visitation counts versus plant density we expect to see in our data.
 In the literature on Consumer-Resource theory, this model is referred to as the &lt;em&gt;Holling Type I functional response&lt;/em&gt;.&lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;img src=&#34;https://models4data2theory.github.io/courses/wkshp_interactions_files/figure-html/motivation_prop-1.png&#34; width=&#34;336&#34; /&gt;
-&lt;p&gt;A more flexible (and possibly more realistic) second model describes &lt;code&gt;\(\lambda\)&lt;/code&gt; as increasing with &lt;code&gt;\(P\)&lt;/code&gt; in a monotonically-saturating fashion to encode the hypothesis that visitation rates can&amp;rsquo;t increase with &lt;code&gt;\(P\)&lt;/code&gt; forever.
-That is, while visitation rates are likely determined by search effort and plant density at low &lt;code&gt;\(P\)&lt;/code&gt; (just like for model &lt;code&gt;\(f_1\)&lt;/code&gt;), they are probably bounded at some maximum possible visitation rate at high values of &lt;code&gt;\(P\)&lt;/code&gt;.
-If, for example, a pollinator spends &lt;code&gt;\(h\)&lt;/code&gt; minutes per visit to each encountered flower, then the maximum possible visitation rate at high values of &lt;code&gt;\(P\)&lt;/code&gt; (where there is effectively no time needed to search and find the next flower) is &lt;code&gt;\(1/h\)&lt;/code&gt; visits per minute.
+&lt;p&gt;A more flexible (and possibly more realistic) second model describes $\lambda$ as increasing with $P$ in a monotonically-saturating fashion to encode the hypothesis that visitation rates can&amp;rsquo;t increase with $P$ forever.
+That is, while visitation rates are likely determined by search effort and plant density at low $P$ (just like for model $f_1$), they are probably bounded at some maximum possible visitation rate at high values of $P$.
+If, for example, a pollinator spends $h$ minutes per visit to each encountered flower, then the maximum possible visitation rate at high values of $P$ (where there is effectively no time needed to search and find the next flower) is $1/h$ visits per minute.
 The two-parameter model
 $$
 \text{Visitation rate }\lambda = f_2(P) = \frac{a P}{1 + a h P}
@@ -590,29 +590,29 @@ encapsulates this.
 The more plants there are, the more that each pollinator spends time &amp;ldquo;handling&amp;rdquo; rather than searching and encountering more plants.
 In the literature, this model is referred to as the &lt;em&gt;Holling Type II functional response&lt;/em&gt;.
 (An alternative but deterministically-equivalent parameterization is referred to as the &lt;em&gt;Michaelis-Menten&lt;/em&gt; model.)
-Note that when &lt;code&gt;\(h=0\)&lt;/code&gt;, model &lt;code&gt;\(f_2\)&lt;/code&gt; collapses back to model &lt;code&gt;\(f_1\)&lt;/code&gt;.
-Model &lt;code&gt;\(f_1\)&lt;/code&gt; is therefore nested within &lt;code&gt;\(f_2\)&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Lastly, an even more flexible (and possibly even more realistic) third model describes &lt;code&gt;\(\lambda\)&lt;/code&gt; as increasing with &lt;code&gt;\(P\)&lt;/code&gt; in a sigmoidal fashion to encode the hypothesis that a pollinator&amp;rsquo;s search rate may additionally be limited at low &lt;code&gt;\(P\)&lt;/code&gt;.
+Note that when $h=0$, model $f_2$ collapses back to model $f_1$.
+Model $f_1$ is therefore nested within $f_2$.&lt;/p&gt;
+&lt;p&gt;Lastly, an even more flexible (and possibly even more realistic) third model describes $\lambda$ as increasing with $P$ in a sigmoidal fashion to encode the hypothesis that a pollinator&amp;rsquo;s search rate may additionally be limited at low $P$.
 For example, the rate at which a pollinator searches for plants may itself increase with plant density; they may develop an ever better &amp;ldquo;search image&amp;rdquo; as they encounter more plants.
 The three-parameter model
 $$
 \text{Visitation rate }\lambda = f_3(P) = \frac{a P^\theta}{1 + a h P^{\theta}}
 $$
-encapsulates this when the new parameter &lt;code&gt;\(\theta\)&lt;/code&gt; (theta) takes on values greater than 1.
+encapsulates this when the new parameter $\theta$ (theta) takes on values greater than 1.
 This model is most appropriately referred to as the &lt;em&gt;Holling-Real Type III functional response&lt;/em&gt;.&lt;sup id=&#34;fnref:8&#34;&gt;&lt;a href=&#34;#fn:8&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;8&lt;/a&gt;&lt;/sup&gt;
-Note that when &lt;code&gt;\(\theta=1\)&lt;/code&gt;, model &lt;code&gt;\(f_3\)&lt;/code&gt; collapses back to model &lt;code&gt;\(f_2\)&lt;/code&gt; since &lt;code&gt;\(x^1 = x\)&lt;/code&gt;.&lt;/p&gt;
+Note that when $\theta=1$, model $f_3$ collapses back to model $f_2$ since $x^1 = x$.&lt;/p&gt;
 &lt;h3 id=&#34;modifying-the-likelihood&#34;&gt;Modifying the likelihood&lt;/h3&gt;
-&lt;p&gt;To fit the three &lt;code&gt;\(f_1-f_3\)&lt;/code&gt; models to our data we need to incorporate them into our likelihood function.
-To do so we insert each of them in for &lt;code&gt;\(\lambda\)&lt;/code&gt;.
+&lt;p&gt;To fit the three $f_1-f_3$ models to our data we need to incorporate them into our likelihood function.
+To do so we insert each of them in for $\lambda$.
 Many refer to the resulting statistical model (i.e. the likelihood function) as being composed of a &lt;em&gt;deterministic skeleton&lt;/em&gt; and a &lt;em&gt;stochastic shell&lt;/em&gt;.
-For example, for model &lt;code&gt;\(f_1\)&lt;/code&gt; we have
+For example, for model $f_1$ we have
 $$
 -\ln \L_1(a | k, P)
 = \sum_i^n \ln \left (\frac{f_1^{k_i} e^{-f_1}}{k_i!} \right)
 = \sum_i^n \ln \left (\frac{(a P)^{k_i} e^{-a P}}{k_i!} \right).
 $$
-Notably, unlike our original negative log-likelihood function to which we supplied only the response variable data (visitation counts &lt;code&gt;\(k = \{k_1, k_2, \ldots, k_n \}\)&lt;/code&gt;) in order to estimate the constant &lt;code&gt;\(\lambda\)&lt;/code&gt;, we must now supply the both response variable data and the covariate data (of corresponding plant densities &lt;code&gt;\(P = \{P_1, P_2, \ldots, P_n \}\)&lt;/code&gt;) in order to estimate up to three constants ($a$, &lt;code&gt;\(h\)&lt;/code&gt;, and &lt;code&gt;\(\theta\)&lt;/code&gt;) for the three models.&lt;sup id=&#34;fnref:9&#34;&gt;&lt;a href=&#34;#fn:9&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;9&lt;/a&gt;&lt;/sup&gt;
-But because &lt;code&gt;\(P\)&lt;/code&gt; is the same for all models, we can just leave it defined in R&amp;rsquo;s global environment (rather than defining it within the function&amp;rsquo;s internal environment).&lt;/p&gt;
+Notably, unlike our original negative log-likelihood function to which we supplied only the response variable data (visitation counts $k = {k_1, k_2, \ldots, k_n }$) in order to estimate the constant $\lambda$, we must now supply the both response variable data and the covariate data (of corresponding plant densities $P = {P_1, P_2, \ldots, P_n }$) in order to estimate up to three constants ($a$, $h$, and $\theta$) for the three models.&lt;sup id=&#34;fnref:9&#34;&gt;&lt;a href=&#34;#fn:9&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;9&lt;/a&gt;&lt;/sup&gt;
+But because $P$ is the same for all models, we can just leave it defined in R&amp;rsquo;s global environment (rather than defining it within the function&amp;rsquo;s internal environment).&lt;/p&gt;
 &lt;p&gt;We&amp;rsquo;ll need a little more dummy data, so let&amp;rsquo;s create it using &lt;code&gt;runif()&lt;/code&gt; and &lt;code&gt;rpois()&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;set.seed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
@@ -635,7 +635,7 @@ But because &lt;code&gt;\(P\)&lt;/code&gt; is the same for all models, we can ju
 ## 8  66.1 18
 ## 9  62.9 19
 ## 10  6.2  1
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now we define the negative log-likelihood for the &lt;code&gt;\(f_1\)&lt;/code&gt; and use &lt;code&gt;optim()&lt;/code&gt; to estimate the MLE for its &lt;code&gt;\(a\)&lt;/code&gt; parameter.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now we define the negative log-likelihood for the $f_1$ and use &lt;code&gt;optim()&lt;/code&gt; to estimate the MLE for its $a$ parameter.
 (Again we&amp;rsquo;ll ignore the warning for this 1-dimensional model.)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;nlL.pois.f1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;par&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;par[&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;
@@ -678,8 +678,8 @@ But because &lt;code&gt;\(P\)&lt;/code&gt; is the same for all models, we can ju
   &lt;i class=&#34;fas fa-clock  pr-1 fa-fw&#34;&gt;&lt;/i&gt; 30-45 minutes&lt;/p&gt;
 &lt;p&gt;Download &lt;a href=&#34;https://models4data2theory.github.io/courses_Rscripts/ModelFitting_3.R&#34;&gt;ModelFitting_3.R&lt;/a&gt;.
 The first part generates a random dataset.
-It then repeats the fitting of the &lt;code&gt;\(f_1\)&lt;/code&gt; model that we just did.&lt;/p&gt;
-&lt;p&gt;Your challenge is expand on the script to fit the &lt;code&gt;\(f_2\)&lt;/code&gt; and &lt;code&gt;\(f_3\)&lt;/code&gt; models to the same dataset.
+It then repeats the fitting of the $f_1$ model that we just did.&lt;/p&gt;
+&lt;p&gt;Your challenge is expand on the script to fit the $f_2$ and $f_3$ models to the same dataset.
 Summarize what you learn by comparing the three models&#39;
 (1) parameter MLEs to each other and the values with which the dataset was generated, and
 (2) their minimized negative log-likelihoods (i.e. the value of their negative log-likelihood at their parameter MLEs).
@@ -693,16 +693,16 @@ Which model is the &lt;em&gt;best-performing&lt;/em&gt;?&lt;/p&gt;
 &lt;li&gt;Initial values &amp;amp; NaNs.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4 id=&#34;coding-the-likelihood-1&#34;&gt;Coding the likelihood&lt;/h4&gt;
-&lt;p&gt;The function we used to define the negative log-likelihood for the &lt;code&gt;\(f_1\)&lt;/code&gt; model above had only a single &lt;code&gt;par&lt;/code&gt; argument from which we &amp;ldquo;extract&amp;rdquo; parameter &lt;code&gt;a&lt;/code&gt; using &lt;code&gt;a &amp;lt;- par[&#39;a&#39;]&lt;/code&gt;.
-(That is, we&amp;rsquo;ve added a line of code relative to what we did when we were just focused on &lt;code&gt;\(\lambda\)&lt;/code&gt;.)
-You&amp;rsquo;ll want to do the same thing when defining the likelihood functions for models &lt;code&gt;\(f_2\)&lt;/code&gt; and &lt;code&gt;\(f_3\)&lt;/code&gt;; your likelihood functions must have only one &lt;code&gt;par&lt;/code&gt; argument from which each parameter is extracted.&lt;/p&gt;
+&lt;p&gt;The function we used to define the negative log-likelihood for the $f_1$ model above had only a single &lt;code&gt;par&lt;/code&gt; argument from which we &amp;ldquo;extract&amp;rdquo; parameter &lt;code&gt;a&lt;/code&gt; using &lt;code&gt;a &amp;lt;- par[&#39;a&#39;]&lt;/code&gt;.
+(That is, we&amp;rsquo;ve added a line of code relative to what we did when we were just focused on $\lambda$.)
+You&amp;rsquo;ll want to do the same thing when defining the likelihood functions for models $f_2$ and $f_3$; your likelihood functions must have only one &lt;code&gt;par&lt;/code&gt; argument from which each parameter is extracted.&lt;/p&gt;
 &lt;h4 id=&#34;initial-values--nans&#34;&gt;Initial values &amp;amp; NaNs&lt;/h4&gt;
 &lt;p&gt;In general, the more data you have and the simpler the model, the less sensitive the optimization will be to your initial parameter value guess.
-In our simple example case involving &lt;code&gt;\(f_1\)&lt;/code&gt; and a linear relationship, almost any reasonable initial value for &lt;code&gt;\(a\)&lt;/code&gt; would have worked.&lt;/p&gt;
+In our simple example case involving $f_1$ and a linear relationship, almost any reasonable initial value for $a$ would have worked.&lt;/p&gt;
 &lt;p&gt;In slightly more complex cases, you can often get a good enough guess by eyeballing your data and thinking about how the parameters of your deterministic function should influence its shape.
-For example, for the &lt;code&gt;\(f_2\)&lt;/code&gt; model, parameter &lt;code&gt;\(a\)&lt;/code&gt; controls the slope at the origin at &lt;code&gt;\(P=0\)&lt;/code&gt; while parameter &lt;code&gt;\(h\)&lt;/code&gt; controls the level of the asymptotic maximum value of &lt;code&gt;\(1/h\)&lt;/code&gt; as &lt;code&gt;\(P\rightarrow \infty\)&lt;/code&gt;, both of which can be read of a plot of the data.
+For example, for the $f_2$ model, parameter $a$ controls the slope at the origin at $P=0$ while parameter $h$ controls the level of the asymptotic maximum value of $1/h$ as $P\rightarrow \infty$, both of which can be read of a plot of the data.
 Otherwise, the best way to proceed is to fit a simpler model and to use its MLEs to inform your guess for the next more complex model.
-(That is, fit &lt;code&gt;\(f_1\)&lt;/code&gt; first and use its estimate for &lt;code&gt;\(a\)&lt;/code&gt; to inform the initial value for &lt;code&gt;\(a\)&lt;/code&gt; in model &lt;code&gt;\(f_2\)&lt;/code&gt;, etc.)&lt;/p&gt;
+(That is, fit $f_1$ first and use its estimate for $a$ to inform the initial value for $a$ in model $f_2$, etc.)&lt;/p&gt;
 &lt;p&gt;In complex cases, it&amp;rsquo;s often wise to try out several different starting values to ensure that you always arrive at the same MLE values.
 Otherwise you run the risk of your optimizer finding a &lt;em&gt;local&lt;/em&gt; (rather than &lt;em&gt;global&lt;/em&gt;) minimum in the likelihood surface (see below).&lt;/p&gt;
 &lt;p&gt;You may get a negative log-likelihood output of &lt;code&gt;NaN&lt;/code&gt; if your initial guess (or a value attempted during the optimization) is incompatible with the data.
@@ -712,7 +712,7 @@ If it happens during the optimization, it&amp;rsquo;s typically not a problem if
 &lt;h2 id=&#34;mod_comp&#34;&gt;Model comparison&lt;/h2&gt;
 &lt;p&gt;In general, the more parameters a model has (i.e. the more &lt;em&gt;parametrically complex&lt;/em&gt; it is), the better it will fit the data.
 Indeed, a little simplistically speaking, if you have a model that has as many free parameters as you have data points, then your model can fit the data perfectly with no unexplained residual variation leftover!&lt;sup id=&#34;fnref:10&#34;&gt;&lt;a href=&#34;#fn:10&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;10&lt;/a&gt;&lt;/sup&gt;
-A model&amp;rsquo;s &lt;em&gt;fit&lt;/em&gt; to the data as reflected by its likelihood (or its &lt;code&gt;\(R^2\)&lt;/code&gt; value) is thus rarely useful on its own when we want to compete different models against each other to ask which is &amp;ldquo;the best&amp;rdquo;.
+A model&amp;rsquo;s &lt;em&gt;fit&lt;/em&gt; to the data as reflected by its likelihood (or its $R^2$ value) is thus rarely useful on its own when we want to compete different models against each other to ask which is &amp;ldquo;the best&amp;rdquo;.
 Rather, the principle of parsimony (Occam&amp;rsquo;s razor) motivates us to identify the best-&lt;em&gt;performing&lt;/em&gt; model.
 Typically the best-performing model is the one that &lt;em&gt;maximizes fit while minimizing complexity&lt;/em&gt; relative to the other considered models.
 If two models fit the data equally well but one uses fewer parameters to achieve that fit, then it is the better-performing model.
@@ -722,16 +722,16 @@ Currently, the most widely used tools for quantifying relative model performance
 the Akaike Information Criterion (&lt;em&gt;AIC&lt;/em&gt;)
 and the Bayesian Information Criterion (&lt;em&gt;BIC&lt;/em&gt;, a.k.a. the Schwartz Information Criterion).
 The practical difference between these three criteria is in how they quantify model complexity.&lt;/p&gt;
-&lt;p&gt;The &lt;em&gt;AIC&lt;/em&gt; score of a model is calculated as twice the minimized negative log-likelihood plus twice the number of parameters &lt;code&gt;\(p\)&lt;/code&gt;:
+&lt;p&gt;The &lt;em&gt;AIC&lt;/em&gt; score of a model is calculated as twice the minimized negative log-likelihood plus twice the number of parameters $p$:
 $$
 AIC = - 2 \ln \hat{\L} + 2 p.
 $$
 Note two things:&lt;sup id=&#34;fnref:11&#34;&gt;&lt;a href=&#34;#fn:11&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;11&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;We&amp;rsquo;re using the modified symbol &lt;code&gt;\(\hat{\L}\)&lt;/code&gt; rather than just &lt;code&gt;\(\L\)&lt;/code&gt; to indicate that we are using the &lt;em&gt;minimized&lt;/em&gt; value of negative log-likelihood (i.e. its value at the model&amp;rsquo;s parameter MLEs).&lt;/li&gt;
-&lt;li&gt;Because a lower &lt;code&gt;\(-\ln \hat{\L}\)&lt;/code&gt; value reflects a better fit to the data, adding a model&amp;rsquo;s parameter count with &lt;code&gt;\(+2p\)&lt;/code&gt; reflects a &lt;em&gt;complexity penalty&lt;/em&gt; that makes a model&amp;rsquo;s &lt;em&gt;AIC&lt;/em&gt; value larger.&lt;/li&gt;
+&lt;li&gt;We&amp;rsquo;re using the modified symbol $\hat{\L}$ rather than just $\L$ to indicate that we are using the &lt;em&gt;minimized&lt;/em&gt; value of negative log-likelihood (i.e. its value at the model&amp;rsquo;s parameter MLEs).&lt;/li&gt;
+&lt;li&gt;Because a lower $-\ln \hat{\L}$ value reflects a better fit to the data, adding a model&amp;rsquo;s parameter count with $+2p$ reflects a &lt;em&gt;complexity penalty&lt;/em&gt; that makes a model&amp;rsquo;s &lt;em&gt;AIC&lt;/em&gt; value larger.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Similarly, the &lt;code&gt;\(BIC\)&lt;/code&gt; score of a model is calculated as&lt;/p&gt;
+&lt;p&gt;Similarly, the $BIC$ score of a model is calculated as&lt;/p&gt;
 &lt;!-- $$ --&gt;
 &lt;!-- AICc =  - 2 \ln \hat{\L} + 2 p + \frac{2 p (p + 1)}{n-p-1} --&gt;
 &lt;!-- $$ --&gt;
@@ -739,7 +739,7 @@ Note two things:&lt;sup id=&#34;fnref:11&#34;&gt;&lt;a href=&#34;#fn:11&#34; cla
 &lt;p&gt;$$
 BIC = - 2 \ln \hat{\L} +  \ln(n) p,
 $$
-where the logarithm of the dataset&amp;rsquo;s sample size &lt;code&gt;\(n\)&lt;/code&gt; also contributes to the complexity penalty term.
+where the logarithm of the dataset&amp;rsquo;s sample size $n$ also contributes to the complexity penalty term.
 Therefore, larger datasets impose a greater penalty on more parametrically-complex models for &lt;em&gt;BIC&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;For both criteria, the model with the &lt;em&gt;lowest&lt;/em&gt; score is considered the best-performing model.
 Note that when comparing models the dataset cannot change.
@@ -747,28 +747,28 @@ All models have to be fit to the same dataset.
 More specifically, although the covariates can be different for different models, the response variable data (e.g., our visitation counts) must remain the same.&lt;/p&gt;
 &lt;h4 id=&#34;relative-performance&#34;&gt;Relative performance&lt;/h4&gt;
 &lt;p&gt;Having identified the best-performing model, it is natural to ask just how much better the best-performing model is relative to the others.
-We can do that by calculating their &lt;code&gt;\(\Delta\)&lt;/code&gt; differences.
-That is, the performance of the &lt;code&gt;\(i^{th}\)&lt;/code&gt; model relative to the best performing model is calculated as
+We can do that by calculating their $\Delta$ differences.
+That is, the performance of the $i^{th}$ model relative to the best performing model is calculated as
 $$
 \Delta_i = AIC_i - AIC_{min}.
 $$
-The best-performing model will thus have &lt;code&gt;\(\Delta_i = 0\)&lt;/code&gt; and all others will have &lt;code&gt;\(\Delta_i &amp;gt; 0\)&lt;/code&gt;.
+The best-performing model will thus have $\Delta_i = 0$ and all others will have $\Delta_i &amp;gt; 0$.
 The bigger the difference, the better the best-performing model.
 Because we like cut-offs&lt;sup id=&#34;fnref:12&#34;&gt;&lt;a href=&#34;#fn:12&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;12&lt;/a&gt;&lt;/sup&gt;,
 by rule-of-thumb convention,
 a difference of at least 2 units is deemed to reflect &amp;ldquo;substantial&amp;rdquo; support in favor of the best-performing model,
 a 2-4 unit difference is deemed as providing &amp;ldquo;strong&amp;rdquo; support&lt;sup id=&#34;fnref:13&#34;&gt;&lt;a href=&#34;#fn:13&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;13&lt;/a&gt;&lt;/sup&gt;,
 a 4-7 unit difference as &amp;ldquo;considerably less&amp;rdquo; support,
-while models having &lt;code&gt;\(\Delta_i &amp;gt; 10\)&lt;/code&gt; are deemed to have essentially no support.&lt;/p&gt;
+while models having $\Delta_i &amp;gt; 10$ are deemed to have essentially no support.&lt;/p&gt;
 &lt;h3 id=&#34;lets-try-it-1&#34;&gt;Let&amp;rsquo;s try it&lt;/h3&gt;
 &lt;p&gt;In-class 
   &lt;i class=&#34;fas fa-clock  pr-1 fa-fw&#34;&gt;&lt;/i&gt; 10-15 minutes&lt;/p&gt;
-&lt;p&gt;Adding to your updated copy of &lt;a href=&#34;https://models4data2theory.github.io/courses_Rscripts/ModelFitting_3.R&#34;&gt;ModelFitting_3.R&lt;/a&gt;, write functions for &lt;code&gt;\(AIC\)&lt;/code&gt; and &lt;code&gt;\(BIC\)&lt;/code&gt; and use them to identify the best-performing model among our three &lt;code&gt;\(f_1\)&lt;/code&gt; - &lt;code&gt;\(f_3\)&lt;/code&gt; models.
+&lt;p&gt;Adding to your updated copy of &lt;a href=&#34;https://models4data2theory.github.io/courses_Rscripts/ModelFitting_3.R&#34;&gt;ModelFitting_3.R&lt;/a&gt;, write functions for $AIC$ and $BIC$ and use them to identify the best-performing model among our three $f_1$ - $f_3$ models.
 Do your inferences differ from your earlier evaluation of the models?&lt;/p&gt;
 &lt;h3 id=&#34;alternatives&#34;&gt;Alternatives&lt;/h3&gt;
 &lt;p&gt;Information criteria like &lt;em&gt;AIC&lt;/em&gt; and &lt;em&gt;BIC&lt;/em&gt; are popular because they are super easy to implement.
 They also have the benefit of enabling the comparison of any set of models for which a likelihood can be calculated and the parameters can be counted (or estimated).
-In particular, the models in the set need not be nested subsets of each other as is necessary for the alternative model-comparison approach of &lt;em&gt;Likelihood Ratio Tests&lt;/em&gt;.  (Our &lt;code&gt;\(f_1\)&lt;/code&gt; - &lt;code&gt;\(f_3\)&lt;/code&gt; models &lt;em&gt;are&lt;/em&gt; nested subsets, because &lt;code&gt;\(f_3\)&lt;/code&gt; can be reduced to &lt;code&gt;\(f_2\)&lt;/code&gt; which can be reduced to &lt;code&gt;\(f_1\)&lt;/code&gt;, so likelihood ratio tests could be used.)&lt;/p&gt;
+In particular, the models in the set need not be nested subsets of each other as is necessary for the alternative model-comparison approach of &lt;em&gt;Likelihood Ratio Tests&lt;/em&gt;.  (Our $f_1$ - $f_3$ models &lt;em&gt;are&lt;/em&gt; nested subsets, because $f_3$ can be reduced to $f_2$ which can be reduced to $f_1$, so likelihood ratio tests could be used.)&lt;/p&gt;
 &lt;p&gt;There are also several other information criteria available.
 The commonly-used &lt;em&gt;AICc&lt;/em&gt; attempts to account for a bias towards more complex models that occurs for &lt;em&gt;AIC&lt;/em&gt; when sample sizes are small.
 For models that are linear in their parameters and have residuals that are well-approximated by a Normal distribution,
@@ -803,7 +803,7 @@ I would say that a fair degree of pragmatism remains warranted.&lt;/p&gt;
 &lt;h3 id=&#34;likelihood-surfaces&#34;&gt;Likelihood surfaces&lt;/h3&gt;
 &lt;p&gt;When we have more than one parameter, we talk about the likelihood function as describing a &amp;ldquo;likelihood surface&amp;rdquo;.
 For a model with 2 parameters, we can easily visualize that surface in a single plot.
-When a model has &lt;code&gt;\(p\)&lt;/code&gt; parameters there are &lt;code&gt;\(p\)&lt;/code&gt; dimensions to the likelihood surface.
+When a model has $p$ parameters there are $p$ dimensions to the likelihood surface.
 Minimizing the negative log-likelihood to obtain the parameter MLEs is equivalent to finding the lowest point of that surface.
 Doing so is not a problem when the surface is like a smooth, unimodal, round bowl shape with only one well-defined minimum point,
 but such a shape is far from guaranteed for all models and datasets.
@@ -842,7 +842,7 @@ However, many times we&amp;rsquo;re not only interested in just doing model comp
 Rather, we often would also like to characterize the statistical uncertainty (&amp;ldquo;clarity&amp;rdquo;) of the parameter estimates.
 The most common way to do that is by determining the 95% confidence intervals of the MLEs.&lt;/p&gt;
 &lt;p&gt;For that, we&amp;rsquo;ll make use of the &lt;code&gt;mle2()&lt;/code&gt; and &lt;code&gt;confint()&lt;/code&gt; functions from the &lt;code&gt;bbmle&lt;/code&gt; package. &lt;code&gt;mle2()&lt;/code&gt; uses &lt;code&gt;optim()&lt;/code&gt; as the default optimizer to determine the parameter MLEs, and &lt;code&gt;confint()&lt;/code&gt; takes the result and returns the parameter confidence intervals.&lt;/p&gt;
-&lt;p&gt;We&amp;rsquo;ll continue on with the small &lt;code&gt;\(n=10\)&lt;/code&gt; dataset we generated when we demonstrated the fitting of the &lt;code&gt;\(f_1\)&lt;/code&gt; model.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ll continue on with the small $n=10$ dataset we generated when we demonstrated the fitting of the $f_1$ model.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;data.frame&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;P&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;round&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;P&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;##       P  k
 ## 1  26.6  6
@@ -905,7 +905,7 @@ but in fitting them we also attempted to stay true to the likely stochastic proc
 ## h     0.038 0.031  0.043
 ## theta 1.812 1.385  2.310
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Comparing the performance of the three models using &lt;em&gt;AIC&lt;/em&gt;,
-we conclude that there is &amp;ldquo;substantial&amp;rdquo; support for model &lt;code&gt;\(f_3\)&lt;/code&gt; over the other two models.&lt;/p&gt;
+we conclude that there is &amp;ldquo;substantial&amp;rdquo; support for model $f_3$ over the other two models.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;##        AIC   dAIC  df
 ## fit.f3 538.4   0.0 3 
 ## fit.f2 552.0  13.6 2 
@@ -971,14 +971,14 @@ It&amp;rsquo;s in the challenge of gaining a balanced expertise in all three whe
 &lt;hr&gt;
 &lt;ol&gt;
 &lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;Note that you&amp;rsquo;ll more typically see the probability of the binomial written as &lt;code&gt;\(P(k |n, p)\)&lt;/code&gt; with &lt;code&gt;\(n\)&lt;/code&gt; treated as a parameter rather than a known variable, but we&amp;rsquo;re going to use &lt;code&gt;\(P(k, n|p)\)&lt;/code&gt; since &lt;code&gt;\(k\)&lt;/code&gt; and &lt;code&gt;\(n\)&lt;/code&gt; both come from data to better contrast probabilities with likelihoods.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Note that you&amp;rsquo;ll more typically see the probability of the binomial written as $P(k |n, p)$ with $n$ treated as a parameter rather than a known variable, but we&amp;rsquo;re going to use $P(k, n|p)$ since $k$ and $n$ both come from data to better contrast probabilities with likelihoods.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;Some of you may know (or notice in the lefthand figure) that it&amp;rsquo;s possible for &lt;code&gt;\(Pr(k | \lambda) = Pr(k-1 | \lambda )\)&lt;/code&gt; (i.e. there is no single maximum to the probability mass function &lt;code&gt;\(Pr(k | \lambda)\)&lt;/code&gt;) &lt;em&gt;when &lt;code&gt;\(\lambda\)&lt;/code&gt; is an integer&lt;/em&gt;. (See &lt;a href=&#34;https://math.stackexchange.com/questions/4144800/poisson-distribution-with-an-integer-lambda-value&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this StackExchange post&lt;/a&gt; for an explanation.)
+&lt;p&gt;Some of you may know (or notice in the lefthand figure) that it&amp;rsquo;s possible for $Pr(k | \lambda) = Pr(k-1 | \lambda )$ (i.e. there is no single maximum to the probability mass function $Pr(k | \lambda)$) &lt;em&gt;when $\lambda$ is an integer&lt;/em&gt;. (See &lt;a href=&#34;https://math.stackexchange.com/questions/4144800/poisson-distribution-with-an-integer-lambda-value&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this StackExchange post&lt;/a&gt; for an explanation.)
 However, this is &lt;em&gt;not&lt;/em&gt; the case for the likelihood function (i.e. there is a single maximum) when we plot the likelihood as a function of the parameter (as shown in the righthand figure).&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;By convention we use the natural logarithm, &lt;code&gt;\(\ln = \log_{e}\)&lt;/code&gt;.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;By convention we use the natural logarithm, $\ln = \log_{e}$.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:4&#34; role=&#34;doc-endnote&#34;&gt;
 &lt;p&gt;For simple models, the likelihood will typically only have one minimum and no maximum (or maxima) to worry about.  But we&amp;rsquo;ll come back to this below.&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
@@ -992,10 +992,10 @@ These are by far the most common type of theoretical models. However, there are 
 As noted above, the mean and variance of the Poisson are in fact the same, and they are entirely dependent for the binomial, so we are making &amp;mdash; and making use of &amp;mdash; that assumption when we&amp;rsquo;re fitting out data with them.&amp;#160;&lt;a href=&#34;#fnref:6&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:7&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;&amp;hellip;when visitation rates are expressed on a &lt;em&gt;per pollinator&lt;/em&gt; basis!   For our exercise, we can think of having arbitrarily set the pollinator abundance to &lt;code&gt;\(A=1\)&lt;/code&gt; for all visitation counts. In an empirical dataset the total number of visits would be &lt;code&gt;\(f(P) \cdot A\)&lt;/code&gt; and we&amp;rsquo;d have to supply the vector of pollinator abundances to our likelihood function as well.&amp;#160;&lt;a href=&#34;#fnref:7&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&amp;hellip;when visitation rates are expressed on a &lt;em&gt;per pollinator&lt;/em&gt; basis!   For our exercise, we can think of having arbitrarily set the pollinator abundance to $A=1$ for all visitation counts. In an empirical dataset the total number of visits would be $f(P) \cdot A$ and we&amp;rsquo;d have to supply the vector of pollinator abundances to our likelihood function as well.&amp;#160;&lt;a href=&#34;#fnref:7&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:8&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;The model is also called the &lt;em&gt;generalized Holling Type III&lt;/em&gt;.  The original two-parameter &lt;em&gt;Holling Type III&lt;/em&gt; has &lt;code&gt;\(\theta = 2\)&lt;/code&gt; corresponding to a search rate that increases linearly with &lt;code&gt;\(P\)&lt;/code&gt;.&amp;#160;&lt;a href=&#34;#fnref:8&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The model is also called the &lt;em&gt;generalized Holling Type III&lt;/em&gt;.  The original two-parameter &lt;em&gt;Holling Type III&lt;/em&gt; has $\theta = 2$ corresponding to a search rate that increases linearly with $P$.&amp;#160;&lt;a href=&#34;#fnref:8&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:9&#34; role=&#34;doc-endnote&#34;&gt;
 &lt;p&gt;Recall that, for simplicity, we&amp;rsquo;re here assuming that the number of pollinators is constant across all our observations.&amp;#160;&lt;a href=&#34;#fnref:9&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
@@ -1004,13 +1004,13 @@ As noted above, the mean and variance of the Poisson are in fact the same, and t
 &lt;p&gt;This touches on issues central to an active discussion between and within the worlds of statistics and machine learning.&amp;#160;&lt;a href=&#34;#fnref:10&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:11&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;Also note that the literature often uses &lt;code&gt;\(k\)&lt;/code&gt; to represent the count of the parameters.  We&amp;rsquo;ll use &lt;code&gt;\(p\)&lt;/code&gt; here to avoid confusion with our prior usage of &lt;code&gt;\(k\)&lt;/code&gt; as the count of pollinator visits.&amp;#160;&lt;a href=&#34;#fnref:11&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Also note that the literature often uses $k$ to represent the count of the parameters.  We&amp;rsquo;ll use $p$ here to avoid confusion with our prior usage of $k$ as the count of pollinator visits.&amp;#160;&lt;a href=&#34;#fnref:11&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:12&#34; role=&#34;doc-endnote&#34;&gt;
 &lt;p&gt;The issues are similar to those involved in how to evaluate &amp;ldquo;significance&amp;rdquo; using p-values.&amp;#160;&lt;a href=&#34;#fnref:12&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:13&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;For linear models this cutoff has been shown to correspond closely to considering a &lt;code&gt;\(p &amp;lt; 0.05\)&lt;/code&gt; to be statistically &amp;ldquo;significant&amp;rdquo;.&amp;#160;&lt;a href=&#34;#fnref:13&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For linear models this cutoff has been shown to correspond closely to considering a $p &amp;lt; 0.05$ to be statistically &amp;ldquo;significant&amp;rdquo;.&amp;#160;&lt;a href=&#34;#fnref:13&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/section&gt;</description>
