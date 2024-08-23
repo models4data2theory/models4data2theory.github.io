@@ -390,11 +390,11 @@ Plot both curves on the same graph, with two different colors.
 
 ### Steady states
 
-The steady-state abundance for a differential equation $f(N)=\frac{dN}{dt}$ is the value $N^*$ where $f(N^*)=0$ (i.e. the special population size $N^*$ where the population growth rate is zero). 
+The steady-state abundance for a differential equation $f(N)=\frac{dN}{dt}$ is the value $N^{\*}$ where $f(N^{\*})=0$ (i.e. the special population size $N^{\*}$ where the population growth rate is zero). 
 Births and deaths are still happening, but they cancel each other out; the system is at equilibrium.
 
 For the logistic model, there are two possible steady states (i.e. two ways to have $\frac{dN}{dt}=0$): 
-The (ecologically) trivial equilibrium, $N^*=0$, and the non-trivial equilibrium, $N^*=K$. 
+The (ecologically) trivial equilibrium, $N^{\*}=0$, and the non-trivial equilibrium, $N^{\*}=K$. 
 The first of these is discernible by recognizing that everything in $f(N)$ is multiplied by $N$. 
 The second is solved for with some algebra:
 
@@ -402,7 +402,7 @@ The second is solved for with some algebra:
 $$
     f(N)=\frac{dN}{dt}=0
 $$
-**Step 2:** Solve for $N^*$:
+**Step 2:** Solve for $N^{\*}$:
 $$
     \frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)=0
 $$
@@ -419,7 +419,7 @@ $$
     NK =N^2
 $$
 $$
-    N^*=K
+    N^{\*}=K
 $$
 
 <!-- #### Let's try it -->
@@ -429,16 +429,16 @@ $$
 
 ### Ball & cup
 
-Through simulation, we found $N^*=K$ to be a "stable" in that $\underset{t \to \infty}\lim N(t) = K$ for any initial value $N$ except $N(0) = 0$. 
-Indeed, we found $N^*=0$ to be "unstable"; 
+Through simulation, we found $N^{\*}=K$ to be a "stable" in that $\underset{t \to \infty}\lim N(t) = K$ for any initial value $N$ except $N(0) = 0$. 
+Indeed, we found $N^{\*}=0$ to be "unstable"; 
 even an infinitesimally small value of $N(0)>0$ eventually got us to $K$, 
 with larger values of $r$ getting us there faster.
 
 To aid intuition, we can describe the driving force behind these dynamics by a landscape[^1], 
 with possible population sizes along the x-axis and the steepness of the landscape reflecting corresponding values of $\frac{dN}{dt}$. A ball rolling around this landscape represents any given population size. 
-Gravity causes the ball to roll fast when the landscape is steep (i.e. when $r$ is large), but the ball will slow down the closer it gets to $N^*$. 
-The equilibrium $N^*=0$ is at the top of an inverted bowl, so any push (any *pulse perturbation*) to it will cause the population size to roll away from 0. 
-Conversely, $N^*= K$ is at the bottom of a bowl, so populations that are perturbed away from $K$ will simply roll back to $K$. Intuitively, the steeper the landscape, the faster the dynamics will be (i.e. the faster the population will return to $K$).
+Gravity causes the ball to roll fast when the landscape is steep (i.e. when $r$ is large), but the ball will slow down the closer it gets to $N^{\*}$. 
+The equilibrium $N^{\*}=0$ is at the top of an inverted bowl, so any push (any *pulse perturbation*) to it will cause the population size to roll away from 0. 
+Conversely, $N^{\*}= K$ is at the bottom of a bowl, so populations that are perturbed away from $K$ will simply roll back to $K$. Intuitively, the steeper the landscape, the faster the dynamics will be (i.e. the faster the population will return to $K$).
 
 [^1]: This is not just an analogy! In fact, for certain systems we can determine what this landscape (defined by the *system potential* $\phi = -\int_{-\infty}^{\infty} \frac{dN}{dt} dN$) actually looks like quantitatively.
 
@@ -471,55 +471,55 @@ points(c(0, K),
 
 ```
 
-We can evaluate these claims formally. First, by the definition of "asymptotic stability", an equilibrium $N^*$ will be stable to a sufficiently small pulse perturbation if 
+We can evaluate these claims formally. First, by the definition of "asymptotic stability", an equilibrium $N^{\*}$ will be stable to a sufficiently small pulse perturbation if 
 $$
-\lambda = \frac{df(N^*)}{dN} < 0 .
+\lambda = \frac{df(N^{\*})}{dN} < 0 .
 $$ 
 Recall that $f(N) = dN/dt$ and that for the logistic we have $dN/dt = r N (1- N/K)$. 
 Therefore we have 
 $$
 \lambda = \frac{d}{dN}\left(rN-\frac{rN^2}{K}\right) =r-\frac{2r N}{K} = r- \frac{2r K}{K} = r-2r = -r  .
 $$ 
-This shows that $\lambda$ will be negative for any value $N^*>0$ as long as $r > 0$. 
+This shows that $\lambda$ will be negative for any value $N^{\*}>0$ as long as $r > 0$. 
 It thereby confirms our intuition that $K$ is a *stable* equilibrium. 
 It also confirms our intuition that larger values of $r$ confer greater *resilience* to the population; 
 it will bounce back from perturbations faster the higher its intrinstic growth rate.
 
-To preview where we're heading, note that $-r$ is the *eigenvalue* ($\lambda$) of $f(N^*=K)$.[^2]
+To preview where we're heading, note that $-r$ is the *eigenvalue* ($\lambda$) of $f(N^{\*}=K)$.[^2]
 
 [^2]: We have only a single eigenvalue because we have only a single variable. Later, for systems with $n$ variables, we will have $n$ eigenvalues.
 
 ### Analysis {#1Dstability}
 
-Why is it that $\lambda$ (i.e. the derivative of $dN/dt$ with respect to $N$ evaluated at $N^*$) tells us about the stability of $N^*$?
+Why is it that $\lambda$ (i.e. the derivative of $dN/dt$ with respect to $N$ evaluated at $N^{\*}$) tells us about the stability of $N^{\*}$?
 
 To understand this, let's consider not how our population size $N$ changes in response to a small pulse perturbation but rather what happens to the size of the perturbation itself. 
 This will prove to be a subtle yet useful change in perspective. 
-If $N^*$ is indeed stable, then the size of the perturbation $x$ should shrink to zero.
+If $N^{\*}$ is indeed stable, then the size of the perturbation $x$ should shrink to zero.
 
 We can think of the size of the population immediately after the perturbation to be 
 $$
-N(t) = N^* + x
+N(t) = N^{\*} + x
 $$ 
 The rate of change of that population will be 
 $$
-\frac{d  N(t)}{dt} = \frac{d (N^* + x)}{dt} = f(N^* + x)
+\frac{d  N(t)}{dt} = \frac{d (N^{\*} + x)}{dt} = f(N^{\*} + x)
 $$ 
-Because $N^*$ is a constant with respect to time $t$, it follows that the rate of change of the perturbation is the same. That is,
+Because $N^{\*}$ is a constant with respect to time $t$, it follows that the rate of change of the perturbation is the same. That is,
 $$
-\frac{d x(t)}{dt} = \frac{d N(t)}{dt} = f(N^*+x)
+\frac{d x(t)}{dt} = \frac{d N(t)}{dt} = f(N^{\*}+x)
 $$
 
-Now that doesn't seem to have gotten us anywhere given that $f(N^* + x)$ could be a super complicated function.
-However, regardless of how complicated $f(N^* + x)$ is, we can always approximate it! We do so by using a Taylor expansion of $f(N^* + x)$ around $N^*$.
+Now that doesn't seem to have gotten us anywhere given that $f(N^{\*} + x)$ could be a super complicated function.
+However, regardless of how complicated $f(N^{\*} + x)$ is, we can always approximate it! We do so by using a Taylor expansion of $f(N^{\*} + x)$ around $N^{\*}$.
 (See [Of Potential Utility or Interest](of_potential_utility_or_interest) page.) 
 That is,
 $$
-f(N^* + x) = f(N^*)  + \frac{d f(N^{\*})}{dN} \cdot  x + \frac{d^2 f(N^{\*})}{dN^2} \cdot \frac{x^2}{2!} + + \frac{d^3 f(N^{\*})}{dN^3} \cdot \frac{x^3}{3!} + \dots 
+f(N^{\*} + x) = f(N^{\*})  + \frac{d f(N^{\*})}{dN} \cdot  x + \frac{d^2 f(N^{\*})}{dN^2} \cdot \frac{x^2}{2!} + + \frac{d^3 f(N^{\*})}{dN^3} \cdot \frac{x^3}{3!} + \dots 
 $$
 Notice two things: 
 
-1) By definition, $f(N^*)=0$, so the first term drops away. 
+1) By definition, $f(N^{\*})=0$, so the first term drops away. 
 
 2) If $x$ is sufficiently small (i.e. $x << 1$), then the 3rd, 4th, etc. terms are vanishingly small.[^3]
 
@@ -527,16 +527,16 @@ Notice two things:
 
 Therefore, 
 $$
-f(N^* + x) \approx  \frac{d f(N^*)}{dN} \cdot x
+f(N^{\*} + x) \approx  \frac{d f(N^{\*})}{dN} \cdot x
 $$ 
 which is equivalent to writing 
 $$
 \frac{d x(t)}{dt} \approx \lambda \cdot x
 $$ 
-In other words, so long as the original perturbation $x$ is small enough, the dynamics of the perturbation will be well-approximated as a simple exponential process! If $\lambda < 0$, then the perturbation will exhibit exponential decay towards 0 over time and thus $N^*$ will be *stable*. 
-If $\lambda > 0$, then the perturbation will exhibit exponential growth and thus $N^*$ will be *unstable*. 
+In other words, so long as the original perturbation $x$ is small enough, the dynamics of the perturbation will be well-approximated as a simple exponential process! If $\lambda < 0$, then the perturbation will exhibit exponential decay towards 0 over time and thus $N^{\*}$ will be *stable*. 
+If $\lambda > 0$, then the perturbation will exhibit exponential growth and thus $N^{\*}$ will be *unstable*. 
 And if $\lambda = 0$, then the perturbation will not change in size; 
-$N^*$ will then be *neutrally stable*. 
+$N^{\*}$ will then be *neutrally stable*. 
 Our change in perspective to following the size of the perturbation, rather than the population itself, allowed us to do this.
 
 ## LV Mutualism
