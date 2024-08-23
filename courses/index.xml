@@ -13,6 +13,204 @@
     </image>
     
     <item>
+      <title>Prework - R and RStudio</title>
+      <link>https://models4data2theory.github.io/courses/prework_01_install_r/</link>
+      <pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://models4data2theory.github.io/courses/prework_01_install_r/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Before you arrive at RMBL.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Tutorial on setting up R and Rstudio.&lt;/p&gt;
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;This is a tutorial on how to install the R language and RStudio development environment.
+It was modified from &lt;a href=&#34;https://github.com/rstudio/learnr/tree/main/inst/tutorials/ex-setup-r/ex-setup-r.Rmd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The tutorial will help you set up your computer to use R. It is for you if you need to learn how to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install R on your computer&lt;/li&gt;
+&lt;li&gt;Install the RStudio IDE&lt;/li&gt;
+&lt;li&gt;Install packages, using the &lt;code&gt;dplyr&lt;/code&gt; R package as an example.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can skip this tutorial if you&amp;rsquo;ve already done these things.&lt;/p&gt;
+&lt;h3 id=&#34;is-this-tutorial-for-you&#34;&gt;Is this tutorial for you?&lt;/h3&gt;
+&lt;p&gt;Do you need to work through the tutorial? Take the quiz below to find out.&lt;/p&gt;
+&lt;p&gt;::: {.webex-check .webex-box}
+I have installed R on my computer &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;TRUE&lt;/option&gt;&lt;option value=&#39;&#39;&gt;FALSE&lt;/option&gt;&lt;/select&gt;
+I have installed the RStudio IDE &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;TRUE&lt;/option&gt;&lt;option value=&#39;&#39;&gt;FALSE&lt;/option&gt;&lt;/select&gt;
+I have installed the dplyr R package &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;TRUE&lt;/option&gt;&lt;option value=&#39;&#39;&gt;FALSE&lt;/option&gt;&lt;/select&gt;&lt;/p&gt;
+&lt;p&gt;If you have done all of these things, you can skip this tutorial and go to the next one!
+:::&lt;/p&gt;
+&lt;h2 id=&#34;install-r&#34;&gt;Install R&lt;/h2&gt;
+&lt;h3 id=&#34;how-to-install-r&#34;&gt;How to install R&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://vimeo.com/203516510&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Follow the video instructions here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;test-your-knowledge&#34;&gt;Test your knowledge&lt;/h3&gt;
+&lt;p&gt;::: {.webex-check .webex-box}
+Is R free to download and use? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;TRUE&lt;/option&gt;&lt;option value=&#39;&#39;&gt;FALSE&lt;/option&gt;&lt;/select&gt;&lt;/p&gt;
+&lt;p&gt;Where do you download R? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;&lt;a href=&#34;https://www.rstudio.com/download&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;www.rstudio.com/download&lt;/a&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;cloud.r-project.org&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;&lt;a href=&#34;https://www.r-project.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;www.r-project.org&lt;/a&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;&lt;a href=&#34;https://www.r.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;www.r.com&lt;/a&gt;&lt;/option&gt;&lt;/select&gt;&lt;/p&gt;
+&lt;p&gt;How often should you update R? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;Everytime you use it&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;About once a year&lt;/option&gt;&lt;option value=&#39;&#39;&gt;Never&lt;/option&gt;&lt;/select&gt;
+:::&lt;/p&gt;
+&lt;h2 id=&#34;install-rstudio&#34;&gt;Install RStudio&lt;/h2&gt;
+&lt;h3 id=&#34;how-to-install-rstudio&#34;&gt;How to install RStudio&lt;/h3&gt;
+&lt;p&gt;RStudio is an Integrated Development Environment for R. What does that mean? Well, if you think of R as a language, which it is, you can think of RStudio as a program that helps you write and work in the language. RStudio makes programming in R much easier and I suggest that you use it!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://vimeo.com/203516968&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Follow the video instructions here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;test-your-knowledge-1&#34;&gt;Test your knowledge&lt;/h3&gt;
+&lt;p&gt;::: {.webex-check .webex-box}
+What is the RStudio IDE? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;An application that makes it easier to use R.&lt;/option&gt;&lt;option value=&#39;&#39;&gt;An application that let&amp;rsquo;s you use R without writing any code&lt;/option&gt;&lt;option value=&#39;&#39;&gt;A spreadsheet program like Microsoft Excel.&lt;/option&gt;&lt;option value=&#39;&#39;&gt;Another name for R&lt;/option&gt;&lt;/select&gt;&lt;/p&gt;
+&lt;p&gt;Is the RStudio IDE free to download and use? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;TRUE&lt;/option&gt;&lt;option value=&#39;&#39;&gt;FALSE&lt;/option&gt;&lt;/select&gt;&lt;/p&gt;
+&lt;p&gt;Where do you download RStudio? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;&lt;a href=&#34;https://www.rstudio.com/download&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;www.rstudio.com/download&lt;/a&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;cloud.r-project.org&lt;/option&gt;&lt;option value=&#39;&#39;&gt;&lt;a href=&#34;https://www.r-project.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;www.r-project.org&lt;/a&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;cran.rstudio.org&lt;/option&gt;&lt;/select&gt;&lt;/p&gt;
+&lt;p&gt;Do you need to install R if you already have RStudio? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;TRUE&lt;/option&gt;&lt;option value=&#39;&#39;&gt;FALSE&lt;/option&gt;&lt;/select&gt;
+:::&lt;/p&gt;
+&lt;h2 id=&#34;install-packages&#34;&gt;Install Packages&lt;/h2&gt;
+&lt;h3 id=&#34;how-to-install-r-packages&#34;&gt;How to install R packages&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://vimeo.com/203516241&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Follow the video instructions here&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;test-your-knowledge-2&#34;&gt;Test your knowledge&lt;/h3&gt;
+&lt;p&gt;::: {.webex-check .webex-box}
+What command do you use to install packages? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;library()&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;install.packages()&lt;/option&gt;&lt;option value=&#39;&#39;&gt;There is no command. You must visit &lt;a href=&#34;http://cran.r-project.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cran.r-project.org&lt;/a&gt; and download packages manually.&lt;/option&gt;&lt;/select&gt;&lt;/p&gt;
+&lt;p&gt;How often do you need to install a package on your computer? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;Every time you restart R&lt;/option&gt;&lt;option value=&#39;&#39;&gt;Every time you restart your computer&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;Only once. Afterwards, R can find it on your hard drive as needed.&lt;/option&gt;&lt;option value=&#39;&#39;&gt;Never, as long as you are connected to the internet.&lt;/option&gt;&lt;/select&gt;&lt;/p&gt;
+&lt;p&gt;What command do you use to load a package into your R session? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;package()&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;library()&lt;/option&gt;&lt;option value=&#39;&#39;&gt;install.packages()&lt;/option&gt;&lt;/select&gt;
+:::&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Prework - R Data Basics</title>
+      <link>https://models4data2theory.github.io/courses/prework_02_data_basics/</link>
+      <pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://models4data2theory.github.io/courses/prework_02_data_basics/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Before you arrive at RMBL.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Intro to data structures, help pages, and variable types in R.&lt;/p&gt;
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;In this tutorial, you will learn how to use R to inspect the contents of a data frame or tibble.
+Data frames and tibbles are R&amp;rsquo;s structures for storing tabular data;
+if you inherit a tabular dataset in R, it will almost certainly come as one of these structures.&lt;/p&gt;
+&lt;p&gt;Here, you will learn how to do three things with data frames and tibbles:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Look at the contents of a data frame or tibble&lt;/li&gt;
+&lt;li&gt;Open a help page that describes a data frame or tibble&lt;/li&gt;
+&lt;li&gt;Identify the variables and their types in a tibble&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You will also meet the &lt;code&gt;palmerpenguins&lt;/code&gt; and &lt;code&gt;nycflights&lt;/code&gt; datasets. These datasets appear frequently in R examples.&lt;/p&gt;
+&lt;p&gt;The readings in this tutorial follow &lt;a href=&#34;http://r4ds.had.co.nz/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;em&gt;R for Data Science&lt;/em&gt;&lt;/a&gt;, sections 3.2 and 5.1.&lt;/p&gt;
+&lt;h2 id=&#34;data-frames&#34;&gt;Data frames&lt;/h2&gt;
+&lt;h3 id=&#34;what-is-a-data-frame&#34;&gt;What is a data frame?&lt;/h3&gt;
+&lt;p&gt;A &lt;strong&gt;data frame&lt;/strong&gt; is a rectangular collection of values, usually organized so that variables appear in the columns and observations appear in rows.&lt;/p&gt;
+&lt;p&gt;Here is an example: the &lt;code&gt;penguins&lt;/code&gt; data frame contains observations collected and published by &lt;a href=&#34;https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dr. Kristen Gorman&lt;/a&gt; from &lt;a href=&#34;https://pallter.marine.rutgers.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Palmer Station&lt;/a&gt;, a long-term environmental research site in Antarctica. The data frame contains 344 rows and 8 columns. Each row represents a penguin, and each column represents a variable that describes the penguin. Each penguin is one of three different species.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;images/lter_penguins.png&#34; alt=&#34;The three different penguin species in the `palmerpenguins` datasets (credit: Allison Horst)&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Typing &lt;code&gt;penguins&lt;/code&gt; into the &lt;code&gt;R&lt;/code&gt; console prints the header of the &lt;code&gt;penguins&lt;/code&gt; data frame.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;## # A tibble: 344 × 8
+##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##    &amp;lt;fct&amp;gt;   &amp;lt;fct&amp;gt;              &amp;lt;dbl&amp;gt;         &amp;lt;dbl&amp;gt;             &amp;lt;int&amp;gt;       &amp;lt;int&amp;gt;
+##  1 Adelie  Torgersen           39.1          18.7               181        3750
+##  2 Adelie  Torgersen           39.5          17.4               186        3800
+##  3 Adelie  Torgersen           40.3          18                 195        3250
+##  4 Adelie  Torgersen           NA            NA                  NA          NA
+##  5 Adelie  Torgersen           36.7          19.3               193        3450
+##  6 Adelie  Torgersen           39.3          20.6               190        3650
+##  7 Adelie  Torgersen           38.9          17.8               181        3625
+##  8 Adelie  Torgersen           39.2          19.6               195        4675
+##  9 Adelie  Torgersen           34.1          18.1               193        3475
+## 10 Adelie  Torgersen           42            20.2               190        4250
+## # ℹ 334 more rows
+## # ℹ 2 more variables: sex &amp;lt;fct&amp;gt;, year &amp;lt;int&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;a-note-about-palmerpenguins&#34;&gt;A note about palmerpenguins&lt;/h3&gt;
+&lt;p&gt;The code above worked because I&amp;rsquo;ve already loaded the &lt;code&gt;palmerpenguins&lt;/code&gt; package in this tutorial: &lt;code&gt;penguins&lt;/code&gt; comes in the &lt;code&gt;palmerpenguins&lt;/code&gt; package. If you would like to look at &lt;code&gt;penguins&lt;/code&gt; on your own computer, you will need to first load &lt;code&gt;palmerpenguins&lt;/code&gt;. You can do that in two steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Run &lt;code&gt;install.packages(&#39;palmerpenguins&#39;)&lt;/code&gt; to install &lt;code&gt;palmerpenguins&lt;/code&gt; if you do not yet have it.&lt;/li&gt;
+&lt;li&gt;Load the package with the &lt;code&gt;library(palmerpenguins)&lt;/code&gt; command.&lt;/li&gt;
+&lt;li&gt;Run the command &lt;code&gt;data(package = &#39;palmerpenguins&#39;)&lt;/code&gt; to load the &lt;code&gt;penguins&lt;/code&gt; data frame into your R session.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;After that, you will be able to access any dataset contained in the &lt;code&gt;palmerpenguins&lt;/code&gt; package&amp;mdash;until you close R.&lt;/p&gt;
+&lt;h3 id=&#34;one-thing-to-notice&#34;&gt;One thing to notice&lt;/h3&gt;
+&lt;p&gt;Did you notice how much information was inside &lt;code&gt;penguins&lt;/code&gt;? Me too. Sometimes the contents of a data frame are hard to interpret. Let&amp;rsquo;s get some help with this&amp;hellip;&lt;/p&gt;
+&lt;h2 id=&#34;help-pages&#34;&gt;Help pages&lt;/h2&gt;
+&lt;h3 id=&#34;how-to-open-a-help-page&#34;&gt;How to open a help page&lt;/h3&gt;
+&lt;p&gt;You can learn more about &lt;code&gt;penguins&lt;/code&gt; by opening its help page. The help page will explain where the &lt;code&gt;palmerpenguins&lt;/code&gt; dataset comes from and what each variable in the &lt;code&gt;penguins&lt;/code&gt; data frame describes. To open the help page, type &lt;code&gt;?penguins&lt;/code&gt; in the code chunk below and then click &amp;ldquo;Run Code&amp;rdquo;.&lt;/p&gt;
+&lt;h3 id=&#34;the--syntax&#34;&gt;The ? syntax&lt;/h3&gt;
+&lt;p&gt;You can open a help page for any object that comes with R or with an R package. To open the help page, type a &lt;code&gt;?&lt;/code&gt; before the object&amp;rsquo;s name and then run the command, as you did with &lt;code&gt;?penguins&lt;/code&gt;. This technique works for functions, packages, and more. If you want to specify getting help for a function or dataset in a particular package, you can use the &lt;code&gt;::&lt;/code&gt; operator. For example, &lt;code&gt;?dplyr::filter&lt;/code&gt; will open the help page for the &lt;code&gt;filter()&lt;/code&gt; function in the &lt;code&gt;dplyr&lt;/code&gt; package.&lt;/p&gt;
+&lt;p&gt;Notice that objects created by you or your colleagues will not have a help page (unless you make one).&lt;/p&gt;
+&lt;h3 id=&#34;exercises&#34;&gt;Exercises&lt;/h3&gt;
+&lt;p&gt;Please answer the following questions.&lt;/p&gt;
+&lt;p&gt;::: {.webex-check .webex-box}
+What does the &lt;code&gt;bill_depth_mm&lt;/code&gt; variable of &lt;code&gt;penguins&lt;/code&gt; describe?  Read the help for &lt;code&gt;?penguins&lt;/code&gt; to find out. &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;The depth below the surface that the penguin dives to catch fish&lt;/option&gt;&lt;option value=&#39;&#39;&gt;The species of penguin&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;The distance across the bill from the chin to the top of the bill&lt;/option&gt;&lt;/select&gt;&lt;/p&gt;
+&lt;p&gt;How many rows are in the data frame named &lt;code&gt;penguins&lt;/code&gt;? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;34&lt;/option&gt;&lt;option value=&#39;&#39;&gt;300&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;344&lt;/option&gt;&lt;option value=&#39;&#39;&gt;3344&lt;/option&gt;&lt;/select&gt;&lt;/p&gt;
+&lt;p&gt;How many columns are in the data frame named &lt;code&gt;penguins&lt;/code&gt;? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;34&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;8&lt;/option&gt;&lt;option value=&#39;&#39;&gt;0&lt;/option&gt;&lt;option value=&#39;&#39;&gt;10&lt;/option&gt;&lt;/select&gt;
+:::&lt;/p&gt;
+&lt;h2 id=&#34;data-types&#34;&gt;Data types&lt;/h2&gt;
+&lt;h3 id=&#34;type-codes&#34;&gt;Type codes&lt;/h3&gt;
+&lt;p&gt;Let&amp;rsquo;s return to the &lt;code&gt;penguins&lt;/code&gt; data frame. Run the code chunk below to see the first few rows of &lt;code&gt;penguins&lt;/code&gt; again.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;penguins&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;## # A tibble: 344 × 8
+##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##    &amp;lt;fct&amp;gt;   &amp;lt;fct&amp;gt;              &amp;lt;dbl&amp;gt;         &amp;lt;dbl&amp;gt;             &amp;lt;int&amp;gt;       &amp;lt;int&amp;gt;
+##  1 Adelie  Torgersen           39.1          18.7               181        3750
+##  2 Adelie  Torgersen           39.5          17.4               186        3800
+##  3 Adelie  Torgersen           40.3          18                 195        3250
+##  4 Adelie  Torgersen           NA            NA                  NA          NA
+##  5 Adelie  Torgersen           36.7          19.3               193        3450
+##  6 Adelie  Torgersen           39.3          20.6               190        3650
+##  7 Adelie  Torgersen           38.9          17.8               181        3625
+##  8 Adelie  Torgersen           39.2          19.6               195        4675
+##  9 Adelie  Torgersen           34.1          18.1               193        3475
+## 10 Adelie  Torgersen           42            20.2               190        4250
+## # ℹ 334 more rows
+## # ℹ 2 more variables: sex &amp;lt;fct&amp;gt;, year &amp;lt;int&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Did you notice that a row of three (or four) letter abbreviations appears under the column names of &lt;code&gt;penguins&lt;/code&gt;? These abbreviations describe the &lt;em&gt;type&lt;/em&gt; of data that is stored in each column of &lt;code&gt;penguins&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;int&lt;/code&gt; stands for integers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;dbl&lt;/code&gt; stands for doubles, or real numbers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;chr&lt;/code&gt; stands for character vectors, or strings.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;dttm&lt;/code&gt; stands for date-times (a date + a time).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are three other common types of variables that aren&amp;rsquo;t used in this dataset but are used in other datasets:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;lgl&lt;/code&gt; stands for logical, vectors that contain only &lt;code&gt;TRUE&lt;/code&gt; or &lt;code&gt;FALSE&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;fctr&lt;/code&gt; stands for factors, which R uses to represent categorical variables with fixed possible values.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;date&lt;/code&gt; stands for dates.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This row of data types is unique to tibbles and is one of the ways that tibbles try to be more user-friendly than data frames.&lt;/p&gt;
+&lt;h3 id=&#34;test-your-knowledge&#34;&gt;Test your knowledge&lt;/h3&gt;
+&lt;p&gt;::: {.webex-check .webex-box}
+Which types of variables does &lt;code&gt;penguins&lt;/code&gt; contain?
+Integers? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;TRUE&lt;/option&gt;&lt;option value=&#39;&#39;&gt;FALSE&lt;/option&gt;&lt;/select&gt;
+Doubles? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;TRUE&lt;/option&gt;&lt;option value=&#39;&#39;&gt;FALSE&lt;/option&gt;&lt;/select&gt;
+Factors? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;TRUE&lt;/option&gt;&lt;option value=&#39;&#39;&gt;FALSE&lt;/option&gt;&lt;/select&gt;
+Characters? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;TRUE&lt;/option&gt;&lt;option value=&#39;&#39;&gt;FALSE&lt;/option&gt;&lt;/select&gt;
+:::&lt;/p&gt;
+&lt;h2 id=&#34;congratulations&#34;&gt;Congratulations&lt;/h2&gt;
+&lt;p&gt;You&amp;rsquo;ve met R&amp;rsquo;s basic table structures and you have learned how to inspect their contents. When you are ready, go on to the next tutorial.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Networks</title>
       <link>https://models4data2theory.github.io/courses/wkshp_networks/</link>
       <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>

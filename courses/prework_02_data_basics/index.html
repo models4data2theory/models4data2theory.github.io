@@ -64,10 +64,11 @@
   
     
   
-  <meta name="description" content="Integrating Theory and Data in Plant-Pollinator Interactions." />
+  <meta name="description" content="Before you arrive at RMBL.
+Intro to data structures, help pages, and variable types in R." />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://models4data2theory.github.io/courses/" />
+  <link rel="alternate" hreflang="en-us" href="https://models4data2theory.github.io/courses/prework_02_data_basics/" />
 
   
   
@@ -277,8 +278,6 @@
   
 
   
-    <link rel="alternate" href="/courses/index.xml" type="application/rss+xml" title="Integrating Theory and Data in Plant-Pollinator Interactions" />
-  
 
   
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -287,7 +286,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://models4data2theory.github.io/courses/" />
+  <link rel="canonical" href="https://models4data2theory.github.io/courses/prework_02_data_basics/" />
 
   
   
@@ -310,14 +309,19 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="Integrating Theory and Data in Plant-Pollinator Interactions" />
-  <meta property="og:url" content="https://models4data2theory.github.io/courses/" />
-  <meta property="og:title" content="Workshop Content | Integrating Theory and Data in Plant-Pollinator Interactions" />
-  <meta property="og:description" content="Integrating Theory and Data in Plant-Pollinator Interactions." /><meta property="og:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:url" content="https://models4data2theory.github.io/courses/prework_02_data_basics/" />
+  <meta property="og:title" content="Prework - R Data Basics | Integrating Theory and Data in Plant-Pollinator Interactions" />
+  <meta property="og:description" content="Before you arrive at RMBL.
+Intro to data structures, help pages, and variable types in R." /><meta property="og:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="og:updated_time" content="2024-08-23T00:00:00&#43;00:00" />
+      <meta
+        property="article:published_time"
+        content="2024-02-15T00:00:00&#43;00:00"
+      />
     
+    <meta property="article:modified_time" content="2024-02-15T00:00:00&#43;00:00">
   
 
   
@@ -328,15 +332,17 @@
 
   
 
+  
 
 
 
 
-  <title>Workshop Content | Integrating Theory and Data in Plant-Pollinator Interactions</title>
+
+  <title>Prework - R Data Basics | Integrating Theory and Data in Plant-Pollinator Interactions</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="a98a8836220067f37599a398a7c77b75" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="ae243b22fb9dc3e9c9ce918e757de966" >
 
   
   
@@ -774,7 +780,7 @@
 
     
       <ul class="nav docs-sidenav">
-        <li class="active"><a href="/courses/">Workshop Content</a></li>
+        <li class=""><a href="/courses/">Workshop Content</a></li>
     
       
 
@@ -783,7 +789,7 @@
 
 
 
-  <li class=""><a href="/courses/prework_02_data_basics/">Prework - R Data Basics</a></li>
+  <li class="active"><a href="/courses/prework_02_data_basics/">Prework - R Data Basics</a></li>
 
 
 
@@ -825,7 +831,27 @@
       <nav id="TableOfContents">
   <ul>
     <li><a href="#overview">Overview</a></li>
-    <li><a href="#topics">Topics</a></li>
+    <li><a href="#data-frames">Data frames</a>
+      <ul>
+        <li><a href="#what-is-a-data-frame">What is a data frame?</a></li>
+        <li><a href="#a-note-about-palmerpenguins">A note about palmerpenguins</a></li>
+        <li><a href="#one-thing-to-notice">One thing to notice</a></li>
+      </ul>
+    </li>
+    <li><a href="#help-pages">Help pages</a>
+      <ul>
+        <li><a href="#how-to-open-a-help-page">How to open a help page</a></li>
+        <li><a href="#the--syntax">The ? syntax</a></li>
+        <li><a href="#exercises">Exercises</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-types">Data types</a>
+      <ul>
+        <li><a href="#type-codes">Type codes</a></li>
+        <li><a href="#test-your-knowledge">Test your knowledge</a></li>
+      </ul>
+    </li>
+    <li><a href="#congratulations">Congratulations</a></li>
   </ul>
 </nav>
 
@@ -840,70 +866,144 @@
         <div class="docs-article-container">
           
 
-          <h1>Workshop Content</h1>
+          <h1>Prework - R Data Basics</h1>
 
           <div class="article-style">
-            <details class="toc-inpage d-print-none d-xl-none " open>
-  <summary class="font-weight-bold">Table of Contents</summary>
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#overview">Overview</a></li>
-    <li><a href="#topics">Topics</a></li>
-  </ul>
-</nav>
-</details>
-
+            <p><em>Before you arrive at RMBL.</em></p>
+<p>Intro to data structures, help pages, and variable types in R.</p>
 <h2 id="overview">Overview</h2>
-<p>This workshop will help applied researchers better integrate ecological theory and sophisticated data analysis into the study of plant-pollinator networks. We cover the basics of ecological network analysis, with a focus on the statistical and mathematical tools needed to analyze and interpret ecological networks.  We&rsquo;ll cover the basics of network structure, how to fit models to network data, and how to use these models to make predictions about network stability.</p>
-<p>We&rsquo;d like participants to spend a bit of time before the workshop getting familiar with the basics of R and RStudio, as well as reviewing some fundamental mathematical concepts we will rely on heavily in the workshop. We&rsquo;ve provided some self-study modules to help everyone get up to speed, and we ask that participants reserve 5-10 hours before the workshop to work through these &ldquo;pre-work modules&rdquo;.</p>
-<p>During the 3-day workshop, we&rsquo;ll start big (describing network structure), go small (model-fitting for characterizing pairwise interactions), and go big again (linking structure and interaction strengths to network stability). We&rsquo;ll move between data processing, statistical methods, and mathematical theory.  We&rsquo;ll mix lectures, hands-on exercises, and coding sessions.</p>
-<h2 id="topics">Topics</h2>
-
-
-  <ul class="list-unstyled">
-    
-      <li>
-        <h5><a href="/courses/prework_01_install_r/">Prework - R and RStudio</a></h5>
-        <p>Before you arrive at RMBL.
-Tutorial on setting up R and Rstudio.
-</p>
-      </li>
-    
-      <li>
-        <h5><a href="/courses/prework_02_data_basics/">Prework - R Data Basics</a></h5>
-        <p>Before you arrive at RMBL.
-Intro to data structures, help pages, and variable types in R.
-</p>
-      </li>
-    
-      <li>
-        <h5><a href="/courses/wkshp_networks/">Networks</a></h5>
-        <p>     Analysis of structure
-</p>
-      </li>
-    
-      <li>
-        <h5><a href="/courses/wkshp_interactions/">Interactions</a></h5>
-        <p>Fitting models to data
-</p>
-      </li>
-    
-      <li>
-        <h5><a href="/courses/wkshp_dynamics/">Dynamics</a></h5>
-        <p>Dynamics and stability
-</p>
-      </li>
-    
-      <li>
-        <h5><a href="/courses/potential_use_or_interest/">Of Potential Interest</a></h5>
-        <p>Supplementary materials
-</p>
-      </li>
-    
-  </ul>
+<p>In this tutorial, you will learn how to use R to inspect the contents of a data frame or tibble.
+Data frames and tibbles are R&rsquo;s structures for storing tabular data;
+if you inherit a tabular dataset in R, it will almost certainly come as one of these structures.</p>
+<p>Here, you will learn how to do three things with data frames and tibbles:</p>
+<ol>
+<li>Look at the contents of a data frame or tibble</li>
+<li>Open a help page that describes a data frame or tibble</li>
+<li>Identify the variables and their types in a tibble</li>
+</ol>
+<p>You will also meet the <code>palmerpenguins</code> and <code>nycflights</code> datasets. These datasets appear frequently in R examples.</p>
+<p>The readings in this tutorial follow <a href="http://r4ds.had.co.nz/" target="_blank" rel="noopener"><em>R for Data Science</em></a>, sections 3.2 and 5.1.</p>
+<h2 id="data-frames">Data frames</h2>
+<h3 id="what-is-a-data-frame">What is a data frame?</h3>
+<p>A <strong>data frame</strong> is a rectangular collection of values, usually organized so that variables appear in the columns and observations appear in rows.</p>
+<p>Here is an example: the <code>penguins</code> data frame contains observations collected and published by <a href="https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php" target="_blank" rel="noopener">Dr. Kristen Gorman</a> from <a href="https://pallter.marine.rutgers.edu/" target="_blank" rel="noopener">Palmer Station</a>, a long-term environmental research site in Antarctica. The data frame contains 344 rows and 8 columns. Each row represents a penguin, and each column represents a variable that describes the penguin. Each penguin is one of three different species.</p>
+<p>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="images/lter_penguins.png" alt="The three different penguin species in the `palmerpenguins` datasets (credit: Allison Horst)" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Typing <code>penguins</code> into the <code>R</code> console prints the header of the <code>penguins</code> data frame.</p>
+<pre tabindex="0"><code>## # A tibble: 344 × 8
+##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+##  1 Adelie  Torgersen           39.1          18.7               181        3750
+##  2 Adelie  Torgersen           39.5          17.4               186        3800
+##  3 Adelie  Torgersen           40.3          18                 195        3250
+##  4 Adelie  Torgersen           NA            NA                  NA          NA
+##  5 Adelie  Torgersen           36.7          19.3               193        3450
+##  6 Adelie  Torgersen           39.3          20.6               190        3650
+##  7 Adelie  Torgersen           38.9          17.8               181        3625
+##  8 Adelie  Torgersen           39.2          19.6               195        4675
+##  9 Adelie  Torgersen           34.1          18.1               193        3475
+## 10 Adelie  Torgersen           42            20.2               190        4250
+## # ℹ 334 more rows
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;
+</code></pre><h3 id="a-note-about-palmerpenguins">A note about palmerpenguins</h3>
+<p>The code above worked because I&rsquo;ve already loaded the <code>palmerpenguins</code> package in this tutorial: <code>penguins</code> comes in the <code>palmerpenguins</code> package. If you would like to look at <code>penguins</code> on your own computer, you will need to first load <code>palmerpenguins</code>. You can do that in two steps:</p>
+<ol>
+<li>Run <code>install.packages('palmerpenguins')</code> to install <code>palmerpenguins</code> if you do not yet have it.</li>
+<li>Load the package with the <code>library(palmerpenguins)</code> command.</li>
+<li>Run the command <code>data(package = 'palmerpenguins')</code> to load the <code>penguins</code> data frame into your R session.</li>
+</ol>
+<p>After that, you will be able to access any dataset contained in the <code>palmerpenguins</code> package&mdash;until you close R.</p>
+<h3 id="one-thing-to-notice">One thing to notice</h3>
+<p>Did you notice how much information was inside <code>penguins</code>? Me too. Sometimes the contents of a data frame are hard to interpret. Let&rsquo;s get some help with this&hellip;</p>
+<h2 id="help-pages">Help pages</h2>
+<h3 id="how-to-open-a-help-page">How to open a help page</h3>
+<p>You can learn more about <code>penguins</code> by opening its help page. The help page will explain where the <code>palmerpenguins</code> dataset comes from and what each variable in the <code>penguins</code> data frame describes. To open the help page, type <code>?penguins</code> in the code chunk below and then click &ldquo;Run Code&rdquo;.</p>
+<h3 id="the--syntax">The ? syntax</h3>
+<p>You can open a help page for any object that comes with R or with an R package. To open the help page, type a <code>?</code> before the object&rsquo;s name and then run the command, as you did with <code>?penguins</code>. This technique works for functions, packages, and more. If you want to specify getting help for a function or dataset in a particular package, you can use the <code>::</code> operator. For example, <code>?dplyr::filter</code> will open the help page for the <code>filter()</code> function in the <code>dplyr</code> package.</p>
+<p>Notice that objects created by you or your colleagues will not have a help page (unless you make one).</p>
+<h3 id="exercises">Exercises</h3>
+<p>Please answer the following questions.</p>
+<p>::: {.webex-check .webex-box}
+What does the <code>bill_depth_mm</code> variable of <code>penguins</code> describe?  Read the help for <code>?penguins</code> to find out. <select class='webex-select'><option value='blank'></option><option value=''>The depth below the surface that the penguin dives to catch fish</option><option value=''>The species of penguin</option><option value='answer'>The distance across the bill from the chin to the top of the bill</option></select></p>
+<p>How many rows are in the data frame named <code>penguins</code>? <select class='webex-select'><option value='blank'></option><option value=''>34</option><option value=''>300</option><option value='answer'>344</option><option value=''>3344</option></select></p>
+<p>How many columns are in the data frame named <code>penguins</code>? <select class='webex-select'><option value='blank'></option><option value=''>34</option><option value='answer'>8</option><option value=''>0</option><option value=''>10</option></select>
+:::</p>
+<h2 id="data-types">Data types</h2>
+<h3 id="type-codes">Type codes</h3>
+<p>Let&rsquo;s return to the <code>penguins</code> data frame. Run the code chunk below to see the first few rows of <code>penguins</code> again.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">penguins</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## # A tibble: 344 × 8
+##    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+##    &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+##  1 Adelie  Torgersen           39.1          18.7               181        3750
+##  2 Adelie  Torgersen           39.5          17.4               186        3800
+##  3 Adelie  Torgersen           40.3          18                 195        3250
+##  4 Adelie  Torgersen           NA            NA                  NA          NA
+##  5 Adelie  Torgersen           36.7          19.3               193        3450
+##  6 Adelie  Torgersen           39.3          20.6               190        3650
+##  7 Adelie  Torgersen           38.9          17.8               181        3625
+##  8 Adelie  Torgersen           39.2          19.6               195        4675
+##  9 Adelie  Torgersen           34.1          18.1               193        3475
+## 10 Adelie  Torgersen           42            20.2               190        4250
+## # ℹ 334 more rows
+## # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;
+</code></pre><p>Did you notice that a row of three (or four) letter abbreviations appears under the column names of <code>penguins</code>? These abbreviations describe the <em>type</em> of data that is stored in each column of <code>penguins</code>:</p>
+<ul>
+<li>
+<p><code>int</code> stands for integers.</p>
+</li>
+<li>
+<p><code>dbl</code> stands for doubles, or real numbers.</p>
+</li>
+<li>
+<p><code>chr</code> stands for character vectors, or strings.</p>
+</li>
+<li>
+<p><code>dttm</code> stands for date-times (a date + a time).</p>
+</li>
+</ul>
+<p>There are three other common types of variables that aren&rsquo;t used in this dataset but are used in other datasets:</p>
+<ul>
+<li>
+<p><code>lgl</code> stands for logical, vectors that contain only <code>TRUE</code> or <code>FALSE</code>.</p>
+</li>
+<li>
+<p><code>fctr</code> stands for factors, which R uses to represent categorical variables with fixed possible values.</p>
+</li>
+<li>
+<p><code>date</code> stands for dates.</p>
+</li>
+</ul>
+<p>This row of data types is unique to tibbles and is one of the ways that tibbles try to be more user-friendly than data frames.</p>
+<h3 id="test-your-knowledge">Test your knowledge</h3>
+<p>::: {.webex-check .webex-box}
+Which types of variables does <code>penguins</code> contain?
+Integers? <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select>
+Doubles? <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select>
+Factors? <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select>
+Characters? <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select>
+:::</p>
+<h2 id="congratulations">Congratulations</h2>
+<p>You&rsquo;ve met R&rsquo;s basic table structures and you have learned how to inspect their contents. When you are ready, go on to the next tutorial.</p>
           </div>
 
           
@@ -917,6 +1017,19 @@ Intro to data structures, help pages, and variable types in R.
 <div class="post-nav">
   
   
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/courses/prework_01_install_r/" rel="next">Prework - R and RStudio</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/courses/wkshp_networks/" rel="prev">Networks</a>
+  </div>
+  
 </div>
 
           </div>
@@ -924,7 +1037,7 @@ Intro to data structures, help pages, and variable types in R.
         </div>
 
         <div class="body-footer">
-          <p>Last updated on Aug 23, 2024</p>
+          <p>Last updated on Feb 15, 2024</p>
 
           
 
