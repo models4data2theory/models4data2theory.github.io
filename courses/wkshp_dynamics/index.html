@@ -1,0 +1,2091 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Mark Novak" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Dynamics and stability" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://models4data2theory.github.io/courses/wkshp_dynamics/" />
+
+  
+  
+  
+    <meta name="theme-color" content="#0072ff" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.c5fb49caf56e2b73a0f72d0102f2d0ca.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://models4data2theory.github.io/courses/wkshp_dynamics/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="Integrating Theory and Data in Plant-Pollinator Interactions" />
+  <meta property="og:url" content="https://models4data2theory.github.io/courses/wkshp_dynamics/" />
+  <meta property="og:title" content="Dynamics | Integrating Theory and Data in Plant-Pollinator Interactions" />
+  <meta property="og:description" content="Dynamics and stability" /><meta property="og:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-08-23T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-08-23T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Dynamics | Integrating Theory and Data in Plant-Pollinator Interactions</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="544928dd7bfffef9991523d51b3b14c8" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.14a0ed61c6dbd594b9c75193b25be179.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Integrating Theory and Data in Plant-Pollinator Interactions</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Integrating Theory and Data in Plant-Pollinator Interactions</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/schedule"><span>Schedule</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link  active" href="/courses"><span>Content</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+              
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="https://www.rmbl.org" target="_blank" rel="noopener"><span>Venue</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/faqs"><span>FAQs</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/contact"><span>Contact</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/models4data2theory.pdf"><span>Flier</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+              
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="https://rmbl.wufoo.com/forms/my090j60znahiz/" target="_blank" rel="noopener"><span>Apply</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    
+
+
+
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      <form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-md-3 w-100" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <div class="d-flex">
+      <span class="d-md-none pl-1 flex-grow-1 text-left overflow-hidden">
+        
+          Workshop Content
+        
+      </span>
+      <span><i class="fas fa-chevron-down"></i></span>
+    </div>
+  </button>
+
+  
+  <button class="form-control sidebar-search js-search d-none d-md-flex">
+    <i class="fas fa-search pr-2"></i>
+    <span class="sidebar-search-text">Search...</span>
+    <span class="sidebar-search-shortcut">/</span>
+  </button>
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  
+  
+  
+  
+
+  
+  
+    
+
+    
+      
+
+      
+
+
+  
+    
+    
+    
+    
+      
+    
+    
+
+    
+      <ul class="nav docs-sidenav">
+        <li class=""><a href="/courses/">Workshop Content</a></li>
+    
+      
+
+
+  <li class=""><a href="/courses/wkshp_networks/">Networks</a></li>
+
+
+
+  <li class=""><a href="/courses/wkshp_interactions/">Interactions</a></li>
+
+
+
+  <li class="active"><a href="/courses/wkshp_dynamics/">Dynamics</a></li>
+
+
+
+  <li class=""><a href="/courses/potential_use_or_interest/">Of Potential Interest</a></li>
+
+      
+    
+
+    
+      </ul>
+    
+
+  
+</nav>
+
+    </div>
+
+    
+    
+    <div class="d-none d-xl-block col-xl-2 docs-toc">
+      
+
+      <ul class="nav toc-top">
+        <li><a href="#" id="back_to_top" class="docs-toc-title">Contents</a></li>
+      </ul>
+
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#required-r-packages">Required R-packages</a></li>
+    <li><a href="#exponential-growth">Exponential growth</a>
+      <ul>
+        <li><a href="#projections">Projections</a></li>
+        <li><a href="#integration">Integration</a></li>
+        <li><a href="#lets-try-it">Let&rsquo;s try it</a></li>
+      </ul>
+    </li>
+    <li><a href="#logistic-growth">Logistic growth</a>
+      <ul>
+        <li><a href="#lets-try-it-1">Let&rsquo;s try it</a></li>
+        <li><a href="#compact-code">Compact code</a></li>
+      </ul>
+    </li>
+    <li><a href="#stability">Stability</a>
+      <ul>
+        <li><a href="#steady-states">Steady states</a></li>
+        <li><a href="#ball--cup">Ball &amp; cup</a></li>
+        <li><a href="#1Dstability">Analysis</a></li>
+      </ul>
+    </li>
+    <li><a href="#lv-mutualism">LV Mutualism</a>
+      <ul>
+        <li><a href="#isoclines">Isoclines</a></li>
+        <li><a href="#parameter-effects">Parameter effects</a></li>
+        <li><a href="#obligate-vs-facultative">Obligate vs Facultative</a></li>
+      </ul>
+    </li>
+    <li><a href="#saturating-benefits">Saturating benefits</a></li>
+    <li><a href="#multi-species">Multi-species</a></li>
+    <li><a href="#consumer-resource">Consumer-resource</a></li>
+    <li><a href="#final-thoughts">Final thoughts</a></li>
+    <li><a href="#readings">Readings</a></li>
+  </ul>
+</nav>
+
+      
+    </div>
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article">
+
+        <div class="docs-article-container">
+          
+
+          <h1>Dynamics</h1>
+
+          <div class="article-style">
+            <p><em>Dynamics and stability</em></p>
+<!-- ## Motivation -->
+<!-- ## Overview {#overview} -->
+<p>Throughout, we will use the symbol <strong>$N$</strong> to represent population size, as it does in nearly all population models in ecology.</p>
+<p>For a start preceding the introduction of exponential growth, see the <a href="/potential_use_or_interest">Of Potential Interest</a> page.</p>
+<h2 id="required-r-packages">Required R-packages</h2>
+<p>We&rsquo;ll need the <code>deSolve</code> package to integrate our differential equations with respect to time.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># install.packages(&#39;deSolve&#39;, dependencies = TRUE) # use to install if needed</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">deSolve</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="exponential-growth">Exponential growth</h2>
+<p>We will take as our starting point the differential equation,</p>
+<p>$$
+\frac{dN}{dt} = rN .
+$$
+The left-hand-side of this equation is little more than a tangent slope: the change in population size given a change in time (i.e. how much the population size changes over a small amount of time).</p>
+<!-- $$ -->
+<!-- \frac{dN}{dt} = \lim_{\Delta t \rightarrow 0} \frac{N_{t+\Delta t} - N_t}{\Delta t} = \lim_{\Delta t \rightarrow 0}\frac{\Delta N}{\Delta t}, -->
+<!-- $$ -->
+<p>The right hand size is a product of the population size $N$ (at any given instant in time) and $r$ is the intrinsic <em>per capita</em> growth rate.
+The intrinsic growth rate is nothing more than the difference between the rate at which the average individual gives birth, $b$, and the rate at which the average individual die, $d$.
+Together, they left and right-hand sizes of the equation represent the model of <strong>exponential growth</strong>.</p>
+<!-- It's also exactly equivalent to the first expression of change in population size over time (as it should be): $\frac{dN}{dt} = rN$ and since $r = \frac{(b-d)}{N}$, with substitution: $\frac{dN}{dt} = \frac{(b-d)}{N}N$; the $N$s cancel so we are left with our original equation: $\frac{dN}{dt} = b - d$. -->
+<!-- Note that if the total number of births and deaths are equal, then $r = 0$ and $\frac{dN}{dt} = 0$, meaning the *rate of change* in the population is zero---in other words, the population is at equilibrium. Importantly, that does *not* mean that the population size is zero. -->
+<p>The key to the exponential model is that the <em>per capita</em> birth and death rates (and thus $r$) are themselves independent of $N$.
+As a result, the population will growth if $r$ is net positive ($b &gt; d$) and will exhibit exponential growth.
+Conversely, the population will shrink if $r$ is net negative ($b &lt; d$) and will exhibit exponential decay.</p>
+<h3 id="projections">Projections</h3>
+<p>To use the differential equation $\frac{dN}{dt}=rN$ to project population sizes into the future we need to <em>integrate</em> the differential equation.
+Integrating from time $0$ to some time $T$ in the future, and assuming an initial population size at time zero of $N_0$, we get:</p>
+<p>$$
+\int_0^T \frac{dN}{dt} dt = \int_0^T r N dt \implies N_T = N_0e^{rT},
+$$
+where $e$ is Euler&rsquo;s number aka the base of the natural logarithm, which rounded to 5 digits is: 2.71828.
+(Think of Euler&rsquo;s number $e$ as the anti-logarithm $ln$ or $log_e$, just like $2^x$ is the anti-logarithm of $log_2$.)
+Euler&rsquo;s number is deeply rooted to multiplicative (exponential) processes.<br>
+The fact that an exponential shows up in the equation is why the modelis referred to as the model of exponential growth.</p>
+<!-- The expression above allows you to find the exact value of the population size at any timestep in the future if you know the starting value of the population $N_0$ and $r$. For example, if we want to find population size in 4 years ($t = 4$), for a population with a currently size of 100 ($N_0 = 100$) and $r = 1.1$, we get: -->
+<!-- $N_4 = 100 \times e^{(1.1 \times 4)}$; thus $N_4 = 100 \times e^{4.4}$; $e^{4.4} = 81.45087$, so $N_4 = 100 \times 81.45087$, and thus $N_4 = 8145.087$ -->
+<!-- here is one way you could model this in R, calculating that exact value over a time range with a simple `for()` loop. We'll use a starting population size $N_0$ of 12, and $r$ = 0.2: -->
+<img src="/courses/wkshp_dynamics_files/figure-html/exponential growth N_0e^rt-1.png" width="672" />
+<!-- This looks as we expect intuitively: the population is increasing exponentially. -->
+<h3 id="integration">Integration</h3>
+<p>Analytically integrating $\frac{dN}{dt}$ to obtain a projection equation for the exponential model is relatively straightforward.
+Doing so is also possible for other models, such as the Logistic model that we will look at next.
+However, for most population dynamic models in ecology (especially multi-species models), analytical integration isn&rsquo;t possible.
+So what we want to do is to develop a platform for modeling population dynamics that allows us to numerically solve integration problems (i.e. solve with calculations done by the computer rather than analytically), in a way that is extensible to much more complex problems.
+And to learn such approaches, it is definitely best to start with a simple model&mdash;and the extremely simple exponential growth model is perfect for this.</p>
+<p>The tool we will work with is the <code>ode()</code> function of the <code>deSolve</code> package.
+<code>deSolve</code> implements multiple different numerical methods for solving ODEs (ordinary differential equations), which are the kinds of equations we will be working with in this workshop
+(equations that have $\frac{dN}{dt}$ on the left-hand side).
+The <code>deSolve</code> package is very powerful and allows us to numerically solve even very complex multi-species network models (which we will be working up to throughout the day).
+But that flexibility means that it has a complex structure, which can admittedly be somewhat confusing when you are first starting to use it.</p>
+<p>The function <code>ode()</code> requires a minimum of four input arguments, <code>ode(y, times, func, parms)</code>:</p>
+<ul>
+<li><code>y</code> is initial starting size of the variable (i.e. $N(0)$)</li>
+<li><code>times</code> are the vector of time points $t$ at which we want <code>ode</code> to spit out the values of $N(t)$
+<ul>
+<li>e.g., <code>times = 1:100</code> or <code>times = seq(from = 1, to = 200, by = 0.2)</code></li>
+</ul>
+</li>
+<li><code>func</code> is our ODE model for $dN/dt$ (written as a function with its own arguments)</li>
+<li><code>parms</code> is a vector of the ODE model&rsquo;s named parameters</li>
+</ul>
+<p>The argument <code>func</code> (i.e. our ODE model) that we provide <code>ode</code> must be defined in a particular way that may feel a little redundant with the input that we pass to the <code>ode</code> function because they have to be working in parallel.
+The arguments that the function must have are (in order): (1) times; (2) the variable(s)&mdash;here, population size; and (3) the parameters used in our model.</p>
+<p>In our code below, we will also take advantage of a facet of R that is not very well known.
+You can create a vector in R where you name the elements, for example <code>my.vector = c(marmot = 3.2, pika = 47.6, ground.squirrel = 18.4)</code>.
+With a named vector, you can then access the elements via their name indicated with quotation marks:
+for the example above if you entered <code>my.vector['pika']</code> you would get back <code>47.6.</code>
+We can use that with our parameters to clearly name which parameter is which.
+Here we really just have one parameter (<code>r</code>) and one response / output variable (<code>N</code>), but still, it is useful to name them <code>parameters &lt;- c(r = 0.2)</code>.</p>
+<h3 id="lets-try-it">Let&rsquo;s try it</h3>
+<p>We&rsquo;ll use the exact same setup in terms of values of $r$ and $N(0)$ as we did in the plot above.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># library(deSolve)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># set initial conditions of response variable</span>
+</span></span><span class="line"><span class="cl"><span class="n">popn</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">N</span> <span class="o">=</span> <span class="m">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Parameters</span>
+</span></span><span class="line"><span class="cl"><span class="n">parameters</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">r</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Time sequence</span>
+</span></span><span class="line"><span class="cl"><span class="n">times</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># &#34;exp.model&#34; stands for &#34;exponential growth model&#34; </span>
+</span></span><span class="line"><span class="cl"><span class="n">exp.model</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">popn</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># exponential growth model, dNdt = r*N:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dNdt</span> <span class="o">&lt;-</span> <span class="n">parameters[</span><span class="s">&#39;r&#39;</span><span class="n">]</span> <span class="o">*</span> <span class="n">popn[</span><span class="s">&#39;N&#39;</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># the function must return a list (even if it is just one element):</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">dNdt</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Solve the ODE</span>
+</span></span><span class="line"><span class="cl"><span class="n">out</span> <span class="o">&lt;-</span> <span class="nf">ode</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">popn</span><span class="p">,</span> <span class="n">times</span> <span class="o">=</span> <span class="n">times</span><span class="p">,</span> <span class="n">func</span> <span class="o">=</span> <span class="n">exp.model</span><span class="p">,</span> <span class="n">parms</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Plot the output</span>
+</span></span><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&#34;population size, N&#34;</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&#34;blue&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><img src="/courses/wkshp_dynamics_files/figure-html/exponential growth-1.png" width="672" />
+<p>Great&mdash;this looks identical to our previous plot, which is what we wanted.
+If you view it with <code>View(out)</code> you can see that there are two columns in the output from <code>ode</code>, one for time and one for population size.</p>
+<p><strong>Exercise:</strong>
+Alter the code above to run a simulation of exponential growth over 200 time steps, for a population with an initial size of 202 individuals and $r$ = 0.225.</p>
+<!-- **optional:** write a `for` loop (or a vectorized version, e.g. with one of the `apply` functions) to calculate population growth with the same parameters but with a difference equation (not a differential equation) approach. Plot both curves on the same graph to show how the differential equation gives us the (true) faster growth relative to a difference equation. -->
+<h2 id="logistic-growth">Logistic growth</h2>
+<p>As discussed above, the exponential growth model approximates reality by assuming that per-capita birth and death rates are <em>constant</em>&mdash;an individual has a set number of offspring and a fixed chance of dying over a given time period.
+If you are competing with lots and lots of conspecifics to get enough food, or you&rsquo;re under heightened risk of disease, it&rsquo;s likely that your chance of dying in a given time will go up, and that the number of offpsring you produce will go down.
+There are many different empirical datasets from around the world and a range of different kinds of organisms (plants, animals, microbes, etc.) showing this pattern of <em>negative density-dependence</em>&mdash;in other words, $r$ is not a constant with respect to population size, but instead changes as a function of population size.</p>
+<p>To model density-dependent growth, we&rsquo;ll start from the exponential growth equation, which again, is:</p>
+<p>$$
+\frac{dN}{dt} = rN  .
+$$</p>
+<p>If we divide both sides by $N$, we get</p>
+<p>$$
+\frac{1}{N}\frac{dN}{dt} = r .
+$$</p>
+<p>The left-hand side $\left( \frac{1}{N}\frac{dN}{dt} \right)$ we have the term for per-capita population growth rate, and on the right hand side we have $r$ (which we are again here defining as a constant).
+This equation may strike you as almost tautological, since we defined $r$ as the per-capita population growth rate, but perhaps another way to think of it is that it is reassuring that re-arranging the equation brings us back to our definitional equalities.</p>
+<p>The point here is that we have re-arranged things to have the per-capita population growth rate on the left (as the response variable), and a constant on the right.
+Now we can change the right-hand side from a constant to some function of population size to reflect density dependence.</p>
+<p>One of the simplest way to incorporate density dependence is to assume that $\left( \frac{1}{N}\frac{dN}{dt} \right)$ is a <em>linear</em> function of density;
+this ultimately yields the <em>logistic growth equation</em>.</p>
+<p>In formulating linear density dependence, the hypothetical <em>maximum</em> possible per-capita population growth rate  occurs when the population is approaching zero (i.e., no possible density effects);
+obviously that value would never be realized if the population were actually zero, so think about $\left( \frac{1}{N}\frac{dN}{dt} \right)$ as approaching $r$ as $N$ tends towards 0.
+A line with a negative slope (decreasing function of $N$) would at some point then cross the $N$-axis, at which point the per-capita population growth rate would be zero;
+and would keep going down as the population size increases (at which point the per-capita populationgrowth rate would be <em>negative</em>).</p>
+<p>Here is what such a linear formulation would look like:</p>
+<img src="/courses/wkshp_dynamics_files/figure-html/logistic growth graphical representation-1.png" width="672" />
+<p>Next, we will re-define $\left( \frac{1}{N}\frac{dN}{dt} \right)$.
+In our formulation of the exponential growth model, $r$ was the constant or fixed per-capita population growth rate.
+Now, we will set $r$ to be the (intrinsic) <em>maximum</em> population growth rate in the absence of competition.
+In other words, $r$ is the <em>y</em>-intercept of the graph above.</p>
+<p>We can also define the $N$-intercept of the line. Population biologists call the $N$-intercept the <em>carrying capacity</em>, $K$.
+At the carrying capacity, then, is where the population stops changing in population size, since the per-capita population growth rate is (net) zero.
+Births and deaths are still happening, but they cancel each other out; all deaths are replaced by an equal number of births.</p>
+<p>Let&rsquo;s add those labels to our plot:</p>
+<img src="/courses/wkshp_dynamics_files/figure-html/logistic growth graphical derivation-1.png" width="672" />
+<p>With those definitions in mind, let&rsquo;s get back to our task of setting the per-capita population growth rate $\frac{dN}{dt}\frac{1}{N}$ to the linear function above, using the generic formula for a line of $y = m x + b$:</p>
+<p>$$
+\frac{1}{N}\frac{dN}{dt} =  r - \frac{r}{K} N,
+$$
+where we have replaced
+$x \rightarrow N$,
+$b \rightarrow r$ is the intercept,
+and $m \rightarrow -\tfrac{r}{K}$ is the slope.
+The slope ($m$), is defined as &ldquo;rise&rdquo; (change in the <em>y</em>-axis) over &ldquo;run&rdquo; (change in the <em>x</em>-axis).
+As the population moves on the <em>x</em>-axis from 0 to $K$, the per capita growth rate changes from $r$ to 0.
+Thus, the &ldquo;rise&rdquo; is $-r$ and the &ldquo;run&rdquo; is $K$, so $m = \frac{-r}{K}$.</p>
+<p>Rearranging by factoring out $r$, we have
+$$
+\frac{dN}{dt}\frac{1}{N} = r\left(1 - \frac{N}{K}\right)
+$$
+and thus, reverting to thinking about the population growth rate, we have
+$$
+\frac{dN}{dt} = rN\left(1 - \frac{N}{K}\right) .
+$$</p>
+<p>This is the <strong>logistic growth equation</strong> that is ubiquitous in population ecology.</p>
+<h3 id="lets-try-it-1">Let&rsquo;s try it</h3>
+<p>We&rsquo;ll model logistic growth using <code>deSolve</code> as we did above for exponential growth.
+We actually don&rsquo;t have to change very much;
+the time part is the same and we still keeping track of just one population.
+We&rsquo;ll need to change the formulation of the model itself, of course, and add parameter $K$ to the parameter vector.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># library(deSolve)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># set initial conditions of response variable</span>
+</span></span><span class="line"><span class="cl"><span class="n">popn</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">N</span> <span class="o">=</span> <span class="m">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Parameters</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># only change from exponential is adding `K`</span>
+</span></span><span class="line"><span class="cl"><span class="n">params</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">r</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">K</span> <span class="o">=</span> <span class="m">250000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Time sequence</span>
+</span></span><span class="line"><span class="cl"><span class="n">times</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># function for ode</span>
+</span></span><span class="line"><span class="cl"><span class="n">logistic.model</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">popn</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># logistic growth equation:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dNdt</span> <span class="o">&lt;-</span> <span class="n">params[</span><span class="s">&#39;r&#39;</span><span class="n">]</span> <span class="o">*</span> <span class="n">popn[</span><span class="s">&#39;N&#39;</span><span class="n">]</span> <span class="o">*</span> <span class="p">(</span><span class="m">1</span> <span class="o">-</span> <span class="n">popn[</span><span class="s">&#39;N&#39;</span><span class="n">]</span> <span class="o">/</span> <span class="n">params[</span><span class="s">&#39;K&#39;</span><span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">dNdt</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Solve the ODE</span>
+</span></span><span class="line"><span class="cl"><span class="n">out</span> <span class="o">&lt;-</span> <span class="nf">ode</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">popn</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">times</span> <span class="o">=</span> <span class="n">times</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">func</span> <span class="o">=</span> <span class="n">logistic.model</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">parms</span> <span class="o">=</span> <span class="n">params</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Plot the output</span>
+</span></span><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">     <span class="n">ylab</span> <span class="o">=</span> <span class="s">&#34;population size, N&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">     <span class="n">col</span> <span class="o">=</span> <span class="s">&#34;blue&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><img src="/courses/wkshp_dynamics_files/figure-html/logistic growth-1.png" width="672" />
+<p>Again, looks good&mdash;we see what we expect, which is that the population grows exponentially initially, but as the population increases, that growth slows down until it plateaus out at the steady state value of $K = 250,000$.</p>
+<h3 id="compact-code">Compact code</h3>
+<p>For the code above, we have just three input values that need specifying: the population size $N$ (a variable), and two fixed parameters: the (maximum) per-capita population growth rate $r$ and the carrying capacity $K$.
+The code above refers to different places where we could find those input values (separating the variable from the parameters), and it works well enough.</p>
+<p>But we can make the coding a little easier on ourselves&mdash;and perhaps more importantly, more transparent and scalable&mdash;with just a little bit of additional code &ldquo;magic&rdquo;.
+The code chunk below does the same thing as the code above, but the code for the model itself is much more compact and streamlined, using the variable / parameter names themselves (e.g., <code>r</code>) rather than having to reference the name of the object in which to look for those (e.g. <code>params['r']</code>).</p>
+<p>Again, for exponential or logistic growth, it isn&rsquo;t a very big deal to have to include the name of an object like <code>params</code>, but as our models become more complicated, it makes our life much easier to just include the name of the variables. We can do that with the addition of just a single line of code:</p>
+<p><code>with(as.list(c(popn, params)), {...})</code></p>
+<p>This line of code allows us to <em>directly use the names of the variables and parameters</em> in the objects (<code>popn</code> and <code>params</code>) that we included in that argument&mdash;and we could pass along as many objects as we wanted, making sure that the values within them are named, e.g. <code>params &lt;- c(r = 0.2, K = 250000)</code>, but <em>not</em> <code>params &lt;- c(0.2, 250000)</code>.</p>
+<p>To break down that line of code function-by-function:</p>
+<ul>
+<li><code>c()</code> combines the two vectors (<code>popn</code> and <code>params</code>) into a single vector (you could include as many vectors here as you would like)</li>
+<li><code>as.list</code> turns that vector into a list (which is what the next argument, <code>with</code> requires)</li>
+<li><code>with</code> is the real &ldquo;magic&rdquo;: it creates an environment from that list, within which R looks for <em>named</em> values</li>
+</ul>
+<p>The ellipses (<code>{...}</code>) in the curly braces in the line of code above signal that we have to include the code for model itself <em>inside</em> the arguments to <code>with()</code> and specifically within the curly braces&mdash;see below for how that is done, usually across multiple lines of code.</p>
+<p>Let&rsquo;s take a look at how that is actually implemented.
+The key difference between the code chunk below and the one above is that we can now specify our model much more directly, compactly, and readably:
+<code>dNdt &lt;- r*N*(1 - N/K)</code> rather than <code>dNdt &lt;- params['r'] * popn['N'] * (1 - popn['N'] / params['K'])</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># library(deSolve)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># set initial condition (at time zero) of our response variable</span>
+</span></span><span class="line"><span class="cl"><span class="n">popn</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">N</span> <span class="o">=</span> <span class="m">12</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Parameters</span>
+</span></span><span class="line"><span class="cl"><span class="n">params</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">r</span> <span class="o">=</span> <span class="m">0.2</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">            <span class="n">K</span> <span class="o">=</span> <span class="m">250000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Time sequence</span>
+</span></span><span class="line"><span class="cl"><span class="n">times</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># specify the model</span>
+</span></span><span class="line"><span class="cl"><span class="n">logistic.model</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">popn</span><span class="p">,</span> <span class="n">parameters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># `with` line tells code where to find the named elements in the model</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">with</span><span class="p">(</span><span class="nf">as.list</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">popn</span><span class="p">,</span> <span class="n">params</span><span class="p">)),</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># logistic growth equation--very transparent!:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dNdt</span> <span class="o">&lt;-</span> <span class="n">r</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="p">(</span><span class="m">1</span> <span class="o">-</span> <span class="n">N</span><span class="o">/</span><span class="n">K</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># again, for `ode` need to return a list, even if it&#39;s just a vector</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">dNdt</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Solve the ODE</span>
+</span></span><span class="line"><span class="cl"><span class="n">out</span> <span class="o">&lt;-</span> <span class="nf">ode</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">popn</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">times</span> <span class="o">=</span> <span class="n">times</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">func</span> <span class="o">=</span> <span class="n">logistic.model</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">           <span class="n">parms</span> <span class="o">=</span> <span class="n">params</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Plot the output</span>
+</span></span><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">     <span class="n">ylab</span> <span class="o">=</span> <span class="s">&#34;population size, N&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">     <span class="n">col</span> <span class="o">=</span> <span class="s">&#34;blue&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><img src="/courses/wkshp_dynamics_files/figure-html/logistic growth using with-1.png" width="672" />
+<p>As hoped, we get back exactly the same graph as with our prior code.</p>
+<p><strong>Exercise</strong>
+Run the logistic growth code above, and then re-run it with a much larger value of $r$ of your choice, but less than $r = 2$ (keep $K$ the same).
+Re-name the variable <code>out</code> when you re-run it so you have access to the data from both runs.
+Plot both curves on the same graph, with two different colors.</p>
+<!-- **optional exercise:** An alternative formulation of the logistic growth equation is to define $\alpha = 1 / K$, where $\alpha$ is the per-capita effect of one individual on the growth rate of the population. We can then substitute $\alpha$ that back into the classic logistic growth equation we defined above: -->
+<!-- $$ -->
+<!-- \frac{dN}{dt} = rN(1 - \alpha N) -->
+<!-- $$ -->
+<!-- Using the same starting value of $N$ and same values of $r$ and $K$,  -->
+<!-- write code with `deSolve` for this formulation of the logistic growth equation.  -->
+<!-- You should get a graph back that is identical to the ones above. -->
+<h2 id="stability">Stability</h2>
+<h3 id="steady-states">Steady states</h3>
+<p>The steady-state abundance for a differential equation $f(N)=\frac{dN}{dt}$ is the value $N^<em>$ where $f(N^</em>)=0$ (i.e. the special population size $N^*$ where the population growth rate is zero).
+Births and deaths are still happening, but they cancel each other out; the system is at equilibrium.</p>
+<p>For the logistic model, there are two possible steady states (i.e. two ways to have $\frac{dN}{dt}=0$):
+The (ecologically) trivial equilibrium, $N^<em>=0$, and the non-trivial equilibrium, $N^</em>=K$.
+The first of these is discernible by recognizing that everything in $f(N)$ is multiplied by $N$.
+The second is solved for with some algebra:</p>
+<p><strong>Step 1:</strong> Set
+$$
+f(N)=\frac{dN}{dt}=0
+$$
+<strong>Step 2:</strong> Solve for $N^<em>$:
+$$
+\frac{dN}{dt}=rN\left(1-\frac{N}{K}\right)=0
+$$
+$$
+rN-\frac{rN^2}{K}=0
+$$
+$$
+r =\frac{rN^2}{K}
+$$
+$$
+N =\frac{N^2}{K}
+$$
+$$
+NK =N^2
+$$
+$$
+N^</em>=K
+$$</p>
+<!-- #### Let's try it -->
+<!-- Use [Dynamics_X3.R](/courses_Rscripts/Dynamics_X3.R) to investigate how the values of $r$, $K$, and $N_0$ affect the maximum value of $\frac{dN}{dt}$.\ -->
+<!-- How does changing the value of $N_0$ affect the final equilibrium population size? -->
+<h3 id="ball--cup">Ball &amp; cup</h3>
+<p>Through simulation, we found $N^<em>=K$ to be a &ldquo;stable&rdquo; in that $\underset{t \to \infty}\lim N(t) = K$ for any initial value $N$ except $N(0) = 0$.
+Indeed, we found $N^</em>=0$ to be &ldquo;unstable&rdquo;;
+even an infinitesimally small value of $N(0)&gt;0$ eventually got us to $K$,
+with larger values of $r$ getting us there faster.</p>
+<p>To aid intuition, we can describe the driving force behind these dynamics by a landscape<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>,
+with possible population sizes along the x-axis and the steepness of the landscape reflecting corresponding values of $\frac{dN}{dt}$. A ball rolling around this landscape represents any given population size.
+Gravity causes the ball to roll fast when the landscape is steep (i.e. when $r$ is large), but the ball will slow down the closer it gets to $N^<em>$.
+The equilibrium $N^</em>=0$ is at the top of an inverted bowl, so any push (any <em>pulse perturbation</em>) to it will cause the population size to roll away from 0.
+Conversely, $N^*= K$ is at the bottom of a bowl, so populations that are perturbed away from $K$ will simply roll back to $K$. Intuitively, the steeper the landscape, the faster the dynamics will be (i.e. the faster the population will return to $K$).</p>
+<img src="/courses/wkshp_dynamics_files/figure-html/potentialLogistic-1.png" width="336" />
+<p>We can evaluate these claims formally. First, by the definition of &ldquo;asymptotic stability&rdquo;, an equilibrium $N^<em>$ will be stable to a sufficiently small pulse perturbation if
+$$
+\lambda = \frac{df(N^</em>)}{dN} &lt; 0 .
+$$
+Recall that $f(N) = dN/dt$ and that for the logistic we have $dN/dt = r N (1- N/K)$.
+Therefore we have
+$$
+\lambda = \frac{d}{dN}\left(rN-\frac{rN^2}{K}\right) =r-\frac{2r N}{K} = r- \frac{2r K}{K} = r-2r = -r  .
+$$
+This shows that $\lambda$ will be negative for any value $N^*&gt;0$ as long as $r &gt; 0$.
+It thereby confirms our intuition that $K$ is a <em>stable</em> equilibrium.
+It also confirms our intuition that larger values of $r$ confer greater <em>resilience</em> to the population;
+it will bounce back from perturbations faster the higher its intrinstic growth rate.</p>
+<p>To preview where we&rsquo;re heading, note that $-r$ is the <em>eigenvalue</em> ($\lambda$) of $f(N^*=K)$.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<h3 id="1Dstability">Analysis</h3>
+<p>Why is it that $\lambda$ (i.e. the derivative of $dN/dt$ with respect to $N$ evaluated at $N^<em>$) tells us about the stability of $N^</em>$?</p>
+<p>To understand this, let&rsquo;s consider not how our population size $N$ changes in response to a small pulse perturbation but rather what happens to the size of the perturbation itself.
+This will prove to be a subtle yet useful change in perspective.
+If $N^*$ is indeed stable, then the size of the perturbation $x$ should shrink to zero.</p>
+<p>We can think of the size of the population immediately after the perturbation to be
+$$
+N(t) = N^* + x
+$$
+The rate of change of that population will be
+$$
+\frac{d  N(t)}{dt} = \frac{d (N^* + x)}{dt} = f(N^* + x)
+$$
+Because $N^<em>$ is a constant with respect to time $t$, it follows that the rate of change of the perturbation is the same. That is,
+$$
+\frac{d x(t)}{dt} = \frac{d N(t)}{dt} = f(N^</em>+x)
+$$</p>
+<p>Now that doesn&rsquo;t seem to have gotten us anywhere given that $f(N^* + x)$ could be a super complicated function.
+However, regardless of how complicated $f(N^* + x)$ is, we can always approximate it! We do so by using a Taylor expansion of $f(N^* + x)$ around $N^<em>$.
+(See <a href="of_potential_utility_or_interest">Of Potential Utility or Interest</a> page.)
+That is,
+$$
+f(N^</em> + x) = f(N^*)  + \frac{d f(N^{*})}{dN} \cdot  x + \frac{d^2 f(N^{*})}{dN^2} \cdot \frac{x^2}{2!} + + \frac{d^3 f(N^{*})}{dN^3} \cdot \frac{x^3}{3!} + \dots
+$$
+Notice two things:</p>
+<ol>
+<li>
+<p>By definition, $f(N^*)=0$, so the first term drops away.</p>
+</li>
+<li>
+<p>If $x$ is sufficiently small (i.e. $x &laquo; 1$), then the 3rd, 4th, etc. terms are vanishingly small.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+</li>
+</ol>
+<p>Therefore,
+$$
+f(N^* + x) \approx  \frac{d f(N^<em>)}{dN} \cdot x
+$$
+which is equivalent to writing
+$$
+\frac{d x(t)}{dt} \approx \lambda \cdot x
+$$
+In other words, so long as the original perturbation $x$ is small enough, the dynamics of the perturbation will be well-approximated as a simple exponential process! If $\lambda &lt; 0$, then the perturbation will exhibit exponential decay towards 0 over time and thus $N^</em>$ will be <em>stable</em>.
+If $\lambda &gt; 0$, then the perturbation will exhibit exponential growth and thus $N^<em>$ will be <em>unstable</em>.
+And if $\lambda = 0$, then the perturbation will not change in size;
+$N^</em>$ will then be <em>neutrally stable</em>.
+Our change in perspective to following the size of the perturbation, rather than the population itself, allowed us to do this.</p>
+<h2 id="lv-mutualism">LV Mutualism</h2>
+<p>Next, we&rsquo;ll extend our single-species model of logistic growth to consider two interacting species.</p>
+<p>The Lotka-Volterra model for mutualism represents two species positively affecting the population growth rate of each other. The model assumes that the population of the two species ($N_1$ and $N_2$) grows logistically and that the interaction benefits received by the populations increases linearly with increasing population size of their mutualistic partner, which is encoded in the following equations:</p>
+<p>$$
+\frac{dN_1}{dt}=r_1N_1\left(\frac{K_1-N_1+\alpha_{12}N_2}{K_1}\right)
+\
+\frac{dN_2}{dt}=r_2N_2\left(\frac{K_2-N_2+\alpha_{21}N_1}{K_2}\right)
+$$</p>
+<p>The parameters $\alpha_{12}$ and $\alpha_{21}$ are coefficients representing the strength of mutualism.
+Note that if we set them to zero (i.e. $\alpha_{12} = \alpha_{21} = 0$) we recover the logistic model for each species.</p>
+<p><strong>Exercise 1</strong>: Let&rsquo;s focus just on the equation for species 1:
+$$
+\frac{dN_1}{dt} = r_1N_1\left(\frac{K_1-N_1+\alpha_{12}N_2}{K_1}\right) .
+$$
+Assume that $r_1$=0.2$\frac{1}{day}$, $\alpha_{12}$=0.5$[dimensionless]$, and $K_1$=30$\frac{indiv}{m^{2}}$.
+Let&rsquo;s also assume that species $N_1$ is at a density above it&rsquo;s carrying capacity: $N_1=35$$\frac{indiv}{m^{2}}$. Now plug in two different values for the density of species 2: $N_2$=14$\frac{indiv}{m^{2}}$ and $N_2$=8$\frac{indiv}{m^{2}}$.
+For each of these two values, solve the entire equation for the instantaneous rate of change of the population: $\frac{dN_1}{dt}$.
+Is the population increasing or decreasing?
+Reflect on the two outcomes, keeping in mind that species 1 was over its carrying capacity the whole time.
+Do you see how this equation captures the effects of mutualism?
+<strong>Make sure to track units when plugging numbers!</strong>
+Units help you to better understand models and closely track your calculations.</p>
+<p><strong>Exercise 2</strong>: Based on your calculations, reflect on how the relationship between $N$ and the carrying capacity, $K$, is affected by the population density of the mutualist species and the strength of the mutualism coefficients, $\alpha_{ij}$.
+In your thinking, consider how this model captures the effects of mutualism on the fundamental niche.</p>
+<h3 id="isoclines">Isoclines</h3>
+<p>Now we will develop a graphical understanding of the behavior of the Lotka-Volterra model for mutualism by analyzing their isoclines.
+Isoclines help us define when the two populations are neither growing nor declining.
+The combination of densities of species 1 and species 2 that results in a zero per-capita growth rate for species 1 can be found by setting $\frac{dN_1}{dt}=0$ and solving for $N_1$ and $N_2$.
+The same can be done for species 2 by setting $\frac{dN_2}{dt}=0$ and solving for $N_1$ and $N_2$.</p>
+<p><strong>Exercise 3</strong>: Solve for the species 1 isoclines by setting $\frac{dN_1}{dt}=0$.
+Remember to consider both trivial and non-trivial steady states</p>
+<p><strong>Exercise 4</strong>: Solve for the species 2 isoclines by setting $\frac{dN_2}{dt}=0$.
+Remember to consider both trivial and non-trivial steady states</p>
+<p><strong>Exercise 5</strong>: By now you have solved for the species 1 and species 2 isoclines individually.
+You should have 4 expressions in total: two describing the species 1 equilibrium (one trivial and one non-trivial) and two describing the species 2 equilibrium (one trivial and one non-trivial).
+Work in groups to plot the 4 isoclines - you may use a piece of paper or the whiteboard.
+Note that for consistency with my slides, the y-axis should represent species 1&rsquo;s density ($N_1$ ) and the x-axis should represent species 2&rsquo;s density ($N_2$), as follows:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="/images/dynamics/phaseplane_04.png" alt="PhasePlane" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p><strong>Exercise 6</strong>: Revisit the different definitions of stability provided at the end of day 1.
+Identify which of those definitions are appropriate for characterizing the stability of the L-V model of mutualism.</p>
+<h3 id="parameter-effects">Parameter effects</h3>
+<p><strong>Understanding</strong> $\alpha_{12}$ <strong>and</strong> $\alpha_{21}$ <strong>and mutualism strength</strong></p>
+<p>The strength of mutualism can vary as you shift $\alpha_{12}$ and $\alpha_{21}$ with higher values representing stronger mutualism.</p>
+<p><strong>Exercise 7</strong>: Discuss with your group how you expect the strength of mutualism to affect the likelihood of stable coexistence between species.
+Do you expect that strong or weak mutualism will allow the persistence of both species?</p>
+<p>Now, we will explore isoclines under different parameter values by first loading the code that contains the model.
+If you looking this in the website, you will need first to open and download the following R code.
+On Mac, you can just right-click on the hyperlink.
+On Windows, you will need to open, copy all, and then save as R code:</p>
+<p><a href="/courses_Rscripts/LV_2species.R">Two-species Lotka-Volterra mutualism model</a></p>
+<p>In class, we will work off the R markdown, which will load the code using source.</p>
+<p><strong>Exercise 8</strong>: Test your hypothesis using the <code>lvMutualismInteractive()</code> function.
+Copy and paste the code chunk below in the R console to fix all parameters except $\alpha_{12}$ and $\alpha_{21}$, which you can manipulate.</p>
+<pre tabindex="0"><code class="language-{.r," data-lang="{.r,">lvMutualismInteractive(N1_0=10, r1=10.0, K1=100, N2_0=10, r2=10.0, K2=75)
+</code></pre><p>This will create an interactive plot where you can manipulate parameters.
+Just click on the gear icon on the left-top corner and the manipulator will appear.
+By default, the plot that is produced shows the abundance of species 1 and 2 over time.
+However, you can also visualize what&rsquo;s called a &ldquo;phase diagram&rdquo; by choosing &ldquo;Phase Space&rdquo; from the drop-down menu at the top of the interactive panel.
+While &ldquo;abundance over time&rdquo; plots $N_1$ and $N_2$ against $t$, the &ldquo;Phase Space&rdquo; setting plots $N_1$ against $N_2$.
+In this plot, the magenta &lsquo;X&rsquo; represents the starting point of the trajectory and the magenta triangle represents the ending point of the same trajectory shown in the timeseries.
+The plot also shows you the location of the $N_1$ and $N_2$ isoclines, the lines where $dN_1/dt$ and $dN_2/dt$ are zero, respectively, which you already solved for.</p>
+<p><strong>Tip</strong>: Run the model with the following $(\alpha_{12},\alpha_{21})$ pairs: $(0.2,0.3)$, $(0.7, 0.6)$, and $(1, 1.2)$.
+How does interaction strength affect stability across this range of values?</p>
+<p><strong>Note</strong>: if you see a warning in the R Console about DLSODA, do not worry, this is expected with the extreme dynamics observed at high alpha values.</p>
+<h3 id="obligate-vs-facultative">Obligate vs Facultative</h3>
+<p>Up until this point, we have only modeled <strong>facultative mutualism</strong> where species can enjoy mutualistic benefits to grow more than their carrying capacity, but do not rely on them.
+other words, in the absence of a mutualist partner, all populations have been able to equilibrate to a positive carrying capacity.
+The Lotka-Volterra model for mutualism also allows us to model <strong>obligate mutualism</strong>, where populations require the benefits of mutualism to maintain their abundances above zero.
+We can obtain obligate mutualism in the model by making the carrying capacities $K_1$ or $K_2$ negative.
+A negative carrying capacity means that population trajectories will continuously be drawn towards zero, unless the benefits provided by mutualist partners are sufficient to maintain positive abundance.</p>
+<p><strong>Exercise 9</strong>: Discuss with your group how you expect facultative or obligate mutualism will affect the possibility of stable coexistence (i.e., persistence of both species).
+Which do you think is more likely to facilitate stable coexistence?</p>
+<p><strong>Exercise 10</strong>: Reflect as a group on the overarching conclusions about the effect of strong/weak and obligate/facultative mutualism have on stable coexistence, based on the summary figure:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="/images/dynamics/mutualism_summary.png" alt="mutualism_summary" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="saturating-benefits">Saturating benefits</h2>
+<p>Recall that in the L-V model above, the benefit received by each mutualist from their interaction increases linearly with the abundance of their mutualistic partner.
+This linear benefit causes the positive feedback loop that drives the abundance of the populations to infinity.
+However, we know that mutualistic benefits do not grow forever but they rather saturate (e.g., fixed number of ovules per plant, consumption saturation just like in other consumer-resource interactions, etc.).
+We can model that saturation for example by using a Holling type II functional response, which replaces the linear type I functional response exhibited by the model we have used so far, see equations above.</p>
+<p><strong>Exercise 11</strong>: Sketch a diagram approximating how isoclines of the L-V model might change with saturation of benefit accrual between both mutualists.</p>
+<h2 id="multi-species">Multi-species</h2>
+<p>The code you downloaded in the section above (<code>LV_2species.R</code>) contains the Lotka-Volterra model of mutualism and the ode solver.
+The equations in such source code are:</p>
+<pre tabindex="0"><code class="language-{.r," data-lang="{.r,">dNdtFunc = function(t, states, param)
+    {
+        with(as.list(c(states, param)), 
+        {
+            dN1dt = r1 * N1 * ((K1-N1+alpha12*N2) / K1)
+            dN2dt = r2 * N2 * ((K2-N2+alpha21*N1) / K2)
+            list(c(dN1dt, dN2dt))
+        })
+    }
+</code></pre><p>You can see that the equations are written for each species, and that the effect of each species interaction is written as a term indicating the effect of each species on its mutualistic partner.
+For example, the effect of species 2 on the population growth rate of species 1 is $\alpha_{12} N_2$ (written in the code as <code>alpha12 * N2</code>) on the right side of the equation for $dN1/dt$ (written in the code as <code>dN1dt</code>).
+Imagine how many lines of code and terms per equation you would need for a networks of, for example, 50 species of plants and 100 species of pollinators.
+You would need 150 equations (and lines of code) and as many terms per equation as the number of interactions each of those 150 species has, determined by the network.
+That is clearly not an efficient way to code and think about the problem, plus an error-prone approach when writing manually each interaction per each equation.</p>
+<p>A much more efficient approach is thinking in matrices (which encode the networks of species interactions) and connect those matrices to the summation notation in equations.
+To take this next step, we will use the Lotka-Volterra model of mutualistic networks used by Bascompte et al 2006 (<em>Science</em>, Vol 312, pp. 431-433).
+This model is simply an extension of the L-V model we used above with linear functional responses, with the only difference that the intra-specific competition encoded in the $(1-N_1/K_1)$ is now represented as self-limitation.
+There are also minor differences in notation, with subscripts <em>P</em> and <em>A</em>, indicating that a variable or parameter corresponds to that of a plant or animal, respectively.
+The equations of this network model are:
+$$
+\frac{dN_i^P}{N_i^Pdt} = r_i^P - s_i^P N_i^P + \sum_{j=1}^{n} \alpha_{ij}^A N_j^A
+$$</p>
+<p>$$
+\frac{dN_j^A}{N_j^Adt} = r_j^A - s_j^A N_j^A + \sum_{i=1}^{m} \alpha_{ji}^P N_i^P
+$$
+Note that these equations are written for <em>per-capita</em> growth rate but you can recover the <em>population</em> growth rate by multiplying both sides of the equation by the corresponding population size (i.e., $N_i^P$ or $N_j^A$) as
+$$
+\frac{dN_i^P}{dt} = r_i^P N_i^P - s_i^P (N_i^P)^2 + \sum_{j=1}^{n} \alpha_{ij}^A N_j^A N_i^P
+$$
+$$
+\frac{dN_j^A}{dt} = r_j^A N_j^A - s_j^A (N_j^A)^2 + \sum_{i=1}^{m} \alpha_{ji}^P N_i^P N_j^A
+$$</p>
+<p>Now, we need to connect the summations of these equations to the matrix encoding the plant-pollinator network of interest.
+For that, we will go back to our toy network we worked on in day 1:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="/images/dynamics/bipartite_network.png" alt="bipartite_network" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p><strong>Exercise 12</strong>: Write the system of 6 differential equations of the Lotka-Volterra model for mutualism that represents this network. To help, the equations of plant species 1 and 3 are
+$$
+\frac{dN_1^P}{dt} = (r_1^P - s_1^P N_1^P + \alpha_{11}^A N_1^A + \alpha_{12}^A N_2^A + \alpha_{13}^A N_3^A) N_1^P
+$$
+$$
+\frac{dN_3^P}{dt} = (r_3^P - s_3^P N_3^P + \alpha_{31}^A N_1^A) N_3^P
+$$
+Work on writing the equations for plant species 2 and the equations of the three species of animals.</p>
+<p><strong>NOTE:</strong> We will work together in class to understand the summation and connect it to the network !</p>
+<p>Now that we have understood together the summation and its connection to the plant-pollinator network, we will see how the computer can help us with building the system of differential equations using matrices.</p>
+<p>Let&rsquo;s start by saving the matrix representing the toy network</p>
+<pre tabindex="0"><code class="language-{.r," data-lang="{.r,">interactionMatrix = matrix(c(1, 1, 1, 1, 1, 0, 1, 0, 0), 
+                           nrow = 3, byrow = TRUE)
+print(interactionMatrix)
+</code></pre><p>We will now generate a matrix with alphas drawn from a uniform random distribution for all <em>P</em> x <em>A</em> combinations for lack of a better parameter choice (i.e. we don&rsquo;t have empirical estimates of mutualism strengths).
+For that, we will extract the number of plants and pollinators from the adjacency matrix and use them as input for the function that draws values from random uniform distribution in R (<code>runif()</code>):</p>
+<pre tabindex="0"><code class="language-{.r," data-lang="{.r,"># Get the number of rows (plant species) and columns (animal species) of the matrix encoding the plant-pollinator network (interactionMatrix)
+num_plants &lt;- nrow(interactionMatrix)
+num_animals &lt;- ncol(interactionMatrix)
+
+# Number of interactions
+L=num_plants*num_animals
+
+# Set the mean and variance of the random uniform distribution
+mean_alpha &lt;- 0.5
+variance &lt;- 0.2
+
+# Generate the 3x3 matrix with values from a uniform random distribution
+matrix_alpha &lt;- runif(L, mean_alpha - variance/2, mean_alpha + variance/2)
+matrix_alpha &lt;- matrix(matrix_alpha, nrow = num_plants, byrow = TRUE)
+
+# Print the matrix
+print(matrix_alpha)
+</code></pre><p>To illustrate how we will use matrix operations to build the multi-species model,
+we will start by showing what you obtain when multiplying element-by-element a randomly generated matrix with all possible interaction strengths between plant and animal species (matrix of alphas) with the adjacency matrix that represents the network of plant-pollinator interactions.
+That is, we obtain the interaction strengths corresponding to the network we are studying:
+$$
+\text{alpha matrix} \odot \text{interaction matrix}
+$$
+$$
+=\begin{bmatrix}
+0.46 &amp; 0.53 &amp; 0.51 \\
+0.58 &amp; 0.51 &amp; 0.53 \\
+0.41 &amp; 0.58 &amp; 0.46
+\end{bmatrix} \odot
+\begin{bmatrix}
+1 &amp; 1 &amp; 1 \\
+1 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 0
+\end{bmatrix}
+$$
+$$
+=\begin{bmatrix}
+0.46 &amp; 0.53 &amp; 0.51 \\
+0.58 &amp; 0.51 &amp; 0 \\
+0.41 &amp; 0 &amp; 0
+\end{bmatrix}
+$$
+Note that this alpha matrix might not be the one you generated as the code chunk above generate a new random matrix each time.
+Its purpose is only to illustrate what happens when you multiply element-by-element two matrices, especially when one has ones and zeroes (i.e., the adjacency matrix)</p>
+<p>The R code that performs such multiplication is</p>
+<pre tabindex="0"><code class="language-{.r," data-lang="{.r,"># Multiplying element-by-element the interaction matrix and the matrix with interaction strengths:
+alpha_realized &lt;- interactionMatrix * matrix_alpha
+
+print(&#34;Interaction strengths realized:&#34;)
+print(alpha_realized) 
+</code></pre><p>We will now calculate the sum of mutualistic effects that each animal population provides to each plant population.
+For example, such sum for plant species 1 is:
+$$
+\alpha_{11}^{A} N_1^{A} + \alpha_{12}^{A} N_2^{A} + \alpha_{13}^{A} N_3^{A}
+$$
+To calculate such contribution to plant growth, we will first randomly generate the abundance of each animal population:</p>
+<pre tabindex="0"><code class="language-{.r," data-lang="{.r,"># Set the mean and variance for uniform random distribution
+mean_N &lt;- 0.5
+var_N &lt;- 0.1
+
+# Draw animal abundances from uniform random distribution
+N_A &lt;- runif(num_animals, mean_N - var_N/2, mean_N + var_N/2)
+
+# Ensure N_A is a matrix for proper matrix multiplication (only in R, Matlab allow multiplying matrices and vectors as one does mathmatically)
+N_A_matrix &lt;- matrix(N_A, nrow = length(N_A), ncol = 1)
+
+print(&#34;Vector of animal abundances:&#34;)
+print(N_A_matrix)
+</code></pre><p>To illustrate what the following code will do mathematically, here is an example of the matrix shown above with the realized alphas multiplying the vector of animal abundances, which gives us the benefits to population growth each plant species gets from their interactions with pollinators:
+$$
+\begin{bmatrix}
+0.46 &amp; 0.53 &amp; 0.51 \\
+0.58 &amp; 0.51 &amp; 0 \\
+0.41 &amp; 0 &amp; 0
+\end{bmatrix}
+\times
+\begin{bmatrix}
+0.52 \\
+0.46 \\
+0.54
+\end{bmatrix}
+$$
+$$
+=\begin{bmatrix}
+0.46 \times 0.52 + 0.53 \times 0.46 + 0.51 \times 0.54 \\
+0.58 \times 0.52 + 0.51 \times 0.46 + 0 \\
+0.41 \times 0.52 + 0 + 0
+\end{bmatrix}
+$$
+$$
+=\begin{bmatrix}
+0.76 \\
+0.54 \\
+0.21
+\end{bmatrix}
+$$</p>
+<pre tabindex="0"><code class="language-{.r," data-lang="{.r,"># Summed effects on plants across the pollinators that visit them
+effects_onP&lt;-(interactionMatrix * matrix_alpha) %*% N_A_matrix
+
+print(&#34;Summed effects of pollinators on plants:&#34;)
+print(effects_onP)
+</code></pre><p>Now that we understand the basics, we will generate all the parameters and initial conditions to run the multi-species model:</p>
+<pre tabindex="0"><code class="language-{.r," data-lang="{.r,">
+# Set the mean and variance for random distribution
+mean_r &lt;- 0.3
+var_r &lt;- 0.1
+
+mean_s &lt;- 0.2
+var_s &lt;- 0.1
+
+mean_N &lt;- 0.5
+var_N &lt;- 0.1
+
+# Generate intrinsic growth rates and self-limitations vectors for plants and animals with values from their respective uniform random distributions
+rP &lt;- runif(num_plants, mean_r - var_r/2, mean_r + var_r/2)
+rA &lt;- runif(num_animals, mean_r - var_r/2, mean_r + var_r/2)
+sP &lt;- runif(num_plants, mean_s - var_s/2, mean_s + var_s/2)
+sA &lt;- runif(num_animals, mean_s - var_s/2, mean_s + var_s/2)
+
+# Generate initial conditions vectors for plants and animals with values from their respective uniform random distributions
+N_P &lt;- runif(num_plants, mean_N - var_N/2, mean_N + var_N/2)
+N_A &lt;- runif(num_animals, mean_N - var_N/2, mean_N + var_N/2)
+
+# Ensure N_P and N_A are matrices for proper matrix multiplication (only in R, Matlab allow multiplying matrices and vectors as one does mathmatically)
+N_P_matrix &lt;- matrix(N_P, nrow = length(N_P), ncol = 1)
+N_A_matrix &lt;- matrix(N_A, nrow = length(N_A), ncol = 1)
+
+# Define the variables for output
+variables &lt;- list(
+  &#34;Plant intrinsic growth rates:&#34; = rP,
+  &#34;Animal intrinsic growth rates:&#34; = rA,
+  &#34;Plant self-limitations:&#34; = sP,
+  &#34;Animal self-limitations:&#34; = sA,
+  &#34;Plant initial abundances:&#34; = N_P_matrix,
+  &#34;Animal initial abundances:&#34; = N_A_matrix
+)
+
+# Print the variables with spacing
+for (variable_name in names(variables)) {
+  cat(variable_name, &#34;\n&#34;)
+  print(variables[[variable_name]])
+  cat(&#34;\n&#34;)
+}
+</code></pre><p>Now, we form the equations and obtain the population growth rate at the initial time step:</p>
+<pre tabindex="0"><code class="language-{.r," data-lang="{.r,"># Equations
+dPdt &lt;- (rP - sP * N_P_matrix + (matrix_alpha * interactionMatrix) %*% N_A_matrix) * N_P_matrix
+
+dAdt &lt;- (rA - sA * N_A_matrix + (matrix_alpha * interactionMatrix) %*% N_P_matrix) * N_A_matrix
+
+# Printing results
+print(&#34;dN_i^P/dt:&#34;)
+print(dPdt)
+
+cat(&#34;\n&#34;)
+
+print(&#34;dN_i^A/dt:&#34;)
+print(dAdt)
+</code></pre><p>So, all together the code to run the multi-species model is:</p>
+<pre tabindex="0"><code class="language-{.r," data-lang="{.r,"># Load adjacency matrix:
+interactionMatrix = matrix(c(1, 1, 1, 1, 1, 0, 1, 0, 0), nrow = 3, byrow = TRUE)
+
+# Initialize variables
+time_steps &lt;- 12
+results &lt;- matrix(0, nrow = time_steps, ncol = 2)
+
+# Get the number of rows (plant species) and columns (animal species) of the matrix encoding the plant-pollinator network (interactionMatrix)
+num_plants &lt;- nrow(interactionMatrix)
+num_animals &lt;- ncol(interactionMatrix)
+
+# Number of interactions
+L=num_plants*num_animals
+
+
+# Set the mean and variance for uniform random distributions
+mean_alpha &lt;- 0.5
+var_alpha &lt;- 0.2
+
+mean_r &lt;- 0.3
+var_r &lt;- 0.1
+
+mean_s &lt;- 0.2
+var_s &lt;- 0.1
+
+mean_N &lt;- 0.5
+var_N &lt;- 0.1
+
+# Generate the 3x3 matrix with values from a uniform random distribution
+matrix_alpha &lt;- runif(L, mean_alpha - var_alpha/2, mean_alpha + var_alpha/2)
+matrix_alpha &lt;- matrix(matrix_alpha, nrow = num_plants, byrow = TRUE)
+
+# Generate intrinsic growth rates and self-limitations vectors for plants and animals with values from their respective uniform random distributions
+rP &lt;- runif(num_plants, mean_r - var_r/2, mean_r + var_r/2)
+rA &lt;- runif(num_animals, mean_r - var_r/2, mean_r + var_r/2)
+sP &lt;- runif(num_plants, mean_s - var_s/2, mean_s + var_s/2)
+sA &lt;- runif(num_animals, mean_s - var_s/2, mean_s + var_s/2)
+
+# Generate initial conditions vectors for plants and animals with values from their respective uniform random distributions
+N_P &lt;- runif(num_plants, mean_N - var_N/2, mean_N + var_N/2)
+N_A &lt;- runif(num_animals, mean_N - var_N/2, mean_N + var_N/2)
+
+# Ensure N_P and N_A are matrices for proper matrix multiplication (only in R, Matlab allow multiplying matrices and vectors as one does mathmatically)
+N_P_matrix &lt;- matrix(N_P, nrow = length(N_P), ncol = 1)
+N_A_matrix &lt;- matrix(N_A, nrow = length(N_A), ncol = 1)
+
+for (i in 1:time_steps) {
+  # Calculate dP/dt and dA/dt
+  dPdt &lt;- (rP - sP * N_P_matrix + (matrix_alpha * interactionMatrix) %*% N_A_matrix) * N_P_matrix
+  dAdt &lt;- (rA - sA * N_A_matrix + (matrix_alpha * interactionMatrix) %*% N_P_matrix) * N_A_matrix
+  
+  # Update N_P_matrix and N_A_matrix
+  N_P_matrix &lt;- N_P_matrix + dPdt
+  N_A_matrix &lt;- N_A_matrix + dAdt
+  
+  # Store the results
+  results[i, ] &lt;- c(N_P_matrix[1], N_A_matrix[1])
+}
+
+# Print the results
+print(results)
+</code></pre><p><strong>Exercise 13</strong>: Play with the parameters of the model (i.e., the mean of the random distributions) to obtain different results based on what you learned from the model of two species.
+Can you obtain different mode behaviors such as populations growing to infinity or extinctions?
+You will need to also change the number of time steps to see the different behaviors.</p>
+<p><strong>Exercise 14</strong>: How do you think the addition of saturating benefits would change the results of this model?
+See the work by Okuyama &amp; Holland 2008 (Ecology Letters, 11: 208–216) who modified this model by incorporating a hyperbolic functional response to represent that the beneﬁts to mutualists saturate with the densities of mutualistic species with which they interact.</p>
+<h2 id="consumer-resource">Consumer-resource</h2>
+<p>For about 70 years, theoretical research analyzing the population dynamics of mutualisms roughly only assumed Lotka-Volterra-type models (sensu Valdovinos 2019) to conduct their studies (e.g., Kostitzin 1934; Gause and Witt 1935; Vandermeer and Boucher 1978; Wolin and Lawlor 1984; Bascompte et al. 2006; Okuyama and Holland 2008; Bastolla et al. 2009).
+Those models represent mutualistic relationships as direct positive effects between species using a (linear or saturating) positive term in the growth equation of each mutualist that depends on the population size of its mutualistic partner.
+While this research increased our understanding of the effects of facultative, obligate, linear, and saturating mutualisms on the long-term stability of mutualistic systems, a more sophisticated understanding of their dynamics (e.g., transients) and of phenomena beyond the simplistic assumptions of the Lotka-Volterra-type models was extremely scarce.
+A more mechanistic consumer-resource approach to mutualisms was proposed by Holland and colleagues (Holland et al. 2005; Holland and DeAngelis 2010) and further developed by Valdovinos et al. (2013, 2016, 2018).
+This approach decomposes the net effects assumed to be always positive by Lotka-Volterra-type models into the biological mechanisms producing those effects, including the gathering of resources and exchange of services.</p>
+<p>The key advance of the consumer-resource model developed by Valdovinos et al. (2013) is separating the dynamics of the plants’ vegetative biomass from the dynamics of the plants’ floral rewards.
+This separation allows
+(i) tracking the depletion of floral rewards by pollinator consumption,
+(ii) evaluating exploitative competition among pollinator species consuming the floral rewards provided by the same plant species, and
+(iii) incorporating the capability of pollinators (adaptive foraging) to behaviorally increase their foraging effort on the plant species in their diet with more floral rewards available.
+Another advance of this model is incorporating the dilution of conspecific pollen carried by pollinators, which allows tracking competition among plant species for the quality of pollinator visits.</p>
+<p>A conceptual diagram of the model, focused on the consumer-resource part is:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="/images/dynamics/Valdovinos_et_al_model_diagram.png" alt="Valdovinos_et_al_model_diagram" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>This model defines the population dynamics (over time <em>t</em>) of each plant (Eq. 1) and pollinator (Eq. 2) species of the network, as well as the dynamics of floral rewards (Eq. 3) of each plant species, and the foraging effort (Eq. 4) that each pollinator species (per capita) assigns to each plant species as follows:</p>
+<p>$$
+\frac{{dp_i}}{{dt}} = \gamma_i \sum_{j \in A_i} e_{ij} \sigma_{ij} V_{ij} - \mu_i^P p_i \quad (Eq. 1)
+$$</p>
+<p>$$
+\frac{{da_j}}{{dt}} = \sum_{i \in P_j} c_{ij} V_{ij} b_{ij} \frac{{R_i}}{{p_i}} - \mu_j^A a_j \quad (Eq. 2)
+$$</p>
+<p>$$
+\frac{{dR_i}}{{dt}} = \beta_i p_i - \phi_i R_i - \sum_{j \in A_i} V_{ij} b_{ij} \frac{{R_i}}{{p_i}} \quad (Eq. 3)
+$$</p>
+<p>$$
+\frac{{d\alpha_{ij}}}{{dt}} = G_j \alpha_{ij} \left( c_{ij} \tau_{ij} b_{ij} R_i - \sum_{k \in P_j} \alpha_{kj} c_{kj} \tau_{kj} b_{kj} R_k \right) \quad (Eq. 4)
+$$</p>
+<p>And the biological processes and assumptions of this model are:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="/images/dynamics/Table1_ValdovinosOikos2023.PNG" alt="Table 1 from Valdovinos et al 2023, Oikos" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Despite its apparent complexity, this model provides clear and consistent results, which are:</p>
+<ol>
+<li><strong>Generalist pollinators have more available food (floral rewards) to them than specialist pollinators</strong>, which results in generalist pollinator species exhibiting much higher abundances than specialist pollinator species, particularly in nested networks and in networks without adaptive foraging (AF, see point 4).</li>
+<li><strong>Generalist plants receive more visits than their specialist counter-parts</strong> but this does not necessarily results in generalist plant species having higher abundances than specialist plants because competition for seed recruitment to adults (not pollination) determines the final abundance of plants (see point 6, below).</li>
+<li><strong>Generalist plants receive much higher quality of visits than specialist plants in highly nested and moderately connected networks (typical of empirical networks) because they receive high-quality of visits by specialist pollinator species</strong>, which allow generalist plant species to persist.
+Conversely, specialist plant species typically go extinct in these networks without adaptive foraging (AF) because they receive very low quality of visits by generalist pollinators carrying very diluted conspecific pollen. This is because generalist pollinators carry high heterospecific pollen loads when they do not exhibit adaptive foraging in highly nested networks.</li>
+<li><strong>Pollinators with adaptive foraging (AF) assign higher per-capita foraging efforts to specialist plants</strong> in highly nested and moderately connected networks, because those plants have more rewards available to them (less consumed) than generalist plants that are much more visited.
+This re-distribution of foraging efforts causes niche partitioning of floral rewards among pollinator species and of pollination services among plant species, which allows specialist species of plants and pollinators to coexist with their generalist counter-parts.
+That is, after this re-distribution of foraging efforts by generalist pollinators from generalist to specialist plants, specialist pollinators have more floral rewards available to them because generalist pollinators are not depleting the rewards of generalist plants.
+Similarly, specialist plants persist because they receive much higher quality of visits of generalist pollinator focusing their foraging efforts on specialist plants and, therefore, carry mostly their conspecific pollen.
+This niche partitioning is illustrated by the figure below published in Valdovinos et al 2016 (Ecology Letters):</li>
+</ol>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="/images/dynamics/Fig1_ValdovinosOikos2016.PNG" alt="Fig1_ValdovinosOikos2016.png" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Which Valdovinos et al 2016 also finds for 8 species of bumblebees in RMBL, see panel
+(a) for empirical data and panel
+(b) for model results showing that pollinators, in a per-capita basis, prefer specialist
+(i.e., those visited by one or a few pollinator species) over generalist plants:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="/images/dynamics/Fig5_ValdovinosOikos2016.PNG" alt="Fig5_ValdovinosOikos2016" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ol start="5">
+<li><strong>Plant species exhibit two stable attractors</strong>, <strong>they either go to their carrying capacity reduced by inter-specific competition</strong> <strong>or they go extinct.</strong>
+Plant final abundances when they persist is determined by their intra-specific and inter-specific competition for other resources that are not pollination, which determine seed recruitment to adults.
+Whether a plant population goes to one or the other attractor depends on the plant population receiving a minimum of quality of visits from their pollinators, which occurs (or not) during the model transient dynamics. This is in fact a threshold dynamics which is common to all models of obligate mutualisms (Hale &amp; Valdovinos 2021, Ecology &amp; Evolution).</li>
+<li><strong>Competition for resources that determine seed recruitment to adults (not pollination) affects the final plant abundance</strong> when the minimum quality of visits is reached and the plant population persists.
+That is, pollination determines whether the plant population persists or not, but not its final abundance when the plant persists. In fact, the plant abundance at equilibrium is $p_i \approx \frac{K_l}{w_i}$ where $K_l = 1 - \sum_{l \neq i} u_l p_l$ , $w_i$ is intra-specific and $u_l$ inter-specific competition for recruitment.</li>
+<li><strong>If the floral rewards of a plant population drop below the R* needed for pollinators to persist, the plant population goes extinct because pollinators stop visiting it.</strong>
+Floral rewards available to pollinators determine whether a plant population attracts fast enough the pollinator foraging efforts during the transient dynamics to meet its minimum quality of visits to persist.
+Dropping below R* starts a non-reversible process to plant extinction, which can occur when a plant receives too many low-quality visits that deplete the rewards below R* but do not meet the quality of visits needed for the plant to persist.
+This behavior of the model can be seen, for example, when a plant species enters the network with very low abundance, which requires the plant to produce more floral rewards than its neighbors to attract the pollinator foraging effort fast enough to receive high quality of visits.
+Generalist plants at low abundance are the ones that most likely would go extinct via this mechanism, especially in overly-connected networks.
+An illustration of this behavior can be found in the figure below from Valdovinos et al 2023, which studies plan invasions:</li>
+</ol>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="/images/dynamics/Fig2_ValdovinosOikos2023.PNG" alt="Fig2_ValdovinosOikos2023" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ol start="8">
+<li><strong>This R* keeps the meaning given by Tilman but results from an ideal-free-distribution process</strong>, in which pollinators keep changing their foraging efforts until the rewards of all plant populations reach the same value, R*, after which foraging efforts of pollinators stop changing and the model dynamics cruises to its equilibrium.</li>
+</ol>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>We hope that after these three days you have learned something new in terms of empirical and theoretical research in plant-pollinator systems and how to integrate both types of research.
+During the first day, we learned the basics of network structure and how to manipulate empirical data to build plant-pollinator networks, and analyze them.
+During the second day, we learned about statistical approaches to analyze species interactions which can provide more detailed understanding to our plant-pollinator and network studies.
+During the third day, we went back to dynamics studied mathematically from simple and phenomenological models of one species to phenomenological models of networks to a more mechanistic consumer-resource model of plant-pollinator networks.</p>
+<p>We wish you the best in your next scientific steps and that you can integrate some of what you learned in these three days into your research.</p>
+<h2 id="readings">Readings</h2>
+<p>Hale, K.R.S., &amp; Valdovinos, F.S. (2021) Ecological theory of mutualism: Qualitative patterns in two-species population models. <em>Ecology and Evolution,</em> 00, 1-21.</p>
+<p>Okuyama, T., &amp; Holland, J. N. (2008). Network structural properties mediate the stability of mutualistic communities. <em>Ecology letters</em>, <em>11</em>(3), 208-216.</p>
+<p>Valdovinos, F.S., Moisset de Espanés, P., Flores J.D, Ramos-Jiliberto, R. (2013) Adaptive foraging allows the maintenance of biodiversity of pollination networks. <em>Oikos</em> 122: 907-917.</p>
+<p>Valdovinos, F.S., Brosi, B.J., Briggs, H.M., Moisset de Espanés, P., Ramos-Jiliberto, R., Martinez, N.D. (2016). Niche partitioning due to adaptive foraging reverses effects of nestedness and connectance on pollination network stability. <em>Ecology Letters</em>, 19, 1277-1286.</p>
+<p>Valdovinos, F.S. (2019) Mutualistic Networks: Moving closer to a predictive theory. <em>Ecology Letters</em>, 22, 1517-1534, <a href="DOI:10.1111/ele.13279">DOI:10.1111/ele.13279</a></p>
+<p>Valdovinos, F.S. &amp; Marsland III, R. (2021) Niche theory for mutualism: A graphical approach to plant-pollinator network dynamics. <em>The American Naturalist</em>, 197, 393-404.</p>
+<p>Valdovinos, F. S., Dritz, S., &amp; Marsland III, R. (2023). Transient dynamics in plant-pollinator networks: Fewer but higher quality of pollinator visits determines plant invasion success. <em>Oikos</em>. <a href="https://doi.org/10.1111/oik.09634" target="_blank" rel="noopener">https://doi.org/10.1111/oik.09634</a></p>
+<p>Vandermeer, J. H., &amp; Goldberg, D. E. (2013). <em>Population ecology: first principles</em>. Princeton University Press. pp 225-238.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>This is not just an analogy! In fact, for certain systems we can determine what this landscape (defined by the <em>system potential</em> $\phi = -\int_{-\infty}^{\infty} \frac{dN}{dt} dN$) actually looks like quantitatively.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>We have only a single eigenvalue because we have only a single variable. Later, for systems with $n$ variables, we will have $n$ eigenvalues.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>What counts as &ldquo;sufficiently small&rdquo; depends on how nonlinear the function is.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+          </div>
+
+          
+
+
+
+          
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/courses/wkshp_interactions/" rel="next">Interactions</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/courses/potential_use_or_interest/" rel="prev">Of Potential Interest</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          <p>Last updated on Aug 23, 2024</p>
+
+          
+
+
+
+          
+
+
+
+
+          
+
+
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+  </div>
+
+  <div class="page-footer">
+    
+    
+  </div>
+
+      
+
+    
+    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/gh/bryanbraun/anchorjs@4.2.2/anchor.min.js" integrity="sha512-I7w3ZdSFzw5j3jU3ZkNikBNeIrl3i+hEuEdwNmqUJvwNcaBUNcijnP2gd9DtGlgVYDplfjGoD8vTNsID+lCjqg==" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":false}</script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+</body>
+</html>
