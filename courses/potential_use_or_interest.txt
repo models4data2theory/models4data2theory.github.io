@@ -954,7 +954,7 @@ $$
 ### 2D stability
 
 To evaluate the stability of the 2-dimensional steady state $\{N_1^{\*}, N_2^{\*}\}$ will extend the formal "linear stability analysis" that we applied to the 1-dimensional logistic model (#1Dstability). 
-In essence, our criterion for stability will be that $f_i^'(N_i^{\*}, N_j^{\*}) < 0$ for both species, which we will determine using the system's (two) eigenvalues. 
+In essence, our criterion for stability will be that $f_i^{\'}(N_i^{\*}, N_j^{\*}) < 0$ for both species, which we will determine using the system's (two) eigenvalues. 
 Because we're now considering 2 dimensions, we have to consider not only how $N_i$ responds to a perturbation $x_i$ and how $N_j$ responds to a perturbation $x_j$, but also how $N_i$ responds to $x_j$ and how $N_j$ responds to $x_i$. 
 We'll therefore be considering a 2x2 matrix of responses.
 

@@ -109,7 +109,7 @@ if you inherit a tabular dataset in R, it will almost certainly come as one of t
 
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
-    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;images/lter_penguins.png&#34; alt=&#34;The three different penguin species in the `palmerpenguins` datasets (credit: Allison Horst)&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;https://models4data2theory.github.io/images/prework/lter_penguins.png&#34; alt=&#34;The three different penguin species in the `palmerpenguins` datasets (credit: Allison Horst)&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
   &lt;/div&gt;&lt;/figure&gt;
 &lt;/p&gt;
 &lt;p&gt;Typing &lt;code&gt;penguins&lt;/code&gt; into the &lt;code&gt;R&lt;/code&gt; console prints the header of the &lt;code&gt;penguins&lt;/code&gt; data frame.&lt;/p&gt;
@@ -147,9 +147,12 @@ if you inherit a tabular dataset in R, it will almost certainly come as one of t
 &lt;h3 id=&#34;exercises&#34;&gt;Exercises&lt;/h3&gt;
 &lt;p&gt;Please answer the following questions.&lt;/p&gt;
 &lt;p&gt;::: {.webex-check .webex-box}
-What does the &lt;code&gt;bill_depth_mm&lt;/code&gt; variable of &lt;code&gt;penguins&lt;/code&gt; describe?  Read the help for &lt;code&gt;?penguins&lt;/code&gt; to find out. &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;The depth below the surface that the penguin dives to catch fish&lt;/option&gt;&lt;option value=&#39;&#39;&gt;The species of penguin&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;The distance across the bill from the chin to the top of the bill&lt;/option&gt;&lt;/select&gt;&lt;/p&gt;
-&lt;p&gt;How many rows are in the data frame named &lt;code&gt;penguins&lt;/code&gt;? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;34&lt;/option&gt;&lt;option value=&#39;&#39;&gt;300&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;344&lt;/option&gt;&lt;option value=&#39;&#39;&gt;3344&lt;/option&gt;&lt;/select&gt;&lt;/p&gt;
-&lt;p&gt;How many columns are in the data frame named &lt;code&gt;penguins&lt;/code&gt;? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;34&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;8&lt;/option&gt;&lt;option value=&#39;&#39;&gt;0&lt;/option&gt;&lt;option value=&#39;&#39;&gt;10&lt;/option&gt;&lt;/select&gt;
+What does the &lt;code&gt;bill_depth_mm&lt;/code&gt; variable of &lt;code&gt;penguins&lt;/code&gt; describe?  Read the help for &lt;code&gt;?penguins&lt;/code&gt; to find out.
+&lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;The depth below the surface that the penguin dives to catch fish&lt;/option&gt;&lt;option value=&#39;&#39;&gt;The species of penguin&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;The distance across the bill from the chin to the top of the bill&lt;/option&gt;&lt;/select&gt;&lt;/p&gt;
+&lt;p&gt;How many rows are in the data frame named &lt;code&gt;penguins&lt;/code&gt;?
+&lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;34&lt;/option&gt;&lt;option value=&#39;&#39;&gt;300&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;344&lt;/option&gt;&lt;option value=&#39;&#39;&gt;3344&lt;/option&gt;&lt;/select&gt;&lt;/p&gt;
+&lt;p&gt;How many columns are in the data frame named &lt;code&gt;penguins&lt;/code&gt;?&lt;/p&gt;
+&lt;p&gt;&lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;&#39;&gt;34&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;8&lt;/option&gt;&lt;option value=&#39;&#39;&gt;0&lt;/option&gt;&lt;option value=&#39;&#39;&gt;10&lt;/option&gt;&lt;/select&gt;
 :::&lt;/p&gt;
 &lt;h2 id=&#34;data-types&#34;&gt;Data types&lt;/h2&gt;
 &lt;h3 id=&#34;type-codes&#34;&gt;Type codes&lt;/h3&gt;
@@ -205,9 +208,7 @@ Integers? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank
 Doubles? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;TRUE&lt;/option&gt;&lt;option value=&#39;&#39;&gt;FALSE&lt;/option&gt;&lt;/select&gt;
 Factors? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;TRUE&lt;/option&gt;&lt;option value=&#39;&#39;&gt;FALSE&lt;/option&gt;&lt;/select&gt;
 Characters? &lt;select class=&#39;webex-select&#39;&gt;&lt;option value=&#39;blank&#39;&gt;&lt;/option&gt;&lt;option value=&#39;answer&#39;&gt;TRUE&lt;/option&gt;&lt;option value=&#39;&#39;&gt;FALSE&lt;/option&gt;&lt;/select&gt;
-:::&lt;/p&gt;
-&lt;h2 id=&#34;congratulations&#34;&gt;Congratulations&lt;/h2&gt;
-&lt;p&gt;You&amp;rsquo;ve met R&amp;rsquo;s basic table structures and you have learned how to inspect their contents. When you are ready, go on to the next tutorial.&lt;/p&gt;</description>
+:::&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -3081,7 +3082,7 @@ N_i^{*}  = K_i - a_{ij} N_j
 $$&lt;/p&gt;
 &lt;h3 id=&#34;2d-stability&#34;&gt;2D stability&lt;/h3&gt;
 &lt;p&gt;To evaluate the stability of the 2-dimensional steady state ${N_1^{*}, N_2^{*}}$ will extend the formal &amp;ldquo;linear stability analysis&amp;rdquo; that we applied to the 1-dimensional logistic model (#1Dstability).
-In essence, our criterion for stability will be that $f_i^&amp;rsquo;(N_i^{*}, N_j^{*}) &amp;lt; 0$ for both species, which we will determine using the system&amp;rsquo;s (two) eigenvalues.
+In essence, our criterion for stability will be that $f_i^{&#39;}(N_i^{*}, N_j^{*}) &amp;lt; 0$ for both species, which we will determine using the system&amp;rsquo;s (two) eigenvalues.
 Because we&amp;rsquo;re now considering 2 dimensions, we have to consider not only how $N_i$ responds to a perturbation $x_i$ and how $N_j$ responds to a perturbation $x_j$, but also how $N_i$ responds to $x_j$ and how $N_j$ responds to $x_i$.
 We&amp;rsquo;ll therefore be considering a 2x2 matrix of responses.&lt;/p&gt;
 &lt;p&gt;We&amp;rsquo;ll again be re-framing to consider not the dynamics of the abundances $N_i$ and $N_j$ but will instead consider the dynamics of the perturbations $x_i$ and $x_j$. That is, we write
