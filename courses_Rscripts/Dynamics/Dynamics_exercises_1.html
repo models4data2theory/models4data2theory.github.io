@@ -12,7 +12,7 @@
 <meta name="author" content="Berry Brosi" />
 
 
-<title>Exercises: Networks</title>
+<title>Exercises: Dynamics</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1584,7 +1584,7 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore">Exercises: Networks</h1>
+<h1 class="title toc-ignore">Exercises: Dynamics</h1>
 <h4 class="author">Berry Brosi</h4>
 <h4 class="date">August 2024</h4>
 
@@ -1630,7 +1630,7 @@ shortcut:
 <code>deSolve</code> package (more background on the workshop website).
 This code models a population over 100 time steps, with a starting
 population size of 12 and an <span class="math inline">\(r\)</span> of
-0.2. We’ll go ahead and plot that:</p>
+0.2.</p>
 <pre class="r"><code># set initial conditions of response variable
 popn &lt;- c(N = 12)
 
@@ -1658,9 +1658,8 @@ plot(out, ylab = &quot;population size, N&quot;, col = &quot;blue&quot;)</code><
 a simulation of exponential growth over 200 time steps, for a population
 with an initial size of 202 individuals and <span class="math inline">\(r\)</span> = 0.225.</p>
 </div>
-<div id="exercise-2-logistic-growth" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Exercise 2: logistic
-growth</h1>
+<div id="exercise-2-logistic-growth" class="section level1 unnumbered">
+<h1 class="unnumbered">Exercise 2: logistic growth</h1>
 <p>Below is example code for modeling logistic growth with
 <code>deSolve</code>, in a more compact form than for the exponential
 growth model above.</p>

@@ -2609,7 +2609,7 @@ Do you expect that strong or weak mutualism will allow the persistence of both s
 If you looking this in the website, you will need first to open and download the following R code.
 On Mac, you can just right-click on the hyperlink.
 On Windows, you will need to open, copy all, and then save as R code:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://models4data2theory.github.io/courses_Rscripts/Dynamics_LV_2spMutualism.R&#34;&gt;Two-species Lotka-Volterra mutualism model&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://models4data2theory.github.io/courses_Rscripts/Dynamics_LV2spMutualism.R&#34;&gt;Two-species Lotka-Volterra mutualism model&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;In class, we will work off a Rmarkdown file.
 In it, we will source the above script in order to use the following functions.&lt;/p&gt;
 &lt;h4 id=&#34;Ex10&#34;&gt;Exercise 10&lt;/h4&gt;

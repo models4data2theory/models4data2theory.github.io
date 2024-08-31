@@ -643,7 +643,7 @@ If you looking this in the website, you will need first to open and download the
 On Mac, you can just right-click on the hyperlink. 
 On Windows, you will need to open, copy all, and then save as R code:
 
-[Two-species Lotka-Volterra mutualism model](/courses_Rscripts/Dynamics_LV_2spMutualism.R)
+[Two-species Lotka-Volterra mutualism model](/courses_Rscripts/Dynamics_LV2spMutualism.R)
 
 
 In class, we will work off a Rmarkdown file.
