@@ -72,7 +72,8 @@ plot.f2 <- function(x, fit){
 }
 curve(plot.f2(x, fit.f2), 
       add = TRUE,
-      lwd = 2)
+      lwd = 3,
+      col = 'blue')
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Type III (model f3) -------
@@ -98,13 +99,23 @@ plot.f3 <- function(x, fit){
 }
 curve(plot.f3(x, fit.f3), 
       add = TRUE,
-      lwd = 2,
+      lwd = 1.5,
       col = 'orange')
 
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Comparisons -----------------
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~
+legend(
+  'bottomright',
+  c('Type I', 'Type II', 'Type III'),
+  col = c('black','blue','orange'),
+  lwd = 2,
+  bty = 'n'
+)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Model comparisons -----------------
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Parameter estimates ---------
 print(c(a = a, h = h, theta = 1))
 fit.f1$par

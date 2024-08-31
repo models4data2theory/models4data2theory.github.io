@@ -1,0 +1,328 @@
+---
+title: “Exercises: Dynamics”
+author: “Fernada Valdovinos”
+date: “August 2024”
+output:
+  html_document:
+    toc: true
+    toc_depth: 4
+    toc_float: true
+    number_sections: true
+    code_folding: show
+    theme: cosmo
+---
+
+## Required R-packages
+
+We'll need the *deSolve* package to integrate our differential equations with respect to time.
+
+```{r packages, echo = TRUE}
+# install.packages('deSolve', dependencies = TRUE) # use to install if needed
+library(deSolve)
+```
+
+```{r packages2, echo=FALSE}
+library(knitr)
+```
+
+## Lotka-Volterra model for mutualism
+
+The Lotka-Volterra model for mutualism represents two species positively affecting the population growth rate of each other. The model assumes that the population of the two species ($N_1$ and $N_2$) grows logistically and that the interaction benefits received by the populations increases linearly with increasing population size of their mutualistic partner, which is encoded in the following equations:
+
+$$\frac{dN_1}{dt}=r_1N_1\left(\frac{K_1-N_1+\alpha_{12}N_2}{K_1}\right)
+\\
+\frac{dN_2}{dt}=r_2N_2\left(\frac{K_2-N_2+\alpha_{21}N_1}{K_2}\right)$$
+
+Where $\alpha_{12}$ and $\alpha_{21}$ are coefficients representing the strength of mutualism.
+
+#### Exercise 3:
+
+Let's focus just on the equation for species 1: $\frac{dN_1}{dt} = r_1N_1(\frac{K_1-N_1+\alpha_{12}N_2}{K_1})$. Assume that $r_1$=0.2$\frac{1}{day}$, $\alpha_{12}$=0.5$[dimensionless]$, and $K_1$=30$\frac{indiv}{m^{2}}$. Let's also assume that species $N_1$ is at a density above it's carrying capacity: $N_1=35$$\frac{indiv}{m^{2}}$. Now plug in two different values for the density of species 2: $N_2$=14$\frac{indiv}{m^{2}}$ and $N_2$=8$\frac{indiv}{m^{2}}$. For each of these two values, solve the entire equation for the instantaneous rate of change of the population: $\frac{dN_1}{dt}$. Is the population increasing or decreasing? Reflect on the two outcomes, keeping in mind that species 1 was over its carrying capacity the whole time. Do you see how this equation captures the effects of mutualism? **Make sure to track units when plugging numbers!** Units help you to better understand models and closely track your calculations.
+
+### L-V Mutualism model isoclines
+
+Now we will develop a more rigorous understanding of the behavior of the Lotka-Volterra model for mutualism by analyzing their isoclines. Remember that isoclines help us define when the two populations are neither growing nor declining. The combination of densities of species 1 and species 2 that results in a zero per-capita growth rate for species 1 can be found by setting $\frac{dN_1}{dt}=0$ and solving for $N_1$ and $N_2$. The same can be done for species 2 by setting $\frac{dN_2}{dt}=0$ and solving for $N_1$ and $N_2$.
+
+#### Exercise 5:
+
+Solve for the species 1 isoclines by setting $\frac{dN_1}{dt}=0$. Remember to consider both trivial and non-trivial isoclines.
+
+#### Exercise 6:
+
+Solve for the species 2 isoclines by setting $\frac{dN_2}{dt}=0$. Remember to consider both trivial and non-trivial isoclines.
+
+#### Exercise 7:
+
+By now you have solved for the species 1 and species 2 isoclines. You should have 4 expressions in total: two describing the species 1 equilibrium (one trivial and one non-trivial) and two describing the species 2 equilibrium (one trivial and one non-trivial). Work in groups to plot the 4 isoclines - you may use a piece of paper or the whiteboard. Note that for consistency with my slides, the y-axis should represent species 1's density ($N_1$ ) and the x-axis should represent species 2's density ($N_2$).
+
+### Effect of parameters on isoclines
+
+Much of ecological theory can be derived by understanding how the isoclines of our mathematical models change with changes in parameter values or functional forms, affecting the dynamical outputs of the model. Increasing or decreasing parameter values can represent biological processes of interest, so the effect of those changes on the model isoclines can provide insights on how those processes may affect the dynamics of the study system. We will now understand the ecological theory we obtain from the Lotka-Volterra model of mutualism, which introduces dynamic behavior of mutualisms that are common to many models of mutualism and helps us understand the dynamic implications of important attributes such as mutualism strength and whether the interaction is facultative or obligate to each mutualistic partner.
+
+#### Understanding $\alpha_{12}$ and $\alpha_{21}$ and mutualism strength
+
+The strength of mutualism can vary as you shift $\alpha_{12}$ and $\alpha_{21}$ with higher values representing stronger mutualism.
+
+#### Exercise 9:
+
+Discuss with your group how you expect the strength of mutualism to affect the coexistence between species. The stability of such coexistence? Do you expect that strong or weak mutualism will allow the persistence of both species? Draw the isoclines for each scenario (weak vs. strong).
+
+Now, we will explore isoclines under different parameter values by first sourcing the code that contains the functions to run the model. You will need to uncomment the last line of the chunk below:
+
+```{r results=FALSE, echo=FALSE}
+#load source code - Uncomment the next line after you downloaded the folder
+#source('Dynamics_LV2spMutualism.R')
+```
+
+#### Exercise 10:
+
+Test your hypothesis using the `lvMutualismInteractive()` function. Copy and paste the code chunk below in the R console to fix all parameters except $\alpha_{12}$ and $\alpha_{21}$, which you can manipulate.
+
+```         
+lvMutualismInteractive(N1_0=10, r1=10.0, K1=100, N2_0=10, r2=10.0, K2=75)
+```
+
+This will create an interactive plot where you can manipulate parameters. Just click on the gear icon on the left-top corner and the manipulator will appear. By default, the plot that is produced shows the abundance of species 1 and 2 over time. However, you can also visualize what's called a "phase diagram" by choosing "Phase Space" from the drop-down menu at the top of the interactive panel. While "abundance over time" plots $N_1$ and $N_2$ against $t$, the "Phase Space" setting plots $N_1$ against $N_2$. In this plot, the magenta 'X' represents the starting point of the trajectory and the magenta triangle represents the ending point of the same trajectory shown in the timeseries. The plot also shows you the location of the $N_1$ and $N_2$ isoclines, the lines where $dN_1/dt$ and $dN_2/dt$ are zero, respectively, which you already solved for.
+
+**Note**: if you see a warning in the R Console about DLSODA, do not worry, this is expected with the extreme dynamics observed at high alpha values.
+
+#### Understanding K and obligate vs facultative mutualism
+
+Up until this point, we have only modeled **facultative mutualism** where species can enjoy mutualistic benefits to grow more than their carrying capacity, but do not rely on them. In other words, in the absence of a mutualist partner, all populations have been able to equilibrate to a positive carrying capacity. The Lotka-Volterra model for mutualism also allows us to model **obligate mutualism**, where populations require the benefits of mutualism to maintain their abundances above zero. We can obtain obligate mutualism in the model by making the carrying capacities $K_1$ or $K_2$ negative. A negative carrying capacity means that population trajectories will continuously be drawn towards zero, unless the benefits provided by mutualist partners are sufficient to maintain positive abundance.
+
+#### Exercise 11:
+
+Discuss with your group how you expect facultative vs obligate mutualism will affect the stable coexistence (i.e., persistence of both species at plausible abundances) of the model. Which do you think is more likely to facilitate stable coexistence? Draw the isoclines for each case.
+
+### Adding saturating benefits to the Lotka-Volterra model for mutualism
+
+Recall that in the L-V model above, the benefit received by each mutualist from their interaction increases linearly with the abundance of their mutualistic partner. This linear benefit causes the positive feedback loop that drives the abundance of the populations to infinity. However, we know that mutualistic benefits do not grow forever but they rather saturate (e.g., fixed number of ovules per plant, consumption saturation just like in other consumer-resource interactions, etc.). We can model that saturation for example by using a Holling type II functional response, which replaces the linear type I functional response exhibited by the model we have analyzed so far.
+
+#### Exercise 13:
+
+Sketch a diagram approximating how isoclines of the L-V model might change with saturation of benefit accrual between both mutualists.
+
+### Moving from 2 species to multi-species networks
+
+The source code you uploaded in the section above ('LV_2species.R') contains the Lotka-Volterra model of mutualism and the ode solver. The equations in such source code are:
+
+```         
+dNdtFunc = function(t, states, param)
+    {
+        with(as.list(c(states, param)), 
+        {
+            dN1dt = r1 * N1 * ((K1-N1+alpha12*N2) / K1)
+            dN2dt = r2 * N2 * ((K2-N2+alpha21*N1) / K2)
+            list(c(dN1dt, dN2dt))
+        })
+    }
+```
+
+You can see that the equations are written for each species, and that the effect of each species interaction is written as a term indicating the effect of each species on its mutualistic partner. For example, the effect of species 2 on the population growth rate of species 1 is $\alpha_{12}*N_2$ (written in the code as "alpha12\*N2") on the right side of the equation for $dN1/dt$ (written in the code as "dN1dt"). Imagine how many lines of code and terms per equation you would need for a networks of, for example, 50 species of plants and 100 species of pollinators. You would need 150 equations (and lines of code) and as many terms per equation as the number of interactions each of those 150 species has, determined by the network. That is clearly not an efficient way to code and think about the problem, plus an error-prone approach when writing manually each interaction per each equation.
+
+A much more efficient approach is thinking in matrices (which encode the networks of species interactions) and connect those matrices to the summation notation in equations. To take this next step, we will use the Lotka-Volterra model of mutualistic networks used by Bascompte et al 2006 (*Science*, Vol 312, pp. 431-433). This model is simply an extension of the L-V model we used above with linear functional responses, with the only difference that the intra-specific competition encoded in the $(1-N_1/K_1)$ is now represented as self-limitation. There are also minor differences in notation, with subscripts P and A, indicating that a variable or parameter corresponds to that of a plant or animal, respectively. The equations of this network model are:
+
+$$
+\frac{dN_i^P}{N_i^Pdt} = r_i^P - s_i^P N_i^P + \sum_{j=1}^{n} \alpha_{ij}^A N_j^A
+$$
+
+$$
+\frac{dN_j^A}{N_j^Adt} = r_j^A - s_j^A N_j^A + \sum_{i=1}^{m} \alpha_{ji}^P N_i^P
+$$
+
+Note that these equations are written for **per-capita** growth rate but you can recover the **population** growth rate by multiplying both sides of the equation by the corresponding population size (i.e., $N_i^P$ or $N_j^A$) as follows:
+
+$$
+\frac{dN_i^P}{dt} = r_i^P N_i^P - s_i^P (N_i^P)^2 + \sum_{j=1}^{n} \alpha_{ij}^A N_j^A N_i^P
+$$
+
+$$
+\frac{dN_j^A}{dt} = r_j^A N_j^A - s_j^A (N_j^A)^2 + \sum_{i=1}^{m} \alpha_{ji}^P N_i^P N_j^A
+$$
+
+Now, we need to connect the summations of these equations to the matrix encoding the plant-pollinator network of interest. For that, we will go back to our toy network we worked on in day 1.
+
+#### Exercise 14:
+
+Write the equations for animal species 2 and 3 following the examples provided below for plant species 1 and 3:
+
+$$
+\frac{dN_1^P}{dt} = (r_1^P - s_1^P N_1^P + \alpha_{11}^A N_1^A + \alpha_{12}^A N_2^A + \alpha_{13}^A N_3^A) N_1^P
+$$
+
+$$ \frac{dN_3^P}{dt} = (r_3^P - s_3^P N_3^P + \alpha_{31}^A N_1^A) N_3^P $$
+
+**NOTE: We will work together in class to understand the summation and connect it to the network !**
+
+Now that we have understood together the summation and its connection to the plant-pollinator network, we will see how the computer can help us with building the system of differential equations using matrices.
+
+Let's start by saving the matrix representing the toy network
+
+```{r}
+interactionMatrix = matrix(c(1, 1, 1, 1, 1, 0, 1, 0, 0), nrow = 3, byrow = TRUE)
+print(interactionMatrix)
+```
+
+We will now generate a matrix with alphas drawn from a uniform random distribution for all P x A combinations for lack of a better parameter choice (i.e. we don't have empirical estimates of mutualism strengths). For that, we will extract the number of plants and pollinators from the adjacency matrix and use them as input for the function that draws values from random uniform distribution in R (runif):
+
+```{r}
+# Get the number of rows (plant species) and columns (animal species) of the matrix encoding the plant-pollinator network (interactionMatrix)
+num_plants <- nrow(interactionMatrix)
+num_animals <- ncol(interactionMatrix)
+
+# Number of interactions
+L=num_plants*num_animals
+
+# Set the mean and variance of the random uniform distribution
+mean_alpha <- 0.5
+variance <- 0.2
+
+# Generate the 3x3 matrix with values from a uniform random distribution
+matrix_alpha <- runif(L, mean_alpha - variance/2, mean_alpha + variance/2)
+matrix_alpha <- matrix(matrix_alpha, nrow = num_plants, byrow = TRUE)
+
+# Print the matrix
+print(matrix_alpha)
+```
+
+Multiplying the interaction strength matrix (element by element) by the matrix representing the network:
+
+```{r}
+
+# Multiplying element-by-element the interaction matrix and the matrix with interaction strenghts:
+alpha_realized <- interactionMatrix * matrix_alpha
+
+print("Interaction strengths realized:")
+print(alpha_realized) 
+```
+
+We will now calculate the sum of mutualistic effects that each animal population provides to each plant population. For example, such sum for plant species 1 is: (write what it is for plant species 2 and 3)
+
+$$
++  \alpha_{11}^A N_1^A + \alpha_{12}^A N_2^A + \alpha_{13}^A N_3^A
+$$
+
+To calculate such contribution to plant growth, we will first randomly generate the abundance of each animal population:
+
+```{r}
+# Set the mean and variance for uniform random distribution
+mean_N <- 0.5
+var_N <- 0.1
+
+# Draw animal abundances from uniform random distribution
+N_A <- runif(num_animals, mean_N - var_N/2, mean_N + var_N/2)
+
+# Ensure N_A is a matrix for proper matrix multiplication (only in R, Matlab allow multiplying matrices and vectors as one does mathematically)
+N_A_matrix <- matrix(N_A, nrow = length(N_A), ncol = 1)
+
+print("Vector of animal abundances:")
+print(N_A_matrix)
+```
+
+To illustrate what the following code will do mathematically, here is an example of the matrix shown above with the realized alphas multiplying the vector of animal abundances, which gives us the benefits to population growth each plant species gets from their interactions with pollinators:
+
+$$
+\begin{align*}
+&\begin{bmatrix}
+0.46 & 0.53 & 0.51 \\
+0.58 & 0.51 & 0 \\
+0.41 & 0 & 0 \\
+\end{bmatrix} \times
+\begin{bmatrix}
+0.52 \\
+0.46 \\
+0.54 \\
+\end{bmatrix} = \\
+&\begin{bmatrix}
+0.46 \times 0.52 + 0.53 \times 0.46 + 0.51 \times 0.54 \\
+0.58 \times 0.52 + 0.51 \times 0.46 + 0 \\
+0.41 \times 0.52 + 0 + 0 \\
+\end{bmatrix} =
+\begin{bmatrix}
+0.76 \\
+0.54 \\
+0.21 \\
+\end{bmatrix}
+\end{align*}
+$$
+
+```{r}
+# Summed effects on plants across the pollinators that visit them
+effects_onP<-(interactionMatrix * matrix_alpha) %*% N_A_matrix
+
+print("Summed effects of pollinators on plants:")
+print(effects_onP)
+```
+
+Now that we understand the basics, we will generate all the parameters and initial conditions to run the multi-species model:
+
+```{r}
+
+# Set the mean and variance for random distribution
+mean_r <- 0.3
+var_r <- 0.1
+
+mean_s <- 0.2
+var_s <- 0.1
+
+mean_N <- 0.5
+var_N <- 0.1
+
+# Generate intrinsic growth rates and self-limitations vectors for plants and animals with values from their respective uniform random distributions
+rP <- runif(num_plants, mean_r - var_r/2, mean_r + var_r/2)
+rA <- runif(num_animals, mean_r - var_r/2, mean_r + var_r/2)
+sP <- runif(num_plants, mean_s - var_s/2, mean_s + var_s/2)
+sA <- runif(num_animals, mean_s - var_s/2, mean_s + var_s/2)
+
+# Generate initial conditions vectors for plants and animals with values from their respective uniform random distributions
+N_P <- runif(num_plants, mean_N - var_N/2, mean_N + var_N/2)
+N_A <- runif(num_animals, mean_N - var_N/2, mean_N + var_N/2)
+
+# Ensure N_P and N_A are matrices for proper matrix multiplication (only in R, Matlab allow multiplying matrices and vectors as one does mathmatically)
+N_P_matrix <- matrix(N_P, nrow = length(N_P), ncol = 1)
+N_A_matrix <- matrix(N_A, nrow = length(N_A), ncol = 1)
+
+# Define the variables for output
+variables <- list(
+  "Plant intrinsic growth rates:" = rP,
+  "Animal intrinsic growth rates:" = rA,
+  "Plant self-limitations:" = sP,
+  "Animal self-limitations:" = sA,
+  "Plant initial abundances:" = N_P_matrix,
+  "Animal initial abundances:" = N_A_matrix
+)
+
+# Print the variables with spacing
+for (variable_name in names(variables)) {
+  cat(variable_name, "\n")
+  print(variables[[variable_name]])
+  cat("\n")
+}
+
+```
+
+Now, we form the equations and obtain the population growth rate at the initial time step:
+
+```{r}
+# Equations
+dPdt <- (rP - sP * N_P_matrix + (matrix_alpha * interactionMatrix) %*% N_A_matrix) * N_P_matrix
+
+dAdt <- (rA - sA * N_A_matrix + (matrix_alpha * interactionMatrix) %*% N_P_matrix) * N_A_matrix
+
+# Printing results
+print("dN_i^P/dt:")
+print(dPdt)
+
+cat("\n")
+
+print("dN_i^A/dt:")
+print(dAdt)
+```
+
+What we did above was illustrating how to setup parameters, equations, and initial conditions using matrices and vectors. That is the procedure we used to code the entire model which is in the folder you downloaded, with file name 'Dynamics_LVmultispMutualism.R'. Open that R file. You will run it as is, and then modify and run it again. To run the code, just select all and hit ctrl/return (windows) or command/return (mac).
+
+#### Exercise 15:
+Play with the parameters of the model (i.e., the mean of the random distributions) to obtain different results based on what you learned from the model of two species. Can you obtain different model behaviors such as populations growing to infinity or extinctions? You will need to also change the number of time steps to see the different behaviors.
+
+### Exercise 16:
+How do you think the addition of saturating benefits would change the results of this model? See the work by Okuyama & Holland 2008 (Ecology Letters, 11: 208–216) who modified this model by incorporating a hyperbolic functional response to represent that the beneﬁts to mutualists saturate with the densities of mutualistic species with which they interact.

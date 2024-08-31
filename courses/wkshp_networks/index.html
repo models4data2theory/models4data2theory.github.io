@@ -336,10 +336,10 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
     
       <meta
         property="article:published_time"
-        content="2024-08-22T00:00:00&#43;00:00"
+        content="2024-08-31T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2024-08-22T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2024-08-31T00:00:00&#43;00:00">
   
 
   
@@ -815,7 +815,7 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
 
 
 
-  <li class=""><a href="/courses/wkshp_interactions/">Interactions</a></li>
+  <li class=""><a href="/courses/wkshp_interactions/">Model fitting</a></li>
 
 
 
@@ -849,13 +849,27 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
       <nav id="TableOfContents">
   <ul>
     <li><a href="#motivation">Motivation</a></li>
-    <li><a href="#required-r-packages">Required R-packages</a></li>
-    <li><a href="#terminology">Terminology</a></li>
-    <li><a href="#network-data">Network data</a></li>
+    <li><a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#required-r-packages">Required R-packages</a></li>
+        <li><a href="#exercise-code-and-data">Exercise code and data</a></li>
+      </ul>
+    </li>
+    <li><a href="#terminology">Terminology</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#network-data">Network data</a>
+      <ul>
+        <li></li>
+        <li><a href="#data-formatting">Data formatting</a></li>
+      </ul>
+    </li>
     <li><a href="#visualization">Visualization</a>
       <ul>
         <li><a href="#adjacency-matrices">Adjacency matrices</a></li>
-        <li><a href="#edge-list">Edge list</a></li>
+        <li><a href="#bipartite-adjacency">Bipartite adjacency</a></li>
         <li><a href="#matrix-depictions">Matrix depictions</a></li>
       </ul>
     </li>
@@ -878,10 +892,14 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
         <li><a href="#comparing-null-models">Comparing null models</a></li>
         <li><a href="#graphical-implementation">Graphical implementation</a></li>
         <li><a href="#checking-results">Checking results</a></li>
-        <li><a href="#significance">Significance</a></li>
+        <li><a href="#p-values">p-values</a></li>
       </ul>
     </li>
-    <li><a href="#take-home">Take-home</a></li>
+    <li><a href="#take-home">Take-home</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
     <li><a href="#structure--stability">Structure &amp; Stability</a></li>
   </ul>
 </nav>
@@ -914,50 +932,77 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
 <!-- ======================================= -->
 <!-- Fernanda -->
 <h2 id="motivation">Motivation</h2>
-<p>Ecological networks offer a powerful approach to comprehensively analyze entire systems comprising hundreds of species and their thousands of interactions. There are almost infinite ways in which hundreds of species can possibly interact. Networks allow to determine the specific, non-random interaction structure that actually occur in nature of those almost infinite possibilities. These networks also allow the study of the interplay between structure and dynamics of complex systems of interacting species, shedding light on how this interplay influences system responses to perturbations.</p>
+<p>Ecological networks offer a powerful approach to comprehensively analyze entire systems comprising hundreds of species and their thousands of interactions.
+There are almost infinite ways in which hundreds of species can possibly interact. Networks allow to determine the specific, non-random interaction structure that actually occur in nature of those almost infinite possibilities.
+These networks also allow the study of the interplay between structure and dynamics of complex systems of interacting species, shedding light on how this interplay influences system responses to perturbations.</p>
 <!-- packages -->
-<h2 id="required-r-packages">Required R-packages</h2>
+<h2 id="overview">Overview</h2>
+<h3 id="required-r-packages">Required R-packages</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># PACKAGE LIST:</span>
-</span></span><span class="line"><span class="cl"><span class="n">Packages</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;igraph&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">              <span class="s">&#34;tidyverse&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">              <span class="s">&#34;knitr&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">              <span class="s">&#34;kableExtra&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">              <span class="s">&#34;evaluate&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">              <span class="s">&#34;webexercises&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">              <span class="s">&#34;vegan&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">              <span class="s">&#34;bipartite&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">              <span class="s">&#34;viridis&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">              <span class="s">&#34;rmarkdown&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">              <span class="s">&#34;gridGraphics&#34;</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="n">Packages</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;tidyverse&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="s">&#34;kableExtra&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="s">&#34;bipartite&#34;</span><span class="p">)</span> 
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># LOAD PACKAGES:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># (INSTALL AND) LOAD PACKAGES:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># install.packages(Packages, dependencies = TRUE)</span>
 </span></span><span class="line"><span class="cl"><span class="nf">lapply</span><span class="p">(</span><span class="n">Packages</span><span class="p">,</span> <span class="n">library</span><span class="p">,</span> <span class="n">character.only</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># SUPPRESS UNHELPFUL `dplyr` MESSAGES: </span>
-</span></span><span class="line"><span class="cl"><span class="nf">options</span><span class="p">(</span><span class="n">dplyr.summarise.inform</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># SAVE PACKAGE WARNING MESSAGES</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># this saves messages associated with package loading; display at the end</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># `evaluate` package</span>
-</span></span><span class="line"><span class="cl"><span class="n">pkg.load.msgs</span> <span class="o">=</span> <span class="nf">evaluate</span><span class="p">(</span><span class="nf">lapply</span><span class="p">(</span><span class="n">Packages</span><span class="p">,</span> <span class="n">library</span><span class="p">,</span> <span class="n">character.only</span> <span class="o">=</span> <span class="bp">T</span><span class="p">))</span>
-</span></span></code></pre></div><h2 id="terminology">Terminology</h2>
-<p>A network consists of nodes and edges, where <em>nodes</em> represent discrete entities like people, computers, cities, or species, and <em>edges (or links)</em> represent the connections between these entities. Networks can be weighted or unweighted, depending on whether the connections have associated values or not. In <em>weighted</em> networks, the edges have numerical values that indicate the strength or distance of the connection between nodes. In the case of plant-pollinator networks, that weight has traditionally been the number or fraction of visits or pollen transported.</p>
-<p>Networks can also be directed or undirected. In <em>directed</em> networks, such as food webs, the connections between nodes have a specific direction, such as the flow of energy, indicating a one-way relationship. In <em>undirected</em> networks, such as mutualistic networks, the connections are bidirectional, showing a two-way relationship between nodes (i.e., reciprocal benefits). We will see later that the reciprocal benefits between plant and pollinator species can be decomposed into the mechanisms by which those benefits are provided, which can convert the bidirectional links between species into two unidirectional links (i.e., consumption of floral rewards and pollination services).</p>
-<p>Networks can also be unipartite or bipartite. <em>Unipartite</em> networks such as food webs consist of a single set of nodes (species), where edges can connect any pair of nodes within that set (any species can potentially be eaten by others). On the other hand, nodes in <em>bipartite</em> networks are divided into two disjoint sets, such as plants and pollinators, and edges (representing which pollinator species visits which plant species) only connect nodes from different sets (e.g., plants cannot visit other plants).</p>
+</span></span></code></pre></div><h3 id="exercise-code-and-data">Exercise code and data</h3>
+<p>In addition to the in-text links below, you can download what you&rsquo;ll need in this
+<a href="https://drive.google.com/drive/folders/14mv3lekxpEZhtFpadJ7pydjfaNI4diLv?usp=sharing" target="_blank" rel="noopener">GoogleFolder</a>.</p>
+<h2 id="terminology">Terminology</h2>
+<p>A network consists of nodes and edges, where <em>nodes</em> represent discrete entities like people, computers, cities, or species, and <em>edges (or links)</em> represent the connections between these entities.
+Networks can be weighted or unweighted, depending on whether the connections have associated values or not.
+In <em>weighted</em> networks, the edges have numerical values that indicate the strength or distance of the connection between nodes.
+In the case of plant-pollinator networks, that weight has traditionally been the number or fraction of visits or pollen transported.</p>
+<p>Networks can also be directed or undirected.
+In <em>directed</em> networks, such as food webs, the connections between nodes have a specific direction, such as the flow of energy, indicating a one-way relationship. In <em>undirected</em> networks, such as mutualistic networks, the connections are bidirectional, showing a two-way relationship between nodes (i.e., reciprocal benefits).
+We will see later that the reciprocal benefits between plant and pollinator species can be decomposed into the mechanisms by which those benefits are provided, which can convert the bidirectional links between species into two unidirectional links (i.e., consumption of floral rewards and pollination services).</p>
+<p>Networks can also be unipartite or bipartite. <em>Unipartite</em> networks such as food webs consist of a single set of nodes (species), where edges can connect any pair of nodes within that set (any species can potentially be eaten by others).
+On the other hand, nodes in <em>bipartite</em> networks are divided into two disjoint sets, such as plants and pollinators, and edges (representing which pollinator species visits which plant species) only connect nodes from different sets (e.g., plants cannot visit other plants).</p>
 <p>Below, there is an illustration of a plant-pollinator system represented as a bipartite network, with three plant and three pollinator species.</p>
-<img src="../images/networks/bipartite_network.png" width="20%" style="display: block; margin: auto;" />
-<p>Ecological networks can be represented in various ways including a graph (as shown in the image above) or a matrix. Being able to switch between graph (network) and matrix form is powerful for understanding the full suite of network metrics we will see later.</p>
-<p><strong>Exercise 1.1</strong>: Using the bipartite network graph above, draw the corresponding matrix for the network. Assume that matrix rows represent animal species while matrix columns represent plant species. In the matrix cells, use 1&rsquo;s to indicate an interaction between that animal and plant species and 0&rsquo;s or blanks to indicate no interaction between species.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="/images/networks/bipartite_network.png" alt="bipartite_network" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Ecological networks can be represented in various ways including a graph (as shown in the image above) or a matrix.
+Being able to switch between graph (network) and matrix form is powerful for understanding the full suite of network metrics we will see later.</p>
+<h4 id="Ex1">Exercise 1</h4>
+<p>Using the bipartite network graph above, draw the corresponding matrix for the network.
+Assume that matrix columns represent animal species while matrix rows represent plant species.
+In the matrix cells, use 1&rsquo;s to indicate an interaction between that animal and plant species and 0&rsquo;s or blanks to indicate no interaction between species.</p>
 <!-- Fernanda section ends here-->
 <!-- ======================================= -->
 <!-- ======================================= -->
 <!-- Berry -->
 <h2 id="network-data">Network data</h2>
-<p>This workshop is focused on the <em>integration</em> of empirical data and theory in pollination networks. An important first step toward that integration is to know how to take empirical data and convert them into the standardized matrix format that is used in most packages and functions. For mutualistic networks like plant-pollinator networks, as discussed above, that format is a <em>bipartite</em> matrix with plants as rows, pollinators as columns, and (typically) counts of interactions filling the matrix.</p>
-<p>Typically, empirical data collected on ecological networks take the form of an <strong>edge list</strong>. This is the case for pollination networks in particular. To collect pollination network data, we are typically observing a set of flowers. When a flower visitor (presumed pollinator) visits a plant, we would record on a data sheet or field notebook the identity of the plant species and the identity of the flower visitor species. (In the field, we might capture an insect pollinator for later identification, but the idea remains the same, that at some point we would have a data sheet with the identities of the plants and the pollinators).</p>
+<p>This workshop is focused on the <em>integration</em> of empirical data and theory in pollination networks.
+An important first step toward that integration is to know how to take empirical data and convert them into the standardized matrix format that is used in most packages and functions.
+For mutualistic networks like plant-pollinator networks, as discussed above, that format is a <em>bipartite</em> matrix with plants as rows, pollinators as columns, and (typically) counts of interactions filling the matrix.</p>
+<p>Typically, empirical data collected on ecological networks take the form of an <strong>edge list</strong>.
+This is the case for pollination networks in particular.
+To collect pollination network data, we are typically observing a set of flowers.
+When a flower visitor (presumed pollinator) visits a plant, we would record on a data sheet or field notebook the identity of the plant species and the identity of the flower visitor species.
+(In the field, we might capture an insect pollinator for later identification, but the idea remains the same, that at some point we would have a data sheet with the identities of the plants and the pollinators).</p>
 <p>Similarly, you could also have an edge list created through pollen DNA metabarcoding; while you might need to play around with the formatting a bit it is common to end up with an edge list like you would have from field data collection.</p>
 <p>That might look something like this:</p>
-<table class="table table-condensed" style="color: black; width: auto !important; ">
+<table class="table table-condensed" style="width: auto !important; ">
  <thead>
   <tr>
    <th style="text-align:right;"> id.num </th>
@@ -1003,7 +1048,9 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
   </tr>
 </tbody>
 </table>
-<p>&hellip; but we want to turn that into a bipartite matrix. One approach for coding that transformation is in the code chunk below, focused on the <code>tidyverse</code> way of doing things. The general approach is:</p>
+<p>&hellip; but we want to turn that into a bipartite matrix.
+One approach for coding that transformation is in the code chunk below, focused on the <code>tidyverse</code> way of doing things.</p>
+<p>The general approach is:</p>
 <ol>
 <li><em>group</em> our data by plant species and pollinator species</li>
 <li>tally the number of visits for each pollinator species that plant species&mdash;basically &ldquo;collapsing&rdquo; the rows that have the same plant-pollinator combinations and counting up how many interactions there were for each unique plant-pollinator combination</li>
@@ -1013,17 +1060,23 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
 </ul>
 </li>
 </ol>
-<p>Let&rsquo;s see this in action. We&rsquo;ll start with the data frame called <code>edgelist</code> which is exactly the same as the data in the table above. For the first two steps, here is how we do that, and what it looks like:</p>
+<p>Let&rsquo;s see this in action. We&rsquo;ll start with the data frame called <code>edgelist</code> which is exactly the same as the data in the table above.
+For the first two steps, here is how we do that, and what it looks like:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># step 1:</span>
 </span></span><span class="line"><span class="cl"><span class="n">weighted</span> <span class="o">&lt;-</span> <span class="n">edgelist</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">group_by</span><span class="p">(</span><span class="n">plant</span><span class="p">,</span> <span class="n">pollinator</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># step 2:</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">tally</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># show in nicely-formatted table:  </span>
-</span></span><span class="line"><span class="cl"><span class="nf">kable</span><span class="p">(</span><span class="n">weighted</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">kable_styling</span><span class="p">(</span><span class="n">full_width</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">  <span class="n">position</span> <span class="o">=</span> <span class="s">&#34;left&#34;</span><span class="p">,</span> <span class="n">bootstrap_options</span> <span class="o">=</span> <span class="s">&#34;condensed&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><table class="table table-condensed" style="color: black; width: auto !important; ">
+</span></span><span class="line"><span class="cl"><span class="c1"># show in nicely-formatted table:</span>
+</span></span><span class="line"><span class="cl"><span class="nf">kable</span><span class="p">(</span><span class="n">weighted</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">kable_styling</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">full_width</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">position</span> <span class="o">=</span> <span class="s">&#34;left&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bootstrap_options</span> <span class="o">=</span> <span class="s">&#34;condensed&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><table class="table table-condensed" style="width: auto !important; ">
  <thead>
   <tr>
    <th style="text-align:left;"> plant </th>
@@ -1059,20 +1112,27 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
   </tr>
 </tbody>
 </table>
-<p>the new <code>weighted</code> dataframe is displayed above. You&rsquo;ll see that it created a new column called &ldquo;<strong>n</strong>&rdquo; that contains the tallied the number of times each unique interaction occurred. It also &ldquo;collapsed&rdquo; the rows into unique plant-pollinator interactions; previously there were 7 rows, and now there are 5, because one of the unique interactions (between <em>Bombus flavifrons</em> and <em>Delphinium barbeyi</em>) happened three times.</p>
-<p>Moving from this, let&rsquo;s check out the next step, where where using the <code>pivot_wider</code> function we pivot the single &ldquo;pollinator&rdquo; column to form one new column for each unique entry in the old column. We will fill in the values for each row-by-column combination from the tallied interactions (the new &ldquo;<strong>n</strong>&rdquo; column).</p>
-<p>Again there are 5 rows in this new matrix, with 4 unique values (<em>Bombus flavifrons</em> is represented twice), so we expect to see four pollinator columns emerge in the next step. Similarly, this should collapse the 5 current plant rows into 3, one for each unique plant species. So we should see a 3 row $\times$ 4 column bipartite matrix when we are done.</p>
+<p>the new <code>weighted</code> dataframe is displayed above.
+You&rsquo;ll see that it created a new column called &ldquo;<strong>n</strong>&rdquo; that contains the tallied the number of times each unique interaction occurred.
+It also &ldquo;collapsed&rdquo; the rows into unique plant-pollinator interactions;
+previously there were 7 rows, and now there are 5, because one of the unique interactions (between <em>Bombus flavifrons</em> and <em>Delphinium barbeyi</em>) happened three times.</p>
+<p>Moving from this, let&rsquo;s check out the next step, where where using the <code>pivot_wider</code> function we pivot the single &ldquo;pollinator&rdquo; column to form one new column for each unique entry in the old column.
+We will fill in the values for each row-by-column combination from the tallied interactions (the new &ldquo;<strong>n</strong>&rdquo; column).</p>
+<p>Again there are 5 rows in this new matrix, with 4 unique values (<em>Bombus flavifrons</em> is represented twice), so we expect to see four pollinator columns emerge in the next step.
+Similarly, this should collapse the 5 current plant rows into 3, one for each unique plant species. So we should see a 3 row $\times$ 4 column bipartite matrix when we are done.</p>
 <p>This is how to get there:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">bipart.net</span> <span class="o">&lt;-</span> <span class="n">weighted</span> <span class="o">%&gt;%</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">pivot_wider</span><span class="p">(</span><span class="n">id_cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;plant&#34;</span><span class="p">),</span> <span class="c1"># plants are the rows</span>
-</span></span><span class="line"><span class="cl">              <span class="n">names_from</span> <span class="o">=</span> <span class="n">pollinator</span><span class="p">,</span> <span class="c1"># names of new columns: unique pollinators</span>
-</span></span><span class="line"><span class="cl">              <span class="n">values_from</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span> <span class="c1"># values in the matrix from tallied interactions</span>
-</span></span><span class="line"><span class="cl">              <span class="n">values_fill</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span> <span class="c1"># if no value, enter zero (otherwise NA)</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">pivot_wider</span><span class="p">(</span><span class="n">id_cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;plant&#34;</span><span class="p">),</span>     <span class="c1"># plants are the rows</span>
+</span></span><span class="line"><span class="cl">              <span class="n">names_from</span> <span class="o">=</span> <span class="n">pollinator</span><span class="p">,</span>  <span class="c1"># names of new columns: unique pollinators</span>
+</span></span><span class="line"><span class="cl">              <span class="n">values_from</span> <span class="o">=</span> <span class="n">n</span><span class="p">,</span>          <span class="c1"># values in the matrix from tallied interactions</span>
+</span></span><span class="line"><span class="cl">              <span class="n">values_fill</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>          <span class="c1"># if no value, enter zero (otherwise NA)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># show in nicely-formatted table:  </span>
-</span></span><span class="line"><span class="cl"><span class="nf">kable</span><span class="p">(</span><span class="n">bipart.net</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> <span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">kable_styling</span><span class="p">(</span><span class="n">full_width</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">  <span class="n">position</span> <span class="o">=</span> <span class="s">&#34;left&#34;</span><span class="p">,</span> <span class="n">bootstrap_options</span> <span class="o">=</span> <span class="s">&#34;condensed&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><table class="table table-condensed" style="color: black; width: auto !important; ">
+</span></span><span class="line"><span class="cl"><span class="nf">kable</span><span class="p">(</span><span class="n">bipart.net</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">kable_styling</span><span class="p">(</span><span class="n">full_width</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">position</span> <span class="o">=</span> <span class="s">&#34;left&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                <span class="n">bootstrap_options</span> <span class="o">=</span> <span class="s">&#34;condensed&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><table class="table table-condensed" style="width: auto !important; ">
  <thead>
   <tr>
    <th style="text-align:left;"> plant </th>
@@ -1106,12 +1166,15 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
   </tr>
 </tbody>
 </table>
-<p>looks just as hoped for: a 3-row by 4-column matrix. Note in the code above that we specified that <code>values_fill = 0</code>. We did this because otherwise <code>R</code> would not know how to fill in the combinations for which it doesn&rsquo;t have any information, and so it would fill them in with <code>NA</code> if we left that argument out.</p>
-<p><strong>exercise 1.2:</strong> Edge List to bipartite network</p>
+<p>looks just as hoped for: a 3-row by 4-column matrix. Note in the code above that we specified that <code>values_fill = 0</code>.
+We did this because otherwise <code>R</code> would not know how to fill in the combinations for which it doesn&rsquo;t have any information, and so it would fill them in with <code>NA</code> if we left that argument out.</p>
+<h4 id="Ex2">Exercise 2</h4>
+<p>Edge List to bipartite network</p>
 <p>Let&rsquo;s practice turning an edge list into a bipartite network; this time we will do it at a (slightly) larger scale. We are going to use data collected by Berry&rsquo;s Community Ecology class at the University of Washington in spring 2022, at the UW Medicinal Plant Garden (just outside the Life Sciences Building, where the Brosi Lab is based). The data for pollinators were collected at the family level.</p>
-<p>the data file is called <code>medgarden.csv</code>. Import it and follow the steps above to generate a bipartite network. Call the resulting dataframe <strong><code>bipartite.med</code></strong>.</p>
+<p>Download the data file: <a href="/courses_data/Networks/medgarden.csv">medgarden.csv</a>.
+Import it and follow the steps above to generate a bipartite network. Call the resulting dataframe <strong><code>bipartite.med</code></strong>.</p>
 <p>You should get this bipartite network back:</p>
-<table class="table table-condensed" style="color: black; width: auto !important; ">
+<table class="table table-condensed" style="width: auto !important; ">
  <thead>
   <tr>
    <th style="text-align:left;"> plant </th>
@@ -1357,57 +1420,128 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
   </tr>
 </tbody>
 </table>
-<h2 id="visualization">Visualization</h2>
+<h3 id="data-formatting">Data formatting</h3>
+<p>We have successfully achieved our objective of converting our edge list to a bipartite network.
+Still, if we want to use those data with the bipartite package we will need to do a little bit of extra formatting, as bipartite expects the data in matrix form (not a tibble or dataframe) and with the plant names as row names, not a separate column (matrices in R can only contain numeric values).
+Here is one way to do that (there are certainly more concise ways to code this):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># save plant names</span>
+</span></span><span class="line"><span class="cl"><span class="n">plant</span> <span class="o">=</span> <span class="n">bipart.med</span><span class="o">$</span><span class="n">plant</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># remove plant column</span>
+</span></span><span class="line"><span class="cl"><span class="n">bipart.med</span> <span class="o">=</span> <span class="n">bipart.med[</span><span class="p">,</span><span class="m">-1</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># convert to matrix</span>
+</span></span><span class="line"><span class="cl"><span class="n">bipart.med</span> <span class="o">=</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">bipart.med</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># add plants to row names</span>
+</span></span><span class="line"><span class="cl"><span class="nf">row.names</span><span class="p">(</span><span class="n">bipart.med</span><span class="p">)</span> <span class="o">=</span> <span class="n">plant</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># remove `plant` variable (just to keep workspace clean)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">rm</span><span class="p">(</span><span class="n">plant</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="visualization">Visualization</h2>
 <!-- 1.1.2 BB: visualizing networks; packing matrices as a means of standardizing their display etc. -->
-<p>At the beginning of our materials we covered the two basic ways of visualizing networks, through network diagrams (which show links as lines between nodes) and in matrix format (where each node is a row and/or a column). While understanding those two basic formats is foundationally important for working with networks, visualization is a large and complex topic. Here, we will cover just two additional facets: 1) depicting unipartite networks with <em>adjacency matrices</em>&mdash;and why that can actually be useful for bipartite networks too&mdash;and 2) how to <em>standardize</em> matrix depictions of networks, with a focus on bipartite matrices.</p>
+<p>At the beginning of our materials we covered the two basic ways of visualizing networks, through network diagrams (which show links as lines between nodes) and in matrix format (where each node is a row and/or a column).
+While understanding those two basic formats is foundationally important for working with networks, visualization is a large and complex topic.
+Here, in the interest of time, we will cover only one additional facet:
+how to standardize matrix depictions of networks, with a focus on bipartite networks.</p>
 <h3 id="adjacency-matrices">Adjacency matrices</h3>
-<p>As we noted above, depending on the type of interaction we are focused on, some networks such as food webs can be considered <em>unipartite</em>, or in other words any node can potentially interact with any other node in the network. This makes sense for food webs because many species can be predators to some species, but prey to others (especially if we think about different life stages&mdash;a large predatory fish species can be prey to much smaller fish species when it is a juvenile or even an egg).</p>
-<p>Because we are focused on pollination networks in this workshop, so far we have maintained a focus on <em>bipartite</em> networks, in other words networks where a given node <em>cannot</em> interact with any other node in the network, but instead can only interact with nodes from the other group or guild. In other words, two different pollinator species can&rsquo;t pollinate one another&mdash;pollination interactions can only occur between one plant and one pollinator.</p>
-<p>Bipartite networks are more intuitive to depict in matrix form relative to unipartite networks. As above, we set one group or guild as the rows of the matrix, and the other group or guild as the columns. But how do we do this for unipartite networks? The answer is what we can an <em>adjacency matrix</em>, in which each node is included as <em>both</em> a row and a column.</p>
+<p>As we noted above, depending on the type of interaction we are focused on, some networks such as food webs can be considered <em>unipartite</em>, or in other words any node can potentially interact with any other node in the network.
+This makes sense for food webs because many species can be predators to some species, but prey to others (especially if we think about different life stages&mdash;a large predatory fish species can be prey to much smaller fish species when it is a juvenile or even an egg).</p>
+<p>Because we are focused on pollination networks in this workshop, so far we have maintained a focus on <em>bipartite</em> networks, in other words networks where a given node <em>cannot</em> interact with any other node in the network, but instead can only interact with nodes from the other group or guild.
+In other words, two different pollinator species can&rsquo;t pollinate one another&mdash;pollination interactions can only occur between one plant and one pollinator.</p>
+<p>Bipartite networks are more intuitive to depict in matrix form relative to unipartite networks.
+As above, we set one group or guild as the rows of the matrix, and the other group or guild as the columns. But how do we do this for unipartite networks?
+The answer is what we can an <em>adjacency matrix</em>, in which each node is included as <em>both</em> a row and a column.</p>
 <p>To see what this looks like, we will use a food web dataset from the Baltic Sea, from this publication:</p>
 <blockquote>
 <p>Kortsch, S., Frelat, R., Pecuchet, L., Olivier, P., Putnis, I., Bonsdorff, E., Ojaveer, H., Jurgensone, I., Strāķe, S., Rubene, G., Krūze, Ē., and Nordström, M. C. (2021). Disentangling temporal food web dynamics facilitates understanding of ecosystem functioning. <em>Journal of Animal Ecology</em>, 90(5), 1205-1216. DOI 10.1111/1365-2656.13447.</p>
 </blockquote>
-<p>In plotting the adjacency matrix, we have highlighted the primary diagonal&mdash;which represents self-interactions&mdash;in a darker shade. We have done this highlighting to help orient you to the graph; this particular food web dataset does not include cannibalism (when thinking about trophic interactions, cannibalism is the self-interaction!). One thing to consider is that adjacency matrices look very different if the networks are directed vs. undirected. In particular, for undirected networks (those in which any interaction from A to B is the same as from B to A, for example networks of physical connections like roadway networks), the adjacency matrix will always be symmetrical about the primary diagonal. The adjacency matrix below is very much a directed network&mdash;the interaction is <em>very</em> different for predators vs. prey!&mdash;and thus it is definitely not symmetric about the primary diagonal.</p>
+<p>In plotting the adjacency matrix, we have highlighted the primary diagonal&mdash;which represents self-interactions&mdash;in a darker shade.
+We have done this highlighting to help orient you to the graph; this particular food web dataset does not include cannibalism (when thinking about trophic interactions, cannibalism is the self-interaction!).
+One thing to consider is that adjacency matrices look very different if the networks are directed vs. undirected.
+In particular, for undirected networks (those in which any interaction from A to B is the same as from B to A, for example networks of physical connections like roadway networks), the adjacency matrix will always be symmetrical about the primary diagonal.
+The adjacency matrix below is very much a directed network&mdash;the interaction is <em>very</em> different for predators vs. prey!&mdash;and thus it is definitely not symmetric about the primary diagonal.</p>
 <img src="/courses/wkshp_networks_files/figure-html/baltic adjacency-1.png" width="672" />
-<p>At this point, you might be asking yourself: &ldquo;Well, that&rsquo;s cool and everything, but aren&rsquo;t we here to learn about plant-pollinator networks, which are bipartite? Why are we even bothering with these unipartite networks and adjacency matrices?&rdquo; Great question. Again, how we think about networks&mdash;including how we visualize them&mdash;is fundamentally driven by the <strong>type of interaction</strong> we are focused on. Up until now, we have ultimately been thinking about plant-pollinator interactions at a pretty superficial level, really considering them at the level of whether or not flower visitation occurs (or not) between a plant species and a pollinator species.</p>
-<p>But if we start to take a more nuanced view of pollination, the benefits that a pollinator gets from a particular flower visit are probably almost never the same as the benefits that the plant gets (let&rsquo;s define &ldquo;benefits&rdquo; here in the context of positive impact on population growth). For example, a single bee visit to a flower may transfer enough pollen to fertilize a dozen or more seeds, but to gather enough pollen to feed a single larvae, that bee may have to visit hundreds of flowers. By using an adjacency matrix, we can visualize the lack of symmetry in benefits among interacting partners.</p>
-<p>This becomes even more useful and important when we delve into modeling population dynamics, later on in this workshop. For example, later today we discuss how the structure of networks can impact their stability. The <em>Jacobian</em> matrix&mdash;which we will cover briefly later in the workshop&mdash;is (roughly) an adjacency matrix whose cell values describe how an incremental change in the population size of any one node will impact the population of another node. So that allows us to understand how a change in the population of one pollinator species might impact the dynamics of another pollinator species&mdash;even if we are not directly tracking interactions between pollinators! The Jacobian also provides us a way to assess local stability in networks. Stay tuned for more on all of that.</p>
-<h3 id="edge-list">Edge list</h3>
-<p>We can convert a bipartite plant-pollinator matrix into an adjacency matrix. In practice, doing this isn&rsquo;t very difficult using the <code>igraph</code> package, but we will skip the details here as this is not typically done with bipartite networks. Still, we will show you the adjacency matrix depiction so you can get a visual handle on it. Here is the &ldquo;medgarden&rdquo; data that you converted from an edge list, shown in an adjacency matrix format:</p>
+<p>At this point, you might be asking yourself:
+&ldquo;Well, that&rsquo;s cool and everything, but aren&rsquo;t we here to learn about plant-pollinator networks, which are bipartite? Why are we even bothering with these unipartite networks and adjacency matrices?&rdquo;
+Great question.
+Again, how we think about networks&mdash;including how we visualize them&mdash;is fundamentally driven by the <strong>type of interaction</strong> we are focused on.
+Up until now, we have ultimately been thinking about plant-pollinator interactions at a pretty superficial level, really considering them at the level of whether or not flower visitation occurs (or not) between a plant species and a pollinator species.</p>
+<p>But if we start to take a more nuanced view of pollination, the benefits that a pollinator gets from a particular flower visit are probably almost never the same as the benefits that the plant gets (let&rsquo;s define &ldquo;benefits&rdquo; here in the context of positive impact on population growth).
+For example, a single bee visit to a flower may transfer enough pollen to fertilize a dozen or more seeds, but to gather enough pollen to feed a single larvae, that bee may have to visit hundreds of flowers.
+By using an adjacency matrix, we can visualize the lack of symmetry in benefits among interacting partners.</p>
+<p>This becomes even more useful and important when we delve into modeling population dynamics, later on in this workshop.
+For example, later today we discuss how the structure of networks can impact their stability.
+The <em>Community</em> matrix&mdash;which we will cover briefly later in the workshop&mdash;is (roughly) an adjacency matrix whose cell values describe how an incremental change in the population size of any one node will impact the population of another node.
+So that allows us to understand how a change in the population of one pollinator species might impact the dynamics of another pollinator species&mdash;even if we are not directly tracking interactions between pollinators!
+The Jacobian also provides us a way to assess local stability in networks. Stay tuned for more on all of that.</p>
+<h3 id="bipartite-adjacency">Bipartite adjacency</h3>
+<p>We can convert a bipartite plant-pollinator matrix into an adjacency matrix.
+In practice, doing this isn&rsquo;t very difficult using the <code>igraph</code> package, but we will skip the details here as this is not typically done with bipartite networks.
+Still, we will show you the adjacency matrix depiction so you can get a visual handle on it.
+Here is the <a href="data/networks/medgarden.csv">medgarden.csv</a> data that you converted from an edge list, shown in an adjacency matrix format:</p>
 <img src="/courses/wkshp_networks_files/figure-html/adjacency from bipartite-1.png" width="672" />
-<p>What you probably immediately notice is that there is a big blank space in the upper left. That area is blank because it is dedicated to plant-plant interactions (which we didn&rsquo;t record with this dataset). Looking a bit more closely, there is a corresponding blank area in the bottom right of the matrix, for pollinator-pollinator interactions. Thinking about this a bit more, you can see that the adjacency matrix is divided into four quadrants:</p>
+<p>What you probably immediately notice is that there is a big blank space in the upper left.
+That area is blank because it is dedicated to plant-plant interactions (which we didn&rsquo;t record with this dataset).
+Looking a bit more closely, there is a corresponding blank area in the bottom right of the matrix, for pollinator-pollinator interactions.
+Thinking about this a bit more, you can see that the adjacency matrix is divided into four quadrants:</p>
 <ol>
 <li>a plant-plant quadrant (upper-left, blank)</li>
 <li>a pollinator-plant quadrant (upper-right, some interactions)</li>
-<li>a plant-pollinator quadrant (lower-left, some interactions, the mirror-image or transponse of the upper-right); and</li>
+<li>a plant-pollinator quadrant (lower-left, some interactions, the mirror-image or transpose of the upper-right); and</li>
 <li>a pollinator-pollinator quadrant (lower-right, blank)</li>
 </ol>
 <p>Again, if we were to plot interaction values other than the presence-absence of flower visits, we could potentially see values in the blank quadrants. For example, if we were plotting effects on fitness, we might have (negative) values between pollinators because of competition for flowers and/or nest sites, and negative values between plant species driven by competition for pollinators, space, water, light, nutrients, etc.</p>
-<p>Finally, as noted above, we notice that the matrix is symmetric about the primary diagonal, because presence or absence of flower visitation is a non-directional interaction. Again, if we recorded the data differently / in some more specific way (e.g. fitness benefits) we could potentially depict this interaction in a directional fashion.</p>
+<p>Finally, as noted above, we notice that the matrix is symmetric about the primary diagonal, because presence or absence of flower visitation is a non-directional interaction.
+Again, if we recorded the data differently / in some more specific way (e.g. fitness benefits) we could potentially depict this interaction in a directional fashion.</p>
 <h3 id="matrix-depictions">Matrix depictions</h3>
 <p>What is the difference between these two matrices?</p>
 <p><img src="/courses/wkshp_networks_files/figure-html/different depictions same matrix-1.png" width="672" /><img src="/courses/wkshp_networks_files/figure-html/different depictions same matrix-2.png" width="672" /></p>
-<p>They look pretty different, huh? The second one gives off some distressed Jack-O-Lantern vibes&hellip;</p>
+<p>They look pretty different, huh?
+The second one gives off some distressed Jack-O-Lantern vibes&hellip;</p>
 <p>Perhaps surprisingly, these are two different visualizations of the <em>exact same</em> network! How can that be?</p>
-<p>Ultimately, as long as each interaction is recorded faithfully, we can move around the order of entire rows and entire columns and it is still the same network. If we re-plot the two figures above, including the row and column labels, we can perhaps see that more easily:</p>
+<p>Ultimately, as long as each interaction is recorded faithfully, we can move around the order of entire rows and entire columns and it is still the same network.
+If we re-plot the two figures above, including the row and column labels, we can perhaps see that more easily:</p>
 <p><img src="/courses/wkshp_networks_files/figure-html/different depictions same matrix II-1.png" width="672" /><img src="/courses/wkshp_networks_files/figure-html/different depictions same matrix II-2.png" width="672" /></p>
-<p>With the row and column labels, you can confirm that the integrity of each interaction is maintained through both of these depictions. For example, row $j$ interacts with column 7 in both depictions, and you could hypothetically go through and confirm that for each of the 69 unique interactions in this made-up example (if you were really bored, that is). To get more detailed without having to go interaction-by-interaction, row $a$ interacts with columns 15 through 24, and this is easy to confirm in both graphs; it&rsquo;s just that the column order is different between the two.</p>
-<p>Thinking about this, there is a <em>very</em> large number of ways that we could depict the same network&hellip; if $R$ were the number of rows and $C$ the number of columns, then we could represent that network in $R! \times C!$ ways. For the example above with 24 rows and 24 columns, that is 24! $\times$ 24!, or more than 3 $\times$ $10^{47}$. or in other words an unfathomably gigantic number of ways. Put another way, for a 100 $\times$ 100 network, this value is too large for R to calculate.</p>
-<p>With so many potential options, we would ideally like to have a way to <em>standardize</em> how we depict a network in terms of the arrangement of the rows and columns. Thankfully, there is a clear option in this regard (at least when it comes to bipartite networks): we sort the rows and the columns of the matrix by the <em>degree</em> or number of connections that each node has. We sort such that the most-generalist (highest degree) row is at the top, and the most-generalist column is at the left. This depiction maximizes our ability to detect <em>nestedness</em> in our networks (more on that in the next section), and some researchers refer to this arrangement as &ldquo;packing&rdquo; a matrix.</p>
-<p>When visualizing bipartite networks as matrices, an easy option is to use the <code>visweb</code> function in the <code>bipartite</code> library for R. <code>visweb</code> includes options for how you display a network. If your network were called &ldquo;myweb&rdquo;, you could call the below to plot the rows and columns in the order they are in the dataset (i.e. no rearrangement):</p>
+<p>With the row and column labels, you can confirm that the integrity of each interaction is maintained through both of these depictions.
+For example, row $j$ interacts with column 7 in both depictions, and you could hypothetically go through and confirm that for each of the 69 unique interactions in this made-up example (if you were really bored, that is).
+To get more detailed without having to go interaction-by-interaction, row $a$ interacts with columns 15 through 24, and this is easy to confirm in both graphs; it&rsquo;s just that the column order is different between the two.</p>
+<p>Thinking about this, there is a <em>very</em> large number of ways that we could depict the same network&hellip;
+if $R$ were the number of rows and $C$ the number of columns, then we could represent that network in $R! \times C!$ ways.
+For the example above with 24 rows and 24 columns, that is 24! $\times$ 24!, or more than 3 $\times$ $10^{47}$.
+In other words, an unfathomably gigantic number of ways.
+Put another way, for a 100 $\times$ 100 network, this value is too large for R to calculate.</p>
+<p>With so many potential options, we would ideally like to have a way to <em>standardize</em> how we depict a network in terms of the arrangement of the rows and columns.
+Thankfully, there is a clear option in this regard
+(at least when it comes to bipartite networks):
+we sort the rows and the columns of the matrix by the <em>degree</em> or number of connections that each node has.
+We sort such that the most-generalist (highest degree) row is at the top, and the most-generalist column is at the left.
+This depiction maximizes our ability to detect <em>nestedness</em> in our networks (more on that in the next section), and some researchers refer to this arrangement as &ldquo;packing&rdquo; a matrix.</p>
+<p>When visualizing bipartite networks as matrices, an easy option is to use the <code>visweb</code> function in the <code>bipartite</code> library for R.
+<code>visweb</code> includes options for how you display a network.
+If your network were called &ldquo;myweb&rdquo;, you could call the below to plot the rows and columns in the order they are in the dataset (i.e. no rearrangement):</p>
 <p><code>visweb(myweb, type = &quot;none&quot;)</code></p>
-<p>If you want to standardize (order the rows and columnns by degree / generalization), you can instead use the bipartite default:</p>
+<p>If you want to standardize (order the rows and columns) by the total count of interactions for a particular taxon, you can instead use the bipartite default:</p>
 <p><code>visweb(myweb, type = &quot;nested&quot;)</code></p>
-<p>The one caveat here is that <code>bipartite</code> uses a quick-and-dirty algorithm to get this done that can yield far-from-perfect results, so if you want to make sure that you have truly &ldquo;packed&rdquo; your matrix, you might want to use your own code. It&rsquo;s really not hard; some example code is below (and for aficionados of concise code, it would be straightforward to collapse this down into three lines of code).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">rows</span> <span class="o">=</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span> <span class="c1"># calculate row sums</span>
-</span></span><span class="line"><span class="cl"><span class="n">cols</span> <span class="o">=</span> <span class="nf">colSums</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span> <span class="c1"># calculate column sums</span>
-</span></span><span class="line"><span class="cl"><span class="n">roworder</span> <span class="o">=</span> <span class="nf">order</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">decreasing</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span> <span class="c1"># order rows by sum</span>
-</span></span><span class="line"><span class="cl"><span class="n">colorder</span> <span class="o">=</span> <span class="nf">order</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">decreasing</span> <span class="o">=</span> <span class="bp">T</span><span class="p">)</span> <span class="c1"># order columns by sum</span>
-</span></span><span class="line"><span class="cl"><span class="n">mat</span> <span class="o">=</span> <span class="n">mat[roworder</span><span class="p">,</span><span class="n">colorder]</span> <span class="c1"># re-order rows and cols in matrix</span>
-</span></span></code></pre></div><p>Finally, <code>visweb</code> includes a third option, &ldquo;diagonal&rdquo; arrangement, which maximizes the number of interactions occurring along the diagonal of the bipartite matrix. While a non-standard way to depict matrices, it is helpful for seeing modularity (more on that just below) or compartments in the matrix. You can do that via this command:</p>
+<p>Unfortunately, the bipartite default is not really the ideal way to see nestedness, which is instead to sort by degree or number of links per node
+(not total number of observed interactions).
+Because of this, some researchers in the bipartite network realm strongly prefer to order by degree instead of interaction count.
+To do that, you&rsquo;ll have to code it yourself.
+It&rsquo;s really not hard;
+some example code is below (and for aficionados of concise code, it would be straightforward to collapse this down into three lines of code).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">rows</span> <span class="o">=</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">mat</span><span class="o">&gt;</span><span class="m">0</span><span class="p">)</span>                      <span class="c1"># calculate plant degrees</span>
+</span></span><span class="line"><span class="cl"><span class="n">cols</span> <span class="o">=</span> <span class="nf">colSums</span><span class="p">(</span><span class="n">mat</span><span class="o">&gt;</span><span class="m">0</span><span class="p">)</span>                      <span class="c1"># calculate pollinator degree</span>
+</span></span><span class="line"><span class="cl"><span class="n">roworder</span> <span class="o">=</span> <span class="nf">order</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">decreasing</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>  <span class="c1"># order plants by degree</span>
+</span></span><span class="line"><span class="cl"><span class="n">colorder</span> <span class="o">=</span> <span class="nf">order</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">decreasing</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>  <span class="c1"># order pollinators by degree</span>
+</span></span><span class="line"><span class="cl"><span class="n">mat</span> <span class="o">=</span> <span class="n">mat[roworder</span><span class="p">,</span> <span class="n">colorder]</span>              <span class="c1"># re-order rows and cols in matrix</span>
+</span></span></code></pre></div><p>To display this, you would have to run this code and then plot with no arrangement:</p>
+<p><code>visweb(myweb, type = &quot;none&quot;)</code></p>
+<p>Finally, <code>visweb</code> includes a third option, &ldquo;diagonal&rdquo; arrangement, which maximizes the number of interactions occurring along the diagonal of the bipartite matrix.
+While a non-standard way to depict matrices, it is helpful for seeing modularity (more on that just below) or compartments in the matrix.
+You can do that via this command:</p>
 <p><code>visweb(myweb, type = &quot;diagonal&quot;)</code></p>
-<p><strong>Exercise 1.3</strong> use the &ldquo;medgarden&rdquo; data you put into matrix form, above</p>
+<h4 id="Ex3">Exercise 3</h4>
+<p>Use the <a href="data/networks/medgarden.csv">medgarden.csv</a> data you put into matrix form, above</p>
 <ul>
 <li>plot via <code>visweb</code>:
 <ul>
@@ -1416,8 +1550,9 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
 <li>with <code>type = &quot;diagonal&quot;</code></li>
 </ul>
 </li>
-<li>&ldquo;pack&rdquo; the matrix using the code included above (or your own variant if you prefer)</li>
-<li>re-plot with <code>type = &quot;none&quot;</code>; the newly packed data should closely resemble the <code>type = &quot;nested&quot;</code> network</li>
+<li>re-order the matrix by plant and pollinator degree using the code included above (or your own variant if you prefer)</li>
+<li>re-plot with <code>type = &quot;none&quot;</code>;
+the newly packed data should closely resemble the <code>type = &quot;nested&quot;</code> network</li>
 </ul>
 <!-- Berry section ends here-->
 <!-- ======================================= -->
@@ -1426,116 +1561,293 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
 <!-- Fernanda -->
 <p>A useful summary of network metrics and their effect on network robustness to species extinctions can be found in this TedEd video: <a href="https://www.youtube.com/watch?v=Y5uRVv7GGQM" target="_blank" rel="noopener">Valdovinos Ted Ed video</a></p>
 <h3 id="connectance">Connectance</h3>
-<p>Connectance measures the proportion of potential interactions that are realized in the network (<em>i.e.</em>, the number of different interactions observed as a fraction of the total number of interactions that could possibly occur). Thus, connectance ranges between 0 (no connections between any species) and 1 (every species interacts with every other species). In unipartite networks, connectance is calculated by dividing the number of realized interactions (or links connecting species) $L$ by the square of the number of nodes $S$ in the network, which represents the total number of interactions if all species were fully connected to one another, including themselves. So, $C=L/S^2$. However, in a bipartite network, nodes from different sets cannot interact. Which should be the expression for connectance in a bipartite network?</p>
-<p><strong>Exercise 1.4</strong>: The denominator of the connectance formula represents the total number of possible interactions in the network, if all species were fully connected to one another. What is the total number of potential interactions in a bipartite network such as a plant-pollinator one?</p>
-<p><strong>Exercise 1.5</strong>: Calculate the connectance of the bipartite network graph from Exercise 1.1 using the formula you derived in Exercise 1.2.</p>
+<p>Connectance measures the proportion of potential interactions that are realized in the network (<em>i.e.</em>, the number of different interactions observed as a fraction of the total number of interactions that could possibly occur).
+Thus, connectance ranges between 0 (no connections between any species) and 1 (every species interacts with every other species).
+In unipartite networks, connectance is calculated by dividing the number of realized interactions (or links connecting species) $L$ by the square of the number of nodes $S$ in the network, which represents the total number of interactions if all species were fully connected to one another, including themselves.
+So, $C=L/S^2$.
+However, in a bipartite network, nodes from different sets cannot interact.
+Which should be the expression for connectance in a bipartite network?</p>
+<h4 id="Ex4">Exercise 4</h4>
+<p>The denominator of the connectance formula represents the total number of possible interactions in the network, if all species were fully connected to one another.
+What is the total number of potential interactions in a bipartite network such as a plant-pollinator one?</p>
+<h4 id="Ex5">Exercise 5</h4>
+<p>Calculate the connectance of the bipartite network graph from <a href="#Ex1">Exercise 1</a> using the formula you derived in <a href="#Ex2">Exercise 2</a>.</p>
 <h3 id="nestedness">Nestedness</h3>
-<p>In a nested network, the interactions of the more specialized species are subsets of the interactions of the more generalized species. Another way to define nestedness is by saying that generalists tend to interact with both generalists and specialists while specialists tend to interact with mostly generalists. Note that the concept of specialist species in a network context is best interpreted as realized interactions and not necessarily as &ldquo;true specialist&rdquo; in the evolutionary sense. One particular species can be recorded as specialist (i.e., with only one interaction) in a particular day/week/season but then be recorded as a generalist in the next day/week/season.</p>
-<p><strong>Exercise 1.6</strong>: Run the code chunk below to see two example networks: Network #1 and Network #2. Given the two example networks below, which do you consider to have higher nestedness and why?</p>
-<img src="../images/networks/compare_nestedness.png" style="display: block; margin: auto;" />
+<p>In a nested network, the interactions of the more specialized species are subsets of the interactions of the more generalized species.
+Another way to define nestedness is by saying that generalists tend to interact with both generalists and specialists while specialists tend to interact with mostly generalists.
+Note that the concept of specialist species in a network context is best interpreted as realized interactions and not necessarily as &ldquo;true specialist&rdquo; in the evolutionary sense.
+One particular species can be recorded as specialist (i.e., with only one interaction) in a particular day/week/season but then be recorded as a generalist in the next day/week/season.</p>
+<h4 id="Ex6">Exercise 6</h4>
+<p>Given the two example networks below, which do you consider to have higher nestedness and why?</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="/images/networks/compare_nestedness.png" alt="compare_nestedness" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
 <h3 id="modularity">Modularity</h3>
 <p>A network is said to have high modularity when its interactions are compartmentalized into modules, whose species interact more among themselves than with species belonging to other modules.</p>
-<p><strong>Exercise 1.7</strong>: Given the two example networks of Exercise 1.4, which do you consider to have higher modularity and why?</p>
+<h4 id="Ex7">Exercise 7</h4>
+<p>Given the two example networks of <a href="#Ex4">Exercise 4</a>, which do you consider to have higher modularity and why?</p>
 <!-- Berry  start-->
 <h3 id="calculating-metrics">Calculating metrics</h3>
-<p>We can calculate network metrics in empirical networks in a relatively straightforward way using the <code>bipartite</code> package for R. The <code>networklevel()</code> function calculates a huge number of different network metrics. This is not a function to use to spit out a zillion metrics and cherry-pick which ones look best&mdash;you will instead want to figure out <em>a priori</em> which metrics you are most interested in, and calculate only those.</p>
+<p>We can calculate network metrics in empirical networks in a relatively straightforward way using the <code>bipartite</code> package for R.
+The <code>networklevel()</code> function calculates a huge number of different network metrics. This is not a function to use to spit out a zillion metrics and cherry-pick which ones look best&mdash;you will instead want to figure out <em>a priori</em> which metrics you are most interested in, and calculate only those.</p>
 <p>For the &ldquo;Safariland&rdquo; plant-pollinator network dataset that comes included in the <code>bipartite</code> package, we can calculate nestedness with the NODF metric (there are many other ways to calculate nestedness):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">networklevel</span><span class="p">(</span><span class="n">Safariland</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="s">&#34;NODF&#34;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">networklevel</span><span class="p">(</span><span class="n">Safariland</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">index</span> <span class="o">=</span> <span class="s">&#34;NODF&#34;</span><span class="p">)</span>
 </span></span></code></pre></div><pre tabindex="0"><code>##    NODF 
 ## 24.5478
-</code></pre><p>easy! We can do the same thing for modularity (note: modularity can take some time to calculate, especially on older / slower computers):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">networklevel</span><span class="p">(</span><span class="n">Safariland</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="s">&#34;modularity&#34;</span><span class="p">)</span>
+</code></pre><p>Easy!
+We can do the same thing for modularity (note: modularity can take some time to calculate, especially on older / slower computers):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">networklevel</span><span class="p">(</span><span class="n">Safariland</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">             <span class="n">index</span> <span class="o">=</span> <span class="s">&#34;modularity&#34;</span><span class="p">)</span>
 </span></span></code></pre></div><pre tabindex="0"><code>## modularity Q 
-##    0.4301558
-</code></pre><p><strong>Exercise 1.8</strong>: Use the &ldquo;medgarden&rdquo; data you put into matrix form, above. Calculate:</p>
+##    0.4294549
+</code></pre><h4 id="Ex8">Exercise 8</h4>
+<p>Use the <a href="data/networks/medgarden.csv">medgarden.csv</a> data you put into matrix form, above.
+Calculate:</p>
 <ul>
 <li>$H_2&rsquo;$ (network-level specialization); in <code>networklevel</code>, use <code>index = &quot;H2&quot;</code></li>
 <li>connectance</li>
 </ul>
 <!-- Berry  end-->
 <h3 id="relationships-among-metrics">Relationships among metrics</h3>
-<p>When analyzing the structure of a specific network and especially when comparing the structure of several networks, for example across a latitudinal or altitudinal gradient, you must keep in mind that all these metrics correlate, some positively others negatively. The best known of those relationships is the negative correlation between network richness (i.e., number of species) and connectance, which is shown in this image below taken from Thebault &amp; Fontaine 2010 (Science), where species richness is labeled as &ldquo;network size&rdquo; and the black dots are mutualistic networks while the red dots are plant-herbivore bipartite networks.</p>
-<img src="../images/networks/CvsS.bmp" style="display: block; margin: auto;" />
-<p><strong>Exercise 1.9</strong>: Given the mathematical formula of connectance, C = L/(P*A), how would you explain this well-known negative relationship between species richness, S = P+A, and connectance?</p>
+<p>When analyzing the structure of a specific network and especially when comparing the structure of several networks, for example across a latitudinal or altitudinal gradient, you must keep in mind that all these metrics correlate, some positively others negatively.
+The best known of those relationships is the negative correlation between network richness (i.e., number of species) and connectance, which is shown in this image below taken from Thebault &amp; Fontaine 2010 (Science), where species richness is labeled as &ldquo;network size&rdquo; and the black dots are mutualistic networks while the red dots are plant-herbivore bipartite networks.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="/images/networks/CvsS.bmp" alt="CvsS" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h4 id="Ex9">Exercise 9</h4>
+<p>Given the mathematical formula of connectance, $C = L/(P \cdot A)$, how would you explain this well-known negative relationship between species richness, $S = P + A$, and connectance?</p>
 <p>Other known relationships include the positive correlation between connectance and nestedness, the negative correlation between connectance and modularity, the positive correlation between species richness and nestedness, and the negative relationship between species richness and modularity.</p>
-<img src="../images/networks/path_analysis.PNG" style="display: block; margin: auto;" />
-<p>Understanding these relationships among network metrics is crucial when analyzing variations across environmental or perturbation gradients in network structure. For instance, if you are investigating how urbanization impacts the network structure of plant-pollinator communities and observe a significant negative impact of urbanization on species richness, caution is needed when comparing other network metrics across the urbanization gradient. This is due to the established relationship between species richness and various network metrics, which could potentially obscure the effect of urbanization by influencing connectance and modularity positively and nestedness negatively. That is, because decreased species richness increases connectance and modularity and decreases nestedness you may infer that it was urbanization which caused those effects on network structure but most likely it is the confounding effect of decreased species richness.</p>
-<p>In the past, we all used $z$-scores to compare network metrics across networks, but there has been recent criticism to using z-scores for that purpose (Song et al 2017, Journal of Animal Ecology). Song et al proposed a new nestedness metric, NODFc, which can be calculated using the R package &ldquo;maxnodf&rdquo; (Hoeppke &amp; Simmons 2021, Methods in Ecology and Evolution) to compare nestedness across networks. Other researchers have used statistical analyses such as generalized linear mixed models to disentangle the effect of a specific treatment from species richness on other network metrics (refs). Covering these recent alternatives and the criticism of using $z$-scores is beyond the scope of this course but it is important that you are aware of these recent developments and, most importantly, that you are aware of the known relationships between network metrics so you consider them when making inferences based on your network analyses.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="/images/networks/path_analysis.PNG" alt="path_analysis" loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Understanding these relationships among network metrics is crucial when analyzing variations across environmental or perturbation gradients in network structure.
+For instance, if you are investigating how urbanization impacts the network structure of plant-pollinator communities and observe a significant negative impact of urbanization on species richness, caution is needed when comparing other network metrics across the urbanization gradient.
+This is due to the established relationship between species richness and various network metrics, which could potentially obscure the effect of urbanization by influencing connectance and modularity positively and nestedness negatively.
+That is, because decreased species richness increases connectance and modularity and decreases nestedness you may infer that it was urbanization which caused those effects on network structure but most likely it is the confounding effect of decreased species richness.</p>
+<p>In the past, we all used $z$-scores to compare network metrics across networks, but there has been recent criticism to using z-scores for that purpose (Song et al 2017, Journal of Animal Ecology).
+Song et al proposed a new nestedness metric, $NODFc$, which can be calculated using the R package &ldquo;maxnodf&rdquo; (Hoeppke &amp; Simmons 2021, Methods in Ecology and Evolution) to compare nestedness across networks.
+Other researchers have used statistical analyses such as generalized linear mixed models to disentangle the effect of a specific treatment from species richness on other network metrics.
+Covering these recent alternatives and the criticism of using $z$-scores is beyond the scope of this course but it is important that you are aware of these recent developments and, most importantly, that you are aware of the known relationships between network metrics so you consider them when making inferences based on your network analyses.</p>
 <!-- Fernanda section ends here-->
 <!-- ======================================= -->
 <!-- ======================================= -->
 <!-- Berry -->
 <!-- 1.2.1 BB: calculating network metrics null models to assess significance of network metrics? Probably do this only for nestedness covering perhaps 2 of the null models? (point them to literature on others?)—be careful of the rabbit hole  -->
 <h2 id="null-models">Null models</h2>
-<p>In some situations, it is helpful to know if an empirical network exhibits a value of some network metric that is greater than you would expect by chance alone. Nestedness is a good example, because we might actually expect networks to display some level of nestedness just because of some of the basic facts of how they are set up. Most communities display a very skewed distribution of abundances, with one or just a few species having very high abundance, and then a lot of species with low abundances. If we have such an abundance distribution for both guilds (e.g. plant and pollinator species), and plants and pollinators are interacting with one another purely at random, we would expect that rare pollinator species would be most likely to interact with common plant species, and that rare plant species would be most likely visited by common pollinators. This is especially true if we are sampling the network on a per-area basis (in which we would log much more observation time on the most common plants). Taken together, the elements of this scenario&mdash;which with the exception of the random interactions, is pretty much the case in most plant-pollinator networks&mdash;would lead to a very nested pattern.</p>
-<p>Given that, we might ask if a network is more nested than we would expect it to be relative to chance alone. We can do this with <strong>null model</strong> simulations. What exactly <em>is</em> a null model? It&rsquo;s a concept that has been surprisingly difficult to pin down, but the definition provided in the book &ldquo;Null Models in Ecology&rdquo; by Nick Gotelli &amp; Gary Graves (1996, Smithsonian Institution Press, Washington, D.C.) is a helpful one:</p>
+<p>In some situations, it is helpful to know if an empirical network exhibits a value of some network metric that is greater than you would expect by chance alone.
+Nestedness is a good example, because we might actually expect networks to display some level of nestedness just because of some of the basic facts of how they are set up.
+Most communities display a very skewed distribution of abundances, with one or just a few species having very high abundance, and then a lot of species with low abundances. If we have such an abundance distribution for both guilds (e.g. plant and pollinator species), and plants and pollinators are interacting with one another purely at random, we would expect that rare pollinator species would be most likely to interact with common plant species, and that rare plant species would be most likely visited by common pollinators.
+This is especially true if we are sampling the network on a per-area basis (in which we would log much more observation time on the most common plants).
+Taken together, the elements of this scenario&mdash;which with the exception of the random interactions, is pretty much the case in most plant-pollinator networks&mdash;would lead to a very nested pattern.</p>
+<p>Given that, we might ask if a network is more nested than we would expect it to be relative to chance alone. We can do this with <strong>null model</strong> simulations.
+What exactly <em>is</em> a null model?
+It&rsquo;s a concept that has been surprisingly difficult to pin down, but the definition provided in the book &ldquo;Null Models in Ecology&rdquo; by Nick Gotelli &amp; Gary Graves (1996, Smithsonian Institution Press, Washington, D.C.) is a helpful one:</p>
 <blockquote>
 <p>&ldquo;A null model is a pattern-generating model that is based on randomization of ecological data or random sampling from a known or imagined distribution. The null model is designed with respect to some ecological or evolutionary process of interest. Certain elements of the data are held constant, and others are allowed to vary stochastically to create new assemblage patterns. The randomization is designed to produce a pattern that would be expected in the absence of a particular ecological mechanism.&rdquo;</p>
 </blockquote>
-<p>If we were asking if a network is more nested than we would expect with chance alone, one way to frame that is to say that we don&rsquo;t think interactions are happening randomly between plants and pollinators. Instead, plants and pollinators have traits that structure their interactions; pollinators draw down resource levels in flowers that then affect the preferences of other pollinators, etc. But, we <em>can</em> create a null model where we assume interactions are happening randomly, repeat that random interaction assignment many times, and then assess if our actual data are different (e.g., more or less nested) than we would expect based on random interactions. The basic statistical idea here is a <em>permutation test</em>, for those of you familiar with that concept.</p>
+<p>If we were asking if a network is more nested than we would expect with chance alone, one way to frame that is to say that we don&rsquo;t think interactions are happening randomly between plants and pollinators.
+Instead, plants and pollinators have traits that structure their interactions; pollinators draw down resource levels in flowers that then affect the preferences of other pollinators, etc.
+But, we <em>can</em> create a null model where we assume interactions are happening randomly, repeat that random interaction assignment many times, and then assess if our actual data are different (e.g., more or less nested) than we would expect based on random interactions.
+The basic statistical idea here is a <em>permutation test</em>, for those of you familiar with that concept.</p>
 <h3 id="alternatives">Alternatives</h3>
 <p>But that sounds pretty complicated (and to be honest, it is not the most straightforward thing ever)&mdash;so how do we actually implement null models in practice? Luckily, the <code>bipartite</code> package has built-in algorithms to create null models (and there are other R packages that do as well, notably <code>vegan</code>), so you don&rsquo;t have to code these by hand (phew!). But because there are different kinds of null models, it is critically important to understand what is going on &ldquo;under the hood&rdquo; of the algorithm so that you can apply the right null model to your analysis.</p>
 <h3 id="simplest-null-model">Simplest null model</h3>
-<p>Let&rsquo;s start by thinking about the simplest possible way we could create a null model. We want to assume that interactions are happening at random. Perhaps a first-pass way of doing this would be to say something along the lines of &ldquo;well we have our plant species and our pollinator species, i.e. our bipartite matrix, and we recorded a total of $N$ interactions in our empirical data&hellip; all we have to do is randomly assign each interaction to one cell in our bipartite matrix, and we&rsquo;ll end up with a randomized network&rdquo;. That would be one way to do it, but it has some pretty major downsides. One downside is that when you repeat that procedure, especially if your $N$ is relatively small, you are likely to have one or more species that have no interactions and thus would drop out of the network. Because some network metrics are sensitive (sometimes <em>very</em> sensitive) to network size / species richness, that&rsquo;s definitely not ideal. You could get around that downside, perhaps by first assigning one interaction to each row (a random column in that row), and then assessing if all columns have an interaction, and for any that are missing, assigning a random interaction to that column. Then you could assign all of the &ldquo;leftover&rdquo; interactions randomly as described above.</p>
+<p>Let&rsquo;s start by thinking about the simplest possible way we could create a null model. We want to assume that interactions are happening at random.
+Perhaps a first-pass way of doing this would be to say something along the lines of &ldquo;well we have our plant species and our pollinator species,
+i.e. our bipartite matrix, and we recorded a total of $N$ interactions in our empirical data&hellip; all we have to do is randomly assign each interaction to one cell in our bipartite matrix, and we&rsquo;ll end up with a randomized network&rdquo;.
+That would be one way to do it, but it has some pretty major downsides.
+One downside is that when you repeat that procedure, especially if your $N$ is relatively small, you are likely to have one or more species that have no interactions and thus would drop out of the network.
+Because some network metrics are sensitive (sometimes <em>very</em> sensitive) to network size / species richness, that&rsquo;s definitely not ideal. You could get around that downside, perhaps by first assigning one interaction to each row (a random column in that row), and then assessing if all columns have an interaction, and for any that are missing, assigning a random interaction to that column.
+Then you could assign all of the &ldquo;leftover&rdquo; interactions randomly as described above.</p>
 <h3 id="constant-link-number">Constant link number</h3>
-<p>Making sure the species richness stays constant is an important improvement over the first-pass method, but the sketch of a null model described above still ultimately has some problems. One key reason is that while the number of total <em>interactions</em> is maintained, the sketch of the algorithm described above does not maintain the same number of <em>links</em> in the network. Given a wide-open matrix in which to assign interactions, in particular such an algorithm will typically generate many more links than we would see in an empirical dataset, and that is also definitely not ideal. A &ldquo;second-pass&rdquo; null model would maintain the same number of interactions (as we suggested in the &ldquo;first-pass&rdquo; model), but would also maintain the number of links (and therefore hold <em>connectance</em> constant). This is what the <code>shuffle.web</code> algorithm in the <code>bipartite</code> package does. This is an algorithm that has been used in some papers, e.g. Fortuna, M. A., and J. Bascompte. 2006. Habitat loss and the structure of plant-animal mutualistic networks. <em>Ecology Letters</em> 9: 281-286.</p>
+<p>Making sure the species richness stays constant is an important improvement over the first-pass method, but the sketch of a null model described above still ultimately has some problems.
+One key reason is that while the number of total <em>interactions</em> is maintained, the sketch of the algorithm described above does not maintain the same number of <em>links</em> in the network. Given a wide-open matrix in which to assign interactions, in particular such an algorithm will typically generate many more links than we would see in an empirical dataset, and that is also definitely not ideal.
+A &ldquo;second-pass&rdquo; null model would maintain the same number of interactions (as we suggested in the &ldquo;first-pass&rdquo; model), but would also maintain the number of links (and therefore hold <em>connectance</em> constant).
+This is what the <code>shuffle.web</code> algorithm in the <code>bipartite</code> package does.
+This is an algorithm that has been used in some papers, e.g. Fortuna, M. A., and J. Bascompte. 2006. Habitat loss and the structure of plant-animal mutualistic networks. <em>Ecology Letters</em> 9: 281-286.</p>
 <h3 id="constant-degree">Constant degree</h3>
-<p>Still, the <code>shuffle.web</code> null model algorithm is not widely used these days. A major reason is that (again) some plants, and some pollinators, are much more common, and some are rare. And that skewed abundance distribution could be a <em>big</em> driver of any nestedness we see in a system (as well as potentially other network metrics). To account for that, we can instead implement what we might call a &ldquo;third-pass&rdquo; algorithm that accounts for the empirically-observed number of interactions for each species, and holds those &ldquo;marginal totals&rdquo; constant. In practice, this would be straightforward to do for just <em>one</em> of the guilds in our network&mdash;let&rsquo;s say we do it for plants. We can take the total number of interactions for each plant species, and assign them randomly across the pollinators in the network. Easy-peasy. The problem is that we are trying to do this also at the same time for pollinators, and that is a lot trickier! Again, luckily we don&rsquo;t have to code this by hand. This null model is implemented in the <code>r2dtable</code> function in <code>bipartite</code>.</p>
+<p>Still, the <code>shuffle.web</code> null model algorithm is not widely used these days.
+A major reason is that (again) some plants, and some pollinators, are much more common, and some are rare.
+And that skewed abundance distribution could be a <em>big</em> driver of any nestedness we see in a system (as well as potentially other network metrics).
+To account for that, we can instead implement what we might call a &ldquo;third-pass&rdquo; algorithm that accounts for the empirically-observed number of interactions for each species, and holds those &ldquo;marginal totals&rdquo; constant.
+In practice, this would be straightforward to do for just <em>one</em> of the guilds in our network&mdash;let&rsquo;s say we do it for plants. We can take the total number of interactions for each plant species, and assign them randomly across the pollinators in the network. Easy-peasy.
+The problem is that we are trying to do this also at the same time for pollinators, and that is a lot trickier!
+Again, luckily we don&rsquo;t have to code this by hand.
+This null model is implemented in the <code>r2dtable</code> function in <code>bipartite</code>.</p>
 <h3 id="constant-link-number-and-degree">Constant link number and degree</h3>
-<p>Taking our exploratino of null models yet another step further, <code>r2dtable</code> is very helpful in terms of accounting for the number of interactions that each species has. But accounting just for that does not necessarily give us the same number of <em>links</em> (or put another way, <em>connectance</em>) displayed by our data, as we described above. So a &ldquo;fourth-pass&rdquo; algorithm would hold multiple components constant relative to the empirical data: 1) the total number of interactions in the whole network; 2) the total number of interactions for each plant and pollinator species; and 3) the number of links / network connectance. This is (at least theoretically) implemented in the <code>swap.web</code> function in <code>bipartite</code> and is a very commonly-used null model. This approach was first implemented in: Miklós, I. and Podani, J. (2004) Randomization of presence-absence matrices: comments and new algorithms. <em>Ecology</em> 85, 86–92.</p>
-<p>There are other approaches as well, for example the <code>vaznull</code> function uses an approach proposed by Diego Vázquez et al. in 2007 (<em>Oikos</em> 116: 1120-1127). This algorithm weights the probability of selecting a cell (interaction) in the matrix by the abundance (number of empirically observed interactions) of both the plant and the pollinator. While similar to the <code>r2dtable</code> algorithm in that regard, it does not hold the row and column sums to be absolutely constant, even though they are weighted by interaction abundance. The <code>vaznull</code> algorithm is also supposed to maintain equal or close-to-equal connectance, like <code>swapweb</code>.</p>
+<p>Taking our exploration of null models yet another step further, <code>r2dtable</code> is very helpful in terms of accounting for the number of interactions that each species has.
+But accounting just for that does not necessarily give us the same number of <em>links</em> (or put another way, <em>connectance</em>) displayed by our data, as we described above.
+So a &ldquo;fourth-pass&rdquo; algorithm would hold multiple components constant relative to the empirical data:</p>
+<ol>
+<li>the total number of interactions in the whole network;</li>
+<li>the degree of each plant and pollinator species; and</li>
+<li>the number of links across the entire network / connectance.
+This is (at least theoretically) implemented in the <code>swap.web</code> function in <code>bipartite</code> and is a very commonly-used null model.
+This approach was first implemented in: Miklós, I. and Podani, J. (2004) Randomization of presence-absence matrices: comments and new algorithms. <em>Ecology</em> 85, 86–92.</li>
+</ol>
+<p>There are other approaches as well, for example the <code>vaznull</code> function uses an approach proposed by Diego Vázquez et al. in 2007 (<em>Oikos</em> 116: 1120-1127).
+This algorithm weights the probability of selecting a cell (interaction) in the matrix by the abundance (number of empirically observed interactions) of both the plant and the pollinator.
+While similar to the <code>r2dtable</code> algorithm in that regard, it does not hold the row and column sums to be absolutely constant, even though they are weighted by interaction abundance.
+The <code>vaznull</code> algorithm is also supposed to maintain equal or close-to-equal connectance, like <code>swapweb</code>.</p>
 <h3 id="comparing-null-models">Comparing null models</h3>
-<p>More constrained is not always better.</p>
-<p>Ultimately, however, it&rsquo;s important to understand that every null model has drawbacks. The more things that are held constant, the fewer potential randomizations there are that can be done that meet all of the criteria. For some unusually structured networks (especially for small networks) the number of possible permutations becomes very small for highly constrained algorithms like <code>swap.web</code>. Moreover, the <code>swap.web</code> and <code>vaznull</code> approaches have been criticized for biasing some &ldquo;swaps&rdquo; of interactions (i.e. some swaps are more likely than others, when they shouldn&rsquo;t be). There is to our knowledge no &ldquo;perfect&rdquo; null model implementation but it&rsquo;s also good to know that network null models are also implemented in other packages, notably there are &gt;25 null model algorithms implemented in the <code>vegan</code> package. To learn more, check out the documentation of the <code>commsim</code> function: <code>?vegan::commsimm</code>.</p>
+<p>Ultimately, however, it’s important to understand that every null model has drawbacks. In particular, more constrained is not always better.</p>
+<p>The more things that are held constant, the fewer potential randomizations there are that can be done that meet all of the criteria.
+For some unusually structured networks (especially for small networks) the number of possible permutations becomes very small for highly constrained algorithms like <code>swap.web</code>.
+Moreover, the <code>swap.web</code> and <code>vaznull</code> approaches have been criticized for biasing some &ldquo;swaps&rdquo; of interactions (i.e. some swaps are more likely than others, when they shouldn&rsquo;t be).
+There is to our knowledge no &ldquo;perfect&rdquo; null model implementation but it&rsquo;s also good to know that network null models are also implemented in other packages, notably there are &gt;25 null model algorithms implemented in the <code>vegan</code> package.
+To learn more, check out the documentation of the <code>commsim</code> function: <code>?vegan::commsimm</code>.</p>
 <h3 id="graphical-implementation">Graphical implementation</h3>
-<p>Let&rsquo;s delve into how to use these algorithms in practice, starting by graphically implementing a null model analysis (we discuss how to calculate a $p$-value for this procedure below). For this graphical analysis, we&rsquo;ll focus on NODF (again, a metric of nestedness) in the &ldquo;Safariland&rdquo; plant-pollinator network dataset that is included in the <code>bipartite</code> package (code below altered slightly from Carsten Dormann&rsquo;s <code>bipartite</code> vignette). We will use the <code>swap.web</code> algorithm and create 999 null networks to compare with the empirical &ldquo;Safariland&rdquo; dataset. We will plot the NODF value of the empirical dataset as a red vertical line, and display the distribution of the null networks with a density plot (we could just as easily display it as a histogram as an alternative, code included but commented out). Here is the code:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="n">Safariland</span><span class="p">)</span>
+<p>Let&rsquo;s delve into how to use these algorithms in practice, starting by graphically implementing a null model analysis (we discuss how to calculate a $p$-value for this procedure below).
+For this graphical analysis, we&rsquo;ll focus on NODF (again, a metric of nestedness) in the &ldquo;Safariland&rdquo; plant-pollinator network dataset that is included in the <code>bipartite</code> package (code below altered slightly from Carsten Dormann&rsquo;s <code>bipartite</code> vignette). We will use the <code>swap.web</code> algorithm and create 999 null networks to compare with the empirical &ldquo;Safariland&rdquo; dataset.
+We will plot the NODF value of the empirical dataset as a red vertical line, and display the distribution of the null networks with a density plot (we could just as easily display it as a histogram as an alternative, code included but commented out). Here is the code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Load the &#39;Safariland&#39; data from the bipartite package</span>
+</span></span><span class="line"><span class="cl"><span class="nf">data</span><span class="p">(</span><span class="n">Safariland</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">Iobs</span> <span class="o">&lt;-</span> <span class="nf">networklevel</span><span class="p">(</span><span class="n">Safariland</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="s">&#34;NODF&#34;</span><span class="p">)</span><span class="n">[[1]]</span>
-</span></span><span class="line"><span class="cl"><span class="n">nulls</span> <span class="o">&lt;-</span> <span class="nf">nullmodel</span><span class="p">(</span><span class="n">web</span><span class="o">=</span><span class="n">Safariland</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="m">999</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&#39;swap.web&#39;</span><span class="p">)</span> <span class="c1"># can take a while...</span>
-</span></span><span class="line"><span class="cl"><span class="n">Inulls</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">nulls</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">nestednodf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">$</span><span class="n">statistic[3]</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span><span class="nf">density</span><span class="p">(</span><span class="n">Inulls</span><span class="p">),</span> <span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">100</span><span class="p">),</span> <span class="n">lwd</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;NODF&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">nulls</span> <span class="o">&lt;-</span> <span class="nf">nullmodel</span><span class="p">(</span><span class="n">web</span> <span class="o">=</span> <span class="n">Safariland</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                   <span class="n">N</span> <span class="o">=</span> <span class="m">999</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                   <span class="n">method</span> <span class="o">=</span> <span class="s">&#39;swap.web&#39;</span><span class="p">)</span> <span class="c1"># can take a while...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Inulls</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">nulls</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                 <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="nf">nestednodf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">$</span><span class="n">statistic[3]</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">plot</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">density</span><span class="p">(</span><span class="n">Inulls</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="n">xlim</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">100</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lwd</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;NODF&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># plot(hist(Inulls), xlim=c(0, 100), lwd=2, main=&#34;NODF&#34;) # histogram</span>
-</span></span><span class="line"><span class="cl"><span class="nf">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="n">Iobs</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&#34;red&#34;</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">abline</span><span class="p">(</span><span class="n">v</span> <span class="o">=</span> <span class="n">Iobs</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">       <span class="n">col</span> <span class="o">=</span> <span class="s">&#34;red&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">       <span class="n">lwd</span> <span class="o">=</span> <span class="m">2</span><span class="p">)</span>
 </span></span></code></pre></div><img src="/courses/wkshp_networks_files/figure-html/null model NODF-1.png" width="672" />
-<p>What we see is that the NODF (nestedness) value of the empirical dataset&mdash;the red line&mdash;is somewhere in the middle of the distribution of the null-model NODF scores. That is, our empirical value would likely not be considered either more or less nested than chance alone.</p>
+<p>What we see is that the NODF (nestedness) value of the empirical dataset&mdash;the red line&mdash;is somewhere in the middle of the distribution of the null-model NODF scores.
+That is, our empirical value would likely not be considered either more or less nested than chance alone.</p>
 <h3 id="checking-results">Checking results</h3>
-<p>Before we get to $p$-values, it is always worth checking if the null model we are using actually has the properties that we want. Relative to the empirical network, the <code>swap.web</code> algorithm is supposed to: 1) maintain the connectance; and 2) maintain the row and column sums. Let&rsquo;s check that it is actually doing that. We&rsquo;ll calculate the mean and standard deviation of connectance across all 999 networks; we should be getting an exact or very close to exact match with our empirical connectance, and a standard deviation that is either zero (meaning all of the null networks have the exact same connectance) or very very small. We can then compare the row and column sums.</p>
-<p>we&rsquo;ll start with connectance:</p>
+<p>Before we get to $p$-values, it is always worth checking if the null model we are using actually has the properties that we want.
+Relative to the empirical network, the <code>swap.web</code> algorithm is supposed to: 1) maintain the connectance; and 2) maintain the row and column sums.
+Let&rsquo;s check that it is actually doing that. We&rsquo;ll calculate the mean and standard deviation of connectance across all 999 networks;
+we should be getting an exact or very close to exact match with our empirical connectance, and a standard deviation that is either zero (meaning all of the null networks have the exact same connectance) or very very small.
+We can then compare the row and column sums.</p>
+<p>We&rsquo;ll start with connectance:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># calculate connectance across the null networks</span>
-</span></span><span class="line"><span class="cl"><span class="n">Cnulls</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">nulls</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">networklevel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="s">&#34;connectance&#34;</span><span class="p">)</span><span class="n">[1]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Cnulls</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">nulls</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                 <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                   <span class="nf">networklevel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="s">&#34;connectance&#34;</span><span class="p">)</span><span class="n">[1]</span>
+</span></span><span class="line"><span class="cl">                   <span class="p">})</span>
 </span></span><span class="line"><span class="cl"><span class="n">Cempirical</span> <span class="o">&lt;-</span> <span class="nf">networklevel</span><span class="p">(</span><span class="n">Safariland</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="s">&#34;connectance&#34;</span><span class="p">)</span><span class="n">[1]</span>
 </span></span><span class="line"><span class="cl"><span class="n">SDnulls</span> <span class="o">&lt;-</span> <span class="nf">sd</span><span class="p">(</span><span class="n">Cnulls</span><span class="p">)</span>
 </span></span></code></pre></div><pre tabindex="0"><code>## mean connectance of null networks = 0.1604938
 </code></pre><pre tabindex="0"><code>## connectance of empirical network = 0.1604938
 </code></pre><pre tabindex="0"><code>## standard deviation of null networks = 0
 </code></pre><p>Looks great: connectance is exactly the same between the two, and the standard deviation in connectance in the null networks is zero, meaning that each and every null network has the exact same connectance as our empirical network.</p>
-<p>Still, it is worth trying this, because sometimes&mdash;even in recent versions of <code>bipartite</code>&mdash;we have had the experience where these null models do not perform exactly as expected. In those cases, usually if we start a new R session and re-try, it works&hellip; but again, it is definitely worth checking.</p>
-<p>Now let&rsquo;s check the species degrees (row and column sums). This one is just a little trickier, because there is one value for <em>each species</em> in the network, not just one numeric value for the entire network (as there was with connectance). To account for that, we will put the values&mdash;for both the row and the column sums&mdash;into a data frame, with rows as species and a column for each of the empirical data and the means of the null models. A nice way to check this formally is then to subtract those two columns; if they are exactly the same (as they should be), then the difference for each value would be zero.</p>
+<p>Still, it is worth trying this, because sometimes&mdash;even in recent versions of <code>bipartite</code>&mdash;we have had the experience where these null models do not perform exactly as expected.
+In those cases, usually if we start a new R session and re-try, it works&hellip; but again, it is definitely worth checking.</p>
+<p>Now let&rsquo;s check the species degrees (row and column sums).
+This one is just a little trickier, because there is one value for <em>each species</em> in the network, not just one numeric value for the entire network (as there was with connectance).
+To account for that, we will put the values&mdash;for both the row and the column sums&mdash;into a data frame, with rows as species and a column for each of the empirical data and the means of the null models.
+A nice way to check this formally is then to subtract those two columns;
+if they are exactly the same (as they should be), then the difference for each value would be zero.</p>
 <p>We will do the procedure for both the pollinators and the plants, but we will just display the results in tabular form for the 9 plant species in the &ldquo;Safariland&rdquo; dataset to save space.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># calculate row sums across the null networks</span>
-</span></span><span class="line"><span class="cl"><span class="n">Rsums.nulls</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">nulls</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">Rsums.nulls</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">nulls</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                      <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">})</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># this returns a 9 x 999 matrix, with one column for each null model</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># now take the mean across all of those row sums:</span>
-</span></span><span class="line"><span class="cl"><span class="n">Rsums.mean</span> <span class="o">&lt;-</span> <span class="nf">apply</span><span class="p">(</span><span class="n">Rsums.nulls</span><span class="p">,</span> <span class="n">MARGIN</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">FUN</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">Rsums.mean</span> <span class="o">&lt;-</span> <span class="nf">apply</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Rsums.nulls</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">MARGIN</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">FUN</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span> <span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># we&#39;ll put this into a data frame along with the empirical row sums:</span>
-</span></span><span class="line"><span class="cl"><span class="n">comper</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">empirical</span> <span class="o">=</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">Safariland</span><span class="p">),</span> <span class="n">null</span> <span class="o">=</span> <span class="n">Rsums.mean</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">comper</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">empirical</span> <span class="o">=</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">Safariland</span><span class="p">),</span> 
+</span></span><span class="line"><span class="cl">                    <span class="n">null</span> <span class="o">=</span> <span class="n">Rsums.mean</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># we will check that out in just a second, but first we&#39;ll add the col sums:</span>
-</span></span><span class="line"><span class="cl"><span class="n">Csums.nulls</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">nulls</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">colSums</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="n">Csums.mean</span> <span class="o">&lt;-</span> <span class="nf">apply</span><span class="p">(</span><span class="n">Csums.nulls</span><span class="p">,</span> <span class="n">MARGIN</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">FUN</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="n">comper2</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">empirical</span> <span class="o">=</span> <span class="nf">colSums</span><span class="p">(</span><span class="n">Safariland</span><span class="p">),</span> <span class="n">null</span> <span class="o">=</span> <span class="n">Csums.mean</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Csums.nulls</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">nulls</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                      <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span> <span class="nf">colSums</span><span class="p">(</span><span class="n">x</span><span class="p">)})</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># bid row &amp; col sum dataframes together:</span>
+</span></span><span class="line"><span class="cl"><span class="n">Csums.mean</span> <span class="o">&lt;-</span> <span class="nf">apply</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Csums.nulls</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">MARGIN</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="n">FUN</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span> <span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">})</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">comper2</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">empirical</span> <span class="o">=</span> <span class="nf">colSums</span><span class="p">(</span><span class="n">Safariland</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                     <span class="n">null</span> <span class="o">=</span> <span class="n">Csums.mean</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># bind row &amp; col sum dataframes together:</span>
 </span></span><span class="line"><span class="cl"><span class="n">comper</span> <span class="o">=</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">comper</span><span class="p">,</span> <span class="n">comper2</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># subtract null values from empirical values </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># subtract null values from empirical values</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># (all should be zero if algorithm performing correctly)</span>
 </span></span><span class="line"><span class="cl"><span class="n">comper</span><span class="o">$</span><span class="n">difference</span> <span class="o">=</span> <span class="n">comper</span><span class="o">$</span><span class="n">empirical</span> <span class="o">-</span> <span class="n">comper</span><span class="o">$</span><span class="n">null</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># display</span>
-</span></span><span class="line"><span class="cl"><span class="nf">kable</span><span class="p">(</span><span class="n">comper[1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span><span class="n">]</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">kable_styling</span><span class="p">(</span><span class="n">full_width</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">  <span class="n">position</span> <span class="o">=</span> <span class="s">&#34;left&#34;</span><span class="p">,</span> <span class="n">bootstrap_options</span> <span class="o">=</span> <span class="s">&#34;condensed&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><table class="table table-condensed" style="color: black; width: auto !important; ">
+</span></span><span class="line"><span class="cl"><span class="nf">kable</span><span class="p">(</span><span class="n">comper[1</span><span class="o">:</span><span class="m">9</span><span class="p">,</span> <span class="n">]</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+</span></span><span class="line"><span class="cl">  <span class="nf">kable_styling</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">full_width</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">position</span> <span class="o">=</span> <span class="s">&#34;left&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bootstrap_options</span> <span class="o">=</span> <span class="s">&#34;condensed&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span></code></pre></div><table class="table table-condensed" style="width: auto !important; ">
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -1601,20 +1913,43 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
   </tr>
 </tbody>
 </table>
-<p>Looks great&mdash;all of the row sums (plant degrees) are the same between the null models and the empirical network. Again, the code above included all of the column sums (pollinator degrees), as well as a column for difference between empirical row/column sums and mean null model row/col sums. We could easily assess if there were any departures from zero with this line of code: <code>which(comper$difference!=0)</code>. If it returns <code>integer(0)</code> you know that they match perfectly (in this case, they do).</p>
-<p>Of course, we didn&rsquo;t check out the standard deviations here, so there is a small chance that there is some variation across the null models (but a pretty tiny chance indeed, given that we see integers for all of the mean values&hellip;) but that is something that would be easy to add to the code above if you were interested.</p>
+<p>Looks great&mdash;all of the row sums (plant degrees) are the same between the null models and the empirical network.
+Again, the code above included all of the column sums (pollinator degrees), as well as a column for difference between empirical row/column sums and mean null model row/col sums.
+We could easily assess if there were any departures from zero with this line of code: <code>which(comper$difference!=0)</code>.
+If it returns <code>integer(0)</code> you know that they match perfectly (in this case, they do).</p>
+<p>Of course, we didn&rsquo;t check out the standard deviations here, so there is a small chance that there is some variation across the null models
+(but a pretty tiny chance indeed, given that we see integers for all of the mean values&hellip;)
+but that is something that would be easy to add to the code above if you were interested.</p>
 <p>Bringing this back full circle, that means that the <code>swap.web</code> algorithm is doing what we expected relative to the empirical data:</p>
 <ul>
 <li>maintaining the same connectance</li>
 <li>maintaining the same row and column sums</li>
 </ul>
 <p>while we didn&rsquo;t do an explicit check to see if the total number of interactions is the same between the two, we couldn&rsquo;t maintain the same row and column sums and also have a different total number of interactions, so we are safe there as well.</p>
-<h3 id="significance">Significance</h3>
-<p>Our first pass at the null model analysis above was graphical. We can formalize this test in a very straightforward way, calculating a $p$-value by assessing the <em>rank</em> of the empirical value relative to the nulls. Let&rsquo;s imagine a case in which the empirical value was more-nested than almost all of the nulls. If we were to generate 99 nulls, and out of the 100 total networks we were assessing (the 99 nulls + the 1 empirical network), the empirical network was the 5th-most nested (i.e. 4 null models were more nested), then the $p$-value would be exactly 0.05 (5 out of 100). One way of conceptualizing that is that if the empirical value was part of the same distribution as our null models, we could assign it a rank in that distribution at random. And there would only be a 5% chance ($p$ = 0.05) that the rank would be 5th or more extreme (4th, 3rd, 2nd, or 1st).</p>
-<p>Similarly, if the empirical network were the most-nested of all, the $p$-value would be 0.01 (1 out of 100). Two lessons from that: first, it makes the $p$-value calculations slightly easier if you generate {some power of 10 minus 1} null models, e.g. 99 or 999 or 9,999 null models. Still, that is not strictly required. And second, the more null models you calculate, the greater the <em>precision</em> you have in your $p$-value. The examples above were for 99 null models; if you were to use 9,999 nulls and your empirical network were the top-ranked one, the $p$-value would be 0.0001 (1 in 10,000). The caveat there is that the more null models you calculate, the longer it takes. Typically if you&rsquo;re after assessing statistical significance in the traditional sense, you will want to use more than 99 null models, as that is pretty coarse, especially since you can have slight variations in the $p$-value if you re-run your null models. Still, once you get to 999 you should (usually) know if the $p$-value is less than the standard $\alpha$ value of 0.05. If you have a borderline value, you might want to amp up the resolution by running more null models.</p>
-<p>It&rsquo;s also worth noting that the $p$-values as described above are for a one-tailed test. For example, if you had the <em>a priori</em> hypothesis that your empirical network was <em>more</em> nested than you would expect by chance, then you could assess that with a one-tailed test. If you wanted to see if your network was <em>either</em> more or less nested than chance alone, for the example with 99 null models, if your empirical data were either the most or the least nested, there is a 1 in 100 chance of <em>either</em> of those situations happening. So you would need to multiply the $p$-value by 2 to compensate: there is a 2 in 100 chance of either occurring, so the $p$-value for either situation would be not 0.01, but 0.02.</p>
+<h3 id="p-values">p-values</h3>
+<p>Our first pass at the null model analysis above was graphical.
+We can formalize this test in a very straightforward way, calculating a $p$-value by assessing the <em>rank</em> of the empirical value relative to the nulls.
+Let&rsquo;s imagine a case in which the empirical value was more-nested than almost all of the nulls.
+If we were to generate 99 nulls, and out of the 100 total networks we were assessing (the 99 nulls + the 1 empirical network), the empirical network was the 5th-most nested (i.e. 4 null models were more nested), then the $p$-value would be exactly 0.05 (5 out of 100).
+One way of conceptualizing that is that if the empirical value was part of the same distribution as our null models, we could assign it a rank in that distribution at random.
+And there would only be a 5% chance ($p$ = 0.05) that the rank would be 5th or more extreme (4th, 3rd, 2nd, or 1st).</p>
+<p>Similarly, if the empirical network were the most-nested of all, the $p$-value would be 0.01 (1 out of 100).
+Two lessons from that:
+first, it makes the $p$-value calculations slightly easier if you generate {some power of 10 minus 1} null models, e.g. 99 or 999 or 9,999 null models.
+Still, that is not strictly required.
+And second, the more null models you calculate, the greater the <em>precision</em> you have in your $p$-value. The examples above were for 99 null models;
+if you were to use 9,999 nulls and your empirical network were the top-ranked one, the $p$-value would be 0.0001 (1 in 10,000).
+The caveat there is that the more null models you calculate, the longer it takes.
+Typically if you&rsquo;re after assessing statistical significance in the traditional sense, you will want to use more than 99 null models, as that is pretty coarse, especially since you can have slight variations in the $p$-value if you re-run your null models.
+Still, once you get to 999 you should (usually) know if the $p$-value is less than the standard $\alpha$ value of 0.05. If you have a borderline value, you might want to amp up the resolution by running more null models.</p>
+<p>It&rsquo;s also worth noting that the $p$-values as described above are for a one-tailed test.
+For example, if you had the <em>a priori</em> hypothesis that your empirical network was <em>more</em> nested than you would expect by chance, then you could assess that with a one-tailed test.
+If you wanted to see if your network was <em>either</em> more or less nested than chance alone, for the example with 99 null models, if your empirical data were either the most or the least nested, there is a 1 in 100 chance of <em>either</em> of those situations happening.
+So you would need to multiply the $p$-value by 2 to compensate:
+there is a 2 in 100 chance of either occurring, so the $p$-value for either situation would be not 0.01, but 0.02.</p>
 <h4 id="p-value-calculation">p-value calculation</h4>
-<p>With all of that in place, we can write code to calculate the (two-tailed) $p$-value. A few things to note:</p>
+<p>With all of that in place, we can write code to calculate the (two-tailed) $p$-value.
+A few things to note:</p>
 <ul>
 <li>we use <code>length(which())</code> to assess rank, by seeing how many null values are more-extreme than our empirical value</li>
 <li>to properly assess the rank of the empirical data, we add 1 to the result of <code>length(which())</code>
@@ -1627,10 +1962,11 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
 <li>again because of the two-tailed nature of the test, we multiply the value by 2 at the end</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># two-tailed p-value for permutation test with null models</span>
-</span></span><span class="line"><span class="cl"><span class="n">pval</span> <span class="o">=</span> <span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="nf">which</span><span class="p">(</span><span class="n">Inulls</span><span class="o">&gt;</span><span class="n">Iobs</span><span class="p">)),</span> <span class="nf">length</span><span class="p">(</span><span class="nf">which</span><span class="p">(</span><span class="n">Iobs</span><span class="o">&gt;</span><span class="n">Inulls</span><span class="p">))</span><span class="m">+1</span><span class="p">)</span> <span class="o">/</span>
-</span></span><span class="line"><span class="cl">          <span class="nf">length</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">Iobs</span><span class="p">,</span><span class="n">Inulls</span><span class="p">)))</span><span class="o">*</span><span class="m">2</span>
-</span></span></code></pre></div><pre tabindex="0"><code>## p = 0.402
-</code></pre><p>In this case, we can see that the $p$-value is 0.402, i.e. the Safariland network is not significantly nested relative to chance.</p>
+</span></span><span class="line"><span class="cl"><span class="n">pval</span> <span class="o">=</span> <span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="nf">which</span><span class="p">(</span><span class="n">Inulls</span> <span class="o">&gt;</span> <span class="n">Iobs</span><span class="p">)),</span> 
+</span></span><span class="line"><span class="cl">            <span class="nf">length</span><span class="p">(</span><span class="nf">which</span><span class="p">(</span><span class="n">Iobs</span> <span class="o">&gt;</span> <span class="n">Inulls</span><span class="p">))</span> <span class="o">+</span> <span class="m">1</span><span class="p">)</span> <span class="o">/</span> 
+</span></span><span class="line"><span class="cl">          <span class="nf">length</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">Iobs</span><span class="p">,</span> <span class="n">Inulls</span><span class="p">)))</span> <span class="o">*</span> <span class="m">2</span>
+</span></span></code></pre></div><pre tabindex="0"><code>## p = 0.41
+</code></pre><p>In this case, we can see that the $p$-value is 0.41, i.e. the Safariland network is not significantly nested relative to chance.</p>
 <h2 id="take-home">Take-home</h2>
 <p>Together these examples point to a few take-home messages:</p>
 <ul>
@@ -1643,18 +1979,35 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
 <li>always check your null models to make sure they are performing as expected</li>
 <li>use a two-tailed $p$-value as a default, unless you have laid out an <em>a priori</em> hypothesis that includes directionality (e.g., &ldquo;I hypothesize that this network will be less-nested than chance alone would predict&rdquo;)</li>
 </ul>
-<p><strong>Exercise 1.10:</strong> Analyze NODF for the &ldquo;Safariland&rdquo; dataset using the <code>r2dtable</code> null model, 1) graphically and 2) by calculating the (two-tailed) $p$-value. You should get a qualitatively different result relative to using <code>swap.web</code>. Desribe where the empirical value falls out relative to the null models. <strong>BONUS:</strong> using the information above on the correlation among network metrics, as well as descriptions of the null models, offer an interpretation as to <em>why</em> the two null models yield qualitatively different results.</p>
-<p><strong>DOUBLE BONUS:</strong> try one of the null models implemented in <code>vegan</code>, in particular <code>quasiswap_count</code>. Here is some code that should help you; the syntax is different for the <code>vegan</code> implementation relative to <code>bipartite</code> and in addition <code>vegan</code> returns the null models not as a list, but instead as a 3-dimensional array. The latter means you need to take a slightly different approach when calculating NODF (or any other metric) across the null models.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># alternative: use vegan::nullmodel rather than bipartite</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># require first setting up a null model, then separately simulating it</span>
+<h4 id="Ex10">Exercise 10</h4>
+<p>Analyze NODF for the &ldquo;Safariland&rdquo; dataset using the <code>r2dtable</code> null model,</p>
+<ol>
+<li>graphically and</li>
+<li>by calculating the (two-tailed) $p$-value.
+You should get a qualitatively different result relative to using <code>swap.web</code>.
+Describe where the empirical value falls out relative to the null models.</li>
+</ol>
+<h4 id="bonus-exercise">Bonus exercise</h4>
+<p>Using the information above on the correlation among network metrics, as well as descriptions of the null models, offer an interpretation as to <em>why</em> the two null models yield qualitatively different results.</p>
+<h4 id="double-bonus-exercise">Double bonus exercise</h4>
+<p>Try one of the null models implemented in <code>vegan</code>, in particular <code>quasiswap_count</code>.
+Here is some code that should help you; the syntax is different for the <code>vegan</code> implementation relative to <code>bipartite</code> and in addition <code>vegan</code> returns the null models not as a list, but instead as a 3-dimensional array.
+The latter means you need to take a slightly different approach when calculating NODF (or any other metric) across the null models.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">## Alternative: use vegan::nullmodel rather than bipartite</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># install.packages(&#39;vegan&#39;, dependencies = TRUE)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">vegan</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Require first setting up a null model, then separately simulating it</span>
 </span></span><span class="line"><span class="cl"><span class="n">n.vegan</span> <span class="o">&lt;-</span> <span class="n">vegan</span><span class="o">::</span><span class="nf">nullmodel</span><span class="p">(</span><span class="n">Safariland</span><span class="p">,</span> <span class="s">&#34;quasiswap_count&#34;</span><span class="p">)</span> <span class="c1">#setup</span>
-</span></span><span class="line"><span class="cl"><span class="n">nulls.vegan</span> <span class="o">&lt;-</span> <span class="nf">simulate</span><span class="p">(</span><span class="n">n.vegan</span><span class="p">,</span> <span class="n">nsim</span> <span class="o">=</span> <span class="m">999</span><span class="p">)</span> <span class="c1">#simulation</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># the vegan `simulate` method returns a 3-dimensional numeric array</span>
+</span></span><span class="line"><span class="cl"><span class="n">nulls.vegan</span> <span class="o">&lt;-</span> <span class="nf">simulate</span><span class="p">(</span><span class="n">n.vegan</span><span class="p">,</span> <span class="n">nsim</span> <span class="o">=</span> <span class="m">999</span><span class="p">)</span>               <span class="c1">#simulation</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># The vegan `simulate` method returns a 3-dimensional numeric array</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># so need to modify the code used for the bipartite nulls</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># use `apply` rather than `sapply` with MARGIN = 3</span>
-</span></span><span class="line"><span class="cl"><span class="n">Inulls.vegan</span> <span class="o">&lt;-</span> <span class="nf">apply</span><span class="p">(</span><span class="n">nulls.vegan</span><span class="p">,</span> <span class="n">MARGIN</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">                      <span class="n">FUN</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">nestednodf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">$</span><span class="n">statistic[3]</span><span class="p">)</span>
-</span></span></code></pre></div><p>If you go for the &ldquo;double bonus&rdquo; round, you should get again a qualitatively different result relative to <code>swap.web</code>. This is somewhat curious as the two methods are supposed to be very similar&hellip;.</p>
+</span></span><span class="line"><span class="cl"><span class="n">Inulls.vegan</span> <span class="o">&lt;-</span> <span class="nf">apply</span><span class="p">(</span><span class="n">nulls.vegan</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                      <span class="n">MARGIN</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                      <span class="n">FUN</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="nf">nestednodf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">$</span><span class="n">statistic[3]</span><span class="p">})</span>
+</span></span></code></pre></div><p>If you go for the &ldquo;double bonus&rdquo; round, you should get again a qualitatively different result relative to <code>swap.web</code>.
+This is somewhat curious as the two methods are supposed to be very similar&hellip;.</p>
 <!-- =========================================================== -->
 <!-- PROPOSING TO NOT INCLUDE THE TWO SECTIONS BELOW---THOUGHTS? -->
 <!-- =========================================================== -->
@@ -1665,9 +2018,14 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
 <h2 id="structure--stability">Structure &amp; Stability</h2>
 <!-- ======================================= -->
 <!-- Fernanda -->
-<p>Networks are useful descriptors of community structure but also they matter for the stability of communities. Researcher have investigated the effect of networks structure on community dynamics including their stability since Robert May&rsquo;s pioneer work in 1972 showing mathematically that increased levels of complexity decreases stability of communities. Some concepts of stability you will find in the network literature include:</p>
+<p>Networks are useful descriptors of community structure but also they matter for the stability of communities.
+Researcher have investigated the effect of networks structure on community dynamics including their stability since Robert May&rsquo;s pioneer work in 1972 showing mathematically that increased levels of complexity decreases stability of communities.
+Some concepts of stability you will find in the network literature include:</p>
 <ol>
-<li><em>Local stability</em>: A system is locally stable if it returns to its original state after being slightly disturbed. Mathematically, local stability is often analyzed through the concept of stability analysis, which involves examining the behavior of a system near an equilibrium point. One common method used to analyze local stability is through linearization, where the system&rsquo;s dynamics are approximated by a linear model around the equilibrium point. This is the concept used by Robert May&rsquo;s work and because its simplicity, has been used by many in the field. However it has important limitations, including the assumption of a local equilibrium, the inability of evaluating any but small perturbations, and the assumption of linear dynamics at equilibrium.</li>
+<li><em>Local stability</em>: A system is locally stable if it returns to its original state after being slightly disturbed.
+Mathematically, local stability is often analyzed through the concept of stability analysis, which involves examining the behavior of a system near an equilibrium point. One common method used to analyze local stability is through linearization, where the system&rsquo;s dynamics are approximated by a linear model around the equilibrium point.
+This is the concept used by Robert May&rsquo;s work and because its simplicity, has been used by many in the field.
+However it has important limitations, including the assumption of a local equilibrium, the inability of evaluating any but small perturbations, and the assumption of linear dynamics at equilibrium.</li>
 <li><em>Resilience</em>: Time to return to a local equilibrium after slightly perturbing the system away from it.</li>
 <li><em>Structural Stability</em>: In local stability analysis the perturbations act on state variables, limiting the analysis to changes in species abundances only. Conversely, one can study other perturbations using structural stability analysis. A system is considered to be structurally stable if any smooth change in the model itself or in the value of its parameters does not change its dynamic behavior (e.g., existence of equilibrium points, limit cycles, chaos, etc).</li>
 <li><em>Feasibility</em>: All the constituent species from the community attain positive abundances at equilibrium.</li>
@@ -1684,9 +2042,9 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
 <!-- ======================================= -->
 <h1 id="session-info">Session Info</h1>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">sessionInfo</span><span class="p">()</span>
-</span></span></code></pre></div><pre tabindex="0"><code>## R version 4.4.1 (2024-06-14)
+</span></span></code></pre></div><pre tabindex="0"><code>## R version 4.4.0 (2024-04-24)
 ## Platform: aarch64-apple-darwin20
-## Running under: macOS Sonoma 14.5
+## Running under: macOS Sonoma 14.6.1
 ## 
 ## Matrix products: default
 ## BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
@@ -1695,7 +2053,7 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
 ## locale:
 ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 ## 
-## time zone: America/Los_Angeles
+## time zone: America/Denver
 ## tzcode source: internal
 ## 
 ## attached base packages:
@@ -1703,33 +2061,32 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
 ## [8] base     
 ## 
 ## other attached packages:
-##  [1] gridGraphics_0.5-1   rmarkdown_2.28       viridis_0.6.5       
-##  [4] viridisLite_0.4.2    bipartite_2.20       sna_2.7-2           
-##  [7] network_1.18.2       statnet.common_4.9.0 vegan_2.6-6.1       
-## [10] lattice_0.22-6       permute_0.9-7        webexercises_1.1.0  
-## [13] evaluate_0.24.0      kableExtra_1.4.0     knitr_1.48          
-## [16] lubridate_1.9.3      forcats_1.0.0        stringr_1.5.1       
-## [19] dplyr_1.1.4          purrr_1.0.2          readr_2.1.5         
-## [22] tidyr_1.3.1          tibble_3.2.1         ggplot2_3.5.1       
-## [25] tidyverse_2.0.0      igraph_2.0.3        
+##  [1] bipartite_2.20       sna_2.7-2            network_1.18.2      
+##  [4] statnet.common_4.9.0 kableExtra_1.4.0     lubridate_1.9.3     
+##  [7] forcats_1.0.0        stringr_1.5.1        dplyr_1.1.4         
+## [10] purrr_1.0.2          readr_2.1.5          tidyr_1.3.1         
+## [13] tibble_3.2.1         ggplot2_3.5.1        tidyverse_2.0.0     
+## [16] gridGraphics_0.5-1   rmarkdown_2.28       viridis_0.6.5       
+## [19] viridisLite_0.4.2    vegan_2.6-8          lattice_0.22-6      
+## [22] permute_0.9-7        evaluate_0.24.0      knitr_1.48          
+## [25] igraph_2.0.3        
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] dotCall64_1.1-1   spam_2.10-0       gtable_0.3.5      xfun_0.47        
-##  [5] bslib_0.8.0       tzdb_0.4.0        vctrs_0.6.5       tools_4.4.1      
-##  [9] generics_0.1.3    parallel_4.4.1    fansi_1.0.6       highr_0.11       
+##  [5] bslib_0.7.0       tzdb_0.4.0        vctrs_0.6.5       tools_4.4.0      
+##  [9] generics_0.1.3    parallel_4.4.0    fansi_1.0.6       highr_0.11       
 ## [13] cluster_2.1.6     pkgconfig_2.0.3   Matrix_1.7-0      lifecycle_1.0.4  
-## [17] compiler_4.4.1    fields_16.2       munsell_0.5.1     maps_3.4.2       
-## [21] htmltools_0.5.8.1 sass_0.4.9        yaml_2.3.10       pillar_1.9.0     
-## [25] jquerylib_0.1.4   MASS_7.3-61       cachem_1.1.0      nlme_3.1-166     
-## [29] tidyselect_1.2.1  digest_0.6.37     stringi_1.8.4     bookdown_0.40    
-## [33] splines_4.4.1     fastmap_1.2.0     colorspace_2.1-1  cli_3.6.3        
-## [37] magrittr_2.0.3    utf8_1.2.4        withr_3.0.1       scales_1.3.0     
+## [17] compiler_4.4.0    fields_16.2       munsell_0.5.1     maps_3.4.2       
+## [21] htmltools_0.5.8.1 sass_0.4.9        yaml_2.3.8        pillar_1.9.0     
+## [25] jquerylib_0.1.4   MASS_7.3-60.2     cachem_1.0.8      nlme_3.1-164     
+## [29] tidyselect_1.2.1  digest_0.6.35     stringi_1.8.4     bookdown_0.39    
+## [33] splines_4.4.0     fastmap_1.1.1     colorspace_2.1-0  cli_3.6.2        
+## [37] magrittr_2.0.3    utf8_1.2.4        withr_3.0.0       scales_1.3.0     
 ## [41] timechange_0.3.0  gridExtra_2.3     blogdown_1.19     hms_1.1.3        
-## [45] coda_0.19-4.1     mgcv_1.9-1        rlang_1.1.4       Rcpp_1.0.13      
+## [45] coda_0.19-4.1     mgcv_1.9-1        rlang_1.1.3       Rcpp_1.0.12      
 ## [49] glue_1.7.0        xml2_1.3.6        svglite_2.1.3     rstudioapi_0.16.0
-## [53] jsonlite_1.8.8    R6_2.5.1          systemfonts_1.1.0
-</code></pre><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># replay(pkg.load.msgs)</span>
-</span></span></code></pre></div>
+## [53] jsonlite_1.8.8    R6_2.5.1          systemfonts_1.0.6
+</code></pre>
           </div>
 
           
@@ -1753,7 +2110,7 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
   
   <div class="post-nav-item">
     <div class="meta-nav">Next</div>
-    <a href="/courses/wkshp_interactions/" rel="prev">Interactions</a>
+    <a href="/courses/wkshp_interactions/" rel="prev">Model fitting</a>
   </div>
   
 </div>
@@ -1763,7 +2120,7 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
         </div>
 
         <div class="body-footer">
-          <p>Last updated on Aug 22, 2024</p>
+          <p>Last updated on Aug 31, 2024</p>
 
           
 

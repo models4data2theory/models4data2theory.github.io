@@ -316,10 +316,10 @@
     
       <meta
         property="article:published_time"
-        content="2024-08-23T00:00:00&#43;00:00"
+        content="2024-08-31T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2024-08-23T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2024-08-31T00:00:00&#43;00:00">
   
 
   
@@ -795,7 +795,7 @@
 
 
 
-  <li class=""><a href="/courses/wkshp_interactions/">Interactions</a></li>
+  <li class=""><a href="/courses/wkshp_interactions/">Model fitting</a></li>
 
 
 
@@ -828,7 +828,13 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#required-r-packages">Required R-packages</a></li>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#required-r-packages">Required R-packages</a></li>
+        <li><a href="#exercise-code">Exercise code</a></li>
+      </ul>
+    </li>
     <li><a href="#exponential-growth">Exponential growth</a>
       <ul>
         <li><a href="#projections">Projections</a></li>
@@ -838,7 +844,6 @@
     </li>
     <li><a href="#logistic-growth">Logistic growth</a>
       <ul>
-        <li><a href="#lets-try-it-1">Let&rsquo;s try it</a></li>
         <li><a href="#compact-code">Compact code</a></li>
       </ul>
     </li>
@@ -851,13 +856,22 @@
     </li>
     <li><a href="#lv-mutualism">LV Mutualism</a>
       <ul>
+        <li></li>
         <li><a href="#isoclines">Isoclines</a></li>
         <li><a href="#parameter-effects">Parameter effects</a></li>
         <li><a href="#obligate-vs-facultative">Obligate vs Facultative</a></li>
       </ul>
     </li>
-    <li><a href="#saturating-benefits">Saturating benefits</a></li>
-    <li><a href="#multi-species">Multi-species</a></li>
+    <li><a href="#saturating-benefits">Saturating benefits</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#multi-species">Multi-species</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
     <li><a href="#consumer-resource">Consumer-resource</a></li>
     <li><a href="#final-thoughts">Final thoughts</a></li>
     <li><a href="#readings">Readings</a></li>
@@ -879,15 +893,28 @@
 
           <div class="article-style">
             <p><em>Dynamics and stability</em></p>
-<!-- ## Motivation -->
-<!-- ## Overview {#overview} -->
+<h2 id="motivation">Motivation</h2>
+<p>It almost goes without saying, but in order to integrate ecological data and theory one needs to understand the fundamental tools of theoretical ecology.
+In our context of plant-pollinator interactions, those tools invariably involve the mathematics of &ldquo;dynamical systems&rdquo;, including calculus (a little analytic but mostly  numerical), a lot of algebra (i.e. moving symbols around), and linear algebra (matrices).
+The greatest challenges in learning these tools are typically getting used to and practiced in working with symbols translating/implementing the &ldquo;pen-and-paper&rdquo; mathematics as computer code.
+In our experience, both come from simple repeated exposure and practice (and hence motivation and interest).
+Moreover, just because someone is already comfortable with mathematics does not mean they&rsquo;re already comfortable with coding (and vice versa).</p>
+<h2 id="overview">Overview</h2>
+<p>Our goal is to introduce you to the foundations of dynamical systems analysis that underlies much of ecological theory.
+Going back-and-forth between the mathematics and the code, we&rsquo;ll progress through the analysis and simulation of single-species exponential and logistic growth,
+to the (graphical) analysis and simulation of two-species mutualistic interactions,
+to the simulation-based analysis of many-species mutualistic networks.
+In the process, we&rsquo;ll touch on concepts and tools including steady states, local (a.k.a. linear) stability analysis, and isoclines.</p>
 <p>Throughout, we will use the symbol <strong>$N$</strong> to represent population size, as it does in nearly all population models in ecology.</p>
-<p>For a start preceding the introduction of exponential growth, see the <a href="/potential_use_or_interest">Of Potential Interest</a> page.</p>
-<h2 id="required-r-packages">Required R-packages</h2>
+<h3 id="required-r-packages">Required R-packages</h3>
 <p>We&rsquo;ll need the <code>deSolve</code> package to integrate our differential equations with respect to time.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># install.packages(&#39;deSolve&#39;, dependencies = TRUE) # use to install if needed</span>
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">deSolve</span><span class="p">)</span>
-</span></span></code></pre></div><h2 id="exponential-growth">Exponential growth</h2>
+</span></span></code></pre></div><h3 id="exercise-code">Exercise code</h3>
+<p>In addition to the in-text links below, you can download what you&rsquo;ll need in this
+<a href="https://drive.google.com/drive/folders/14mv3lekxpEZhtFpadJ7pydjfaNI4diLv?usp=sharing" target="_blank" rel="noopener">GoogleFolder</a>.</p>
+<h2 id="exponential-growth">Exponential growth</h2>
+<p>For a start preceding the introduction of exponential growth, see the <a href="https://models4data2theory.github.io/courses/potential_use_or_interest/" target="_blank" rel="noopener">Of Potential Interest</a> page.</p>
 <p>We will take as our starting point the differential equation,</p>
 <p>$$
 \frac{dN}{dt} = rN .
@@ -896,7 +923,7 @@ The left-hand-side of this equation is little more than a tangent slope: the cha
 <!-- $$ -->
 <!-- \frac{dN}{dt} = \lim_{\Delta t \rightarrow 0} \frac{N_{t+\Delta t} - N_t}{\Delta t} = \lim_{\Delta t \rightarrow 0}\frac{\Delta N}{\Delta t}, -->
 <!-- $$ -->
-<p>The right hand size is a product of the population size $N$ (at any given instant in time) and $r$ is the intrinsic <em>per capita</em> growth rate.
+<p>The right-hand side is a product of the population size $N$ (at any given instant in time) and $r$ is the intrinsic <em>per capita</em> growth rate.
 The intrinsic growth rate is nothing more than the difference between the rate at which the average individual gives birth, $b$, and the rate at which the average individual die, $d$.
 Together, they left and right-hand sizes of the equation represent the model of <strong>exponential growth</strong>.</p>
 <!-- It's also exactly equivalent to the first expression of change in population size over time (as it should be): $\frac{dN}{dt} = rN$ and since $r = \frac{(b-d)}{N}$, with substitution: $\frac{dN}{dt} = \frac{(b-d)}{N}N$; the $N$s cancel so we are left with our original equation: $\frac{dN}{dt} = b - d$. -->
@@ -978,8 +1005,8 @@ Here we really just have one parameter (<code>r</code>) and one response / outpu
 </span></span></code></pre></div><img src="/courses/wkshp_dynamics_files/figure-html/exponential growth-1.png" width="672" />
 <p>Great&mdash;this looks identical to our previous plot, which is what we wanted.
 If you view it with <code>View(out)</code> you can see that there are two columns in the output from <code>ode</code>, one for time and one for population size.</p>
-<p><strong>Exercise:</strong>
-Alter the code above to run a simulation of exponential growth over 200 time steps, for a population with an initial size of 202 individuals and $r$ = 0.225.</p>
+<h4 id="Ex1">Exercise 1</h4>
+<p>Alter the code above to run a simulation of exponential growth over 200 time steps, for a population with an initial size of 202 individuals and $r$ = 0.225.</p>
 <!-- **optional:** write a `for` loop (or a vectorized version, e.g. with one of the `apply` functions) to calculate population growth with the same parameters but with a difference equation (not a differential equation) approach. Plot both curves on the same graph to show how the differential equation gives us the (true) faster growth relative to a difference equation. -->
 <h2 id="logistic-growth">Logistic growth</h2>
 <p>As discussed above, the exponential growth model approximates reality by assuming that per-capita birth and death rates are <em>constant</em>&mdash;an individual has a set number of offspring and a fixed chance of dying over a given time period.
@@ -997,7 +1024,7 @@ $$</p>
 This equation may strike you as almost tautological, since we defined $r$ as the per-capita population growth rate, but perhaps another way to think of it is that it is reassuring that re-arranging the equation brings us back to our definitional equalities.</p>
 <p>The point here is that we have re-arranged things to have the per-capita population growth rate on the left (as the response variable), and a constant on the right.
 Now we can change the right-hand side from a constant to some function of population size to reflect density dependence.</p>
-<p>One of the simplest way to incorporate density dependence is to assume that $\left( \frac{1}{N}\frac{dN}{dt} \right)$ is a <em>linear</em> function of density;
+<p>One of the simplest ways to incorporate density dependence is to assume that $\left( \frac{1}{N}\frac{dN}{dt} \right)$ is a <em>linear</em> function of density;
 this ultimately yields the <em>logistic growth equation</em>.</p>
 <p>In formulating linear density dependence, the hypothetical <em>maximum</em> possible per-capita population growth rate  occurs when the population is approaching zero (i.e., no possible density effects);
 obviously that value would never be realized if the population were actually zero, so think about $\left( \frac{1}{N}\frac{dN}{dt} \right)$ as approaching $r$ as $N$ tends towards 0.
@@ -1034,7 +1061,6 @@ $$
 \frac{dN}{dt} = rN\left(1 - \frac{N}{K}\right) .
 $$</p>
 <p>This is the <strong>logistic growth equation</strong> that is ubiquitous in population ecology.</p>
-<h3 id="lets-try-it-1">Let&rsquo;s try it</h3>
 <p>We&rsquo;ll model logistic growth using <code>deSolve</code> as we did above for exponential growth.
 We actually don&rsquo;t have to change very much;
 the time part is the same and we still keeping track of just one population.
@@ -1124,10 +1150,11 @@ The key difference between the code chunk below and the one above is that we can
 </span></span><span class="line"><span class="cl">     <span class="n">col</span> <span class="o">=</span> <span class="s">&#34;blue&#34;</span><span class="p">)</span>
 </span></span></code></pre></div><img src="/courses/wkshp_dynamics_files/figure-html/logistic growth using with-1.png" width="672" />
 <p>As hoped, we get back exactly the same graph as with our prior code.</p>
-<p><strong>Exercise</strong>
-Run the logistic growth code above, and then re-run it with a much larger value of $r$ of your choice, but less than $r = 2$ (keep $K$ the same).
+<h4 id="Ex2">Exercise 2</h4>
+<p>Run the logistic growth code above, and then re-run it with a much larger value of $r$ of your choice, but less than $r = 2$ (keep $K$ the same).
 Re-name the variable <code>out</code> when you re-run it so you have access to the data from both runs.
 Plot both curves on the same graph, with two different colors.</p>
+<p>To plot the new curve on the same graph, if you called your re-run variable <code>out2</code>, in the line after calling <code>plot</code>, add: <code>lines(out2, col = &quot;green&quot;)</code></p>
 <!-- **optional exercise:** An alternative formulation of the logistic growth equation is to define $\alpha = 1 / K$, where $\alpha$ is the per-capita effect of one individual on the growth rate of the population. We can then substitute $\alpha$ that back into the classic logistic growth equation we defined above: -->
 <!-- $$ -->
 <!-- \frac{dN}{dt} = rN(1 - \alpha N) -->
@@ -1213,7 +1240,7 @@ $$
 $$</p>
 <p>Now that doesn&rsquo;t seem to have gotten us anywhere given that $f(N^{*} + x)$ could be a super complicated function.
 However, regardless of how complicated $f(N^{*} + x)$ is, we can always approximate it! We do so by using a Taylor expansion of $f(N^{*} + x)$ around $N^{*}$.
-(See <a href="of_potential_utility_or_interest">Of Potential Utility or Interest</a> page.)
+(See <a href="https://models4data2theory.github.io/courses/potential_use_or_interest/" target="_blank" rel="noopener">Of Potential Utility or Interest</a> page.)
 That is,
 $$
 f(N^{*} + x) = f(N^{*})  + \frac{d f(N^{*})}{dN} \cdot  x + \frac{d^2 f(N^{*})}{dN^2} \cdot \frac{x^2}{2!} + + \frac{d^3 f(N^{*})}{dN^3} \cdot \frac{x^3}{3!} + \dots
@@ -1250,7 +1277,8 @@ Our change in perspective to following the size of the perturbation, rather than
 $$</p>
 <p>The parameters $\alpha_{12}$ and $\alpha_{21}$ are coefficients representing the strength of mutualism.
 Note that if we set them to zero (i.e. $\alpha_{12} = \alpha_{21} = 0$) we recover the logistic model for each species.</p>
-<p><strong>Exercise 1</strong>: Let&rsquo;s focus just on the equation for species 1:
+<h4 id="Ex3">Exercise 3</h4>
+<p>Let&rsquo;s focus just on the equation for species 1:
 $$
 \frac{dN_1}{dt} = r_1N_1\left(\frac{K_1-N_1+\alpha_{12}N_2}{K_1}\right) .
 $$
@@ -1262,18 +1290,22 @@ Reflect on the two outcomes, keeping in mind that species 1 was over its carryin
 Do you see how this equation captures the effects of mutualism?
 <strong>Make sure to track units when plugging numbers!</strong>
 Units help you to better understand models and closely track your calculations.</p>
-<p><strong>Exercise 2</strong>: Based on your calculations, reflect on how the relationship between $N$ and the carrying capacity, $K$, is affected by the population density of the mutualist species and the strength of the mutualism coefficients, $\alpha_{ij}$.
+<h4 id="Ex4">Exercise 4</h4>
+<p>Based on your calculations, reflect on how the relationship between $N$ and the carrying capacity, $K$, is affected by the population density of the mutualist species and the strength of the mutualism coefficients, $\alpha_{ij}$.
 In your thinking, consider how this model captures the effects of mutualism on the fundamental niche.</p>
 <h3 id="isoclines">Isoclines</h3>
 <p>Now we will develop a graphical understanding of the behavior of the Lotka-Volterra model for mutualism by analyzing their isoclines.
 Isoclines help us define when the two populations are neither growing nor declining.
 The combination of densities of species 1 and species 2 that results in a zero per-capita growth rate for species 1 can be found by setting $\frac{dN_1}{dt}=0$ and solving for $N_1$ and $N_2$.
 The same can be done for species 2 by setting $\frac{dN_2}{dt}=0$ and solving for $N_1$ and $N_2$.</p>
-<p><strong>Exercise 3</strong>: Solve for the species 1 isoclines by setting $\frac{dN_1}{dt}=0$.
+<h4 id="Ex5">Exercise 5</h4>
+<p>Solve for the species 1 isoclines by setting $\frac{dN_1}{dt}=0$.
 Remember to consider both trivial and non-trivial steady states</p>
-<p><strong>Exercise 4</strong>: Solve for the species 2 isoclines by setting $\frac{dN_2}{dt}=0$.
+<h4 id="Ex6">Exercise 6</h4>
+<p>Solve for the species 2 isoclines by setting $\frac{dN_2}{dt}=0$.
 Remember to consider both trivial and non-trivial steady states</p>
-<p><strong>Exercise 5</strong>: By now you have solved for the species 1 and species 2 isoclines individually.
+<h4 id="Ex7">Exercise 7</h4>
+<p>By now you have solved for the species 1 and species 2 isoclines individually.
 You should have 4 expressions in total: two describing the species 1 equilibrium (one trivial and one non-trivial) and two describing the species 2 equilibrium (one trivial and one non-trivial).
 Work in groups to plot the 4 isoclines - you may use a piece of paper or the whiteboard.
 Note that for consistency with my slides, the y-axis should represent species 1&rsquo;s density ($N_1$ ) and the x-axis should represent species 2&rsquo;s density ($N_2$), as follows:</p>
@@ -1298,20 +1330,28 @@ Note that for consistency with my slides, the y-axis should represent species 1&
     <div class="w-100" ><img src="/images/dynamics/phaseplane_04.png" alt="PhasePlane" loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
-<p><strong>Exercise 6</strong>: Revisit the different definitions of stability provided at the end of day 1.
+<h4 id="Ex8">Exercise 8</h4>
+<p>Revisit the different definitions of stability provided at the end of day 1.
 Identify which of those definitions are appropriate for characterizing the stability of the L-V model of mutualism.</p>
 <h3 id="parameter-effects">Parameter effects</h3>
+<p>Much of ecological theory can be derived by understanding how the isoclines of our mathematical models change with changes in parameter values or functional forms, affecting the dynamical outputs of the model.
+Increasing or decreasing parameter values can represent biological processes of interest, so the effect of those changes on the model isoclines can provide insights on how those processes may affect the dynamics of the study system.
+We will now understand the ecological theory we obtain from the Lotka-Volterra model of mutualism, which introduces dynamic behavior of mutualisms that are common to many models of mutualism and helps us understand the dynamic implications of important attributes such as mutualism strength and whether the interaction is facultative or obligate to each mutualistic partner.</p>
 <p><strong>Understanding</strong> $\alpha_{12}$ <strong>and</strong> $\alpha_{21}$ <strong>and mutualism strength</strong></p>
 <p>The strength of mutualism can vary as you shift $\alpha_{12}$ and $\alpha_{21}$ with higher values representing stronger mutualism.</p>
-<p><strong>Exercise 7</strong>: Discuss with your group how you expect the strength of mutualism to affect the likelihood of stable coexistence between species.
+<h4 id="Ex9">Exercise 9</h4>
+<p>Discuss with your group how you expect the strength of mutualism to affect the coexistence between species.
+The stability of such coexistence?
 Do you expect that strong or weak mutualism will allow the persistence of both species?</p>
 <p>Now, we will explore isoclines under different parameter values by first loading the code that contains the model.
 If you looking this in the website, you will need first to open and download the following R code.
 On Mac, you can just right-click on the hyperlink.
 On Windows, you will need to open, copy all, and then save as R code:</p>
-<p><a href="/courses_Rscripts/LV_2species.R">Two-species Lotka-Volterra mutualism model</a></p>
-<p>In class, we will work off the R markdown, which will load the code using source.</p>
-<p><strong>Exercise 8</strong>: Test your hypothesis using the <code>lvMutualismInteractive()</code> function.
+<p><a href="/courses_Rscripts/Dynamics_LV_2spMutualism.R">Two-species Lotka-Volterra mutualism model</a></p>
+<p>In class, we will work off a Rmarkdown file.
+In it, we will source the above script in order to use the following functions.</p>
+<h4 id="Ex10">Exercise 10</h4>
+<p>Test your hypothesis using the <code>lvMutualismInteractive()</code> function.
 Copy and paste the code chunk below in the R console to fix all parameters except $\alpha_{12}$ and $\alpha_{21}$, which you can manipulate.</p>
 <pre tabindex="0"><code class="language-{.r," data-lang="{.r,">lvMutualismInteractive(N1_0=10, r1=10.0, K1=100, N2_0=10, r2=10.0, K2=75)
 </code></pre><p>This will create an interactive plot where you can manipulate parameters.
@@ -1330,9 +1370,12 @@ other words, in the absence of a mutualist partner, all populations have been ab
 The Lotka-Volterra model for mutualism also allows us to model <strong>obligate mutualism</strong>, where populations require the benefits of mutualism to maintain their abundances above zero.
 We can obtain obligate mutualism in the model by making the carrying capacities $K_1$ or $K_2$ negative.
 A negative carrying capacity means that population trajectories will continuously be drawn towards zero, unless the benefits provided by mutualist partners are sufficient to maintain positive abundance.</p>
-<p><strong>Exercise 9</strong>: Discuss with your group how you expect facultative or obligate mutualism will affect the possibility of stable coexistence (i.e., persistence of both species).
-Which do you think is more likely to facilitate stable coexistence?</p>
-<p><strong>Exercise 10</strong>: Reflect as a group on the overarching conclusions about the effect of strong/weak and obligate/facultative mutualism have on stable coexistence, based on the summary figure:</p>
+<h4 id="Ex11">Exercise 11</h4>
+<p>Discuss with your group how you expect facultative vs obligate mutualism will affect the stable coexistence (i.e. persistence of both species at plausible abundances) of the model.
+Which do you think is more likely to facilitate stable coexistence?
+Draw the isoclines for each case.</p>
+<h4 id="Ex12">Exercise 12</h4>
+<p>Reflect as a group on the overarching conclusions about the effect of strong/weak and obligate/facultative mutualism have on stable coexistence, based on the summary figure:</p>
 <p>
 
 
@@ -1359,10 +1402,10 @@ Which do you think is more likely to facilitate stable coexistence?</p>
 This linear benefit causes the positive feedback loop that drives the abundance of the populations to infinity.
 However, we know that mutualistic benefits do not grow forever but they rather saturate (e.g., fixed number of ovules per plant, consumption saturation just like in other consumer-resource interactions, etc.).
 We can model that saturation for example by using a Holling type II functional response, which replaces the linear type I functional response exhibited by the model we have used so far, see equations above.</p>
-<p><strong>Exercise 11</strong>: Sketch a diagram approximating how isoclines of the L-V model might change with saturation of benefit accrual between both mutualists.</p>
+<h4 id="Ex13">Exercise 13</h4>
+<p>Sketch a diagram approximating how isoclines of the L-V model might change with saturation of benefit accrual between both mutualists.</p>
 <h2 id="multi-species">Multi-species</h2>
-<p>The code you downloaded in the section above (<code>LV_2species.R</code>) contains the Lotka-Volterra model of mutualism and the ode solver.
-The equations in such source code are:</p>
+<p>The code you downloaded above contains the Lotka-Volterra model of mutualism:</p>
 <pre tabindex="0"><code class="language-{.r," data-lang="{.r,">dNdtFunc = function(t, states, param)
     {
         with(as.list(c(states, param)), 
@@ -1418,16 +1461,17 @@ For that, we will go back to our toy network we worked on in day 1:
     <div class="w-100" ><img src="/images/dynamics/bipartite_network.png" alt="bipartite_network" loading="lazy" data-zoomable /></div>
   </div></figure>
 </p>
-<p><strong>Exercise 12</strong>: Write the system of 6 differential equations of the Lotka-Volterra model for mutualism that represents this network. To help, the equations of plant species 1 and 3 are
+<h4 id="Ex14">Exercise 14</h4>
+<p>Write the equations for animal species 2 and 3 following the examples provided below for plant species 1 and 3.
 $$
 \frac{dN_1^P}{dt} = (r_1^P - s_1^P N_1^P + \alpha_{11}^A N_1^A + \alpha_{12}^A N_2^A + \alpha_{13}^A N_3^A) N_1^P
 $$
 $$
 \frac{dN_3^P}{dt} = (r_3^P - s_3^P N_3^P + \alpha_{31}^A N_1^A) N_3^P
-$$
-Work on writing the equations for plant species 2 and the equations of the three species of animals.</p>
-<p><strong>NOTE:</strong> We will work together in class to understand the summation and connect it to the network !</p>
+$$</p>
+<p><strong>NOTE:</strong> We will work together in class to understand the summation and connect it to the network!</p>
 <p>Now that we have understood together the summation and its connection to the plant-pollinator network, we will see how the computer can help us with building the system of differential equations using matrices.</p>
+<p><a href="/courses_Rscripts/Dynamics_LV_multispMutualism.R">Multi-species Lotka-Volterra mutualism model</a></p>
 <p>Let&rsquo;s start by saving the matrix representing the toy network</p>
 <pre tabindex="0"><code class="language-{.r," data-lang="{.r,">interactionMatrix = matrix(c(1, 1, 1, 1, 1, 0, 1, 0, 0), 
                            nrow = 3, byrow = TRUE)
@@ -1591,8 +1635,8 @@ cat(&#34;\n&#34;)
 
 print(&#34;dN_i^A/dt:&#34;)
 print(dAdt)
-</code></pre><p>So, all together the code to run the multi-species model is:</p>
-<pre tabindex="0"><code class="language-{.r," data-lang="{.r,"># Load adjacency matrix:
+</code></pre><p>So, all together the code to run the <a href="/courses_Rscripts/Dynamics_LV_multispMutualism.R">multi-species model</a> is:</p>
+<pre tabindex="0"><code class="language-{.r," data-lang="{.r,"># Load matrix:
 interactionMatrix = matrix(c(1, 1, 1, 1, 1, 0, 1, 0, 0), nrow = 3, byrow = TRUE)
 
 # Initialize variables
@@ -1653,10 +1697,12 @@ for (i in 1:time_steps) {
 
 # Print the results
 print(results)
-</code></pre><p><strong>Exercise 13</strong>: Play with the parameters of the model (i.e., the mean of the random distributions) to obtain different results based on what you learned from the model of two species.
+</code></pre><h4 id="Ex15">Exercise 15</h4>
+<p>Play with the parameters of the model (i.e., the mean of the random distributions) to obtain different results based on what you learned from the model of two species.
 Can you obtain different mode behaviors such as populations growing to infinity or extinctions?
 You will need to also change the number of time steps to see the different behaviors.</p>
-<p><strong>Exercise 14</strong>: How do you think the addition of saturating benefits would change the results of this model?
+<h4 id="Ex16">Exercise 16</h4>
+<p>How do you think the addition of saturating benefits would change the results of this model?
 See the work by Okuyama &amp; Holland 2008 (Ecology Letters, 11: 208–216) who modified this model by incorporating a hyperbolic functional response to represent that the beneﬁts to mutualists saturate with the densities of mutualistic species with which they interact.</p>
 <h2 id="consumer-resource">Consumer-resource</h2>
 <p>For about 70 years, theoretical research analyzing the population dynamics of mutualisms roughly only assumed Lotka-Volterra-type models (sensu Valdovinos 2019) to conduct their studies (e.g., Kostitzin 1934; Gause and Witt 1935; Vandermeer and Boucher 1978; Wolin and Lawlor 1984; Bascompte et al. 2006; Okuyama and Holland 2008; Bastolla et al. 2009).
@@ -1867,7 +1913,7 @@ During the third day, we went back to dynamics studied mathematically from simpl
   
   <div class="post-nav-item">
     <div class="meta-nav">Previous</div>
-    <a href="/courses/wkshp_interactions/" rel="next">Interactions</a>
+    <a href="/courses/wkshp_interactions/" rel="next">Model fitting</a>
   </div>
   
   
@@ -1884,7 +1930,7 @@ During the third day, we went back to dynamics studied mathematically from simpl
         </div>
 
         <div class="body-footer">
-          <p>Last updated on Aug 23, 2024</p>
+          <p>Last updated on Aug 31, 2024</p>
 
           
 

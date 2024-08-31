@@ -320,7 +320,7 @@ curve(
 
 #### Try it out
 
-Download [Dynamics_2spComp.R](/courses_Rscripts/Dynamics_2spComp.R) to implement the following code. Play around with the parameter values and initial population sizes to see how they affect the dynamics, whether the two species coexist, or whether one species outcompetes the other.
+Download [Dynamics_LV2spComp.R](/courses_Rscripts/Supplemental/Dynamics_LV2spComp.R) to implement the following code. Play around with the parameter values and initial population sizes to see how they affect the dynamics, whether the two species coexist, or whether one species outcompetes the other.
 
 ```{r TwoSppCompModel, echo = TRUE, fig.width = 4, fig.height = 2.75}
 library(deSolve)

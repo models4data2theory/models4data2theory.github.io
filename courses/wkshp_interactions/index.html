@@ -309,17 +309,17 @@
   
   <meta property="og:site_name" content="Integrating Theory and Data in Plant-Pollinator Interactions" />
   <meta property="og:url" content="https://models4data2theory.github.io/courses/wkshp_interactions/" />
-  <meta property="og:title" content="Interactions | Integrating Theory and Data in Plant-Pollinator Interactions" />
+  <meta property="og:title" content="Model fitting | Integrating Theory and Data in Plant-Pollinator Interactions" />
   <meta property="og:description" content="Fitting models to data" /><meta property="og:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2024-08-22T00:00:00&#43;00:00"
+        content="2024-08-31T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2024-08-22T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2024-08-31T00:00:00&#43;00:00">
   
 
   
@@ -336,7 +336,7 @@
 
 
 
-  <title>Interactions | Integrating Theory and Data in Plant-Pollinator Interactions</title>
+  <title>Model fitting | Integrating Theory and Data in Plant-Pollinator Interactions</title>
 </head>
 
 
@@ -795,7 +795,7 @@
 
 
 
-  <li class="active"><a href="/courses/wkshp_interactions/">Interactions</a></li>
+  <li class="active"><a href="/courses/wkshp_interactions/">Model fitting</a></li>
 
 
 
@@ -831,7 +831,8 @@
     <li><a href="#motivation">Motivation</a></li>
     <li><a href="#overview">Overview</a>
       <ul>
-        <li></li>
+        <li><a href="#required-r-packages">Required R-packages</a></li>
+        <li><a href="#exercise-code">Exercise code</a></li>
       </ul>
     </li>
     <li><a href="#fundamentals">Fundamentals</a>
@@ -889,7 +890,7 @@
         <div class="docs-article-container">
           
 
-          <h1>Interactions</h1>
+          <h1>Model fitting</h1>
 
           <div class="article-style">
             <p><em>Fitting models to data</em></p>
@@ -920,12 +921,15 @@ It&rsquo;s this conversion that permits us to fit them to data.
 We will then develop our intuition for <a href="#max_lik">maximum likelihood parameter estimation</a> (i.e. model fitting) by first doing it <a href="#max_lik_math">analytically</a> and then learning to use <a href="#max_lik_optim">numerical optimization</a>.</p>
 <p>Having fit several models to a dataset, we will then dip our toes into the methods of comparing their relative performance using <a href="#mod_comp">information criteria</a>.</p>
 <p>Skip down to the <a href="#end_result">end result</a> to see where we&rsquo;re headed.</p>
-<h4 id="required-r-packages">Required R-packages</h4>
+<h3 id="required-r-packages">Required R-packages</h3>
 <p>In principle, everything we&rsquo;ll discuss can be accomplished using functions that come pre-loaded in base R, but we&rsquo;ll make use of the <em>bbmle</em> package for a few conveniences at the very end.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># install.packages(&#39;bbmle&#39;, dependencies = TRUE) # use to install if needed</span>
 </span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">bbmle</span><span class="p">)</span>
 </span></span></code></pre></div><pre tabindex="0"><code>## Loading required package: stats4
-</code></pre><h2 id="fundamentals">Fundamentals</h2>
+</code></pre><h3 id="exercise-code">Exercise code</h3>
+<p>In addition to the in-text links below, you can download what you&rsquo;ll need in this
+<a href="https://drive.google.com/drive/folders/14mv3lekxpEZhtFpadJ7pydjfaNI4diLv?usp=sharing" target="_blank" rel="noopener">GoogleFolder</a>.</p>
+<h2 id="fundamentals">Fundamentals</h2>
 <p>We&rsquo;re going to start by assuming our focal response variable doesn&rsquo;t vary in response to any possible covariates at all.
 Doing so is useful in helping us think about the different types of probability distributions there are, and which may be best in representing the type of stochastic processes that are likely to have generated our data.</p>
 <h3 id="prob_dist">Probability distributions</h3>
@@ -1119,7 +1123,7 @@ That is, it&rsquo;s possible to solve for the maximum likelihood parameters
 Doing so for $\lambda$ of the Poisson, we can
 (i) build intuition to better understand what numerical methods (&ldquo;optimizers&rdquo;) are about, and
 (ii) prove that the MLE for $\lambda$ of the Poisson is the mean of the $k$ observations (as I simply proclaimed above).
-However, I&rsquo;ll relegate the latter of these to the <a href="of_potential_utility_or_interest">Of Potential Utility or Interest</a> page.</p>
+However, I&rsquo;ll relegate the latter of these to the <a href="https://models4data2theory.github.io/courses/potential_use_or_interest/" target="_blank" rel="noopener">Of Potential Utility or Interest</a> page.</p>
 <h4 id="max_lik_math">Analytical intuition</h4>
 <p>We&rsquo;ll do this rather abstractly&hellip;</p>
 <p>Suppose we have some arbitrary function, like this polynomial describing a parabola
@@ -1152,7 +1156,7 @@ coding the negative log-likelihood function and choosing the optimization method
 \sum_i^n \ln \left (\frac{\lambda^{k_i} e^{-\lambda}}{k_i!} \right).
 $$
 You could certainly write code to define an R function to implement this calculation
-(see the <a href="of_potential_utility_or_interest">Of Potential Utility or Interest</a> page),
+(see the <a href="https://models4data2theory.github.io/courses/potential_use_or_interest/" target="_blank" rel="noopener">Of Potential Utility or Interest</a> page),
 and sometimes it&rsquo;s necessary to do that for more complex likelihoods.
 But R has built-in functions for most probability distributions that are robust, fast, and easy to use.
 These R functions are the &ldquo;density functions&rdquo; of the probability distributions.</p>
@@ -1213,20 +1217,20 @@ and a <code>convergence</code> error code (with 0 indicating success).</p>
 <h5 id="repeat-for-yourself">Repeat for yourself</h5>
 <p>In-class 
   <i class="fas fa-clock  pr-1 fa-fw"></i> 10-15 minutes</p>
-<p>Download <a href="/courses_Rscripts/ModelFitting_1.R">ModelFitting_1.R</a> to implement what we just did with the $k={10, 15}$ data set and Poisson distribution.
+<p>Download <a href="/courses_Rscripts/ModelFitting/ModelFitting_1.R">ModelFitting_1.R</a> to implement what we just did with the $k={10, 15}$ data set and Poisson distribution.
 Then try generating different data sets that vary in their sample size to see how close you get to the true value of $\lambda$ with which you generated the data.
 (We&rsquo;ll address estimation uncertainty through the use of confidence intervals later.)</p>
 <h5 id="real-binomial-data">Real binomial data</h5>
 <p>Your actual challenge, however, is to generate your own data and write your own code to analyse it.</p>
 <p>The data set will be contributed to by everyone in the class.
 Each of you will take one (or more) <em>Delphinium</em> seed pods and count both the total number of ovules and the number that were successfully fertilized.
-Enter your data on <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTyyqthYKtedUdgRCOE37ec-oA4TzY6Mq8glR9bWr8ORhGQjWZlkeIuM5AgdGa8-zHE9pJma8C3n4_n/pub?gid=0&amp;single=true&amp;output=csv" target="_blank" rel="noopener">this GoogleSheet</a>.</p>
+Enter your data on <a href="https://docs.google.com/spreadsheets/d/1ErK_GWmtGYNqtTpPp0qDd6UnR3Ec26etRjRalCf6YgY/edit?usp=sharing" target="_blank" rel="noopener">this GoogleSheet</a>.</p>
 <p>As soon as you&rsquo;re done with data entry, download the data as a <em>csv</em> file and start analyzing it.
 (You can re-download it again after everyone&rsquo;s finished entering their data.
 You only need one data point to start fitting this one-parameter model!)</p>
 <p>Rather than using a Poisson, you&rsquo;ll want to assume a binomial process.
 Your goal is to estimate $p$, the average probability of fertilization success.
-Download <a href="/courses_Rscripts/ModelFitting_2.R">ModelFitting_2.R</a> to help you get going.</p>
+Download <a href="/courses_Rscripts/ModelFitting/ModelFitting_2.R">ModelFitting_2.R</a> to help you get going.</p>
 <h2 id="model-fitting">Model fitting</h2>
 <p>Up to this point, we have assumed that the process that is reflected in our data,
 be it the flower visitation rate $\lambda$ or the fertilization success probability $p$,
@@ -1244,7 +1248,7 @@ That is, $\lambda$ would probably be better considered to be a function of plant
 So how do we go about encoding that in our models?</p>
 <p>Well, there are many ways that we could do it.
 We could go the route of using <em>GLMs</em> and <em>GAMs</em> that permit us to continue to appropriately represent non-Gaussian error structures and potentially non-linear relationships
-(see the <a href="of_potential_utility_or_interest">Of Potential Utility or Interest</a>).
+(see the <a href="https://models4data2theory.github.io/courses/potential_use_or_interest/" target="_blank" rel="noopener">Of Potential Utility or Interest</a>).
 But, as motivated above, our goal is to fit mechanistic models instead.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></p>
 <h3 id="mechanistic-models">Mechanistic models</h3>
 <p>Let&rsquo;s consider our visitation count vs. plant density dataset.
@@ -1355,7 +1359,7 @@ But because $P$ is the same for all models, we can just leave it defined in R&rs
 <h5 id="repeat-for-yourself-1">Repeat for yourself</h5>
 <p>In-class 
   <i class="fas fa-clock  pr-1 fa-fw"></i> 30-45 minutes</p>
-<p>Download <a href="/courses_Rscripts/ModelFitting_3.R">ModelFitting_3.R</a>.
+<p>Download <a href="/courses_Rscripts/ModelFitting/ModelFitting_3.R">ModelFitting_3.R</a>.
 The first part generates a random dataset.
 It then repeats the fitting of the $f_1$ model that we just did.</p>
 <p>Your challenge is expand on the script to fit the $f_2$ and $f_3$ models to the same dataset.
@@ -1442,7 +1446,7 @@ while models having $\Delta_i &gt; 10$ are deemed to have essentially no support
 <h3 id="lets-try-it-1">Let&rsquo;s try it</h3>
 <p>In-class 
   <i class="fas fa-clock  pr-1 fa-fw"></i> 10-15 minutes</p>
-<p>Adding to your updated copy of <a href="/courses_Rscripts/ModelFitting_3.R">ModelFitting_3.R</a>, write functions for $AIC$ and $BIC$ and use them to identify the best-performing model among our three $f_1$ - $f_3$ models.
+<p>Adding to your updated copy of <a href="/courses_Rscripts/ModelFitting/ModelFitting_3.R">ModelFitting_3.R</a>, write functions for $AIC$ and $BIC$ and use them to identify the best-performing model among our three $f_1$ - $f_3$ models.
 Do your inferences differ from your earlier evaluation of the models?</p>
 <h3 id="alternatives">Alternatives</h3>
 <p>Information criteria like <em>AIC</em> and <em>BIC</em> are popular because they are super easy to implement.
@@ -1563,7 +1567,7 @@ The most common way to do that is by determining the 95% confidence intervals of
 <li><code>mle2()</code> returns the (positive) log-likelihood rather than the negative log-likelihood. (I don&rsquo;t know why.)</li>
 </ul>
 <p>The <code>bbmle</code> package also has several other potentially useful functions that we won&rsquo;t get into.
-Note that the above code is included at the bottom of <a href="/courses_Rscripts/ModelFitting_3.R">ModelFitting_3.R</a>.</p>
+Note that the above code is included at the bottom of <a href="/courses_Rscripts/ModelFitting/ModelFitting_3.R">ModelFitting_3.R</a>.</p>
 <h2 id="end_result">End result</h2>
 <p>We used our visitation count data (introduced at the very start) to fit three models relating visitation rates to plant density.
 These models had either one, two, or three biologically-reasoned parameters that enabled the models to describe different types of relationships between observed visitation counts and plant density:  linear, saturating, and sigmoid.
@@ -1609,10 +1613,10 @@ It&rsquo;s in the challenge of gaining a balanced expertise in all three where t
 <p>Novak and Stouffer (2021) Geometric complexity and the information-theoretic comparison of functional-response models. Frontiers in Ecology and Evolution, 9:776</p>
 <p>Novak and Stouffer (2021) Systematic bias in studies of consumer functional responses. Ecology Letters, 24(3):580–593</p>
 <h2 id="solutions">Solutions</h2>
-<p><a href="/courses_Rscripts/ModelFitting_1.R">ModelFitting_1.R</a> (no &lsquo;key&rsquo;)</p>
-<p><a href="/courses_Rscripts/ModelFitting_2_key.R">ModelFitting_2_key.R</a></p>
-<p><a href="/courses_Rscripts/ModelFitting_3_key.R">ModelFitting_3_key.R</a></p>
-<p><a href="/courses_Rscripts/ModelFitting_4.R">ModelFitting_4_key.R</a></p>
+<p><a href="/courses_Rscripts/ModelFitting/ModelFitting_1.R">ModelFitting_1.R</a> (no &lsquo;key&rsquo;)</p>
+<p><a href="/courses_Rscripts/ModelFitting/ModelFitting_2_key.R">ModelFitting_2_key.R</a></p>
+<p><a href="/courses_Rscripts/ModelFitting/ModelFitting_3_key.R">ModelFitting_3_key.R</a></p>
+<p><a href="/courses_Rscripts/ModelFitting/ModelFitting_4.R">ModelFitting_4_key.R</a></p>
 <h2 id="session-info">Session Info</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">sessionInfo</span><span class="p">()</span>
 </span></span></code></pre></div><pre tabindex="0"><code>## R version 4.4.1 (2024-06-14)
@@ -1727,7 +1731,7 @@ As noted above, the mean and variance of the Poisson are in fact the same, and t
         </div>
 
         <div class="body-footer">
-          <p>Last updated on Aug 22, 2024</p>
+          <p>Last updated on Aug 31, 2024</p>
 
           
 

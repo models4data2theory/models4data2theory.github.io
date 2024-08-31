@@ -1,5 +1,5 @@
 ---
-title: "Interactions"
+title: "Model fitting"
 date: '`r Sys.Date()`'
 author: Mark Novak
 type: book
@@ -101,7 +101,7 @@ Having fit several models to a dataset, we will then dip our toes into the metho
 Skip down to the [end result](#end_result) to see where we're headed.
 
 
-#### Required R-packages
+### Required R-packages
 
 In principle, everything we'll discuss can be accomplished using functions that come pre-loaded in base R, but we'll make use of the *bbmle* package for a few conveniences at the very end.
 
@@ -109,6 +109,10 @@ In principle, everything we'll discuss can be accomplished using functions that 
 # install.packages('bbmle', dependencies = TRUE) # use to install if needed
 library(bbmle)
 ```
+
+### Exercise code
+In addition to the in-text links below, you can download what you'll need in this
+[GoogleFolder](https://drive.google.com/drive/folders/14mv3lekxpEZhtFpadJ7pydjfaNI4diLv?usp=sharing).
 
 ## Fundamentals
 
@@ -619,7 +623,7 @@ That is, it's possible to solve for the maximum likelihood parameters
 Doing so for $\lambda$ of the Poisson, we can
 (i) build intuition to better understand what numerical methods ("optimizers") are about, and 
 (ii) prove that the MLE for $\lambda$ of the Poisson is the mean of the $k$ observations (as I simply proclaimed above).
-However, I'll relegate the latter of these to the [Of Potential Utility or Interest](of_potential_utility_or_interest) page.
+However, I'll relegate the latter of these to the [Of Potential Utility or Interest](https://models4data2theory.github.io/courses/potential_use_or_interest/) page.
 
 
 #### Analytical intuition {#max_lik_math}
@@ -694,7 +698,7 @@ $$
 \sum_i^n \ln \left (\frac{\lambda^{k_i} e^{-\lambda}}{k_i!} \right).
 $$
 You could certainly write code to define an R function to implement this calculation
-(see the [Of Potential Utility or Interest](of_potential_utility_or_interest) page),
+(see the [Of Potential Utility or Interest](https://models4data2theory.github.io/courses/potential_use_or_interest/) page),
 and sometimes it's necessary to do that for more complex likelihoods.
 But R has built-in functions for most probability distributions that are robust, fast, and easy to use.
 These R functions are the "density functions" of the probability distributions.
@@ -757,7 +761,7 @@ and a `convergence` error code (with 0 indicating success).
 ##### Repeat for yourself
 In-class {{< icon name="clock" pack="fas" >}} 10-15 minutes
 
-Download [ModelFitting_1.R](/courses_Rscripts/ModelFitting_1.R) to implement what we just did with the $k=\{10, 15\}$ data set and Poisson distribution.
+Download [ModelFitting_1.R](/courses_Rscripts/ModelFitting/ModelFitting_1.R) to implement what we just did with the $k=\{10, 15\}$ data set and Poisson distribution.
 Then try generating different data sets that vary in their sample size to see how close you get to the true value of $\lambda$ with which you generated the data.
 (We'll address estimation uncertainty through the use of confidence intervals later.)
 
@@ -767,7 +771,7 @@ Your actual challenge, however, is to generate your own data and write your own 
 
 The data set will be contributed to by everyone in the class.
 Each of you will take one (or more) *Delphinium* seed pods and count both the total number of ovules and the number that were successfully fertilized.
-Enter your data on [this GoogleSheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vTyyqthYKtedUdgRCOE37ec-oA4TzY6Mq8glR9bWr8ORhGQjWZlkeIuM5AgdGa8-zHE9pJma8C3n4_n/pub?gid=0&single=true&output=csv).
+Enter your data on [this GoogleSheet](https://docs.google.com/spreadsheets/d/1ErK_GWmtGYNqtTpPp0qDd6UnR3Ec26etRjRalCf6YgY/edit?usp=sharing).
 
 As soon as you're done with data entry, download the data as a _csv_ file and start analyzing it.
 (You can re-download it again after everyone's finished entering their data.
@@ -775,7 +779,7 @@ You only need one data point to start fitting this one-parameter model!)
 
 Rather than using a Poisson, you'll want to assume a binomial process.
 Your goal is to estimate $p$, the average probability of fertilization success.
-Download [ModelFitting_2.R](/courses_Rscripts/ModelFitting_2.R) to help you get going.
+Download [ModelFitting_2.R](/courses_Rscripts/ModelFitting/ModelFitting_2.R) to help you get going.
 
 
 
@@ -821,7 +825,7 @@ So how do we go about encoding that in our models?
 
 Well, there are many ways that we could do it.
 We could go the route of using *GLMs* and *GAMs* that permit us to continue to appropriately represent non-Gaussian error structures and potentially non-linear relationships
-(see the [Of Potential Utility or Interest](of_potential_utility_or_interest)).
+(see the [Of Potential Utility or Interest](https://models4data2theory.github.io/courses/potential_use_or_interest/)).
 But, as motivated above, our goal is to fit mechanistic models instead.[^6]
 
 [^6]: We here focus on theoretical models that generate predictions for the *expected* value (the mean) of the response variable as a function of the covariate(s). 
@@ -996,7 +1000,7 @@ legend('topleft',
 ##### Repeat for yourself
 In-class {{< icon name="clock" pack="fas" >}} 30-45 minutes
 
-Download [ModelFitting_3.R](/courses_Rscripts/ModelFitting_3.R).
+Download [ModelFitting_3.R](/courses_Rscripts/ModelFitting/ModelFitting_3.R).
 The first part generates a random dataset.
 It then repeats the fitting of the $f_1$ model that we just did.
 
@@ -1106,7 +1110,7 @@ while models having $\Delta_i > 10$ are deemed to have essentially no support.
 ### Let's try it
 In-class {{< icon name="clock" pack="fas" >}} 10-15 minutes
 
-Adding to your updated copy of [ModelFitting_3.R](/courses_Rscripts/ModelFitting_3.R), write functions for $AIC$ and $BIC$ and use them to identify the best-performing model among our three $f_1$ - $f_3$ models.
+Adding to your updated copy of [ModelFitting_3.R](/courses_Rscripts/ModelFitting/ModelFitting_3.R), write functions for $AIC$ and $BIC$ and use them to identify the best-performing model among our three $f_1$ - $f_3$ models.
 Do your inferences differ from your earlier evaluation of the models?
 
 
@@ -1287,7 +1291,7 @@ Notice that
 - `mle2()` returns the (positive) log-likelihood rather than the negative log-likelihood. (I don't know why.)
 
 The `bbmle` package also has several other potentially useful functions that we won't get into.
-Note that the above code is included at the bottom of [ModelFitting_3.R](/courses_Rscripts/ModelFitting_3.R).
+Note that the above code is included at the bottom of [ModelFitting_3.R](/courses_Rscripts/ModelFitting/ModelFitting_3.R).
 
 
 
@@ -1436,13 +1440,13 @@ Novak and Stouffer (2021) Systematic bias in studies of consumer functional resp
 
 ## Solutions
 
-[ModelFitting_1.R](/courses_Rscripts/ModelFitting_1.R) (no 'key')
+[ModelFitting_1.R](/courses_Rscripts/ModelFitting/ModelFitting_1.R) (no 'key')
 
-[ModelFitting_2_key.R](/courses_Rscripts/ModelFitting_2_key.R)
+[ModelFitting_2_key.R](/courses_Rscripts/ModelFitting/ModelFitting_2_key.R)
 
-[ModelFitting_3_key.R](/courses_Rscripts/ModelFitting_3_key.R)
+[ModelFitting_3_key.R](/courses_Rscripts/ModelFitting/ModelFitting_3_key.R)
 
-[ModelFitting_4_key.R](/courses_Rscripts/ModelFitting_4.R)
+[ModelFitting_4_key.R](/courses_Rscripts/ModelFitting/ModelFitting_4.R)
 
 ## Session Info
 ```{r session info, echo = T}

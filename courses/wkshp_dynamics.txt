@@ -17,15 +17,26 @@ knitr::opts_knit$set(global.par = TRUE)
 # rm(list=ls())
 ```
 
-<!-- ## Motivation -->
+## Motivation
+It almost goes without saying, but in order to integrate ecological data and theory one needs to understand the fundamental tools of theoretical ecology.
+In our context of plant-pollinator interactions, those tools invariably involve the mathematics of "dynamical systems", including calculus (a little analytic but mostly  numerical), a lot of algebra (i.e. moving symbols around), and linear algebra (matrices).
+The greatest challenges in learning these tools are typically getting used to and practiced in working with symbols translating/implementing the "pen-and-paper" mathematics as computer code.
+In our experience, both come from simple repeated exposure and practice (and hence motivation and interest).
+Moreover, just because someone is already comfortable with mathematics does not mean they're already comfortable with coding (and vice versa).
 
-<!-- ## Overview {#overview} -->
+
+## Overview
+
+Our goal is to introduce you to the foundations of dynamical systems analysis that underlies much of ecological theory.
+Going back-and-forth between the mathematics and the code, we'll progress through the analysis and simulation of single-species exponential and logistic growth, 
+to the (graphical) analysis and simulation of two-species mutualistic interactions,
+to the simulation-based analysis of many-species mutualistic networks.
+In the process, we'll touch on concepts and tools including steady states, local (a.k.a. linear) stability analysis, and isoclines.
 
 Throughout, we will use the symbol **$N$** to represent population size, as it does in nearly all population models in ecology.
 
-For a start preceding the introduction of exponential growth, see the [Of Potential Interest](/potential_use_or_interest) page.
 
-## Required R-packages
+### Required R-packages
 
 We'll need the `deSolve` package to integrate our differential equations with respect to time.
 
@@ -38,8 +49,13 @@ library(deSolve)
 library(knitr)
 ```
 
+### Exercise code
+In addition to the in-text links below, you can download what you'll need in this
+[GoogleFolder](https://drive.google.com/drive/folders/14mv3lekxpEZhtFpadJ7pydjfaNI4diLv?usp=sharing).
 
 ## Exponential growth
+
+For a start preceding the introduction of exponential growth, see the [Of Potential Interest](https://models4data2theory.github.io/courses/potential_use_or_interest/) page.
 
 We will take as our starting point the differential equation,
 
@@ -50,7 +66,7 @@ The left-hand-side of this equation is little more than a tangent slope: the cha
 <!-- $$ -->
 <!-- \frac{dN}{dt} = \lim_{\Delta t \rightarrow 0} \frac{N_{t+\Delta t} - N_t}{\Delta t} = \lim_{\Delta t \rightarrow 0}\frac{\Delta N}{\Delta t}, -->
 <!-- $$ -->
-The right hand size is a product of the population size $N$ (at any given instant in time) and $r$ is the intrinsic _per capita_ growth rate.
+The right-hand side is a product of the population size $N$ (at any given instant in time) and $r$ is the intrinsic _per capita_ growth rate.
 The intrinsic growth rate is nothing more than the difference between the rate at which the average individual gives birth, $b$, and the rate at which the average individual die, $d$.
 Together, they left and right-hand sizes of the equation represent the model of **exponential growth**. 
 <!-- It's also exactly equivalent to the first expression of change in population size over time (as it should be): $\frac{dN}{dt} = rN$ and since $r = \frac{(b-d)}{N}$, with substitution: $\frac{dN}{dt} = \frac{(b-d)}{N}N$; the $N$s cancel so we are left with our original equation: $\frac{dN}{dt} = b - d$. -->
@@ -164,7 +180,7 @@ plot(out, ylab = "population size, N", col = "blue")
 Great---this looks identical to our previous plot, which is what we wanted. 
 If you view it with `View(out)` you can see that there are two columns in the output from `ode`, one for time and one for population size.
 
-**Exercise:** 
+#### Exercise 1 {#Ex1}
 Alter the code above to run a simulation of exponential growth over 200 time steps, for a population with an initial size of 202 individuals and $r$ = 0.225.
 
 <!-- **optional:** write a `for` loop (or a vectorized version, e.g. with one of the `apply` functions) to calculate population growth with the same parameters but with a difference equation (not a differential equation) approach. Plot both curves on the same graph to show how the differential equation gives us the (true) faster growth relative to a difference equation. -->
@@ -193,7 +209,7 @@ This equation may strike you as almost tautological, since we defined $r$ as the
 The point here is that we have re-arranged things to have the per-capita population growth rate on the left (as the response variable), and a constant on the right. 
 Now we can change the right-hand side from a constant to some function of population size to reflect density dependence.
 
-One of the simplest way to incorporate density dependence is to assume that $\left( \frac{1}{N}\frac{dN}{dt} \right)$ is a *linear* function of density; 
+One of the simplest ways to incorporate density dependence is to assume that $\left( \frac{1}{N}\frac{dN}{dt} \right)$ is a *linear* function of density; 
 this ultimately yields the *logistic growth equation*. 
 
 In formulating linear density dependence, the hypothetical *maximum* possible per-capita population growth rate  occurs when the population is approaching zero (i.e., no possible density effects); 
@@ -266,8 +282,6 @@ $$
 $$
 
 This is the **logistic growth equation** that is ubiquitous in population ecology.
-
-### Let's try it
 
 We'll model logistic growth using `deSolve` as we did above for exponential growth. 
 We actually don't have to change very much; 
@@ -373,10 +387,13 @@ plot(out,
 
 As hoped, we get back exactly the same graph as with our prior code.
 
-**Exercise** 
+#### Exercise 2 {#Ex2}
+
 Run the logistic growth code above, and then re-run it with a much larger value of $r$ of your choice, but less than $r = 2$ (keep $K$ the same). 
 Re-name the variable `out` when you re-run it so you have access to the data from both runs. 
 Plot both curves on the same graph, with two different colors.
+
+To plot the new curve on the same graph, if you called your re-run variable `out2`, in the line after calling `plot`, add: `lines(out2, col = "green")`
 
 <!-- **optional exercise:** An alternative formulation of the logistic growth equation is to define $\alpha = 1 / K$, where $\alpha$ is the per-capita effect of one individual on the growth rate of the population. We can then substitute $\alpha$ that back into the classic logistic growth equation we defined above: -->
 <!-- $$ -->
@@ -512,7 +529,7 @@ $$
 
 Now that doesn't seem to have gotten us anywhere given that $f(N^{\*} + x)$ could be a super complicated function.
 However, regardless of how complicated $f(N^{\*} + x)$ is, we can always approximate it! We do so by using a Taylor expansion of $f(N^{\*} + x)$ around $N^{\*}$.
-(See [Of Potential Utility or Interest](of_potential_utility_or_interest) page.) 
+(See [Of Potential Utility or Interest](https://models4data2theory.github.io/courses/potential_use_or_interest/) page.) 
 That is,
 $$
 f(N^{\*} + x) = f(N^{\*})  + \frac{d f(N^{\*})}{dN} \cdot  x + \frac{d^2 f(N^{\*})}{dN^2} \cdot \frac{x^2}{2!} + + \frac{d^3 f(N^{\*})}{dN^3} \cdot \frac{x^3}{3!} + \dots 
@@ -555,7 +572,9 @@ $$
 The parameters $\alpha_{12}$ and $\alpha_{21}$ are coefficients representing the strength of mutualism.
 Note that if we set them to zero (i.e. $\alpha_{12} = \alpha_{21} = 0$) we recover the logistic model for each species.
 
-**Exercise 1**: Let's focus just on the equation for species 1: 
+#### Exercise 3 {#Ex3}
+
+Let's focus just on the equation for species 1: 
 $$
 \frac{dN_1}{dt} = r_1N_1\left(\frac{K_1-N_1+\alpha_{12}N_2}{K_1}\right) .
 $$
@@ -568,7 +587,9 @@ Do you see how this equation captures the effects of mutualism?
 **Make sure to track units when plugging numbers!** 
 Units help you to better understand models and closely track your calculations.
 
-**Exercise 2**: Based on your calculations, reflect on how the relationship between $N$ and the carrying capacity, $K$, is affected by the population density of the mutualist species and the strength of the mutualism coefficients, $\alpha_{ij}$. 
+#### Exercise 4 {#Ex4}
+
+Based on your calculations, reflect on how the relationship between $N$ and the carrying capacity, $K$, is affected by the population density of the mutualist species and the strength of the mutualism coefficients, $\alpha_{ij}$. 
 In your thinking, consider how this model captures the effects of mutualism on the fundamental niche. 
 
 ### Isoclines
@@ -578,29 +599,43 @@ Isoclines help us define when the two populations are neither growing nor declin
 The combination of densities of species 1 and species 2 that results in a zero per-capita growth rate for species 1 can be found by setting $\frac{dN_1}{dt}=0$ and solving for $N_1$ and $N_2$. 
 The same can be done for species 2 by setting $\frac{dN_2}{dt}=0$ and solving for $N_1$ and $N_2$.
 
-**Exercise 3**: Solve for the species 1 isoclines by setting $\frac{dN_1}{dt}=0$. 
+#### Exercise 5 {#Ex5}
+
+Solve for the species 1 isoclines by setting $\frac{dN_1}{dt}=0$. 
 Remember to consider both trivial and non-trivial steady states
 
-**Exercise 4**: Solve for the species 2 isoclines by setting $\frac{dN_2}{dt}=0$. 
+#### Exercise 6{#Ex6}
+
+Solve for the species 2 isoclines by setting $\frac{dN_2}{dt}=0$. 
 Remember to consider both trivial and non-trivial steady states
 
-**Exercise 5**: By now you have solved for the species 1 and species 2 isoclines individually. 
+#### Exercise 7 {#Ex7}
+
+By now you have solved for the species 1 and species 2 isoclines individually. 
 You should have 4 expressions in total: two describing the species 1 equilibrium (one trivial and one non-trivial) and two describing the species 2 equilibrium (one trivial and one non-trivial). 
 Work in groups to plot the 4 isoclines - you may use a piece of paper or the whiteboard. 
 Note that for consistency with my slides, the y-axis should represent species 1's density ($N_1$ ) and the x-axis should represent species 2's density ($N_2$), as follows:
 
 ![PhasePlane](/images/dynamics/phaseplane_04.png)
 
-**Exercise 6**: Revisit the different definitions of stability provided at the end of day 1. 
+#### Exercise 8 {#Ex8}
+
+Revisit the different definitions of stability provided at the end of day 1. 
 Identify which of those definitions are appropriate for characterizing the stability of the L-V model of mutualism.
 
 ### Parameter effects
+
+Much of ecological theory can be derived by understanding how the isoclines of our mathematical models change with changes in parameter values or functional forms, affecting the dynamical outputs of the model. 
+Increasing or decreasing parameter values can represent biological processes of interest, so the effect of those changes on the model isoclines can provide insights on how those processes may affect the dynamics of the study system. 
+We will now understand the ecological theory we obtain from the Lotka-Volterra model of mutualism, which introduces dynamic behavior of mutualisms that are common to many models of mutualism and helps us understand the dynamic implications of important attributes such as mutualism strength and whether the interaction is facultative or obligate to each mutualistic partner.
 
 **Understanding** $\alpha_{12}$ **and** $\alpha_{21}$ **and mutualism strength**
 
 The strength of mutualism can vary as you shift $\alpha_{12}$ and $\alpha_{21}$ with higher values representing stronger mutualism.
 
-**Exercise 7**: Discuss with your group how you expect the strength of mutualism to affect the likelihood of stable coexistence between species. 
+#### Exercise 9 {#Ex9}
+Discuss with your group how you expect the strength of mutualism to affect the coexistence between species. 
+The stability of such coexistence? 
 Do you expect that strong or weak mutualism will allow the persistence of both species?
 
 Now, we will explore isoclines under different parameter values by first loading the code that contains the model. 
@@ -608,12 +643,15 @@ If you looking this in the website, you will need first to open and download the
 On Mac, you can just right-click on the hyperlink. 
 On Windows, you will need to open, copy all, and then save as R code:
 
-[Two-species Lotka-Volterra mutualism model](/courses_Rscripts/LV_2species.R)
+[Two-species Lotka-Volterra mutualism model](/courses_Rscripts/Dynamics_LV_2spMutualism.R)
 
 
-In class, we will work off the R markdown, which will load the code using source.
+In class, we will work off a Rmarkdown file.
+In it, we will source the above script in order to use the following functions.
 
-**Exercise 8**: Test your hypothesis using the `lvMutualismInteractive()` function. 
+#### Exercise 10 {#Ex10}
+
+Test your hypothesis using the `lvMutualismInteractive()` function. 
 Copy and paste the code chunk below in the R console to fix all parameters except $\alpha_{12}$ and $\alpha_{21}$, which you can manipulate.
 
 ```{.r, echo = TRUE}      
@@ -642,10 +680,15 @@ The Lotka-Volterra model for mutualism also allows us to model **obligate mutual
 We can obtain obligate mutualism in the model by making the carrying capacities $K_1$ or $K_2$ negative. 
 A negative carrying capacity means that population trajectories will continuously be drawn towards zero, unless the benefits provided by mutualist partners are sufficient to maintain positive abundance.
 
-**Exercise 9**: Discuss with your group how you expect facultative or obligate mutualism will affect the possibility of stable coexistence (i.e., persistence of both species). 
-Which do you think is more likely to facilitate stable coexistence?
+#### Exercise 11 {#Ex11}
 
-**Exercise 10**: Reflect as a group on the overarching conclusions about the effect of strong/weak and obligate/facultative mutualism have on stable coexistence, based on the summary figure:
+Discuss with your group how you expect facultative vs obligate mutualism will affect the stable coexistence (i.e. persistence of both species at plausible abundances) of the model. 
+Which do you think is more likely to facilitate stable coexistence? 
+Draw the isoclines for each case.
+
+#### Exercise 12 {#Ex12}
+
+Reflect as a group on the overarching conclusions about the effect of strong/weak and obligate/facultative mutualism have on stable coexistence, based on the summary figure:
 
 ![mutualism_summary](/images/dynamics/mutualism_summary.png)
 
@@ -657,13 +700,14 @@ This linear benefit causes the positive feedback loop that drives the abundance 
 However, we know that mutualistic benefits do not grow forever but they rather saturate (e.g., fixed number of ovules per plant, consumption saturation just like in other consumer-resource interactions, etc.). 
 We can model that saturation for example by using a Holling type II functional response, which replaces the linear type I functional response exhibited by the model we have used so far, see equations above.
 
-**Exercise 11**: Sketch a diagram approximating how isoclines of the L-V model might change with saturation of benefit accrual between both mutualists.
+#### Exercise 13 {#Ex13}
+
+Sketch a diagram approximating how isoclines of the L-V model might change with saturation of benefit accrual between both mutualists.
 
 
 ## Multi-species
 
-The code you downloaded in the section above (`LV_2species.R`) contains the Lotka-Volterra model of mutualism and the ode solver.
-The equations in such source code are:
+The code you downloaded above contains the Lotka-Volterra model of mutualism:
 
 ```{.r, echo = TRUE}   
 dNdtFunc = function(t, states, param)
@@ -707,18 +751,21 @@ Now, we need to connect the summations of these equations to the matrix encoding
 For that, we will go back to our toy network we worked on in day 1:
 ![bipartite_network](/images/dynamics/bipartite_network.png)
 
-**Exercise 12**: Write the system of 6 differential equations of the Lotka-Volterra model for mutualism that represents this network. To help, the equations of plant species 1 and 3 are
+#### Exercise 14 {#Ex14}
+
+Write the equations for animal species 2 and 3 following the examples provided below for plant species 1 and 3.
 $$
 \frac{dN_1^P}{dt} = (r_1^P - s_1^P N_1^P + \alpha_{11}^A N_1^A + \alpha_{12}^A N_2^A + \alpha_{13}^A N_3^A) N_1^P
 $$
 $$
 \frac{dN_3^P}{dt} = (r_3^P - s_3^P N_3^P + \alpha_{31}^A N_1^A) N_3^P 
 $$
-Work on writing the equations for plant species 2 and the equations of the three species of animals.
 
-**NOTE:** We will work together in class to understand the summation and connect it to the network !
+**NOTE:** We will work together in class to understand the summation and connect it to the network!
 
 Now that we have understood together the summation and its connection to the plant-pollinator network, we will see how the computer can help us with building the system of differential equations using matrices.
+
+[Multi-species Lotka-Volterra mutualism model](/courses_Rscripts/Dynamics_LV_multispMutualism.R)
 
 Let's start by saving the matrix representing the toy network
 
@@ -911,10 +958,10 @@ print("dN_i^A/dt:")
 print(dAdt)
 ```
 
-So, all together the code to run the multi-species model is:
+So, all together the code to run the [multi-species model](/courses_Rscripts/Dynamics_LV_multispMutualism.R) is:
 
 ```{.r, echo = TRUE}
-# Load adjacency matrix:
+# Load matrix:
 interactionMatrix = matrix(c(1, 1, 1, 1, 1, 0, 1, 0, 0), nrow = 3, byrow = TRUE)
 
 # Initialize variables
@@ -977,11 +1024,15 @@ for (i in 1:time_steps) {
 print(results)
 ```
 
-**Exercise 13**: Play with the parameters of the model (i.e., the mean of the random distributions) to obtain different results based on what you learned from the model of two species. 
+#### Exercise 15 {#Ex15}
+
+Play with the parameters of the model (i.e., the mean of the random distributions) to obtain different results based on what you learned from the model of two species. 
 Can you obtain different mode behaviors such as populations growing to infinity or extinctions? 
 You will need to also change the number of time steps to see the different behaviors.
 
-**Exercise 14**: How do you think the addition of saturating benefits would change the results of this model? 
+#### Exercise 16 {#Ex16}
+
+How do you think the addition of saturating benefits would change the results of this model? 
 See the work by Okuyama & Holland 2008 (Ecology Letters, 11: 208–216) who modified this model by incorporating a hyperbolic functional response to represent that the beneﬁts to mutualists saturate with the densities of mutualistic species with which they interact.
 
 

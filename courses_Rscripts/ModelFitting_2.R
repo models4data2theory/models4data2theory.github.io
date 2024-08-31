@@ -1,60 +1,119 @@
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Your challenge is to fit the binomial model to 
-# our data on fertilization success rates
-# (i.e. counts of total and fertilized ovules)
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Fitting models f1-f3 to a randomly-generated visitation rate dataset -------
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Import the GoogleSheet directly
-dat <- read.csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vTyyqthYKtedUdgRCOE37ec-oA4TzY6Mq8glR9bWr8ORhGQjWZlkeIuM5AgdGa8-zHE9pJma8C3n4_n/pub?gid=0&single=true&output=csv')
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# set.seed(1)
 
-# If that doesn't work, 
-# then paste the above link into a browser 
-# to save the GoogleSheet csv file to your desktop.
+n <- 40 # Sample size
+P <- runif(n, 0, 100) # Plant densities
 
-# Import downloaded csv file using either prompt...
-# dat <- read.csv(file.choose())
+a <- 3.333 # True value of 'a'
+h <- 0.025 # True value of 'h'
 
-# ... or by specifying its location.
-# (un-comment following 2 lines to use)
-# dat.loc <- 'MyDesktopLocation'
-# dat <- read.csv(paste0(dat.loc, 'Delphinium_fertilization_success - Sheet1.csv'))
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-# Remove rows with no data
-dat <- subset(dat, !is.na(dat$Total.count) 
-                 & !is.na(dat$Fertilized.count))
-
-# Extract vector of Total.counts (draws)
-N <- dat$Total.count
-
-# Extract vector of Fertilized.counts (successes)
-k <- dat$Fertilized.count
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# To do:
-
-# 1) Define the negative log-likelihood function for binomial
+k <- NULL # Visitation counts
+for(i in 1:n){
+  # Generate a 'k' for each 'P' assuming the truth is Type 2 (model f2)
+  k[i] <- rpois(1, a * P[i] / (1 + a * h * P[i]) )
+}
 
 
+plot(P, k,
+     xlim = c(0, max(P)),
+     ylim = c(0, max(k)),
+     xlab = 'Plant density (P)',
+     ylab = 'Visitation count (k)')
 
-# 2) Provide initial guess for binomial 'probability'
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Type I (model f1) ---------
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+nlL.pois.f1 <- function(par){
+  a <- par['a']
+  -sum(dpois(k, a * P, log = TRUE))
+}
 
+fit.f1 <- optim(par = list(a = 1),
+                fn = nlL.pois.f1)
+print(fit.f1)
 
+plot.f1 <- function(x, fit){
+  a <- fit$par['a']
+  return(a * x)
+}
+curve(plot.f1(x, fit.f1), 
+      add = TRUE,
+      lwd = 2)
 
-# 3) Fit the model
-
-
-
-# 4) Overlay the parameter estimate on 
-#    histogram of *Proportion* Fertilized
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Continue yourself ------------------------------------------------------------
+# Now fit the Type II (f2) and Type III (f3) models for yourself and compare the
+# 1) parameter MLEs and 2) likelihoods.
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Type II (model f2) --------
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+nlL.pois.f2 <- function(par){
+  a <- par['a']
+  h <- par['h']
+  -sum(dpois(k, a * P / (1 + a * h * P), log = TRUE))
+}
+
+fit.f2 <- optim(par = list(a = fit.f1$par['a'] * 5, 
+                           h = 1/50),
+                fn = nlL.pois.f2)
+print(fit.f2)
+
+plot.f2 <- function(x, fit){
+  a <- fit$par['a']
+  h <- fit$par['h']
+  return(a * x / (1 + a * h * x))
+}
+curve(plot.f2(x, fit.f2), 
+      add = TRUE,
+      lwd = 2)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Type III (model f3) -------
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+nlL.pois.f3 <- function(par){
+  a <- par['a']
+  h <- par['h']
+  theta <- par['theta']
+  -sum(dpois(k, a * P^theta / (1 + a * h * P^theta), log = TRUE))
+}
+
+fit.f3 <- optim(par = list(a = fit.f2$par['a'], 
+                           h = fit.f2$par['h'], 
+                           theta = 1),
+                fn = nlL.pois.f3)
+print(fit.f3)
+
+plot.f3 <- function(x, fit){
+  a <- fit$par['a']
+  h <- fit$par['h']
+  theta <- fit$par['theta']
+  return(a * x^theta / (1 + a * h * x^theta))
+}
+curve(plot.f3(x, fit.f3), 
+      add = TRUE,
+      lwd = 2,
+      col = 'orange')
 
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Comparisons -----------------
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Parameter estimates ---------
+print(c(a = a, h = h, theta = 1))
+fit.f1$par
+fit.f2$par
+fit.f3$par
+
+# Negative log-Likelihoods -----
+fit.f1$value
+fit.f2$value
+fit.f3$value
+
+##############################################################################
