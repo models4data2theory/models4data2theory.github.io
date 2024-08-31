@@ -132,13 +132,13 @@ fit.f3$value
 AIC <- function(fit){
   nlL <- fit$value
   p <- length(fit$par)
-  return( - 2 * nlL + 2 * p )
+  return( 2 * nlL + 2 * p )
 }
 
 BIC <- function(fit, n){
   nlL <- fit$value
   p <- length(fit$par)
-  return( - 2 * nlL + log(n) * p )
+  return( 2 * nlL + log(n) * p )
 }
 
 

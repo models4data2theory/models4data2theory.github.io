@@ -868,8 +868,6 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
     </li>
     <li><a href="#visualization">Visualization</a>
       <ul>
-        <li><a href="#adjacency-matrices">Adjacency matrices</a></li>
-        <li><a href="#bipartite-adjacency">Bipartite adjacency</a></li>
         <li><a href="#matrix-depictions">Matrix depictions</a></li>
       </ul>
     </li>
@@ -1444,56 +1442,6 @@ Here is one way to do that (there are certainly more concise ways to code this):
 While understanding those two basic formats is foundationally important for working with networks, visualization is a large and complex topic.
 Here, in the interest of time, we will cover only one additional facet:
 how to standardize matrix depictions of networks, with a focus on bipartite networks.</p>
-<h3 id="adjacency-matrices">Adjacency matrices</h3>
-<p>As we noted above, depending on the type of interaction we are focused on, some networks such as food webs can be considered <em>unipartite</em>, or in other words any node can potentially interact with any other node in the network.
-This makes sense for food webs because many species can be predators to some species, but prey to others (especially if we think about different life stages&mdash;a large predatory fish species can be prey to much smaller fish species when it is a juvenile or even an egg).</p>
-<p>Because we are focused on pollination networks in this workshop, so far we have maintained a focus on <em>bipartite</em> networks, in other words networks where a given node <em>cannot</em> interact with any other node in the network, but instead can only interact with nodes from the other group or guild.
-In other words, two different pollinator species can&rsquo;t pollinate one another&mdash;pollination interactions can only occur between one plant and one pollinator.</p>
-<p>Bipartite networks are more intuitive to depict in matrix form relative to unipartite networks.
-As above, we set one group or guild as the rows of the matrix, and the other group or guild as the columns. But how do we do this for unipartite networks?
-The answer is what we can an <em>adjacency matrix</em>, in which each node is included as <em>both</em> a row and a column.</p>
-<p>To see what this looks like, we will use a food web dataset from the Baltic Sea, from this publication:</p>
-<blockquote>
-<p>Kortsch, S., Frelat, R., Pecuchet, L., Olivier, P., Putnis, I., Bonsdorff, E., Ojaveer, H., Jurgensone, I., Strāķe, S., Rubene, G., Krūze, Ē., and Nordström, M. C. (2021). Disentangling temporal food web dynamics facilitates understanding of ecosystem functioning. <em>Journal of Animal Ecology</em>, 90(5), 1205-1216. DOI 10.1111/1365-2656.13447.</p>
-</blockquote>
-<p>In plotting the adjacency matrix, we have highlighted the primary diagonal&mdash;which represents self-interactions&mdash;in a darker shade.
-We have done this highlighting to help orient you to the graph; this particular food web dataset does not include cannibalism (when thinking about trophic interactions, cannibalism is the self-interaction!).
-One thing to consider is that adjacency matrices look very different if the networks are directed vs. undirected.
-In particular, for undirected networks (those in which any interaction from A to B is the same as from B to A, for example networks of physical connections like roadway networks), the adjacency matrix will always be symmetrical about the primary diagonal.
-The adjacency matrix below is very much a directed network&mdash;the interaction is <em>very</em> different for predators vs. prey!&mdash;and thus it is definitely not symmetric about the primary diagonal.</p>
-<img src="/courses/wkshp_networks_files/figure-html/baltic adjacency-1.png" width="672" />
-<p>At this point, you might be asking yourself:
-&ldquo;Well, that&rsquo;s cool and everything, but aren&rsquo;t we here to learn about plant-pollinator networks, which are bipartite? Why are we even bothering with these unipartite networks and adjacency matrices?&rdquo;
-Great question.
-Again, how we think about networks&mdash;including how we visualize them&mdash;is fundamentally driven by the <strong>type of interaction</strong> we are focused on.
-Up until now, we have ultimately been thinking about plant-pollinator interactions at a pretty superficial level, really considering them at the level of whether or not flower visitation occurs (or not) between a plant species and a pollinator species.</p>
-<p>But if we start to take a more nuanced view of pollination, the benefits that a pollinator gets from a particular flower visit are probably almost never the same as the benefits that the plant gets (let&rsquo;s define &ldquo;benefits&rdquo; here in the context of positive impact on population growth).
-For example, a single bee visit to a flower may transfer enough pollen to fertilize a dozen or more seeds, but to gather enough pollen to feed a single larvae, that bee may have to visit hundreds of flowers.
-By using an adjacency matrix, we can visualize the lack of symmetry in benefits among interacting partners.</p>
-<p>This becomes even more useful and important when we delve into modeling population dynamics, later on in this workshop.
-For example, later today we discuss how the structure of networks can impact their stability.
-The <em>Community</em> matrix&mdash;which we will cover briefly later in the workshop&mdash;is (roughly) an adjacency matrix whose cell values describe how an incremental change in the population size of any one node will impact the population of another node.
-So that allows us to understand how a change in the population of one pollinator species might impact the dynamics of another pollinator species&mdash;even if we are not directly tracking interactions between pollinators!
-The Jacobian also provides us a way to assess local stability in networks. Stay tuned for more on all of that.</p>
-<h3 id="bipartite-adjacency">Bipartite adjacency</h3>
-<p>We can convert a bipartite plant-pollinator matrix into an adjacency matrix.
-In practice, doing this isn&rsquo;t very difficult using the <code>igraph</code> package, but we will skip the details here as this is not typically done with bipartite networks.
-Still, we will show you the adjacency matrix depiction so you can get a visual handle on it.
-Here is the <a href="data/networks/medgarden.csv">medgarden.csv</a> data that you converted from an edge list, shown in an adjacency matrix format:</p>
-<img src="/courses/wkshp_networks_files/figure-html/adjacency from bipartite-1.png" width="672" />
-<p>What you probably immediately notice is that there is a big blank space in the upper left.
-That area is blank because it is dedicated to plant-plant interactions (which we didn&rsquo;t record with this dataset).
-Looking a bit more closely, there is a corresponding blank area in the bottom right of the matrix, for pollinator-pollinator interactions.
-Thinking about this a bit more, you can see that the adjacency matrix is divided into four quadrants:</p>
-<ol>
-<li>a plant-plant quadrant (upper-left, blank)</li>
-<li>a pollinator-plant quadrant (upper-right, some interactions)</li>
-<li>a plant-pollinator quadrant (lower-left, some interactions, the mirror-image or transpose of the upper-right); and</li>
-<li>a pollinator-pollinator quadrant (lower-right, blank)</li>
-</ol>
-<p>Again, if we were to plot interaction values other than the presence-absence of flower visits, we could potentially see values in the blank quadrants. For example, if we were plotting effects on fitness, we might have (negative) values between pollinators because of competition for flowers and/or nest sites, and negative values between plant species driven by competition for pollinators, space, water, light, nutrients, etc.</p>
-<p>Finally, as noted above, we notice that the matrix is symmetric about the primary diagonal, because presence or absence of flower visitation is a non-directional interaction.
-Again, if we recorded the data differently / in some more specific way (e.g. fitness benefits) we could potentially depict this interaction in a directional fashion.</p>
 <h3 id="matrix-depictions">Matrix depictions</h3>
 <p>What is the difference between these two matrices?</p>
 <p><img src="/courses/wkshp_networks_files/figure-html/different depictions same matrix-1.png" width="672" /><img src="/courses/wkshp_networks_files/figure-html/different depictions same matrix-2.png" width="672" /></p>
