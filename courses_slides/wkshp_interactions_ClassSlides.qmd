@@ -1,0 +1,1059 @@
+---
+title: "Model fitting"
+format:
+  revealjs:
+    smaller: true
+    scrollable: true
+---
+## Motivation
+![](Allesina_fig.png){fig-align="center"}
+![](Allesina.png){fig-align="center"}
+
+## Motivation
+
+```{r motivation1, fig.width = 8, fig.height = 2.75, fig.align = 'center'}
+set.seed(2)
+
+Type3 <- function(x, a = 1, b = 1, c = 1){
+  a * x^c / (1 + a * b * x^c)
+}
+n <- 100
+
+x <- runif(n, 0, 120)
+y <- NULL
+lambda <- Type3(x, a = 0.05, b = 0.04, c = 1.8)
+for(i in 1:n){
+  y[i] <- rpois(1, lambda[i])
+}
+x1 <- x
+y1 <- y
+
+x <- round(runif(n, 0, 35))
+y <- NULL
+p <- Type3(x, a = 4, b = 0.025, c = 1)
+p <- p/max(p)
+S <- 20
+for(i in 1:n){
+  y[i] <- rbinom(1, S, p[i]) / S
+}
+x2 <- x
+y2 <- y
+
+
+par(mar = c(3, 3, 1, 1),
+    las = 1,
+    cex.axis = 0.8,
+    mgp = c(2, 0.3, 0),
+    tcl = -0.2,
+    mfrow = c(1, 2))
+
+plot(x1, y1,
+     xlab = 'Plant density',
+     ylab = 'Visitation count')
+plot(x2, y2,
+     ylim = c(0, 1),
+     xlab = 'Visitation count',
+     ylab = 'Proportion fertilized')
+```
+
+## [Poisson](https://distribution-explorer.github.io/discrete/poisson.html)
+
+$$ Pr(k|\lambda) = \frac{\lambda^k e^{-\lambda}}{k!}$$
+
+```{r prob_Poiss, fig.width = 6, fig.height = 4.5, fig.align = 'center'}
+par(mar = c(3, 3, 1, 1),
+    las = 1,
+    cex.axis = 0.8,
+    mgp = c(2, 0.3, 0),
+    tcl = -0.2,
+    mfrow = c(2, 1))
+
+k <- 0:15
+
+lambda <- 1.5
+barplot(
+  dpois(k, lambda),
+	xlab = "Count (k)",
+	ylab = "Probability mass",
+  names.arg = k
+  )
+legend('topright',
+       bty = 'n',
+       legend = c(bquote(lambda == .(lambda))))
+
+lambda <- 6.2
+barplot(
+  dpois(k, lambda),
+	xlab = "Count (k)",
+	ylab = "Probability mass",
+  names.arg = k
+  )
+legend('topright',
+       bty = 'n',
+       legend = c(bquote(lambda == .(lambda))))
+```
+
+## [Binomial](https://distribution-explorer.github.io/discrete/binomial.html)
+
+$$
+Pr(k, n|p) = {n \choose k} p^k (1-p)^{n-k}  = \frac{n!}{k!(n-k)!} p^k (1-p)^{n-k}
+$$ 
+
+
+```{r prob_Binom, fig.width = 6, fig.height = 4.5, fig.align = 'center'}
+par(mar = c(3, 3, 1, 1),
+    las = 1,
+    cex.axis = 0.8,
+    mgp = c(2, 0.3, 0),
+    tcl = -0.2,
+    mfrow = c(2, 2))
+n <- 10
+k <- 0:n
+p <- 0.18
+barplot(
+  dbinom(k, n, p),
+	xlab = "Count (k)",
+	ylab = "Probability mass",
+  names.arg = k
+  )
+legend('topright',
+       bty = 'n',
+       legend = c(bquote(n == .(n)),
+                  bquote(p == .(p))))
+
+barplot(
+  dbinom(k, n, p),
+	xlab = "Proportion (k/n)",
+	ylab = "Probability mass",
+  names.arg = k/n
+  )
+legend('topright',
+       bty = 'n',
+       legend = c(bquote(n == .(n)),
+                  bquote(p == .(p))))
+
+n <- 50
+k <- 0:22
+p <- 0.18
+barplot(
+  dbinom(k, n, p),
+	xlab = "Count (k)",
+	ylab = "Probability mass",
+  names.arg = k
+  )
+legend('topright',
+       bty = 'n',
+       legend = c(bquote(n == .(n)),
+                  bquote(p == .(p))))
+
+barplot(
+  dbinom(k, n, p),
+	xlab = "Proportion (k/n)",
+	ylab = "Probability mass",
+  names.arg = k/n
+  )
+legend('topright',
+       bty = 'n',
+       legend = c(bquote(n == .(n)),
+                  bquote(p == .(p))))
+```
+
+
+## [Probability Distribution Explorer](https://distribution-explorer.github.io/index.html)
+[https://distribution-explorer.github.io/index.html](https://distribution-explorer.github.io/index.html)
+
+
+## Maximum Likelihood
+
+Single observation
+
+$k=\{10\}$
+
+```{r lik_Poiss_single, fig.width = 8, fig.height = 3.75}
+
+cols <- c('blue','red','orange','brown')
+
+likelihood <- function(k, lambda){ (lambda^k * exp(-lambda)) / factorial(k) }
+
+obs <- 10
+lambdas <- c(3.4, 6.5, 10, 14.2)
+k <- 0:20
+
+par(mfrow = c(1,2))
+plot(
+  k,
+  likelihood(k, lambdas[1]),
+	xlab = "Count (k)",
+	ylab = "Probability mass",
+  pch = 21,
+  bg = cols[1],
+  col = cols[1],
+  type = 'o'
+  )
+for(i in 2:length(lambdas)){
+  points(
+    k,
+    likelihood(k, lambdas[i]),
+    pch = 21,
+    bg = cols[i],
+    col = cols[i],
+    type = 'o'
+    )
+}
+legend('topright',
+       bty = 'n',
+       title = bquote(lambda),
+       pch = 21,
+       bg = cols,
+       col = cols,
+       pt.bg = cols,
+       legend = lambdas)
+
+arrows(obs, likelihood(obs, obs) * 1.2,
+       obs, likelihood(obs, obs) * 1.05,
+       length = 0.1
+       )
+text(obs, likelihood(obs, obs) * 1.25,
+     'Observed count',
+     cex = 0.5)
+
+lambdas <- seq(1, 20, 0.05)
+
+plot(
+  lambdas,
+  likelihood(obs, lambdas),
+  xlab = expression(paste('Rate (', lambda, ')')),
+	ylab = "Likelihood",
+  col = cols[3],
+  lwd = 3,
+  type = 'l'
+  )
+
+arrows(obs, likelihood(obs, obs) * 0.2,
+       obs, likelihood(obs, obs) * 0.01,
+       length = 0.1
+       )
+text(obs, likelihood(obs, obs) * 0.25,
+     'Observed\ncount',
+     cex = 0.5)
+
+```
+
+## Maximum Likelihood
+
+Multiple observations (2 observers)
+
+$k=\{10, 15\}$
+
+
+```{r lik_Poiss_two, fig.width = 8, fig.height = 5, fig.align = 'center'}
+
+cols <- c('blue','red','orange','brown')
+
+single.likelihood <- function(k, lambda){ 
+  (lambda^k * exp(-lambda)) / factorial(k) 
+}
+
+joint.likelihood <- function(lambda){
+  single.likelihood(obs[1], lambda) * single.likelihood(obs[2], lambda)
+}
+
+obs <- c(10, 15)
+lambdas <- seq(1, 20, 0.05)
+
+par(mfrow = c(1,1))
+plot(
+  lambdas,
+  joint.likelihood(lambdas),
+  xlab = expression(paste('Rate (', lambda, ')')),
+	ylab = "Likelihood",
+  col = cols[3],
+  lwd = 3,
+  type = 'l'
+  )
+
+arrows(c(obs, mean(obs)), joint.likelihood(mean(obs)) * 0.13,
+       c(obs, mean(obs)), joint.likelihood(mean(obs)) * 0.01,
+       length = 0.1
+       )
+text(c(obs, mean(obs)), joint.likelihood(mean(obs)) * 0.2,
+     c(rep('Observed\ncount', 2), 'Mean\ncount'),
+     cex = 0.5)
+
+```
+
+## Logarithm of probabilities
+
+```{r neglog, fig.width=8, fig.height=6, fig.align = 'center'}
+par(mfrow = c(1,1))
+plot(NA,NA,
+     xlim = c(0, 1.2),
+     ylim = c(-4.5, 0.5),
+     xlab = 'x',
+     ylab = 'log(x)'
+     )
+polygon(c(0, 0, 1, 1), c(10, -10, -10, 10),
+        border = 'grey90',
+        col = 'grey90'
+)
+abline(h = 0,
+       lty = 3)
+curve(log(x), 0, 2, 
+      lwd = 3,
+      add = TRUE,
+      n = 200)
+box(lwd = 1)
+```
+
+## 
+
+```{r nlnlik_Poiss, fig.width = 6, fig.height = 12, fig.align = 'center'}
+
+ln.likelihood <- function(lambda){ log(joint.likelihood(lambda)) }
+nln.likelihood <- function(lambda) { -(ln.likelihood(lambda)) }
+
+obs <- c(10, 15)
+lambdas <- seq(1, 25, 0.05)
+
+par(mfrow = c(3,1),
+    mar = c(2,4,1,0.5),
+    cex = 1.3)
+
+plot(
+  lambdas,
+  joint.likelihood(lambdas),
+  xlab = expression(paste('Rate (', lambda, ')')),
+	ylab = "Likelihood",
+  col = cols[3],
+  lwd = 3,
+  type = 'l',
+  main = 'To maximize the likelihood...'
+  )
+
+arrows(mean(obs), joint.likelihood(mean(obs)) * 0.13,
+       mean(obs), joint.likelihood(mean(obs)) * 0.01,
+       length = 0.1
+       )
+text(mean(obs), joint.likelihood(mean(obs)) * 0.25,
+     'Mean\ncount',
+     cex = 1)
+
+plot(
+  lambdas,
+  ln.likelihood(lambdas),
+  xlab = expression(paste('Rate (', lambda, ')')),
+	ylab = "ln(Likelihood)",
+  col = cols[3],
+  lwd = 3,
+  type = 'l'
+  )
+
+arrows(mean(obs), ln.likelihood(mean(obs)) * 1.8,
+       mean(obs), ln.likelihood(mean(obs)) * 1.1,
+       length = 0.1
+       )
+text(mean(obs), ln.likelihood(mean(obs)) * 2.5,
+     'Mean\ncount',
+     cex = 1)
+
+plot(
+  lambdas,
+  nln.likelihood(lambdas),
+  xlab = expression(paste('Rate (', lambda, ')')),
+	ylab = "-ln(Likelihood)",
+  col = cols[3],
+  lwd = 3,
+  type = 'l',
+  main = '...we minimize the negative log-likelihood'
+  )
+
+arrows(mean(obs), nln.likelihood(mean(obs)) * 1.8,
+       mean(obs), nln.likelihood(mean(obs)) * 1.1,
+       length = 0.1
+       )
+text(mean(obs), nln.likelihood(mean(obs)) * 2.5,
+     'Mean\ncount',
+     cex = 1)
+
+
+```
+
+## Finding MLE - Analytical
+
+$$
+\begin{aligned}
+  f(x) 
+  & = a +  b (x-c)^2\\
+  & = 3 +  5 (x-2)^2
+\end{aligned}
+$$
+
+```{r fig_poly, fig.width = 4, fig.height = 2.75, fig.align = 'center'}
+
+par(mar = c(3, 3, 1, 1),
+    las = 1,
+    cex.axis = 0.8,
+    mgp = c(2, 0.3, 0),
+    tcl = -0.2)
+
+f <- function(x){3 +  5*(x-2)^2}
+
+par(mfrow = c(1,1))
+curve(f, 0, 4, lwd = 3, col = 'orange')
+
+dfdx <- deriv(f ~ 3 +  5*(x-2)^2, 'x', function.arg = TRUE)
+xvals <- c(0.5, 2, 3.5)
+xrng <- 0.5
+segments(xvals - xrng, f(xvals) - xrng * attr(dfdx(xvals),'gradient')[,1],
+         xvals + xrng, f(xvals) + xrng * attr(dfdx(xvals),'gradient')[,1],
+         lty = 2,
+         lwd = 1.5)
+         
+```
+
+## R code
+
+Poisson: 
+$$
+-\ln \mathcal{L}(\lambda | k) = 
+\sum_i^n \ln \left (\frac{\lambda^{k_i} e^{-\lambda}}{k_i!} \right)
+$$
+```{.r}
+nlL.pois <- function(lambda){
+  -sum(dpois(k, lambda, log = TRUE))
+}
+```
+  - Likelihood $\mathcal{L}$: `dpois(x, lambda)`
+
+  - Negative log-likelihood: `-dpois(x, lambda, log = TRUE)`.
+
+  - Joint negative log-likelihood: `-sum(dpois(x, lambda, log = TRUE))`
+
+
+## R code
+
+Numerical optimization:
+
+```{.r code-line-numbers="7-8"}
+nlL.pois <- function(lambda){
+  -sum(dpois(k, lambda, log = TRUE))
+}
+
+k <- c(10, 15)
+
+init.par <- list(lambda = 2)
+optim(init.par, nlL.pois)
+```
+
+
+`optim(par, fn, ...)`
+
+- `fn`: function we wish to minimize 
+- `par`: initial parameter guess
+
+<hr style="border: 0.6px solid green; width:80%;"></hr>
+<hr style="border: 0.6px solid green; width:80%;"></hr>
+<hr style="border: 0.6px solid green; width:80%;"></hr>
+
+**Try it yourself!** (10-15 minutes)
+
+Use `ModelFitting_1.R`
+
+
+## Real binomial data
+
+![](Delph.png){fig-align="center"}
+
+(~60 minutes)
+
+- Collect, enter and download data on GoogleSheet [https://shorturl.at/D4hmN](https://shorturl.at/D4hmN)
+
+- Expand on `ModelFitting_2.R`
+
+- Estimate fertilization success probability $p$
+
+
+## Deterministic models
+
+No predictor variable(s), just fixed $\lambda$
+
+```{r motivation_constant, fig.width = 4, fig.height = 2.75, fig.align = 'center'}
+par(mar = c(3, 3, 1, 1),
+    las = 1,
+    cex.axis = 0.8,
+    mgp = c(2, 0.3, 0),
+    tcl = -0.2,
+    mfrow = c(1, 1))
+
+plot(x1, y1,
+     xlab = 'Plant density',
+     ylab = 'Visitation count')
+```
+## Deterministic models
+
+No predictor variable(s), just fixed $\lambda$
+
+```{r motivation_constant_2, fig.width = 4, fig.height = 2.75, fig.align = 'center'}
+par(mar = c(3, 3, 1, 1),
+    las = 1,
+    cex.axis = 0.8,
+    mgp = c(2, 0.3, 0),
+    tcl = -0.2,
+    mfrow = c(1, 1))
+
+plot(x1, y1,
+     xlab = 'Plant density',
+     ylab = 'Visitation count')
+abline(h = mean(y1),
+       col = 'red',
+       lwd = 2)
+```
+
+## Deterministic models
+
+Three "mechanistic" models $(f_1, f_2, f_3)$
+
+```{r endresult_fit, fig.width = 4, fig.height = 2.75, echo = FALSE, fig.align = 'center'}
+library(bbmle)
+
+P <- x1
+k <- y1
+
+nlL.pois.f1.bbmle <- function(a){
+  -sum(dpois(k, a * P, log = TRUE))
+}
+nlL.pois.f2.bbmle <- function(a, h){
+  -sum(dpois(k, a * P / (1 + a * h * P), log = TRUE))
+}
+nlL.pois.f3.bbmle <- function(a, h, theta){
+  -sum(dpois(k, a * P^theta / (1 + a * h * P^theta), log = TRUE))
+}
+
+fit.f1 <- mle2(nlL.pois.f1.bbmle,
+               start = list(a = 1))
+fit.f2 <- mle2(nlL.pois.f2.bbmle,
+               start = list(a = coef(fit.f1)['a'] * 5,
+                            h = 1/50))
+fit.f3 <- mle2(nlL.pois.f3.bbmle,
+               start = list(a = 1E-2, 
+                            h = coef(fit.f2)['h'], 
+                            theta = 1.8),
+               control = list(parscale = c(a = 1E-2,
+                                           h = 1E-2,
+                                           theta = 1)))
+par(mar = c(3, 3, 1, 1),
+    las = 1,
+    cex.axis = 0.8,
+    mgp = c(2, 0.3, 0),
+    tcl = -0.2,
+    mfrow = c(1, 1))
+
+plot(P, k,
+     xlim = c(0, max(P)),
+     ylim = c(0, max(k)),
+     xlab = 'Plant density (P)',
+     ylab = 'Visitation count')
+
+legend('topleft',
+       inset = 0,
+       bty = 'n',
+       legend = c('f1','f2','f3'),
+       title = 'Model',
+       lwd = 2,
+       col = c('black','blue','orange'),
+       cex = 0.6)
+
+
+plot.f1 <- function(x, fit){
+  a <- coef(fit)['a']
+  return(a * x)
+}
+plot.f2 <- function(x, fit){
+  a <- coef(fit)['a']
+  h <- coef(fit)['h']
+  return(a * x / (1 + a * h * x))
+}
+plot.f3 <- function(x, fit){
+  a <- coef(fit)['a']
+  h <- coef(fit)['h']
+  theta <- coef(fit)['theta']
+  return(a * x^theta / (1 + a * h * x^theta))
+}
+
+curve(plot.f1(x, fit.f1), 
+      add = TRUE,
+      lwd = 2)
+curve(plot.f2(x, fit.f2), 
+      add = TRUE,
+      lwd = 2,
+      col = 'blue')
+curve(plot.f3(x, fit.f3), 
+      add = TRUE,
+      lwd = 2,
+      col = 'orange')
+
+```
+
+## Deterministic models
+
+Three "mechanistic" models $(f_1, f_2, f_3)$
+
+$$
+\begin{aligned}
+\text{Visitation rate }\lambda = 
+\begin{cases}
+f_1(P) = a P \\
+f_2(P) = \frac{a P}{1 + a h P} \\
+f_3(P) = \frac{a P^\phi}{1 + a h P^\phi}
+\end{cases}
+\end{aligned}
+$$
+
+```{r motivation_prop, fig.width = 4, fig.height = 2.75, fig.align = 'center'}
+par(mar = c(3, 3, 1, 1),
+    las = 1,
+    mgp = c(1, 0.3, 0),
+    tcl = -0.2,
+    mfrow = c(1, 1),
+    cex.axis = 1.5)
+plot(1, 1,
+     axes = FALSE,
+     xlim = c(0, 2),
+     ylim = c(0, 0.08),
+     xlab = 'Plant density (P)',
+     ylab = expression(paste('Visitation rate (', lambda, ')'))
+)
+    axis(1, labels = FALSE)
+    axis(2, labels = FALSE)
+    box(lty = 1)
+curve(Type3(x, a = 0.2, b = 10, c = 1),
+      add = TRUE,
+      cex = 0.8,
+      lwd = 2,
+      col = 'blue')
+curve(Type3(x, a = 0.2, b = 0, c = 1),
+      add = TRUE,
+      cex = 0.8,
+      lwd = 2,
+      col = 'black')
+curve(Type3(x, a = 0.2, b = 11.5, c = 2),
+      add = TRUE,
+      cex = 0.8,
+      lwd = 2,
+      col = 'orange')
+text(0.25, 0.07, bquote(italic(f)[1]))
+text(0.45, 0.055, bquote(italic(f)[2]))
+text(0.65, 0.035, bquote(italic(f)[3]))
+```
+
+## 
+
+Modify the $\mathcal{L}$ function for $f_1$
+```{.r}
+nlL.pois.f1 <- function(par){              # Note single argument
+  a <- par['a']                            # Extract parameter
+  -sum(dpois(k, a * P, log = TRUE))        # Assuming k and P are defined globally
+}
+```
+
+Generate dummy data
+```{.r}
+a <- 0.33                       # True value of 'a'
+n <- 10                         # Sample size
+P <- runif(n, 0, 100)           # Plant densities
+k <- NULL                       # Visitation counts
+for(i in 1:n){
+  k[i] <- rpois(1, a * P[i])    # Generate one k value for each P value (assuming f_1)
+}
+```
+Fit the model
+```{.r}
+fit <- optim(par = list(a = 0.2),
+             fn = nlL.pois.f1)
+```
+
+**Try it yourself!** (~10 minutes)
+
+```{r motivation_type1, fig.width = 3.5, fig.height = 2.75, fig.align = 'center'}
+nlL.pois.f1 <- function(par){
+  a <- par['a']
+  -sum(dpois(k, a * P, log = TRUE))
+}
+
+a <- 0.33                       # True value of 'a'
+n <- 10                         # Sample size
+P <- runif(n, 0, 100)           # Plant densities
+k <- NULL                       # Visitation counts
+for(i in 1:n){
+  k[i] <- rpois(1, a * P[i])    # Generate one k value for each P value (assuming f_1)
+}
+
+fit <- optim(par = list(a = 0.2),
+             fn = nlL.pois.f1)
+
+
+par(mar = c(3, 3, 1, 1),
+    las = 1,
+    cex.axis = 0.8,
+    mgp = c(2, 0.3, 0),
+    tcl = -0.2,
+    mfrow = c(1, 1))
+plot(P, k,
+     xlim = c(0, max(P)),
+     ylim = c(0, max(k)),
+     xlab = 'Plant density (P)',
+     ylab = 'Visitation count (k)')
+
+# Add line for 'truth'
+abline(0, a,
+       lty = 2,
+       lwd = 1.5)
+
+# Add line for 'estimate'
+abline(0, fit$par,
+       lty = 1,
+       lwd = 2,
+       col = 'orange')
+
+legend('topleft',
+       inset = 0,
+       cex = 0.7,
+       bty = 'n',
+       legend = c('Truth','Estimate'),
+       lty = c(2, 1),
+       lwd = c(1.5, 2),
+       col = c('black','orange'))
+```
+
+## 
+
+Modify the $\mathcal{L}$ function for $f_1$
+```{.r}
+nlL.pois.f1 <- function(par){              # Note single argument
+  a <- par['a']                            # Extract parameter
+  -sum(dpois(k, a * P, log = TRUE))        # Assuming k and P are defined globally
+}
+```
+
+Generate dummy data
+```{.r}
+a <- 0.33                       # True value of 'a'
+n <- 10                         # Sample size
+P <- runif(n, 0, 100)           # Plant densities
+k <- NULL                       # Visitation counts
+for(i in 1:n){
+  k[i] <- rpois(1, a * P[i])    # Generate one k value for each P value (assuming f_1)
+}
+```
+Fit the model
+```{.r}
+fit <- optim(par = list(a = 0.2),
+             fn = nlL.pois.f1)
+```
+
+**Try it yourself!** (~10 minutes)
+
+<hr style="border: 0.6px solid green; width:80%;"></hr>
+<hr style="border: 0.6px solid green; width:80%;"></hr>
+<hr style="border: 0.6px solid green; width:80%;"></hr>
+
+
+**Your Challenge** (~60 minutes)
+
+Expand on `ModelFitting_3.R`
+
+Fit all three models to the data to compare: 
+
+- the MLEs to each other and their "true" values
+
+- the minimized negative log-likelihoods
+
+**Questions:**
+
+ - Which model's parameters got closest to the truth?
+ 
+ - Which model is the _best-fitting_?
+ 
+ - Which model is the _best-performing_?
+
+$$
+\begin{aligned}
+\text{Visitation rate }\lambda = 
+\begin{cases}
+f_1(P) = a P \\
+f_2(P) = \frac{a P}{1 + a h P} \\
+f_3(P) = \frac{a P^\phi}{1 + a h P^\phi}
+\end{cases}
+\end{aligned}
+$$
+
+
+## Model comparisons
+
+**Try it yourself!**
+(10-15 minutes)
+
+Write functions that takes a model's `fit` and return its AIC or BIC.
+
+*Add them to your `ModelFitting_3.R` code.*
+
+$$
+\begin{aligned}
+AIC =& - 2 \ln \hat{\mathcal{L}} + 2 p \\
+BIC =& - 2 \ln \hat{\mathcal{L}} +  \ln(n) p
+\end{aligned}
+$$
+
+
+Identify the best-performing model $(f_1, f_2, \text{ or } f_3)$.
+
+Do your inferences differ from your earlier evaluation of the models? 
+
+
+## Likelihood surfaces
+
+Poisson with $k = \{10, 15\}$
+
+```{r nlnlik_PoissX, fig.width = 6, fig.height = 4, fig.align = 'center'}
+
+ln.likelihood <- function(lambda){ log(joint.likelihood(lambda)) }
+nln.likelihood <- function(lambda) { -(ln.likelihood(lambda)) }
+
+obs <- c(10, 15)
+lambdas <- seq(1, 25, 0.05)
+
+par(mfrow = c(1,1),
+    mar = c(2,4,1,0.5),
+    cex = 1.3)
+
+plot(
+  lambdas,
+  nln.likelihood(lambdas),
+  xlab = expression(paste('Rate (', lambda, ')')),
+	ylab = "-ln(Likelihood)",
+  col = cols[3],
+  lwd = 3,
+  type = 'l'
+  )
+  
+
+arrows(mean(obs), nln.likelihood(mean(obs)) * 1.8,
+       mean(obs), nln.likelihood(mean(obs)) * 1.1,
+       length = 0.1
+       )
+text(mean(obs), nln.likelihood(mean(obs)) * 2.5,
+     'MLE',
+     cex = 1)
+```
+Shape relates to
+
+  - Model (parameter) identifiability
+  
+  - Parameter uncertainty
+
+## Identifiability
+
+
+```{r lik_bowl, fig.width = 8, fig.height = 5, fig.align = 'center'}
+
+par(mar = c(3, 3, 1, 1),
+    las = 1,
+    mgp = c(1.5, 0.3, 0),
+    tcl = -0.2,
+    mfrow = c(1, 3),
+    cex = 1,
+    pty = 's')
+
+# Define the grid for plotting
+r <- 8
+x <- seq(-r, r, length.out = 100)
+y <- seq(-r, r, length.out = 100)
+
+# Define the log-likelihood function (example: bivariate normal distribution)
+  mu1 <- 0
+  mu2 <- 0
+  sigma1 <- 1
+  sigma2 <- 1
+
+log_likelihood <- function(x, y) {
+
+  z <- q*((x - mu1)^2) / sigma1^2 +
+       ((y - mu2)^2) / sigma2^2 -
+       (2 * rho * (x - mu1) * (y - mu2)) / (sigma1 * sigma2)
+  
+  log_likelihood_value <- -z / (2 * (1 - rho^2))
+  return(log_likelihood_value)
+}
+
+q <- 1
+rho <- 0.2
+z <- outer(x, y, Vectorize(log_likelihood))
+image(x, y, z, col = terrain.colors(100), xlab = "Parameter 1", ylab = "Parameter 2", main = 'Identifiable')
+contour(x, y, z, add = TRUE, nlevels = 15)
+
+q <- 0.01
+rho <- 0.02
+z <- outer(x, y, Vectorize(log_likelihood))
+image(x, y, z, col = terrain.colors(100), xlab = "Parameter 1", ylab = "Parameter 2", main = 'Not identifiable')
+contour(x, y, z, add = TRUE, nlevels = 15)
+
+q <- 1
+rho <- 0.95
+z <- outer(x, y, Vectorize(log_likelihood))
+image(x, y, z, col = terrain.colors(100), xlab = "Parameter 1", ylab = "Parameter 2", main = 'Not identifiable')
+contour(x, y, z, add = TRUE, nlevels = 15)
+
+```
+
+## Parameter uncertainty
+
+Confidence intervals using `mle2()` and `confint()` from `bbmle` package
+
+```{.r}
+library(bbmle)
+
+nlL.pois.f1.bbmle <- function(a){
+  -sum(dpois(k, a * P, log = TRUE))
+}
+
+fit <- mle2(nlL.pois.f1.bbmle, 
+            start = list(a = 0.2))
+print(fit)
+confint(fit)
+```
+
+```{r}
+library(bbmle)
+
+nlL.pois.f1.bbmle <- function(a){
+  -sum(dpois(k, a * P, log = TRUE))
+}
+
+fit <- mle2(nlL.pois.f1.bbmle, 
+            start = list(a = 0.2))
+print(fit)
+confint(fit)
+```
+
+::: {style="font-size: 50%;"}
+**Note:**
+
+- `mle2()` wants the negative log-likelihood function to have (all) the parameters as arguments (unlike `optim()` which wanted a single `par` argument containing the parameters);
+
+- `mle2()` has the order of the arguments for the negative log-likelihood and the list of initial parameter values reversed relative to `optim()`; and
+
+- `mle2()` returns the (positive) log-likelihood rather than the negative log-likelihood.
+:::
+
+## End Result
+:::: {.columns}
+
+::: {.column width="70%"}
+```{r endresult_calcs, echo = FALSE, warning=FALSE, message = FALSE}
+P <- x1
+k <- y1
+
+nlL.pois.f1.bbmle <- function(a){
+  -sum(dpois(k, a * P, log = TRUE))
+}
+nlL.pois.f2.bbmle <- function(a, h){
+  -sum(dpois(k, a * P / (1 + a * h * P), log = TRUE))
+}
+nlL.pois.f3.bbmle <- function(a, h, theta){
+  -sum(dpois(k, a * P^theta / (1 + a * h * P^theta), log = TRUE))
+}
+
+fit.f1 <- mle2(nlL.pois.f1.bbmle,
+               start = list(a = 1))
+fit.f2 <- mle2(nlL.pois.f2.bbmle,
+               start = list(a = coef(fit.f1)['a'] * 5,
+                            h = 1/50))
+fit.f3 <- mle2(nlL.pois.f3.bbmle,
+               start = list(a = 1E-2, 
+                            h = coef(fit.f2)['h'], 
+                            theta = 1.8),
+               control = list(parscale = c(a = 1E-2,
+                                           h = 1E-2,
+                                           theta = 1)))
+# confint(fit.f3)
+```
+
+```{r endresult_fitx, fig.width = 4, fig.height = 2.75, echo = FALSE, fig.align = 'center'}
+par(mar = c(3, 3, 1, 1),
+    las = 1,
+    cex.axis = 0.8,
+    mgp = c(2, 0.3, 0),
+    tcl = -0.2,
+    mfrow = c(1,1))
+
+plot(P, k,
+     xlim = c(0, max(P)),
+     ylim = c(0, max(k)),
+     xlab = 'Plant density (P)',
+     ylab = 'Visitation count')
+
+legend('topleft',
+       inset = 0,
+       bty = 'n',
+       legend = c('f1','f2','f3'),
+       title = 'Model',
+       lwd = 2,
+       col = c('black','blue','orange'),
+       cex = 0.6)
+
+
+plot.f1 <- function(x, fit){
+  a <- coef(fit)['a']
+  return(a * x)
+}
+plot.f2 <- function(x, fit){
+  a <- coef(fit)['a']
+  h <- coef(fit)['h']
+  return(a * x / (1 + a * h * x))
+}
+plot.f3 <- function(x, fit){
+  a <- coef(fit)['a']
+  h <- coef(fit)['h']
+  theta <- coef(fit)['theta']
+  return(a * x^theta / (1 + a * h * x^theta))
+}
+
+curve(plot.f1(x, fit.f1), 
+      add = TRUE,
+      lwd = 2)
+curve(plot.f2(x, fit.f2), 
+      add = TRUE,
+      lwd = 2,
+      col = 'blue')
+curve(plot.f3(x, fit.f3), 
+      add = TRUE,
+      lwd = 2,
+      col = 'orange')
+
+```
+:::
+
+::: {.column width="30%"}
+
+MLEs & intervals
+```{r endresult_coefs, echo = FALSE, warning=FALSE}
+print('f1 parameters')
+round(c(est = coef(fit.f1), 
+        confint(fit.f1)), 3)
+
+print('f2 parameters')
+round(cbind(est = coef(fit.f2), 
+            confint(fit.f2)), 3)
+
+print('f3 parameters')
+round(cbind(est = coef(fit.f3), 
+            confint(fit.f3)), 3)
+```
+
+AIC table
+```{r endresult_AIC, echo = FALSE, warning=FALSE}
+AICtab(fit.f1, fit.f2, fit.f3, base = TRUE)
+```
+:::
+
+::::
