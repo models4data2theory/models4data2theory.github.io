@@ -65,7 +65,9 @@
     
   
   <meta name="description" content="
-" />
+
+Before you arrive at RMBL.
+Intro to network data visualization." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://models4data2theory.github.io/courses/prework_network-visualization/" />
@@ -312,16 +314,18 @@
   <meta property="og:url" content="https://models4data2theory.github.io/courses/prework_network-visualization/" />
   <meta property="og:title" content="Prework - Network Visualization | Integrating Theory and Data in Plant-Pollinator Interactions" />
   <meta property="og:description" content="
-" /><meta property="og:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" />
+
+Before you arrive at RMBL.
+Intro to network data visualization." /><meta property="og:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
   
     
       <meta
         property="article:published_time"
-        content="2025-08-16T00:00:00&#43;00:00"
+        content="2025-08-27T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2025-08-16T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2025-08-27T00:00:00&#43;00:00">
   
 
   
@@ -815,19 +819,15 @@
       
 
 
-  <li class=""><a href="/courses/prework_01_install_r/">Prework - R and RStudio</a></li>
-
-
-
   <li class=""><a href="/courses/prework_02_data_basics/">Prework - R Data Basics</a></li>
 
 
 
-  <li class="active"><a href="/courses/prework_network-visualization/">Prework - Network Visualization</a></li>
-
-
-
   <li class=""><a href="/courses/prework_edgelist-to-network/">Prework - Edgelist-to-Network</a></li>
+
+
+
+  <li class="active"><a href="/courses/prework_network-visualization/">Prework - Network Visualization</a></li>
 
 
 
@@ -910,6 +910,7 @@
           <div class="article-style">
             <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
 <link href="/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
+<p><em>Before you arrive at RMBL.</em></p>
 <p>Intro to network data visualization.</p>
 <p>Watch this quick video (5:24 min.).</p>
   <iframe width="280" height="158" src="https://www.youtube-nocookie.com/embed/Y5uRVv7GGQM?si=LoqDEnz06F5n0OXf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -1097,11 +1098,11 @@ The second one gives off some distressed Jack-O-Lantern vibes&hellip;</p>
 <p>Ultimately, as long as each interaction (data in a cell) is recorded faithfully (i.e., maintains the association between its row / plant and its column / pollinator), we can move around the order of <em>entire</em> rows and <em>entire</em> columns (relative to each other) and the data remains the same: it is still the same network. If we re-plot the two figures above, including the row and column labels, we can perhaps see that more easily:</p>
 <p><img src="/courses/prework_network-visualization_files/figure-html/different depictions same matrix II-1.png" width="450" height="400" /><img src="/courses/prework_network-visualization_files/figure-html/different depictions same matrix II-2.png" width="450" height="400" /></p>
 <p>With the row and column labels, you can confirm that the integrity of each interaction is maintained through both of these depictions.</p>
-<p>For example, row <code>\(j\)</code> interacts with column 7 in both depictions, and you could hypothetically go through and confirm that for each of the 69 unique interactions in this made-up example (if you were really bored, that is).
-To get more detailed without having to go interaction-by-interaction, row <code>\(a\)</code> interacts with columns 15 through 24, and this is easy to confirm in both graphs; it&rsquo;s just that the column order is different between the two.</p>
+<p>For example, row <em>j</em> interacts with column 7 in both depictions, and you could hypothetically go through and confirm that for each of the 69 unique interactions in this made-up example (if you were really bored, that is).
+To get more detailed without having to go interaction-by-interaction, row <em>a</em> interacts with columns 15 through 24, and this is easy to confirm in both graphs; it&rsquo;s just that the column order is different between the two.</p>
 <p>Thinking about this, there is a <em>very</em> large number of ways that we could depict the same network&hellip;
-if <code>\(R\)</code> were the number of rows and <code>\(C\)</code> the number of columns, then we could represent that network in <code>\(R! \times C!\)</code> ways. For the example above with 24 rows and 24 columns, that is 24! <code>\(\times\)</code> 24!, or more than 3 <code>\(\times\)</code> <code>\(10^{47}\)</code>.
-In other words, an unfathomably gigantic number of ways. Put another way, for a 100 <code>\(\times\)</code> 100 network, this value is too large for R to calculate.</p>
+if <em>R</em> were the number of rows and <em>C</em> the number of columns, then we could represent that network in $R! \times C!$ ways. For the example above with 24 rows and 24 columns, that is 24! $\times$ 24!, or more than 3 $\times$ $10^{47}$.
+In other words, an unfathomably gigantic number of ways. Put another way, for a 100 $\times$ 100 network, this value is too large for R to calculate.</p>
 <p>With so many potential options, we would ideally like to have a way to <em>standardize</em> how we depict a network in terms of the arrangement of the rows and columns.</p>
 <h3 id="how-to-standardize">How to standardize</h3>
 <p>Thankfully, there is a clear option in this regard (at least when it comes to bipartite networks): we sort the rows and the columns of the matrix by the <em>degree</em> or number of unique connections that each node has. We sort such that the most-generalist (highest degree) row is at the top, and the most-generalist column is at the left. This depiction maximizes our ability to detect <em>nestedness</em> in our networks, and some researchers refer to this arrangement as <strong>&ldquo;packing&rdquo; a matrix</strong>.</p>
@@ -1136,7 +1137,7 @@ In other words, an unfathomably gigantic number of ways. Put another way, for a 
 <p>One thing to know about using <code>type = &quot;diagonal&quot;</code> is that the algorithm is stochastic, so the plot could be different each time. For example, for the plot above, the <em>Cynanchum diemii</em> module can appear either at the top or the bottom.</p>
 <h2 id="limitations-and-alterations-to-visweb">Limitations and alterations to <code>visweb</code></h2>
 <p><code>visweb</code> is a great starting point for bipartite network visualization. It&rsquo;s straightforward to use, and because its use is almost ubiquitous among network ecologists, you and many others are probably familiar with the plotting style. Still, it has some limitations.</p>
-<p>For example, you&rsquo;ve likely noticed that the default output for <code>visweb()</code> for the Safariland dataset yields a strange gap between the bottom of the matrix and the <code>\(x\)</code>-axis labels. This is typical with <code>visweb()</code> and can happen on the <code>\(y\)</code>-axis as well. Unless your matrix is very nearly square, you typically end up with a gap. Moreover, while there are some elements you can adjust, these plotting methods are not particularly flexible.</p>
+<p>For example, you&rsquo;ve likely noticed that the default output for <code>visweb()</code> for the Safariland dataset yields a strange gap between the bottom of the matrix and the <em>x</em>-axis labels. This is typical with <code>visweb()</code> and can happen on the <em>y</em>-axis as well. Unless your matrix is very nearly square, you typically end up with a gap. Moreover, while there are some elements you can adjust, these plotting methods are not particularly flexible.</p>
 <p>Below the visualization exercises we&rsquo;ve included some code for 1) fixing the issue with label spacing using the <code>gridGraphics</code> package; and 2) &ldquo;starter&rdquo; code for plotting matrix depictions with <code>ggplot2</code>, which is extremely customizable. Before you go there, though, do some practice with the exercises below:</p>
 <h2 id="exercises">Exercises</h2>
 <h3 id="for-those-new-to-plotting-networks">For those new to plotting networks</h3>
@@ -1264,7 +1265,7 @@ In other words, an unfathomably gigantic number of ways. Put another way, for a 
 </span></span><span class="line"><span class="cl">  <span class="c1"># plot using geom_raster</span>
 </span></span><span class="line"><span class="cl">  <span class="n">p</span> <span class="o">=</span> <span class="nf">ggplot</span><span class="p">(</span><span class="n">long</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">colz</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">rowz</span><span class="p">))</span> <span class="o">+</span> 
 </span></span><span class="line"><span class="cl">    <span class="nf">geom_raster</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span> <span class="o">=</span> <span class="n">n</span><span class="p">))</span> <span class="o">+</span> 
-</span></span><span class="line"><span class="cl">    <span class="nf">scale_fill_steps</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="s">&#34;#EEE&#34;</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="s">&#34;black&#34;</span><span class="p">,</span> <span class="n">na.value</span> <span class="o">=</span> <span class="s">&#34;white&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">scale_fill_steps</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="s">&#34;lightgray&#34;</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="s">&#34;black&#34;</span><span class="p">,</span> <span class="n">na.value</span> <span class="o">=</span> <span class="s">&#34;white&#34;</span><span class="p">)</span> <span class="o">+</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">theme_void</span><span class="p">()</span> <span class="o">+</span> <span class="c1"># removes grid, axis ticks, etc. etc.</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">theme</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">          <span class="n">legend.position</span> <span class="o">=</span> <span class="s">&#34;none&#34;</span><span class="p">,</span> <span class="c1"># remove legend</span>
@@ -1303,14 +1304,14 @@ In other words, an unfathomably gigantic number of ways. Put another way, for a 
   
   <div class="post-nav-item">
     <div class="meta-nav">Previous</div>
-    <a href="/courses/prework_02_data_basics/" rel="next">Prework - R Data Basics</a>
+    <a href="/courses/prework_edgelist-to-network/" rel="next">Prework - Edgelist-to-Network</a>
   </div>
   
   
   
   <div class="post-nav-item">
     <div class="meta-nav">Next</div>
-    <a href="/courses/prework_edgelist-to-network/" rel="prev">Prework - Edgelist-to-Network</a>
+    <a href="/courses/wkshp_networks/" rel="prev">Networks</a>
   </div>
   
 </div>
@@ -1320,7 +1321,7 @@ In other words, an unfathomably gigantic number of ways. Put another way, for a 
         </div>
 
         <div class="body-footer">
-          <p>Last updated on Aug 16, 2025</p>
+          <p>Last updated on Aug 27, 2025</p>
 
           
 
@@ -1420,7 +1421,7 @@ In other words, an unfathomably gigantic number of ways. Put another way, for a 
       
 
     
-    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+    <script src="/js/vendor-bundle.min.67c1899ffe66384df9c7f0863a1232ab.js"></script>
 
     
     
@@ -1517,7 +1518,7 @@ In other words, an unfathomably gigantic number of ways. Put another way, for a 
       
     
     
-    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+    <script src="/en/js/wowchemy.min.3fae6f7398c36f9af32ddf3ea6e7760d.js"></script>
 
     
     

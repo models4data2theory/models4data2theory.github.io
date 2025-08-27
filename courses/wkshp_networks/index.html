@@ -336,10 +336,10 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
     
       <meta
         property="article:published_time"
-        content="2024-08-31T00:00:00&#43;00:00"
+        content="2025-08-27T00:00:00&#43;00:00"
       />
     
-    <meta property="article:modified_time" content="2024-08-31T00:00:00&#43;00:00">
+    <meta property="article:modified_time" content="2025-08-27T00:00:00&#43;00:00">
   
 
   
@@ -833,19 +833,15 @@ Analysis of structure" /><meta property="og:image" content="https://models4data2
       
 
 
-  <li class=""><a href="/courses/prework_01_install_r/">Prework - R and RStudio</a></li>
-
-
-
   <li class=""><a href="/courses/prework_02_data_basics/">Prework - R Data Basics</a></li>
 
 
 
-  <li class=""><a href="/courses/prework_network-visualization/">Prework - Network Visualization</a></li>
-
-
-
   <li class=""><a href="/courses/prework_edgelist-to-network/">Prework - Edgelist-to-Network</a></li>
+
+
+
+  <li class=""><a href="/courses/prework_network-visualization/">Prework - Network Visualization</a></li>
 
 
 
@@ -984,7 +980,7 @@ These networks also allow the study of the interplay between structure and dynam
 </span></span><span class="line"><span class="cl"><span class="nf">lapply</span><span class="p">(</span><span class="n">Packages</span><span class="p">,</span> <span class="n">library</span><span class="p">,</span> <span class="n">character.only</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
 </span></span></code></pre></div><h3 id="exercise-code-and-data">Exercise code and data</h3>
 <p>In addition to the in-text links below, you can download what you&rsquo;ll need in this
-<a href="https://drive.google.com/drive/folders/14mv3lekxpEZhtFpadJ7pydjfaNI4diLv?usp=sharing" target="_blank" rel="noopener">GoogleFolder</a>.</p>
+<a href="https://drive.google.com/drive/folders/1-I4GcKcZE_gFboLgvRhoPJWQkD6BABqq?usp=sharing" target="_blank" rel="noopener">GoogleFolder</a>.</p>
 <h2 id="terminology">Terminology</h2>
 <p>A network consists of nodes and edges, where <em>nodes</em> represent discrete entities like people, computers, cities, or species, and <em>edges (or links)</em> represent the connections between these entities.
 Networks can be weighted or unweighted, depending on whether the connections have associated values or not.
@@ -1155,7 +1151,7 @@ previously there were 7 rows, and now there are 5, because one of the unique int
 <p>Moving from this, let&rsquo;s check out the next step, where where using the <code>pivot_wider</code> function we pivot the single &ldquo;pollinator&rdquo; column to form one new column for each unique entry in the old column.
 We will fill in the values for each row-by-column combination from the tallied interactions (the new &ldquo;<strong>n</strong>&rdquo; column).</p>
 <p>Again there are 5 rows in this new matrix, with 4 unique values (<em>Bombus flavifrons</em> is represented twice), so we expect to see four pollinator columns emerge in the next step.
-Similarly, this should collapse the 5 current plant rows into 3, one for each unique plant species. So we should see a 3 row $\times$ 4 column bipartite matrix when we are done.</p>
+Similarly, this should collapse the 5 current plant rows into 3, one for each unique plant species. So we should see a 3 row <code>\(\times\)</code> 4 column bipartite matrix when we are done.</p>
 <p>This is how to get there:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">bipart.net</span> <span class="o">&lt;-</span> <span class="n">weighted</span> <span class="o">%&gt;%</span>
 </span></span><span class="line"><span class="cl">  <span class="nf">pivot_wider</span><span class="p">(</span><span class="n">id_cols</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;plant&#34;</span><span class="p">),</span>     <span class="c1"># plants are the rows</span>
@@ -1490,13 +1486,13 @@ The second one gives off some distressed Jack-O-Lantern vibes&hellip;</p>
 If we re-plot the two figures above, including the row and column labels, we can perhaps see that more easily:</p>
 <p><img src="/courses/wkshp_networks_files/figure-html/different depictions same matrix II-1.png" width="672" /><img src="/courses/wkshp_networks_files/figure-html/different depictions same matrix II-2.png" width="672" /></p>
 <p>With the row and column labels, you can confirm that the integrity of each interaction is maintained through both of these depictions.
-For example, row $j$ interacts with column 7 in both depictions, and you could hypothetically go through and confirm that for each of the 69 unique interactions in this made-up example (if you were really bored, that is).
-To get more detailed without having to go interaction-by-interaction, row $a$ interacts with columns 15 through 24, and this is easy to confirm in both graphs; it&rsquo;s just that the column order is different between the two.</p>
+For example, row <code>\(j\)</code> interacts with column 7 in both depictions, and you could hypothetically go through and confirm that for each of the 69 unique interactions in this made-up example (if you were really bored, that is).
+To get more detailed without having to go interaction-by-interaction, row <code>\(a\)</code> interacts with columns 15 through 24, and this is easy to confirm in both graphs; it&rsquo;s just that the column order is different between the two.</p>
 <p>Thinking about this, there is a <em>very</em> large number of ways that we could depict the same network&hellip;
-if $R$ were the number of rows and $C$ the number of columns, then we could represent that network in $R! \times C!$ ways.
-For the example above with 24 rows and 24 columns, that is 24! $\times$ 24!, or more than 3 $\times$ $10^{47}$.
+if <code>\(R\)</code> were the number of rows and <code>\(C\)</code> the number of columns, then we could represent that network in <code>\(R! \times C!\)</code> ways.
+For the example above with 24 rows and 24 columns, that is 24! <code>\(\times\)</code> 24!, or more than 3 <code>\(\times\)</code> <code>\(10^{47}\)</code>.
 In other words, an unfathomably gigantic number of ways.
-Put another way, for a 100 $\times$ 100 network, this value is too large for R to calculate.</p>
+Put another way, for a 100 <code>\(\times\)</code> 100 network, this value is too large for R to calculate.</p>
 <p>With so many potential options, we would ideally like to have a way to <em>standardize</em> how we depict a network in terms of the arrangement of the rows and columns.
 Thankfully, there is a clear option in this regard
 (at least when it comes to bipartite networks):
@@ -1549,8 +1545,8 @@ the newly packed data should closely resemble the <code>type = &quot;nested&quot
 <h3 id="connectance">Connectance</h3>
 <p>Connectance measures the proportion of potential interactions that are realized in the network (<em>i.e.</em>, the number of different interactions observed as a fraction of the total number of interactions that could possibly occur).
 Thus, connectance ranges between 0 (no connections between any species) and 1 (every species interacts with every other species).
-In unipartite networks, connectance is calculated by dividing the number of realized interactions (or links connecting species) $L$ by the square of the number of nodes $S$ in the network, which represents the total number of interactions if all species were fully connected to one another, including themselves.
-So, $C=L/S^2$.
+In unipartite networks, connectance is calculated by dividing the number of realized interactions (or links connecting species) <code>\(L\)</code> by the square of the number of nodes <code>\(S\)</code> in the network, which represents the total number of interactions if all species were fully connected to one another, including themselves.
+So, <code>\(C=L/S^2\)</code>.
 However, in a bipartite network, nodes from different sets cannot interact.
 Which should be the expression for connectance in a bipartite network?</p>
 <h4 id="Ex4">Exercise 4</h4>
@@ -1604,12 +1600,12 @@ We can do the same thing for modularity (note: modularity can take some time to 
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">networklevel</span><span class="p">(</span><span class="n">Safariland</span><span class="p">,</span> 
 </span></span><span class="line"><span class="cl">             <span class="n">index</span> <span class="o">=</span> <span class="s">&#34;modularity&#34;</span><span class="p">)</span>
 </span></span></code></pre></div><pre tabindex="0"><code>## modularity Q 
-##    0.4294549
+##    0.4301558
 </code></pre><h4 id="Ex8">Exercise 8</h4>
 <p>Use the <a href="data/networks/medgarden.csv">medgarden.csv</a> data you put into matrix form, above.
 Calculate:</p>
 <ul>
-<li>$H_2&rsquo;$ (network-level specialization); in <code>networklevel</code>, use <code>index = &quot;H2&quot;</code></li>
+<li><code>\(H_2'\)</code> (network-level specialization); in <code>networklevel</code>, use <code>index = &quot;H2&quot;</code></li>
 <li>connectance</li>
 </ul>
 <!-- Berry  end-->
@@ -1638,7 +1634,7 @@ The best known of those relationships is the negative correlation between networ
   </div></figure>
 </p>
 <h4 id="Ex9">Exercise 9</h4>
-<p>Given the mathematical formula of connectance, $C = L/(P \cdot A)$, how would you explain this well-known negative relationship between species richness, $S = P + A$, and connectance?</p>
+<p>Given the mathematical formula of connectance, <code>\(C = L/(P \cdot A)\)</code>, how would you explain this well-known negative relationship between species richness, <code>\(S = P + A\)</code>, and connectance?</p>
 <p>Other known relationships include the positive correlation between connectance and nestedness, the negative correlation between connectance and modularity, the positive correlation between species richness and nestedness, and the negative relationship between species richness and modularity.</p>
 <p>
 
@@ -1665,10 +1661,10 @@ The best known of those relationships is the negative correlation between networ
 For instance, if you are investigating how urbanization impacts the network structure of plant-pollinator communities and observe a significant negative impact of urbanization on species richness, caution is needed when comparing other network metrics across the urbanization gradient.
 This is due to the established relationship between species richness and various network metrics, which could potentially obscure the effect of urbanization by influencing connectance and modularity positively and nestedness negatively.
 That is, because decreased species richness increases connectance and modularity and decreases nestedness you may infer that it was urbanization which caused those effects on network structure but most likely it is the confounding effect of decreased species richness.</p>
-<p>In the past, we all used $z$-scores to compare network metrics across networks, but there has been recent criticism to using z-scores for that purpose (Song et al 2017, Journal of Animal Ecology).
-Song et al proposed a new nestedness metric, $NODFc$, which can be calculated using the R package &ldquo;maxnodf&rdquo; (Hoeppke &amp; Simmons 2021, Methods in Ecology and Evolution) to compare nestedness across networks.
+<p>In the past, we all used <code>\(z\)</code>-scores to compare network metrics across networks, but there has been recent criticism to using z-scores for that purpose (Song et al 2017, Journal of Animal Ecology).
+Song et al proposed a new nestedness metric, <code>\(NODFc\)</code>, which can be calculated using the R package &ldquo;maxnodf&rdquo; (Hoeppke &amp; Simmons 2021, Methods in Ecology and Evolution) to compare nestedness across networks.
 Other researchers have used statistical analyses such as generalized linear mixed models to disentangle the effect of a specific treatment from species richness on other network metrics.
-Covering these recent alternatives and the criticism of using $z$-scores is beyond the scope of this course but it is important that you are aware of these recent developments and, most importantly, that you are aware of the known relationships between network metrics so you consider them when making inferences based on your network analyses.</p>
+Covering these recent alternatives and the criticism of using <code>\(z\)</code>-scores is beyond the scope of this course but it is important that you are aware of these recent developments and, most importantly, that you are aware of the known relationships between network metrics so you consider them when making inferences based on your network analyses.</p>
 <!-- Fernanda section ends here-->
 <!-- ======================================= -->
 <!-- ======================================= -->
@@ -1695,9 +1691,9 @@ The basic statistical idea here is a <em>permutation test</em>, for those of you
 <h3 id="simplest-null-model">Simplest null model</h3>
 <p>Let&rsquo;s start by thinking about the simplest possible way we could create a null model. We want to assume that interactions are happening at random.
 Perhaps a first-pass way of doing this would be to say something along the lines of &ldquo;well we have our plant species and our pollinator species,
-i.e. our bipartite matrix, and we recorded a total of $N$ interactions in our empirical data&hellip; all we have to do is randomly assign each interaction to one cell in our bipartite matrix, and we&rsquo;ll end up with a randomized network&rdquo;.
+i.e. our bipartite matrix, and we recorded a total of <code>\(N\)</code> interactions in our empirical data&hellip; all we have to do is randomly assign each interaction to one cell in our bipartite matrix, and we&rsquo;ll end up with a randomized network&rdquo;.
 That would be one way to do it, but it has some pretty major downsides.
-One downside is that when you repeat that procedure, especially if your $N$ is relatively small, you are likely to have one or more species that have no interactions and thus would drop out of the network.
+One downside is that when you repeat that procedure, especially if your <code>\(N\)</code> is relatively small, you are likely to have one or more species that have no interactions and thus would drop out of the network.
 Because some network metrics are sensitive (sometimes <em>very</em> sensitive) to network size / species richness, that&rsquo;s definitely not ideal. You could get around that downside, perhaps by first assigning one interaction to each row (a random column in that row), and then assessing if all columns have an interaction, and for any that are missing, assigning a random interaction to that column.
 Then you could assign all of the &ldquo;leftover&rdquo; interactions randomly as described above.</p>
 <h3 id="constant-link-number">Constant link number</h3>
@@ -1738,7 +1734,7 @@ Moreover, the <code>swap.web</code> and <code>vaznull</code> approaches have bee
 There is to our knowledge no &ldquo;perfect&rdquo; null model implementation but it&rsquo;s also good to know that network null models are also implemented in other packages, notably there are &gt;25 null model algorithms implemented in the <code>vegan</code> package.
 To learn more, check out the documentation of the <code>commsim</code> function: <code>?vegan::commsimm</code>.</p>
 <h3 id="graphical-implementation">Graphical implementation</h3>
-<p>Let&rsquo;s delve into how to use these algorithms in practice, starting by graphically implementing a null model analysis (we discuss how to calculate a $p$-value for this procedure below).
+<p>Let&rsquo;s delve into how to use these algorithms in practice, starting by graphically implementing a null model analysis (we discuss how to calculate a <code>\(p\)</code>-value for this procedure below).
 For this graphical analysis, we&rsquo;ll focus on NODF (again, a metric of nestedness) in the &ldquo;Safariland&rdquo; plant-pollinator network dataset that is included in the <code>bipartite</code> package (code below altered slightly from Carsten Dormann&rsquo;s <code>bipartite</code> vignette). We will use the <code>swap.web</code> algorithm and create 999 null networks to compare with the empirical &ldquo;Safariland&rdquo; dataset.
 We will plot the NODF value of the empirical dataset as a red vertical line, and display the distribution of the null networks with a density plot (we could just as easily display it as a histogram as an alternative, code included but commented out). Here is the code:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Load the &#39;Safariland&#39; data from the bipartite package</span>
@@ -1768,7 +1764,7 @@ We will plot the NODF value of the empirical dataset as a red vertical line, and
 <p>What we see is that the NODF (nestedness) value of the empirical dataset&mdash;the red line&mdash;is somewhere in the middle of the distribution of the null-model NODF scores.
 That is, our empirical value would likely not be considered either more or less nested than chance alone.</p>
 <h3 id="checking-results">Checking results</h3>
-<p>Before we get to $p$-values, it is always worth checking if the null model we are using actually has the properties that we want.
+<p>Before we get to <code>\(p\)</code>-values, it is always worth checking if the null model we are using actually has the properties that we want.
 Relative to the empirical network, the <code>swap.web</code> algorithm is supposed to: 1) maintain the connectance; and 2) maintain the row and column sums.
 Let&rsquo;s check that it is actually doing that. We&rsquo;ll calculate the mean and standard deviation of connectance across all 999 networks;
 we should be getting an exact or very close to exact match with our empirical connectance, and a standard deviation that is either zero (meaning all of the null networks have the exact same connectance) or very very small.
@@ -1914,27 +1910,27 @@ but that is something that would be easy to add to the code above if you were in
 <p>while we didn&rsquo;t do an explicit check to see if the total number of interactions is the same between the two, we couldn&rsquo;t maintain the same row and column sums and also have a different total number of interactions, so we are safe there as well.</p>
 <h3 id="p-values">p-values</h3>
 <p>Our first pass at the null model analysis above was graphical.
-We can formalize this test in a very straightforward way, calculating a $p$-value by assessing the <em>rank</em> of the empirical value relative to the nulls.
+We can formalize this test in a very straightforward way, calculating a <code>\(p\)</code>-value by assessing the <em>rank</em> of the empirical value relative to the nulls.
 Let&rsquo;s imagine a case in which the empirical value was more-nested than almost all of the nulls.
-If we were to generate 99 nulls, and out of the 100 total networks we were assessing (the 99 nulls + the 1 empirical network), the empirical network was the 5th-most nested (i.e. 4 null models were more nested), then the $p$-value would be exactly 0.05 (5 out of 100).
+If we were to generate 99 nulls, and out of the 100 total networks we were assessing (the 99 nulls + the 1 empirical network), the empirical network was the 5th-most nested (i.e. 4 null models were more nested), then the <code>\(p\)</code>-value would be exactly 0.05 (5 out of 100).
 One way of conceptualizing that is that if the empirical value was part of the same distribution as our null models, we could assign it a rank in that distribution at random.
 And there would only be a 5% chance ($p$ = 0.05) that the rank would be 5th or more extreme (4th, 3rd, 2nd, or 1st).</p>
-<p>Similarly, if the empirical network were the most-nested of all, the $p$-value would be 0.01 (1 out of 100).
+<p>Similarly, if the empirical network were the most-nested of all, the <code>\(p\)</code>-value would be 0.01 (1 out of 100).
 Two lessons from that:
-first, it makes the $p$-value calculations slightly easier if you generate {some power of 10 minus 1} null models, e.g. 99 or 999 or 9,999 null models.
+first, it makes the <code>\(p\)</code>-value calculations slightly easier if you generate {some power of 10 minus 1} null models, e.g. 99 or 999 or 9,999 null models.
 Still, that is not strictly required.
-And second, the more null models you calculate, the greater the <em>precision</em> you have in your $p$-value. The examples above were for 99 null models;
-if you were to use 9,999 nulls and your empirical network were the top-ranked one, the $p$-value would be 0.0001 (1 in 10,000).
+And second, the more null models you calculate, the greater the <em>precision</em> you have in your <code>\(p\)</code>-value. The examples above were for 99 null models;
+if you were to use 9,999 nulls and your empirical network were the top-ranked one, the <code>\(p\)</code>-value would be 0.0001 (1 in 10,000).
 The caveat there is that the more null models you calculate, the longer it takes.
-Typically if you&rsquo;re after assessing statistical significance in the traditional sense, you will want to use more than 99 null models, as that is pretty coarse, especially since you can have slight variations in the $p$-value if you re-run your null models.
-Still, once you get to 999 you should (usually) know if the $p$-value is less than the standard $\alpha$ value of 0.05. If you have a borderline value, you might want to amp up the resolution by running more null models.</p>
-<p>It&rsquo;s also worth noting that the $p$-values as described above are for a one-tailed test.
+Typically if you&rsquo;re after assessing statistical significance in the traditional sense, you will want to use more than 99 null models, as that is pretty coarse, especially since you can have slight variations in the <code>\(p\)</code>-value if you re-run your null models.
+Still, once you get to 999 you should (usually) know if the <code>\(p\)</code>-value is less than the standard <code>\(\alpha\)</code> value of 0.05. If you have a borderline value, you might want to amp up the resolution by running more null models.</p>
+<p>It&rsquo;s also worth noting that the <code>\(p\)</code>-values as described above are for a one-tailed test.
 For example, if you had the <em>a priori</em> hypothesis that your empirical network was <em>more</em> nested than you would expect by chance, then you could assess that with a one-tailed test.
 If you wanted to see if your network was <em>either</em> more or less nested than chance alone, for the example with 99 null models, if your empirical data were either the most or the least nested, there is a 1 in 100 chance of <em>either</em> of those situations happening.
-So you would need to multiply the $p$-value by 2 to compensate:
-there is a 2 in 100 chance of either occurring, so the $p$-value for either situation would be not 0.01, but 0.02.</p>
+So you would need to multiply the <code>\(p\)</code>-value by 2 to compensate:
+there is a 2 in 100 chance of either occurring, so the <code>\(p\)</code>-value for either situation would be not 0.01, but 0.02.</p>
 <h4 id="p-value-calculation">p-value calculation</h4>
-<p>With all of that in place, we can write code to calculate the (two-tailed) $p$-value.
+<p>With all of that in place, we can write code to calculate the (two-tailed) <code>\(p\)</code>-value.
 A few things to note:</p>
 <ul>
 <li>we use <code>length(which())</code> to assess rank, by seeing how many null values are more-extreme than our empirical value</li>
@@ -1951,8 +1947,8 @@ A few things to note:</p>
 </span></span><span class="line"><span class="cl"><span class="n">pval</span> <span class="o">=</span> <span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="nf">which</span><span class="p">(</span><span class="n">Inulls</span> <span class="o">&gt;</span> <span class="n">Iobs</span><span class="p">)),</span> 
 </span></span><span class="line"><span class="cl">            <span class="nf">length</span><span class="p">(</span><span class="nf">which</span><span class="p">(</span><span class="n">Iobs</span> <span class="o">&gt;</span> <span class="n">Inulls</span><span class="p">))</span> <span class="o">+</span> <span class="m">1</span><span class="p">)</span> <span class="o">/</span> 
 </span></span><span class="line"><span class="cl">          <span class="nf">length</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">Iobs</span><span class="p">,</span> <span class="n">Inulls</span><span class="p">)))</span> <span class="o">*</span> <span class="m">2</span>
-</span></span></code></pre></div><pre tabindex="0"><code>## p = 0.41
-</code></pre><p>In this case, we can see that the $p$-value is 0.41, i.e. the Safariland network is not significantly nested relative to chance.</p>
+</span></span></code></pre></div><pre tabindex="0"><code>## p = 0.36
+</code></pre><p>In this case, we can see that the <code>\(p\)</code>-value is 0.36, i.e. the Safariland network is not significantly nested relative to chance.</p>
 <h2 id="take-home">Take-home</h2>
 <p>Together these examples point to a few take-home messages:</p>
 <ul>
@@ -1963,13 +1959,13 @@ A few things to note:</p>
 </ul>
 </li>
 <li>always check your null models to make sure they are performing as expected</li>
-<li>use a two-tailed $p$-value as a default, unless you have laid out an <em>a priori</em> hypothesis that includes directionality (e.g., &ldquo;I hypothesize that this network will be less-nested than chance alone would predict&rdquo;)</li>
+<li>use a two-tailed <code>\(p\)</code>-value as a default, unless you have laid out an <em>a priori</em> hypothesis that includes directionality (e.g., &ldquo;I hypothesize that this network will be less-nested than chance alone would predict&rdquo;)</li>
 </ul>
 <h4 id="Ex10">Exercise 10</h4>
 <p>Analyze NODF for the &ldquo;Safariland&rdquo; dataset using the <code>r2dtable</code> null model,</p>
 <ol>
 <li>graphically and</li>
-<li>by calculating the (two-tailed) $p$-value.
+<li>by calculating the (two-tailed) <code>\(p\)</code>-value.
 You should get a qualitatively different result relative to using <code>swap.web</code>.
 Describe where the empirical value falls out relative to the null models.</li>
 </ol>
@@ -2028,9 +2024,9 @@ However it has important limitations, including the assumption of a local equili
 <!-- ======================================= -->
 <h1 id="session-info">Session Info</h1>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">sessionInfo</span><span class="p">()</span>
-</span></span></code></pre></div><pre tabindex="0"><code>## R version 4.4.0 (2024-04-24)
+</span></span></code></pre></div><pre tabindex="0"><code>## R version 4.4.3 (2025-02-28)
 ## Platform: aarch64-apple-darwin20
-## Running under: macOS Sonoma 14.6.1
+## Running under: macOS Sequoia 15.6.1
 ## 
 ## Matrix products: default
 ## BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
@@ -2059,19 +2055,19 @@ However it has important limitations, including the assumption of a local equili
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] dotCall64_1.1-1   spam_2.10-0       gtable_0.3.5      xfun_0.47        
-##  [5] bslib_0.7.0       tzdb_0.4.0        vctrs_0.6.5       tools_4.4.0      
-##  [9] generics_0.1.3    parallel_4.4.0    fansi_1.0.6       highr_0.11       
-## [13] cluster_2.1.6     pkgconfig_2.0.3   Matrix_1.7-0      lifecycle_1.0.4  
-## [17] compiler_4.4.0    fields_16.2       munsell_0.5.1     maps_3.4.2       
+##  [5] bslib_0.7.0       tzdb_0.4.0        vctrs_0.6.5       tools_4.4.3      
+##  [9] generics_0.1.3    parallel_4.4.3    fansi_1.0.6       highr_0.11       
+## [13] cluster_2.1.8     pkgconfig_2.0.3   Matrix_1.7-2      lifecycle_1.0.4  
+## [17] compiler_4.4.3    fields_16.2       munsell_0.5.1     maps_3.4.2       
 ## [21] htmltools_0.5.8.1 sass_0.4.9        yaml_2.3.8        pillar_1.9.0     
-## [25] jquerylib_0.1.4   MASS_7.3-60.2     cachem_1.0.8      nlme_3.1-164     
+## [25] jquerylib_0.1.4   MASS_7.3-64       cachem_1.0.8      nlme_3.1-167     
 ## [29] tidyselect_1.2.1  digest_0.6.35     stringi_1.8.4     bookdown_0.39    
-## [33] splines_4.4.0     fastmap_1.1.1     colorspace_2.1-0  cli_3.6.2        
+## [33] splines_4.4.3     fastmap_1.1.1     colorspace_2.1-0  cli_3.6.2        
 ## [37] magrittr_2.0.3    utf8_1.2.4        withr_3.0.0       scales_1.3.0     
 ## [41] timechange_0.3.0  gridExtra_2.3     blogdown_1.19     hms_1.1.3        
-## [45] coda_0.19-4.1     mgcv_1.9-1        rlang_1.1.3       Rcpp_1.0.12      
+## [45] coda_0.19-4.1     mgcv_1.9-1        rlang_1.1.3       Rcpp_1.0.13      
 ## [49] glue_1.7.0        xml2_1.3.6        svglite_2.1.3     rstudioapi_0.16.0
-## [53] jsonlite_1.8.8    R6_2.5.1          systemfonts_1.0.6
+## [53] jsonlite_1.8.9    R6_2.5.1          systemfonts_1.0.6
 </code></pre>
           </div>
 
@@ -2089,7 +2085,7 @@ However it has important limitations, including the assumption of a local equili
   
   <div class="post-nav-item">
     <div class="meta-nav">Previous</div>
-    <a href="/courses/prework_edgelist-to-network/" rel="next">Prework - Edgelist-to-Network</a>
+    <a href="/courses/prework_network-visualization/" rel="next">Prework - Network Visualization</a>
   </div>
   
   
@@ -2106,7 +2102,7 @@ However it has important limitations, including the assumption of a local equili
         </div>
 
         <div class="body-footer">
-          <p>Last updated on Aug 31, 2024</p>
+          <p>Last updated on Aug 27, 2025</p>
 
           
 
@@ -2206,7 +2202,7 @@ However it has important limitations, including the assumption of a local equili
       
 
     
-    <script src="/js/vendor-bundle.min.fab8b449b814cc9f95b22fcf2e45f05b.js"></script>
+    <script src="/js/vendor-bundle.min.67c1899ffe66384df9c7f0863a1232ab.js"></script>
 
     
     
@@ -2303,7 +2299,7 @@ However it has important limitations, including the assumption of a local equili
       
     
     
-    <script src="/en/js/wowchemy.min.ab2f2890dbe3e2e83579366d3d6e8fd9.js"></script>
+    <script src="/en/js/wowchemy.min.3fae6f7398c36f9af32ddf3ea6e7760d.js"></script>
 
     
     

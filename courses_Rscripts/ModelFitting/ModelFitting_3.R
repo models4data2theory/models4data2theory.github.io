@@ -68,6 +68,49 @@ print(c(a = a, h = h, theta = 1))
 
 
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Leave-one-out cross-validation ----
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+P.orig <- P
+k.orig <- k
+
+out.f1 <- out.f2 <- out.f3 <- rep(NA, length(k.orig))
+
+for(i in 1:length(k.orig)){
+  
+  # Training data
+  P = P.orig[-i]
+  k = k.orig[-i]
+  
+  # Fit each model to the training data
+  suppressWarnings({
+    fit.f1 <- optim(par = list(a = 1),
+                    fn = nlL.pois.f1)
+    
+    fit.f2 <- optim(par = list(a = fit.f1$par['a'] * 5, 
+                               h = 1/50),
+                    fn = nlL.pois.f2)
+    
+    fit.f3 <- optim(par = list(a = fit.f2$par['a'], 
+                               h = fit.f2$par['h'], 
+                               theta = 1),
+                    fn = nlL.pois.f3)
+  })
+  
+  # Test datum
+  P = P.orig[i]
+  k = k.orig[i]
+  
+  # Get nlL for test datum given fitted model
+  out.f1[i] <- nlL.pois.f1(fit.f1$par)
+  out.f2[i] <- nlL.pois.f2(fit.f2$par)
+  out.f3[i] <- nlL.pois.f3(fit.f3$par)
+}
+
+c(looCV.f1 = mean(out.f1), 
+  looCV.f2 = mean(out.f2), 
+  looCV.f3 = mean(out.f3))
+
 ############################################################
 ############################################################
 # The following is provided simply for you to have the 
