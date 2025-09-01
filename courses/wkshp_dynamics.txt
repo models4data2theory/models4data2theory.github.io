@@ -765,7 +765,7 @@ $$
 
 Now that we have understood together the summation and its connection to the plant-pollinator network, we will see how the computer can help us with building the system of differential equations using matrices.
 
-[Multi-species Lotka-Volterra mutualism model](/courses_Rscripts/Dynamics_LV_multispMutualism_function.R)
+Get _Dynamics_LVmultispMutualism_function.R_ from our Google folder.
 
 Let's start by saving the matrix representing the toy network
 
