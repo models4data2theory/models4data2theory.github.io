@@ -1039,7 +1039,7 @@ These networks also allow the study of the interplay between structure and dynam
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;lapply&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Packages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;character.only&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;exercise-code-and-data&#34;&gt;Exercise code and data&lt;/h3&gt;
 &lt;p&gt;In addition to the in-text links below, you can download what you&amp;rsquo;ll need in this
-&lt;a href=&#34;https://drive.google.com/drive/folders/1-I4GcKcZE_gFboLgvRhoPJWQkD6BABqq?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GoogleFolder&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://drive.google.com/drive/folders/10lAlmUQyPrSTb1tVep9I1ge9b6VU8GMn?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GoogleFolder&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;terminology&#34;&gt;Terminology&lt;/h2&gt;
 &lt;p&gt;A network consists of nodes and edges, where &lt;em&gt;nodes&lt;/em&gt; represent discrete entities like people, computers, cities, or species, and &lt;em&gt;edges (or links)&lt;/em&gt; represent the connections between these entities.
 Networks can be weighted or unweighted, depending on whether the connections have associated values or not.
@@ -2170,7 +2170,7 @@ We will then develop our intuition for &lt;a href=&#34;#max_lik&#34;&gt;maximum 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;## Loading required package: stats4
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;exercise-code&#34;&gt;Exercise code&lt;/h3&gt;
 &lt;p&gt;In addition to the in-text links below, you can download what you&amp;rsquo;ll need in this
-&lt;a href=&#34;https://drive.google.com/drive/folders/14mv3lekxpEZhtFpadJ7pydjfaNI4diLv?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GoogleFolder&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://drive.google.com/drive/folders/10lAlmUQyPrSTb1tVep9I1ge9b6VU8GMn?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GoogleFolder&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;fundamentals&#34;&gt;Fundamentals&lt;/h2&gt;
 &lt;p&gt;We&amp;rsquo;re going to start by assuming our focal response variable doesn&amp;rsquo;t vary in response to any possible covariates at all.
 Doing so is useful in helping us think about the different types of probability distributions there are, and which may be best in representing the type of stochastic processes that are likely to have generated our data.&lt;/p&gt;
@@ -2967,7 +2967,7 @@ In the process, we&amp;rsquo;ll touch on concepts and tools including steady sta
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;deSolve&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;exercise-code&#34;&gt;Exercise code&lt;/h3&gt;
 &lt;p&gt;In addition to the in-text links below, you can download what you&amp;rsquo;ll need in this
-&lt;a href=&#34;https://drive.google.com/drive/folders/1-I4GcKcZE_gFboLgvRhoPJWQkD6BABqq?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GoogleFolder&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://drive.google.com/drive/folders/10lAlmUQyPrSTb1tVep9I1ge9b6VU8GMn?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GoogleFolder&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;exponential-growth&#34;&gt;Exponential growth&lt;/h2&gt;
 &lt;p&gt;For a start preceding the introduction of exponential growth, see the &lt;a href=&#34;https://models4data2theory.github.io/courses/potential_use_or_interest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Of Potential Interest&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;We will take as our starting point the differential equation,&lt;/p&gt;
