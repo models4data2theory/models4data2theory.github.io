@@ -3190,7 +3190,8 @@ $N^{*}$ will then be &lt;em>neutrally stable&lt;/em>.
 Our change in perspective to following the size of the perturbation, rather than the population itself, allowed us to do this.&lt;/p>
 &lt;h2 id="lv-mutualism">LV Mutualism&lt;/h2>
 &lt;p>Next, we&amp;rsquo;ll extend our single-species model of logistic growth to consider two interacting species.&lt;/p>
-&lt;p>The Lotka-Volterra model for mutualism represents two species positively affecting the population growth rate of each other. The model assumes that the population of the two species ($N_1$ and $N_2$) grows logistically and that the interaction benefits received by the populations increases linearly with increasing population size of their mutualistic partner, which is encoded in the following equations:&lt;/p>
+&lt;p>The Lotka-Volterra model for mutualism represents two species positively affecting the population growth rate of each other. (For even more details, see this &lt;a href="https://models4data2theory.github.io/pdfs/Valdovinos_2026_Systems_Ecology.pdf">preprint&lt;/a>.)&lt;/p>
+&lt;p>The model assumes that the population of the two species ($N_1$ and $N_2$) grows logistically and that the interaction benefits received by the populations increases linearly with increasing population size of their mutualistic partner, which is encoded in the following equations:&lt;/p>
 &lt;p>$$
 \frac{dN_1}{dt}=r_1N_1\left(\frac{K_1-N_1+\alpha_{12}N_2}{K_1}\right)
 \
@@ -3582,7 +3583,7 @@ $$&lt;/p>
 &lt;div class="w-100" >&lt;img src="https://models4data2theory.github.io/images/dynamics/Table1_ValdovinosOikos2023.PNG" alt="Table 1 from Valdovinos et al 2023, Oikos" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;/p>
-&lt;p>Despite its apparent complexity, this model provides clear and consistent results, which are:&lt;/p>
+&lt;p>Despite its apparent complexity, this model provides clear and consistent results (see Boxes 2 and 3 of this &lt;a href="https://models4data2theory.github.io/pdfs/Valdovinos_OIK-12605.pdf">preprint&lt;/a>), which are:&lt;/p>
 &lt;ol>
 &lt;li>&lt;strong>Generalist pollinators have more available food (floral rewards) to them than specialist pollinators&lt;/strong>, which results in generalist pollinator species exhibiting much higher abundances than specialist pollinator species, particularly in nested networks and in networks without adaptive foraging (AF, see point 4).&lt;/li>
 &lt;li>&lt;strong>Generalist plants receive more visits than their specialist counter-parts&lt;/strong> but this does not necessarily results in generalist plant species having higher abundances than specialist plants because competition for seed recruitment to adults (not pollination) determines the final abundance of plants (see point 6, below).&lt;/li>
