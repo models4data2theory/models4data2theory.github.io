@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Workshop Content | Integrating Theory and Data in Plant-Pollinator Interactions</title><link>https://models4data2theory.github.io/courses/</link><atom:link href="https://models4data2theory.github.io/courses/index.xml" rel="self" type="application/rss+xml"/><description>Workshop Content</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 02 Sep 2026 00:00:00 +0000</lastBuildDate><image><url>https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png</url><title>Workshop Content</title><link>https://models4data2theory.github.io/courses/</link></image><item><title>Prework - R Data Basics</title><link>https://models4data2theory.github.io/courses/prework_02_data_basics/</link><pubDate>Wed, 27 Aug 2025 00:00:00 +0000</pubDate><guid>https://models4data2theory.github.io/courses/prework_02_data_basics/</guid><description>&lt;p>&lt;em>Before you arrive at RMBL.&lt;/em>&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Workshop Content | Integrating Theory and Data in Plant-Pollinator Interactions</title><link>https://models4data2theory.github.io/courses/</link><atom:link href="https://models4data2theory.github.io/courses/index.xml" rel="self" type="application/rss+xml"/><description>Workshop Content</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 03 Sep 2026 00:00:00 +0000</lastBuildDate><image><url>https://models4data2theory.github.io/media/icon_hu0409958f157fc50d4e355b357a277bb5_195869_512x512_fill_lanczos_center_3.png</url><title>Workshop Content</title><link>https://models4data2theory.github.io/courses/</link></image><item><title>Prework - R Data Basics</title><link>https://models4data2theory.github.io/courses/prework_02_data_basics/</link><pubDate>Wed, 27 Aug 2025 00:00:00 +0000</pubDate><guid>https://models4data2theory.github.io/courses/prework_02_data_basics/</guid><description>&lt;p>&lt;em>Before you arrive at RMBL.&lt;/em>&lt;/p>
 &lt;p>Intro to data structures, help pages, and variable types in R.&lt;/p>
 &lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>In this tutorial, you will learn how to use R to inspect the contents of a data frame or tibble.
@@ -572,7 +572,7 @@ if you inherit a tabular dataset in R, it will almost certainly come as one of t
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># optional; if you want a separate variable (column) for plant names&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">bipartite.med&lt;/span>&lt;span class="o">$&lt;/span>&lt;span class="n">plant&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">row.names&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bipartite.med&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="optional-exercise">Optional exercise&lt;/h2>
-&lt;p>Convert the raw &lt;code>medgarden&lt;/code> data to network format using &lt;code>frame2webs()&lt;/code>, following the instructions above.&lt;/p></description></item><item><title>Prework - Network Visualization</title><link>https://models4data2theory.github.io/courses/prework_network-visualization/</link><pubDate>Wed, 27 Aug 2025 00:00:00 +0000</pubDate><guid>https://models4data2theory.github.io/courses/prework_network-visualization/</guid><description>&lt;script src="https://models4data2theory.github.io/rmarkdown-libs/kePrint/kePrint.js">&lt;/script>
+&lt;p>Convert the raw &lt;code>medgarden&lt;/code> data to network format using &lt;code>frame2webs()&lt;/code>, following the instructions above.&lt;/p></description></item><item><title>Prework - Network Visualization</title><link>https://models4data2theory.github.io/courses/prework_network-visualization/</link><pubDate>Thu, 03 Sep 2026 00:00:00 +0000</pubDate><guid>https://models4data2theory.github.io/courses/prework_network-visualization/</guid><description>&lt;script src="https://models4data2theory.github.io/rmarkdown-libs/kePrint/kePrint.js">&lt;/script>
 &lt;link href="https://models4data2theory.github.io/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
 &lt;p>&lt;em>Before you arrive at RMBL.&lt;/em>&lt;/p>
 &lt;p>Intro to network data visualization.&lt;/p>
@@ -593,6 +593,26 @@ if you inherit a tabular dataset in R, it will almost certainly come as one of t
 &lt;li>for network diagrams, the &lt;code>plotweb()&lt;/code> function&lt;/li>
 &lt;li>for matrix depictions, the &lt;code>visweb()&lt;/code> function&lt;/li>
 &lt;/ul>
+&lt;!-- ===========================================================================
+NOTE (2026): recent versions of `bipartite` (>= 2.19) ship a completely
+rewritten `plotweb()` with different argument names (e.g. `srt` instead of
+`text.rot`, `lower_color` / `higher_color` instead of `col.low` / `col.high`,
+`sorting` instead of `method`) and no longer needs the `y.lim` label-spacing
+fiddling. The old function is still available, unchanged, as
+`plotweb_deprecated()`. To keep this tutorial (and its narrative about
+`method`, `y.lim`, etc.) intact for now, the code chunks below call
+`plotweb_deprecated()`. This section is a good candidate for a future rewrite
+around the new `plotweb()` -- see `?plotweb` and the
+`vignette("PlottingWithBipartite")`.
+=========================================================================== -->
+&lt;blockquote>
+&lt;p>&lt;strong>A note on &lt;code>plotweb()&lt;/code> versions.&lt;/strong> Recent &lt;code>bipartite&lt;/code> releases replaced
+&lt;code>plotweb()&lt;/code> with a rewritten version that takes different arguments. The
+original function is still available as &lt;strong>&lt;code>plotweb_deprecated()&lt;/code>&lt;/strong>, and that
+is what the code below uses, so the argument names here (&lt;code>text.rot&lt;/code>,
+&lt;code>col.low&lt;/code>, &lt;code>col.high&lt;/code>, &lt;code>method&lt;/code>, &lt;code>y.lim&lt;/code>) are the &lt;em>old&lt;/em> ones. If you call
+&lt;code>plotweb()&lt;/code> directly you will get the new interface instead; see &lt;code>?plotweb&lt;/code>.&lt;/p>
+&lt;/blockquote>
 &lt;h2 id="network-diagrams">Network diagrams&lt;/h2>
 &lt;p>We&amp;rsquo;ll use data that are included in the &lt;code>bipartite&lt;/code> package for our plotting exercises. We&amp;rsquo;ll start with the &lt;code>Safariland&lt;/code> dataset, collected at a theme park in Argentina by Diego Vázquez and collaborators, because it&amp;rsquo;s a small and straightforward dataset to visualize.&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bipartite&lt;/span>&lt;span class="p">)&lt;/span>
@@ -721,61 +741,61 @@ if you inherit a tabular dataset in R, it will almost certainly come as one of t
 &lt;/tbody>
 &lt;/table>
 &lt;p>Let&amp;rsquo;s get right to the visualization! It&amp;rsquo;s easy to use the &lt;code>plotweb()&lt;/code> function to plot a network diagram:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plotweb&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/initial plotweb-1.png" width="672" />
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plotweb_deprecated&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/initial plotweb-1.png" alt="" width="672" />
 &lt;p>Above, we defined a network diagram as showing &amp;ldquo;nodes as shapes, and links as lines between nodes&amp;rdquo;. For the nodes, &lt;code>plotweb()&lt;/code> depicts nodes as &lt;em>rectangles&lt;/em>; the wider the rectangle, the more interactions were recorded for that node. Plants are shown on the bottom, since they&amp;rsquo;re the &amp;ldquo;lower&amp;rdquo; (closer to basal energetically) level, and thus pollinators are shown on the higher level. For the links, they are also shown with widths scaled by the number of interactions.&lt;/p>
 &lt;p>For example, there were many, many interactions between the plant &lt;em>Aristotelia chilensis&lt;/em> (also known as maqui or Chilean wineberry, whose fruit has recently been marketed as a &amp;ldquo;superfood&amp;rdquo;) and &lt;em>Policana albopilosa&lt;/em>, a pretty Diphaglossine solitary bee whose genus name has been updated to &lt;em>Cadeguala&lt;/em>. Thus, the line connecting these species is very wide (in fact, this link accounts for almost 60% of the observed interactions in this network). Many of the other interactions were only a single observation of that pollinator on that plant; those interactions are depicted by very narrow lines.&lt;/p>
 &lt;p>You many notice that this plot is kind of hard to read. In particular, a lot of the pollinator names overlap each other. We can do some minor tweaks to the plot and make it easier to interpret pretty easily. Let&amp;rsquo;s rotate the plant and pollinator names to vertical positions, so they don&amp;rsquo;t overlap, and change the colors of the nodes so that plants are green and pollinators are blue:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plotweb&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plotweb_deprecated&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">text.rot&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">90&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">col.low&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;darkgreen&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">col.high&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;lightblue&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/plotweb II-1.png" width="672" />
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/plotweb II-1.png" alt="" width="672" />
 &lt;p>Well, that is kind of better&amp;hellip; though now all the labels are cut off. We can adjust that with the &lt;code>y.lim&lt;/code> option in &lt;code>plotweb()&lt;/code>; in my experience you just have to iteratively mess around with the lower and upper limit numbers (&lt;code>y.lim=c(-0.75,2.75)&lt;/code> in the code below) until you get a combination that works:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plotweb&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plotweb_deprecated&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">text.rot&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">90&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">col.low&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;darkgreen&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">col.high&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;lightblue&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">y.lim&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">-0.75&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="m">2.75&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/plotweb III-1.png" width="672" />
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/plotweb III-1.png" alt="" width="672" />
 &lt;p>Now we have a pretty solid bipartite network depiction. We&amp;rsquo;ll play around with just one more argument to this function: &lt;code>method&lt;/code> which sets the arrangement of plants and pollinators. The default is &lt;code>cca&lt;/code> which &amp;ldquo;leads to as few crossings of interactions as possible&amp;rdquo;. Below we&amp;rsquo;ll plot it with &lt;code>method = &amp;quot;normal&amp;quot;&lt;/code> which will leave the order the same as in the data:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plotweb&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plotweb_deprecated&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">method&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;normal&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">text.rot&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">90&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">col.low&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;darkgreen&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">col.high&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;lightblue&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">y.lim&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">-0.75&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="m">2.75&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/plotweb IV-1.png" width="672" />
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/plotweb IV-1.png" alt="" width="672" />
 &lt;p>It&amp;rsquo;s helpful to see the rearrangement, and you could always go back into your data and rearrange them if you wanted a particular order (more on that below).&lt;/p>
 &lt;p>While again &lt;code>bipartite&lt;/code> provides a decent starting point for plotting network diagrams, if you want to do a deep dive into network plots that are more customizable etc, we suggest looking into other packages such as &lt;code>igraph&lt;/code>.&lt;/p>
 &lt;h2 id="matrix-depictions">Matrix depictions&lt;/h2>
 &lt;p>We&amp;rsquo;ll now shift gears from network diagrams to matrix depictions. Here is an example matrix depiction of the Safariland dataset:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">visweb&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/visweb Safariland-1.png" width="672" />
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/visweb Safariland-1.png" alt="" width="672" />
 &lt;p>With the simplest function call (i.e. no alterations to the default arguments), &lt;code>visweb()&lt;/code> gives us a solid depiction of this network. Yeah, I know&amp;mdash;there&amp;rsquo;s a gap between the matrix and the pollinator labels, which is standard with &lt;code>visweb&lt;/code>. We&amp;rsquo;ll come back to some alterations shortly.&lt;/p>
 &lt;h2 id="standardizing-matrix-depictions">Standardizing Matrix Depictions&lt;/h2>
 &lt;p>What is the difference between these two matrices?&lt;/p>
-&lt;p>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/different depictions same matrix-1.png" width="450" />&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/different depictions same matrix-2.png" width="450" />&lt;/p>
+&lt;p>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/different depictions same matrix-1.png" alt="" width="450" />&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/different depictions same matrix-2.png" alt="" width="450" />&lt;/p>
 &lt;p>They look pretty different, huh?
 The second one gives off some distressed Jack-O-Lantern vibes&amp;hellip;&lt;/p>
 &lt;p>Perhaps surprisingly, these are two different visualizations of the &lt;em>exact same&lt;/em> network! How can that be?&lt;/p>
 &lt;p>Ultimately, as long as each interaction (data in a cell) is recorded faithfully (i.e., maintains the association between its row / plant and its column / pollinator), we can move around the order of &lt;em>entire&lt;/em> rows and &lt;em>entire&lt;/em> columns (relative to each other) and the data remains the same: it is still the same network. If we re-plot the two figures above, including the row and column labels, we can perhaps see that more easily:&lt;/p>
-&lt;p>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/different depictions same matrix II-1.png" width="450" height="400" />&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/different depictions same matrix II-2.png" width="450" height="400" />&lt;/p>
+&lt;p>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/different depictions same matrix II-1.png" alt="" width="450" height="400" />&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/different depictions same matrix II-2.png" alt="" width="450" height="400" />&lt;/p>
 &lt;p>With the row and column labels, you can confirm that the integrity of each interaction is maintained through both of these depictions.&lt;/p>
 &lt;p>For example, row &lt;em>j&lt;/em> interacts with column 7 in both depictions, and you could hypothetically go through and confirm that for each of the 69 unique interactions in this made-up example (if you were really bored, that is).
 To get more detailed without having to go interaction-by-interaction, row &lt;em>a&lt;/em> interacts with columns 15 through 24, and this is easy to confirm in both graphs; it&amp;rsquo;s just that the column order is different between the two.&lt;/p>
 &lt;p>Thinking about this, there is a &lt;em>very&lt;/em> large number of ways that we could depict the same network&amp;hellip;
-if &lt;em>R&lt;/em> were the number of rows and &lt;em>C&lt;/em> the number of columns, then we could represent that network in $R! \times C!$ ways. For the example above with 24 rows and 24 columns, that is 24! $\times$ 24!, or more than 3 $\times$ $10^{47}$.
+if &lt;em>R&lt;/em> were the number of rows and &lt;em>C&lt;/em> the number of columns, then we could represent that network in $R! \times C!$ ways. For the example above with 24 rows and 24 columns, that is 24! $\times$ 24!, or more than 3 $\times$ 10^{47}.
 In other words, an unfathomably gigantic number of ways. Put another way, for a 100 $\times$ 100 network, this value is too large for R to calculate.&lt;/p>
 &lt;p>With so many potential options, we would ideally like to have a way to &lt;em>standardize&lt;/em> how we depict a network in terms of the arrangement of the rows and columns.&lt;/p>
 &lt;h3 id="how-to-standardize">How to standardize&lt;/h3>
 &lt;p>Thankfully, there is a clear option in this regard (at least when it comes to bipartite networks): we sort the rows and the columns of the matrix by the &lt;em>degree&lt;/em> or number of unique connections that each node has. We sort such that the most-generalist (highest degree) row is at the top, and the most-generalist column is at the left. This depiction maximizes our ability to detect &lt;em>nestedness&lt;/em> in our networks, and some researchers refer to this arrangement as &lt;strong>&amp;ldquo;packing&amp;rdquo; a matrix&lt;/strong>.&lt;/p>
 &lt;p>The &lt;code>visweb&lt;/code> function includes options for how you display a network. Here is what the Safariland dataset looks like if the rows and columns are plotted in the order they are in the dataset (i.e. no rearrangement):&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">visweb&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">type&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;none&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/visweb none-1.png" width="672" />
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/visweb none-1.png" alt="" width="672" />
 &lt;p>If we wanted to standardize (order the rows and columns) by the &lt;em>total count of interactions&lt;/em> for each taxon, we could instead use the bipartite default:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">visweb&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">type&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;nested&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/visweb nested-1.png" width="672" />
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/visweb nested-1.png" alt="" width="672" />
 &lt;p>This plot is exactly the same as the first plot of the Safariland data, but &lt;em>slightly&lt;/em> different than the plot just before it (you can see some minor differences between the two plots, but they&amp;rsquo;re pretty subtle). This isn&amp;rsquo;t unusual, because common interactions are probabilistically likely to appear earlier in datasets, so often the order that data are in (e.g. from field notebooks) is correlated with&amp;mdash;but not usually exactly the same as&amp;mdash;the order of the same data that are sorted by number of interactions.&lt;/p>
 &lt;p>Unfortunately, the &lt;code>visweb()&lt;/code> default is not really the ideal way to see nestedness, which is instead to sort by degree or number of links per node (not total number of observed interactions). Because of this, many researchers in the bipartite network realm strongly prefer to order by &lt;strong>degree&lt;/strong> instead of interaction count. To do that, you&amp;rsquo;ll have to code it yourself. It&amp;rsquo;s really not hard; some example code is below (and for aficionados of concise code, it would be straightforward to collapse this down into three lines of code).&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">rowz&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">rowSums&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="m">0&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># calculate plant degrees&lt;/span>
@@ -785,18 +805,18 @@ In other words, an unfathomably gigantic number of ways. Put another way, for a 
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Safariland&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Safariland[roworder&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">colorder]&lt;/span> &lt;span class="c1"># re-order rows and cols in matrix&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We&amp;rsquo;ve now rearranged the row and column order in the Safariland dataset, so to plot it, just use &lt;code>type = &amp;quot;none&amp;quot;&lt;/code>:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">visweb&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">type&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;none&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/visweb none II-1.png" width="672" />
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/visweb none II-1.png" alt="" width="672" />
 &lt;p>Now that we&amp;rsquo;re reordered our data, we can also use the reordered data to visualize a network diagram via &lt;code>plotweb()&lt;/code>. In fact, we&amp;rsquo;ll use the exact same code as above, with &lt;code>method = &amp;quot;normal&amp;quot;&lt;/code>; but because we have rearranged the underlying data, the plot will be different:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plotweb&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">method&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;normal&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">text.rot&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">90&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plotweb_deprecated&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">method&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;normal&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">text.rot&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">90&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">col.low&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;darkgreen&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">col.high&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;lightblue&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">y.lim&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">-0.75&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="m">2.75&lt;/span>&lt;span class="p">))&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/plotweb reordered-1.png" width="672" />
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/plotweb reordered-1.png" alt="" width="672" />
 &lt;p>In this plot, the plant and pollinator species that have the highest degree (largest number of unique interactions with species in the other group) are on the left, with degree decreasing as we move to the right. With this arrangement, we can see more clearly some of the hallmarks of nestedness: sharply sloping lines connecting generalists from one group (say plants) with specialists of the other group (pollinators), and vice-versa. In addition, we don&amp;rsquo;t see many vertical lines at the right edge of the plot; such vertical lines indicate interactions occurring between specialists, which we don&amp;rsquo;t typically find in nested networks.&lt;/p>
 &lt;p>At the same time, one can see why the default plotting option with &lt;code>plotweb&lt;/code> is what it is; with this arrangement it&amp;rsquo;s harder to trace the lines between interacting species to understand who is interacting with whom.&lt;/p>
 &lt;h3 id="diagonal-arrangement">Diagonal arrangement&lt;/h3>
 &lt;p>Back to matrix depictions: finally, &lt;code>visweb&lt;/code> includes a third option, &amp;ldquo;diagonal&amp;rdquo; arrangement, which maximizes the number of interactions occurring along the diagonal of the bipartite matrix. While a non-standard way to depict matrices, it can be helpful for visually assessing modularity or compartments in the matrix. You can do that via &lt;code>type = &amp;quot;diagonal&amp;quot;&lt;/code>:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">visweb&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">type&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;diagonal&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/visweb diagonal-1.png" width="672" />
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/visweb diagonal-1.png" alt="" width="672" />
 &lt;p>Here, &lt;code>visweb()&lt;/code> shows us that there is one clear module in the network: the plant &lt;em>Cynanchum diemii&lt;/em> is visited by four different pollinator taxa (two beetles and two wasps) that weren&amp;rsquo;t recorded visiting any other plants. The rest of the network shows up as a separate and much more diffuse module.&lt;/p>
 &lt;p>One thing to know about using &lt;code>type = &amp;quot;diagonal&amp;quot;&lt;/code> is that the algorithm is stochastic, so the plot could be different each time. For example, for the plot above, the &lt;em>Cynanchum diemii&lt;/em> module can appear either at the top or the bottom.&lt;/p>
 &lt;h2 id="limitations-and-alterations-to-visweb">Limitations and alterations to &lt;code>visweb&lt;/code>&lt;/h2>
@@ -807,7 +827,7 @@ In other words, an unfathomably gigantic number of ways. Put another way, for a 
 &lt;h3 id="for-those-new-to-plotting-networks">For those new to plotting networks&lt;/h3>
 &lt;p>Use the &lt;a href="data/networks/medgarden.csv">medgarden.csv&lt;/a> data you put into matrix form in the &amp;ldquo;Edgelist to Network&amp;rdquo; section of our workshop Pre-work.&lt;/p>
 &lt;ul>
-&lt;li>plot via &lt;code>plotweb&lt;/code>:
+&lt;li>plot via &lt;code>plotweb_deprecated&lt;/code> (matching the examples above; or try the new &lt;code>plotweb()&lt;/code> if you like):
 &lt;ul>
 &lt;li>with no alterations; then&lt;/li>
 &lt;li>rotate text to 90º and get all of the labels to fit&lt;/li>
@@ -871,7 +891,7 @@ In other words, an unfathomably gigantic number of ways. Put another way, for a 
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">my_gTree[[&lt;/span>&lt;span class="s">&amp;#34;children&amp;#34;&lt;/span>&lt;span class="n">]][[&lt;/span>&lt;span class="s">&amp;#34;graphics-plot-1-bottom-axis-labels-1&amp;#34;&lt;/span>&lt;span class="n">]][[&lt;/span>&lt;span class="s">&amp;#34;y&amp;#34;&lt;/span>&lt;span class="n">]]&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">unit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1.3&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">units&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;in&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">grid.newpage&lt;/span>&lt;span class="p">()&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">grid.draw&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">my_gTree&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/grid graphics example-1.png" width="672" height="500" />
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/grid graphics example-1.png" alt="" width="672" height="500" />
 &lt;p>Definitely better than the base output; though note that I also had to play around with the &lt;code>out.height&lt;/code> argument in the code chunk header to get this to print with a reasonable aspect ratio.&lt;/p>
 &lt;h3 id="ggplot-geom_raster">ggplot &lt;code>geom_raster&lt;/code>&lt;/h3>
 &lt;p>&lt;strong>Note that this code is fairly rudimentary&lt;/strong>; it&amp;rsquo;s intended to be a starting point, rather than a fully-worked out solution. If you&amp;rsquo;re keen to plot networks in &lt;code>ggplot&lt;/code>, you can take this code and run with it. If you&amp;rsquo;re not keen to do that, it&amp;rsquo;s best to stick with &lt;code>bipartite&lt;/code> or another solution.&lt;/p>
@@ -951,17 +971,51 @@ In other words, an unfathomably gigantic number of ways. Put another way, for a 
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># test the function with the &amp;#34;Safariland&amp;#34; data&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">testplot&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">matplotter&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">testplot&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/geom raster function-1.png" width="672" /></description></item><item><title>Networks</title><link>https://models4data2theory.github.io/courses/wkshp_networks/</link><pubDate>Wed, 27 Aug 2025 00:00:00 +0000</pubDate><guid>https://models4data2theory.github.io/courses/wkshp_networks/</guid><description>&lt;script src="https://models4data2theory.github.io/rmarkdown-libs/kePrint/kePrint.js">&lt;/script>
-&lt;link href="https://models4data2theory.github.io/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
-&lt;script src="https://models4data2theory.github.io/rmarkdown-libs/kePrint/kePrint.js">&lt;/script>
-&lt;link href="https://models4data2theory.github.io/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
-&lt;script src="https://models4data2theory.github.io/rmarkdown-libs/kePrint/kePrint.js">&lt;/script>
-&lt;link href="https://models4data2theory.github.io/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
-&lt;script src="https://models4data2theory.github.io/rmarkdown-libs/kePrint/kePrint.js">&lt;/script>
-&lt;link href="https://models4data2theory.github.io/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
-&lt;script src="https://models4data2theory.github.io/rmarkdown-libs/kePrint/kePrint.js">&lt;/script>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/prework_network-visualization_files/figure-html/geom raster function-1.png" alt="" width="672" /></description></item><item><title>Networks</title><link>https://models4data2theory.github.io/courses/wkshp_networks/</link><pubDate>Thu, 03 Sep 2026 00:00:00 +0000</pubDate><guid>https://models4data2theory.github.io/courses/wkshp_networks/</guid><description>&lt;script src="https://models4data2theory.github.io/rmarkdown-libs/kePrint/kePrint.js">&lt;/script>
 &lt;link href="https://models4data2theory.github.io/rmarkdown-libs/lightable/lightable.css" rel="stylesheet" />
 &lt;p>&lt;em>Analysis of structure&lt;/em>&lt;/p>
+&lt;!-- ===========================================================================
+2026 revision of wkshp_networks.Rmd, bringing the page into line with the
+2026 Networks presentation (wkshp_networks_Berry-presentation_2026.Rmd) and the
+2026 exercises. Changes:
+- REMOVED the "Network data" and "Visualization" sections (edge-list ->
+bipartite matrix, data formatting, visweb / matrix packing, old Exercises
+2 &amp; 3). That material is now fully covered by the pre-workshop modules
+"Prework - Edgelist-to-Network" and "Prework - Network Visualization";
+a short bridging section ("From data to networks") points there instead.
+Exercises renumbered accordingly.
+- terminology: "degree" is now reserved for the number of interaction
+PARTNERS a species has; weighted row / column sums are called
+"marginal totals" or "interaction totals" throughout. The null-model
+sections previously called the row / column sums "degrees".
+- null-model sections rewritten to state exactly what each algorithm holds
+constant (shuffle.web / r2dtable / swap.web), matching the presentation.
+- two-tailed p-value: the old inline formula was asymmetric and could return
+exactly 0. Replaced with two_tailed_p() (Davison &amp; Hinkley 1997), the same
+helper used in networks_exercises_2026.Rmd.
+- stochastic chunks are now seeded so the numbers in the text match the
+rendered output.
+- new "## Comparing networks" section (z-scores, their size-dependence per
+Song et al. 2017, and downsampling per Morozumi et al. 2022) -- this is
+Exercise 2 in the 2026 workshop and was previously flagged as out of scope.
+Includes the Morozumi-style two-outcome schematic from the presentation.
+- new figures in "Null models" motivating why nestedness is expected by
+chance alone: the plant/pollinator abundance distributions, then those
+distributions as the margins of a matrix filled by passive sampling.
+Helper functions (abund_bars / web_schematic) are ported verbatim from
+abundance_nestedness.R (used in the presentation) into a hidden chunk, so
+the page has no external source() dependency.
+- exercises renumbered 1-8 (old 1, 4-10). The two cross-references that were
+stale under the old numbering (to the deleted edge-list exercise, and
+off-by-two to the nestedness figure) now resolve correctly.
+- "Relationships among metrics": the z-score paragraph now points forward to
+the new Comparing networks section rather than declaring the topic out of
+scope.
+- typo: "?vegan::commsimm" -> "?vegan::commsim".
+- trimmed the hidden package chunk to knitr + vegan (igraph, viridis,
+gridGraphics, evaluate, rmarkdown were only used by the moved-out
+visualization code).
+=========================================================================== -->
 &lt;!-- ======================================= -->
 &lt;!-- Fernanda -->
 &lt;h2 id="motivation">Motivation&lt;/h2>
@@ -981,7 +1035,7 @@ These networks also allow the study of the interplay between structure and dynam
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">lapply&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Packages&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">library&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">character.only&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">TRUE&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="exercise-code-and-data">Exercise code and data&lt;/h3>
 &lt;p>In addition to the in-text links below, you can download what you&amp;rsquo;ll need in this
-&lt;a href="https://drive.google.com/drive/folders/10lAlmUQyPrSTb1tVep9I1ge9b6VU8GMn?usp=sharing" target="_blank" rel="noopener">GoogleFolder&lt;/a>.&lt;/p>
+&lt;a href="https://drive.google.com/drive/folders/1-I4GcKcZE_gFboLgvRhoPJWQkD6BABqq?usp=sharing" target="_blank" rel="noopener">GoogleFolder&lt;/a>.&lt;/p>
 &lt;h2 id="terminology">Terminology&lt;/h2>
 &lt;p>A network consists of nodes and edges, where &lt;em>nodes&lt;/em> represent discrete entities like people, computers, cities, or species, and &lt;em>edges (or links)&lt;/em> represent the connections between these entities.
 Networks can be weighted or unweighted, depending on whether the connections have associated values or not.
@@ -1009,519 +1063,25 @@ In the matrix cells, use 1&amp;rsquo;s to indicate an interaction between that a
 &lt;!-- ======================================= -->
 &lt;!-- ======================================= -->
 &lt;!-- Berry -->
-&lt;h2 id="network-data">Network data&lt;/h2>
-&lt;p>This workshop is focused on the &lt;em>integration&lt;/em> of empirical data and theory in pollination networks.
-An important first step toward that integration is to know how to take empirical data and convert them into the standardized matrix format that is used in most packages and functions.
-For mutualistic networks like plant-pollinator networks, as discussed above, that format is a &lt;em>bipartite&lt;/em> matrix with plants as rows, pollinators as columns, and (typically) counts of interactions filling the matrix.&lt;/p>
-&lt;p>Typically, empirical data collected on ecological networks take the form of an &lt;strong>edge list&lt;/strong>.
-This is the case for pollination networks in particular.
-To collect pollination network data, we are typically observing a set of flowers.
-When a flower visitor (presumed pollinator) visits a plant, we would record on a data sheet or field notebook the identity of the plant species and the identity of the flower visitor species.
-(In the field, we might capture an insect pollinator for later identification, but the idea remains the same, that at some point we would have a data sheet with the identities of the plants and the pollinators).&lt;/p>
-&lt;p>Similarly, you could also have an edge list created through pollen DNA metabarcoding; while you might need to play around with the formatting a bit it is common to end up with an edge list like you would have from field data collection.&lt;/p>
-&lt;p>That might look something like this:&lt;/p>
-&lt;table class="table table-condensed" style="width: auto !important; ">
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:right;"> id.num &lt;/th>
-&lt;th style="text-align:left;"> plant &lt;/th>
-&lt;th style="text-align:left;"> pollinator &lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:right;"> 2371 &lt;/td>
-&lt;td style="text-align:left;"> Delphinium barbeyi &lt;/td>
-&lt;td style="text-align:left;"> Bombus flavifrons &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:right;"> 2372 &lt;/td>
-&lt;td style="text-align:left;"> Heracleum spondophyllum &lt;/td>
-&lt;td style="text-align:left;"> Thricops sp. &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:right;"> 2373 &lt;/td>
-&lt;td style="text-align:left;"> Mertensia fusiformis &lt;/td>
-&lt;td style="text-align:left;"> Bombus flavifrons &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:right;"> 2374 &lt;/td>
-&lt;td style="text-align:left;"> Delphinium barbeyi &lt;/td>
-&lt;td style="text-align:left;"> Bombus appositus &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:right;"> 2375 &lt;/td>
-&lt;td style="text-align:left;"> Delphinium barbeyi &lt;/td>
-&lt;td style="text-align:left;"> Bombus flavifrons &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:right;"> 2376 &lt;/td>
-&lt;td style="text-align:left;"> Mertensia fusiformis &lt;/td>
-&lt;td style="text-align:left;"> Colias sp. &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:right;"> 2377 &lt;/td>
-&lt;td style="text-align:left;"> Delphinium barbeyi &lt;/td>
-&lt;td style="text-align:left;"> Bombus flavifrons &lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>&amp;hellip; but we want to turn that into a bipartite matrix.
-One approach for coding that transformation is in the code chunk below, focused on the &lt;code>tidyverse&lt;/code> way of doing things.&lt;/p>
-&lt;p>The general approach is:&lt;/p>
-&lt;ol>
-&lt;li>&lt;em>group&lt;/em> our data by plant species and pollinator species&lt;/li>
-&lt;li>tally the number of visits for each pollinator species that plant species&amp;mdash;basically &amp;ldquo;collapsing&amp;rdquo; the rows that have the same plant-pollinator combinations and counting up how many interactions there were for each unique plant-pollinator combination&lt;/li>
-&lt;li>keeping the plants as rows, use the &lt;code>pivot_wider&lt;/code> function in &lt;code>dplyr&lt;/code> (part of the &lt;code>tidyverse&lt;/code>) to create a new column for each pollinator species, filling in for each plant-pollinator combination the number of interactions we calculated in the prior step
+&lt;h2 id="from-data-to-networks">From data to networks&lt;/h2>
+&lt;p>Two practical skills underpin everything on this page: converting empirical data
+into a bipartite matrix, and visualizing networks. Both are covered in the
+pre-workshop modules, and are &lt;strong>not repeated here&lt;/strong>:&lt;/p>
 &lt;ul>
-&lt;li>in doing this step, we are also &amp;ldquo;collapsing&amp;rdquo; all of the plant rows such that there will be one row per plant&lt;/li>
+&lt;li>&lt;a href="https://models4data2theory.github.io/courses/prework_edgelist-to-network/">Prework &amp;ndash; Edgelist-to-Network&lt;/a>: turning
+an edge list (the usual field or metabarcoding data format) into a bipartite
+matrix with plants as rows and pollinators as columns, and getting it into the
+&lt;code>matrix&lt;/code> form that the &lt;code>bipartite&lt;/code> package expects (plant names as row names,
+numeric cells).&lt;/li>
+&lt;li>&lt;a href="https://models4data2theory.github.io/courses/prework_network-visualization/">Prework &amp;ndash; Network Visualization&lt;/a>:
+network diagrams (&lt;code>plotweb()&lt;/code>) and matrix depictions (&lt;code>visweb()&lt;/code>), why the same
+network can be drawn in $R! \times C!$ different ways, and how &amp;ldquo;packing&amp;rdquo; a
+matrix (sorting rows and columns by &lt;em>degree&lt;/em>) standardizes the depiction and
+makes nestedness visible.&lt;/li>
 &lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;p>Let&amp;rsquo;s see this in action. We&amp;rsquo;ll start with the data frame called &lt;code>edgelist&lt;/code> which is exactly the same as the data in the table above.
-For the first two steps, here is how we do that, and what it looks like:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># step 1:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">weighted&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">edgelist&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">group_by&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">plant&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pollinator&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># step 2:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">tally&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># show in nicely-formatted table:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">kable&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">weighted&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">row.names&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">FALSE&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">kable_styling&lt;/span>&lt;span class="p">(&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">full_width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">FALSE&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;left&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">bootstrap_options&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;condensed&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;table class="table table-condensed" style="width: auto !important; ">
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left;"> plant &lt;/th>
-&lt;th style="text-align:left;"> pollinator &lt;/th>
-&lt;th style="text-align:right;"> n &lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left;"> Delphinium barbeyi &lt;/td>
-&lt;td style="text-align:left;"> Bombus appositus &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Delphinium barbeyi &lt;/td>
-&lt;td style="text-align:left;"> Bombus flavifrons &lt;/td>
-&lt;td style="text-align:right;"> 3 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Heracleum spondophyllum &lt;/td>
-&lt;td style="text-align:left;"> Thricops sp. &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Mertensia fusiformis &lt;/td>
-&lt;td style="text-align:left;"> Bombus flavifrons &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Mertensia fusiformis &lt;/td>
-&lt;td style="text-align:left;"> Colias sp. &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>the new &lt;code>weighted&lt;/code> dataframe is displayed above.
-You&amp;rsquo;ll see that it created a new column called &amp;ldquo;&lt;strong>n&lt;/strong>&amp;rdquo; that contains the tallied the number of times each unique interaction occurred.
-It also &amp;ldquo;collapsed&amp;rdquo; the rows into unique plant-pollinator interactions;
-previously there were 7 rows, and now there are 5, because one of the unique interactions (between &lt;em>Bombus flavifrons&lt;/em> and &lt;em>Delphinium barbeyi&lt;/em>) happened three times.&lt;/p>
-&lt;p>Moving from this, let&amp;rsquo;s check out the next step, where where using the &lt;code>pivot_wider&lt;/code> function we pivot the single &amp;ldquo;pollinator&amp;rdquo; column to form one new column for each unique entry in the old column.
-We will fill in the values for each row-by-column combination from the tallied interactions (the new &amp;ldquo;&lt;strong>n&lt;/strong>&amp;rdquo; column).&lt;/p>
-&lt;p>Again there are 5 rows in this new matrix, with 4 unique values (&lt;em>Bombus flavifrons&lt;/em> is represented twice), so we expect to see four pollinator columns emerge in the next step.
-Similarly, this should collapse the 5 current plant rows into 3, one for each unique plant species. So we should see a 3 row &lt;code>\(\times\)&lt;/code> 4 column bipartite matrix when we are done.&lt;/p>
-&lt;p>This is how to get there:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">bipart.net&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">weighted&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">pivot_wider&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">id_cols&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;plant&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="c1"># plants are the rows&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">names_from&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">pollinator&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1"># names of new columns: unique pollinators&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">values_from&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">n&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1"># values in the matrix from tallied interactions&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">values_fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># if no value, enter zero (otherwise NA)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># show in nicely-formatted table: &lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">kable&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bipart.net&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">row.names&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">FALSE&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">kable_styling&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">full_width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">FALSE&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;left&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">bootstrap_options&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;condensed&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;table class="table table-condensed" style="width: auto !important; ">
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left;"> plant &lt;/th>
-&lt;th style="text-align:right;"> Bombus appositus &lt;/th>
-&lt;th style="text-align:right;"> Bombus flavifrons &lt;/th>
-&lt;th style="text-align:right;"> Thricops sp. &lt;/th>
-&lt;th style="text-align:right;"> Colias sp. &lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left;"> Delphinium barbeyi &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 3 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Heracleum spondophyllum &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Mertensia fusiformis &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>looks just as hoped for: a 3-row by 4-column matrix. Note in the code above that we specified that &lt;code>values_fill = 0&lt;/code>.
-We did this because otherwise &lt;code>R&lt;/code> would not know how to fill in the combinations for which it doesn&amp;rsquo;t have any information, and so it would fill them in with &lt;code>NA&lt;/code> if we left that argument out.&lt;/p>
-&lt;h4 id="Ex2">Exercise 2&lt;/h4>
-&lt;p>Edge List to bipartite network&lt;/p>
-&lt;p>Let&amp;rsquo;s practice turning an edge list into a bipartite network; this time we will do it at a (slightly) larger scale. We are going to use data collected by Berry&amp;rsquo;s Community Ecology class at the University of Washington in spring 2022, at the UW Medicinal Plant Garden (just outside the Life Sciences Building, where the Brosi Lab is based). The data for pollinators were collected at the family level.&lt;/p>
-&lt;p>Download the data file: &lt;a href="https://models4data2theory.github.io/courses_data/Networks/medgarden.csv">medgarden.csv&lt;/a>.
-Import it and follow the steps above to generate a bipartite network. Call the resulting dataframe &lt;strong>&lt;code>bipartite.med&lt;/code>&lt;/strong>.&lt;/p>
-&lt;p>You should get this bipartite network back:&lt;/p>
-&lt;table class="table table-condensed" style="width: auto !important; ">
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left;"> plant &lt;/th>
-&lt;th style="text-align:right;"> Osmia &lt;/th>
-&lt;th style="text-align:right;"> Bombus &lt;/th>
-&lt;th style="text-align:right;"> Syrphid &lt;/th>
-&lt;th style="text-align:right;"> Halictid &lt;/th>
-&lt;th style="text-align:right;"> Muscid &lt;/th>
-&lt;th style="text-align:right;"> Ant &lt;/th>
-&lt;th style="text-align:right;"> Hummingbird &lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left;"> Borago officinalis &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Camassia leichtlinii &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 2 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Catharanthus roseus &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Coclearia afficinalis &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Eriogonum umbellatum &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 2 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Erysimum asperum &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 4 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 2 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Gilia capitata &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Glaucium flavum &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Helleborus orientalis &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Heuchera micrantha &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Heuchera sanguinea &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Horminum pyrenaicum &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 3 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Hydrophyllum virginiana &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 4 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Iris douglasiana &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Polemonium reptans &lt;/td>
-&lt;td style="text-align:right;"> 3 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 2 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Polygonum bisorta &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 3 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Rhodiola rosea &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Ruta graveolens &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 2 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Sedua spathulifolium &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Smilacina stellata &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Thymus leucospermus &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 2 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Tragopogon porrifolius &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left;"> Wyethia angustifolia &lt;/td>
-&lt;td style="text-align:right;"> 1 &lt;/td>
-&lt;td style="text-align:right;"> 6 &lt;/td>
-&lt;td style="text-align:right;"> 2 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;td style="text-align:right;"> 0 &lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3 id="data-formatting">Data formatting&lt;/h3>
-&lt;p>We have successfully achieved our objective of converting our edge list to a bipartite network.
-Still, if we want to use those data with the bipartite package we will need to do a little bit of extra formatting, as bipartite expects the data in matrix form (not a tibble or dataframe) and with the plant names as row names, not a separate column (matrices in R can only contain numeric values).
-Here is one way to do that (there are certainly more concise ways to code this):&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># save plant names&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">plant&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">bipart.med&lt;/span>&lt;span class="o">$&lt;/span>&lt;span class="n">plant&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># remove plant column&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">bipart.med&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">bipart.med[&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="m">-1&lt;/span>&lt;span class="n">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># convert to matrix&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">bipart.med&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">as.matrix&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bipart.med&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># add plants to row names&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">row.names&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">bipart.med&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">plant&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># remove `plant` variable (just to keep workspace clean)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">rm&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">plant&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="visualization">Visualization&lt;/h2>
-&lt;!-- 1.1.2 BB: visualizing networks; packing matrices as a means of standardizing their display etc. -->
-&lt;p>At the beginning of our materials we covered the two basic ways of visualizing networks, through network diagrams (which show links as lines between nodes) and in matrix format (where each node is a row and/or a column).
-While understanding those two basic formats is foundationally important for working with networks, visualization is a large and complex topic.
-Here, in the interest of time, we will cover only one additional facet:
-how to standardize matrix depictions of networks, with a focus on bipartite networks.&lt;/p>
-&lt;h3 id="matrix-depictions">Matrix depictions&lt;/h3>
-&lt;p>What is the difference between these two matrices?&lt;/p>
-&lt;p>&lt;img src="https://models4data2theory.github.io/courses/wkshp_networks_files/figure-html/different depictions same matrix-1.png" width="672" />&lt;img src="https://models4data2theory.github.io/courses/wkshp_networks_files/figure-html/different depictions same matrix-2.png" width="672" />&lt;/p>
-&lt;p>They look pretty different, huh?
-The second one gives off some distressed Jack-O-Lantern vibes&amp;hellip;&lt;/p>
-&lt;p>Perhaps surprisingly, these are two different visualizations of the &lt;em>exact same&lt;/em> network! How can that be?&lt;/p>
-&lt;p>Ultimately, as long as each interaction is recorded faithfully, we can move around the order of entire rows and entire columns and it is still the same network.
-If we re-plot the two figures above, including the row and column labels, we can perhaps see that more easily:&lt;/p>
-&lt;p>&lt;img src="https://models4data2theory.github.io/courses/wkshp_networks_files/figure-html/different depictions same matrix II-1.png" width="672" />&lt;img src="https://models4data2theory.github.io/courses/wkshp_networks_files/figure-html/different depictions same matrix II-2.png" width="672" />&lt;/p>
-&lt;p>With the row and column labels, you can confirm that the integrity of each interaction is maintained through both of these depictions.
-For example, row &lt;code>\(j\)&lt;/code> interacts with column 7 in both depictions, and you could hypothetically go through and confirm that for each of the 69 unique interactions in this made-up example (if you were really bored, that is).
-To get more detailed without having to go interaction-by-interaction, row &lt;code>\(a\)&lt;/code> interacts with columns 15 through 24, and this is easy to confirm in both graphs; it&amp;rsquo;s just that the column order is different between the two.&lt;/p>
-&lt;p>Thinking about this, there is a &lt;em>very&lt;/em> large number of ways that we could depict the same network&amp;hellip;
-if &lt;code>\(R\)&lt;/code> were the number of rows and &lt;code>\(C\)&lt;/code> the number of columns, then we could represent that network in &lt;code>\(R! \times C!\)&lt;/code> ways.
-For the example above with 24 rows and 24 columns, that is 24! &lt;code>\(\times\)&lt;/code> 24!, or more than 3 &lt;code>\(\times\)&lt;/code> &lt;code>\(10^{47}\)&lt;/code>.
-In other words, an unfathomably gigantic number of ways.
-Put another way, for a 100 &lt;code>\(\times\)&lt;/code> 100 network, this value is too large for R to calculate.&lt;/p>
-&lt;p>With so many potential options, we would ideally like to have a way to &lt;em>standardize&lt;/em> how we depict a network in terms of the arrangement of the rows and columns.
-Thankfully, there is a clear option in this regard
-(at least when it comes to bipartite networks):
-we sort the rows and the columns of the matrix by the &lt;em>degree&lt;/em> or number of connections that each node has.
-We sort such that the most-generalist (highest degree) row is at the top, and the most-generalist column is at the left.
-This depiction maximizes our ability to detect &lt;em>nestedness&lt;/em> in our networks (more on that in the next section), and some researchers refer to this arrangement as &amp;ldquo;packing&amp;rdquo; a matrix.&lt;/p>
-&lt;p>When visualizing bipartite networks as matrices, an easy option is to use the &lt;code>visweb&lt;/code> function in the &lt;code>bipartite&lt;/code> library for R.
-&lt;code>visweb&lt;/code> includes options for how you display a network.
-If your network were called &amp;ldquo;myweb&amp;rdquo;, you could call the below to plot the rows and columns in the order they are in the dataset (i.e. no rearrangement):&lt;/p>
-&lt;p>&lt;code>visweb(myweb, type = &amp;quot;none&amp;quot;)&lt;/code>&lt;/p>
-&lt;p>If you want to standardize (order the rows and columns) by the total count of interactions for a particular taxon, you can instead use the bipartite default:&lt;/p>
-&lt;p>&lt;code>visweb(myweb, type = &amp;quot;nested&amp;quot;)&lt;/code>&lt;/p>
-&lt;p>Unfortunately, the bipartite default is not really the ideal way to see nestedness, which is instead to sort by degree or number of links per node
-(not total number of observed interactions).
-Because of this, some researchers in the bipartite network realm strongly prefer to order by degree instead of interaction count.
-To do that, you&amp;rsquo;ll have to code it yourself.
-It&amp;rsquo;s really not hard;
-some example code is below (and for aficionados of concise code, it would be straightforward to collapse this down into three lines of code).&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">rows&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">rowSums&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">mat&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="m">0&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># calculate plant degrees&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">cols&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">colSums&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">mat&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="m">0&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># calculate pollinator degree&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">roworder&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">order&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">rows&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">decreasing&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">TRUE&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># order plants by degree&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">colorder&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">order&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">cols&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">decreasing&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="kc">TRUE&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># order pollinators by degree&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">mat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">mat[roworder&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">colorder]&lt;/span> &lt;span class="c1"># re-order rows and cols in matrix&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>To display this, you would have to run this code and then plot with no arrangement:&lt;/p>
-&lt;p>&lt;code>visweb(myweb, type = &amp;quot;none&amp;quot;)&lt;/code>&lt;/p>
-&lt;p>Finally, &lt;code>visweb&lt;/code> includes a third option, &amp;ldquo;diagonal&amp;rdquo; arrangement, which maximizes the number of interactions occurring along the diagonal of the bipartite matrix.
-While a non-standard way to depict matrices, it is helpful for seeing modularity (more on that just below) or compartments in the matrix.
-You can do that via this command:&lt;/p>
-&lt;p>&lt;code>visweb(myweb, type = &amp;quot;diagonal&amp;quot;)&lt;/code>&lt;/p>
-&lt;h4 id="Ex3">Exercise 3&lt;/h4>
-&lt;p>Use the &lt;a href="data/networks/medgarden.csv">medgarden.csv&lt;/a> data you put into matrix form, above&lt;/p>
-&lt;ul>
-&lt;li>plot via &lt;code>visweb&lt;/code>:
-&lt;ul>
-&lt;li>with &lt;code>type = &amp;quot;none&amp;quot;&lt;/code>&lt;/li>
-&lt;li>with &lt;code>type = &amp;quot;nested&amp;quot;&lt;/code>&lt;/li>
-&lt;li>with &lt;code>type = &amp;quot;diagonal&amp;quot;&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>re-order the matrix by plant and pollinator degree using the code included above (or your own variant if you prefer)&lt;/li>
-&lt;li>re-plot with &lt;code>type = &amp;quot;none&amp;quot;&lt;/code>;
-the newly packed data should closely resemble the &lt;code>type = &amp;quot;nested&amp;quot;&lt;/code> network&lt;/li>
-&lt;/ul>
+&lt;p>From here on we assume your data are already in that standardized matrix form.
+The &lt;code>medgarden.csv&lt;/code> dataset built in the Edgelist-to-Network prework is reused in
+an exercise below.&lt;/p>
 &lt;!-- Berry section ends here-->
 &lt;!-- ======================================= -->
 &lt;h2 id="metrics-of-structure">Metrics of structure&lt;/h2>
@@ -1531,21 +1091,21 @@ the newly packed data should closely resemble the &lt;code>type = &amp;quot;nest
 &lt;h3 id="connectance">Connectance&lt;/h3>
 &lt;p>Connectance measures the proportion of potential interactions that are realized in the network (&lt;em>i.e.&lt;/em>, the number of different interactions observed as a fraction of the total number of interactions that could possibly occur).
 Thus, connectance ranges between 0 (no connections between any species) and 1 (every species interacts with every other species).
-In unipartite networks, connectance is calculated by dividing the number of realized interactions (or links connecting species) &lt;code>\(L\)&lt;/code> by the square of the number of nodes &lt;code>\(S\)&lt;/code> in the network, which represents the total number of interactions if all species were fully connected to one another, including themselves.
-So, &lt;code>\(C=L/S^2\)&lt;/code>.
+In unipartite networks, connectance is calculated by dividing the number of realized interactions (or links connecting species) $L$ by the square of the number of nodes $S$ in the network, which represents the total number of interactions if all species were fully connected to one another, including themselves.
+So, $C=L/S^2$.
 However, in a bipartite network, nodes from different sets cannot interact.
 Which should be the expression for connectance in a bipartite network?&lt;/p>
-&lt;h4 id="Ex4">Exercise 4&lt;/h4>
+&lt;h4 id="Ex2">Exercise 2&lt;/h4>
 &lt;p>The denominator of the connectance formula represents the total number of possible interactions in the network, if all species were fully connected to one another.
 What is the total number of potential interactions in a bipartite network such as a plant-pollinator one?&lt;/p>
-&lt;h4 id="Ex5">Exercise 5&lt;/h4>
+&lt;h4 id="Ex3">Exercise 3&lt;/h4>
 &lt;p>Calculate the connectance of the bipartite network graph from &lt;a href="#Ex1">Exercise 1&lt;/a> using the formula you derived in &lt;a href="#Ex2">Exercise 2&lt;/a>.&lt;/p>
 &lt;h3 id="nestedness">Nestedness&lt;/h3>
 &lt;p>In a nested network, the interactions of the more specialized species are subsets of the interactions of the more generalized species.
 Another way to define nestedness is by saying that generalists tend to interact with both generalists and specialists while specialists tend to interact with mostly generalists.
 Note that the concept of specialist species in a network context is best interpreted as realized interactions and not necessarily as &amp;ldquo;true specialist&amp;rdquo; in the evolutionary sense.
 One particular species can be recorded as specialist (i.e., with only one interaction) in a particular day/week/season but then be recorded as a generalist in the next day/week/season.&lt;/p>
-&lt;h4 id="Ex6">Exercise 6&lt;/h4>
+&lt;h4 id="Ex4">Exercise 4&lt;/h4>
 &lt;p>Given the two example networks below, which do you consider to have higher nestedness and why?&lt;/p>
 &lt;p>
 &lt;figure >
@@ -1555,7 +1115,7 @@ One particular species can be recorded as specialist (i.e., with only one intera
 &lt;/p>
 &lt;h3 id="modularity">Modularity&lt;/h3>
 &lt;p>A network is said to have high modularity when its interactions are compartmentalized into modules, whose species interact more among themselves than with species belonging to other modules.&lt;/p>
-&lt;h4 id="Ex7">Exercise 7&lt;/h4>
+&lt;h4 id="Ex5">Exercise 5&lt;/h4>
 &lt;p>Given the two example networks of &lt;a href="#Ex4">Exercise 4&lt;/a>, which do you consider to have higher modularity and why?&lt;/p>
 &lt;!-- Berry start-->
 &lt;h3 id="calculating-metrics">Calculating metrics&lt;/h3>
@@ -1572,11 +1132,11 @@ We can do the same thing for modularity (note: modularity can take some time to 
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">index&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;modularity&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;pre tabindex="0">&lt;code>## modularity Q
 ## 0.4301558
-&lt;/code>&lt;/pre>&lt;h4 id="Ex8">Exercise 8&lt;/h4>
-&lt;p>Use the &lt;a href="data/networks/medgarden.csv">medgarden.csv&lt;/a> data you put into matrix form, above.
+&lt;/code>&lt;/pre>&lt;h4 id="Ex6">Exercise 6&lt;/h4>
+&lt;p>Use the &lt;code>medgarden.csv&lt;/code> data in matrix form, from the &lt;a href="https://models4data2theory.github.io/courses/prework_edgelist-to-network/">Edgelist-to-Network prework&lt;/a>.
 Calculate:&lt;/p>
 &lt;ul>
-&lt;li>&lt;code>\(H_2'\)&lt;/code> (network-level specialization); in &lt;code>networklevel&lt;/code>, use &lt;code>index = &amp;quot;H2&amp;quot;&lt;/code>&lt;/li>
+&lt;li>$H_2&amp;rsquo;$ (network-level specialization); in &lt;code>networklevel&lt;/code>, use &lt;code>index = &amp;quot;H2&amp;quot;&lt;/code>&lt;/li>
 &lt;li>connectance&lt;/li>
 &lt;/ul>
 &lt;!-- Berry end-->
@@ -1589,8 +1149,8 @@ The best known of those relationships is the negative correlation between networ
 &lt;div class="w-100" >&lt;img src="https://models4data2theory.github.io/images/networks/CvsS.bmp" alt="CvsS" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;/p>
-&lt;h4 id="Ex9">Exercise 9&lt;/h4>
-&lt;p>Given the mathematical formula of connectance, &lt;code>\(C = L/(P \cdot A)\)&lt;/code>, how would you explain this well-known negative relationship between species richness, &lt;code>\(S = P + A\)&lt;/code>, and connectance?&lt;/p>
+&lt;h4 id="Ex7">Exercise 7&lt;/h4>
+&lt;p>Given the mathematical formula of connectance, $C = L/(P \cdot A)$, how would you explain this well-known negative relationship between species richness, $S = P + A$, and connectance?&lt;/p>
 &lt;p>Other known relationships include the positive correlation between connectance and nestedness, the negative correlation between connectance and modularity, the positive correlation between species richness and nestedness, and the negative relationship between species richness and modularity.&lt;/p>
 &lt;p>
 &lt;figure >
@@ -1602,10 +1162,7 @@ The best known of those relationships is the negative correlation between networ
 For instance, if you are investigating how urbanization impacts the network structure of plant-pollinator communities and observe a significant negative impact of urbanization on species richness, caution is needed when comparing other network metrics across the urbanization gradient.
 This is due to the established relationship between species richness and various network metrics, which could potentially obscure the effect of urbanization by influencing connectance and modularity positively and nestedness negatively.
 That is, because decreased species richness increases connectance and modularity and decreases nestedness you may infer that it was urbanization which caused those effects on network structure but most likely it is the confounding effect of decreased species richness.&lt;/p>
-&lt;p>In the past, we all used &lt;code>\(z\)&lt;/code>-scores to compare network metrics across networks, but there has been recent criticism to using z-scores for that purpose (Song et al 2017, Journal of Animal Ecology).
-Song et al proposed a new nestedness metric, &lt;code>\(NODFc\)&lt;/code>, which can be calculated using the R package &amp;ldquo;maxnodf&amp;rdquo; (Hoeppke &amp;amp; Simmons 2021, Methods in Ecology and Evolution) to compare nestedness across networks.
-Other researchers have used statistical analyses such as generalized linear mixed models to disentangle the effect of a specific treatment from species richness on other network metrics.
-Covering these recent alternatives and the criticism of using &lt;code>\(z\)&lt;/code>-scores is beyond the scope of this course but it is important that you are aware of these recent developments and, most importantly, that you are aware of the known relationships between network metrics so you consider them when making inferences based on your network analyses.&lt;/p>
+&lt;p>These correlations are exactly why comparing metrics &lt;em>between&lt;/em> networks (across a gradient or a treatment) is hard, and why it needs its own approach&amp;mdash;see &lt;a href="#comparing-networks">Comparing networks&lt;/a>, below. The short version: historically people used $z$-scores (an empirical metric standardized against its own null distribution) to make metrics comparable across datasets, but Song et al. (2017, &lt;em>Journal of Animal Ecology&lt;/em>) showed the $z$-score itself depends on network size. Song et al. offered a replacement, but only for nestedness ($NODF_c$, via the &lt;code>maxnodf&lt;/code> package; Hoeppke &amp;amp; Simmons 2021, &lt;em>Methods in Ecology and Evolution&lt;/em>). The more general fix we cover below is downsampling.&lt;/p>
 &lt;!-- Fernanda section ends here-->
 &lt;!-- ======================================= -->
 &lt;!-- ======================================= -->
@@ -1617,6 +1174,11 @@ Nestedness is a good example, because we might actually expect networks to displ
 Most communities display a very skewed distribution of abundances, with one or just a few species having very high abundance, and then a lot of species with low abundances. If we have such an abundance distribution for both guilds (e.g. plant and pollinator species), and plants and pollinators are interacting with one another purely at random, we would expect that rare pollinator species would be most likely to interact with common plant species, and that rare plant species would be most likely visited by common pollinators.
 This is especially true if we are sampling the network on a per-area basis (in which we would log much more observation time on the most common plants).
 Taken together, the elements of this scenario&amp;mdash;which with the exception of the random interactions, is pretty much the case in most plant-pollinator networks&amp;mdash;would lead to a very nested pattern.&lt;/p>
+&lt;p>The two figures below make that concrete (they use the same code as the workshop presentation, with made-up data). First, a skewed abundance distribution for each guild&amp;mdash;a few common species, many rare ones&amp;mdash;treating each species&amp;rsquo; abundance as its total number of interactions:&lt;/p>
+&lt;img src="https://models4data2theory.github.io/courses/wkshp_networks_files/figure-html/nestedness abundance bars-1.png" alt="" width="960" />
+&lt;p>Now treat each species&amp;rsquo; abundance as its interaction total, put those distributions on the margins of the plant-by-pollinator matrix, and fill the matrix by assigning interactions &lt;em>completely at random&lt;/em>&amp;mdash;each one to a plant and a pollinator with probability proportional to their abundances. Sorting rows and columns from commonest to rarest, common&amp;ndash;common cells fill in and rare&amp;ndash;rare cells stay empty:&lt;/p>
+&lt;img src="https://models4data2theory.github.io/courses/wkshp_networks_files/figure-html/nestedness passive web-1.png" alt="" width="70%" />
+&lt;p>The result is a nested pattern that arose from abundances and random sampling alone, with no trait matching or other structuring mechanism. That is exactly why it is worth testing whether a real network is &lt;em>more&lt;/em> nested than this.&lt;/p>
 &lt;p>Given that, we might ask if a network is more nested than we would expect it to be relative to chance alone. We can do this with &lt;strong>null model&lt;/strong> simulations.
 What exactly &lt;em>is&lt;/em> a null model?
 It&amp;rsquo;s a concept that has been surprisingly difficult to pin down, but the definition provided in the book &amp;ldquo;Null Models in Ecology&amp;rdquo; by Nick Gotelli &amp;amp; Gary Graves (1996, Smithsonian Institution Press, Washington, D.C.) is a helpful one:&lt;/p>
@@ -1628,58 +1190,76 @@ Instead, plants and pollinators have traits that structure their interactions; p
 But, we &lt;em>can&lt;/em> create a null model where we assume interactions are happening randomly, repeat that random interaction assignment many times, and then assess if our actual data are different (e.g., more or less nested) than we would expect based on random interactions.
 The basic statistical idea here is a &lt;em>permutation test&lt;/em>, for those of you familiar with that concept.&lt;/p>
 &lt;h3 id="alternatives">Alternatives&lt;/h3>
-&lt;p>But that sounds pretty complicated (and to be honest, it is not the most straightforward thing ever)&amp;mdash;so how do we actually implement null models in practice? Luckily, the &lt;code>bipartite&lt;/code> package has built-in algorithms to create null models (and there are other R packages that do as well, notably &lt;code>vegan&lt;/code>), so you don&amp;rsquo;t have to code these by hand (phew!). But because there are different kinds of null models, it is critically important to understand what is going on &amp;ldquo;under the hood&amp;rdquo; of the algorithm so that you can apply the right null model to your analysis.&lt;/p>
+&lt;p>But that sounds pretty complicated (and to be honest, it is not the most straightforward thing ever)&amp;mdash;so how do we actually implement null models in practice? Luckily, the &lt;code>bipartite&lt;/code> package has built-in algorithms to create null models (and there are other R packages that do as well, notably &lt;code>vegan&lt;/code>), so you don&amp;rsquo;t have to code these by hand (phew!). But because there are different kinds of null models, it is critically important to understand what is going on &amp;ldquo;under the hood&amp;rdquo; of the algorithm so that you can apply the right null model to your analysis. Specifically, &lt;strong>each algorithm holds certain features of the empirical network constant and lets the rest vary&lt;/strong>&amp;mdash;and &lt;em>which&lt;/em> features it holds constant determines which questions it can legitimately answer.&lt;/p>
+&lt;p>A quick terminology note, because the distinction matters a lot here:&lt;/p>
+&lt;ul>
+&lt;li>a species&amp;rsquo; &lt;strong>degree&lt;/strong> is its number of interaction &lt;em>partners&lt;/em> (how many species in the other guild it interacts with at least once)&lt;/li>
+&lt;li>a species&amp;rsquo; &lt;strong>marginal total&lt;/strong> (or &lt;strong>interaction total&lt;/strong>) is its row or column &lt;em>sum&lt;/em>&amp;mdash;the number of interactions recorded for it, counting repeats&lt;/li>
+&lt;/ul>
+&lt;p>For a weighted network these are different numbers, and the common null-model algorithms preserve the &lt;em>marginal totals&lt;/em>, not the degrees. (The workshop presentation and this page use &amp;ldquo;marginal total&amp;rdquo; / &amp;ldquo;interaction total&amp;rdquo; throughout for that reason.)&lt;/p>
 &lt;h3 id="simplest-null-model">Simplest null model&lt;/h3>
 &lt;p>Let&amp;rsquo;s start by thinking about the simplest possible way we could create a null model. We want to assume that interactions are happening at random.
 Perhaps a first-pass way of doing this would be to say something along the lines of &amp;ldquo;well we have our plant species and our pollinator species,
-i.e. our bipartite matrix, and we recorded a total of &lt;code>\(N\)&lt;/code> interactions in our empirical data&amp;hellip; all we have to do is randomly assign each interaction to one cell in our bipartite matrix, and we&amp;rsquo;ll end up with a randomized network&amp;rdquo;.
+i.e. our bipartite matrix, and we recorded a total of $N$ interactions in our empirical data&amp;hellip; all we have to do is randomly assign each interaction to one cell in our bipartite matrix, and we&amp;rsquo;ll end up with a randomized network&amp;rdquo;.
 That would be one way to do it, but it has some pretty major downsides.
-One downside is that when you repeat that procedure, especially if your &lt;code>\(N\)&lt;/code> is relatively small, you are likely to have one or more species that have no interactions and thus would drop out of the network.
+One downside is that when you repeat that procedure, especially if your $N$ is relatively small, you are likely to have one or more species that have no interactions and thus would drop out of the network.
 Because some network metrics are sensitive (sometimes &lt;em>very&lt;/em> sensitive) to network size / species richness, that&amp;rsquo;s definitely not ideal. You could get around that downside, perhaps by first assigning one interaction to each row (a random column in that row), and then assessing if all columns have an interaction, and for any that are missing, assigning a random interaction to that column.
 Then you could assign all of the &amp;ldquo;leftover&amp;rdquo; interactions randomly as described above.&lt;/p>
-&lt;h3 id="constant-link-number">Constant link number&lt;/h3>
+&lt;h3 id="constant-link-number-shuffleweb">Constant link number: &lt;code>shuffle.web&lt;/code>&lt;/h3>
 &lt;p>Making sure the species richness stays constant is an important improvement over the first-pass method, but the sketch of a null model described above still ultimately has some problems.
 One key reason is that while the number of total &lt;em>interactions&lt;/em> is maintained, the sketch of the algorithm described above does not maintain the same number of &lt;em>links&lt;/em> in the network. Given a wide-open matrix in which to assign interactions, in particular such an algorithm will typically generate many more links than we would see in an empirical dataset, and that is also definitely not ideal.
 A &amp;ldquo;second-pass&amp;rdquo; null model would maintain the same number of interactions (as we suggested in the &amp;ldquo;first-pass&amp;rdquo; model), but would also maintain the number of links (and therefore hold &lt;em>connectance&lt;/em> constant).
-This is what the &lt;code>shuffle.web&lt;/code> algorithm in the &lt;code>bipartite&lt;/code> package does.
-This is an algorithm that has been used in some papers, e.g. Fortuna, M. A., and J. Bascompte. 2006. Habitat loss and the structure of plant-animal mutualistic networks. &lt;em>Ecology Letters&lt;/em> 9: 281-286.&lt;/p>
-&lt;h3 id="constant-degree">Constant degree&lt;/h3>
+This is what the &lt;code>shuffle.web&lt;/code> algorithm in the &lt;code>bipartite&lt;/code> package does: it reshuffles all of the cell values across the matrix.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>held constant:&lt;/strong> the grand total (number of interactions) and the number of filled cells&amp;mdash;and therefore &lt;em>connectance&lt;/em>&lt;/li>
+&lt;li>&lt;strong>not held constant:&lt;/strong> the marginal totals (row and column sums)&lt;/li>
+&lt;/ul>
+&lt;p>Because the marginal totals are free to vary, &lt;code>shuffle.web&lt;/code> tends to even them out: the common species no longer stay especially common. If you are testing &lt;em>nestedness&lt;/em>, that means the null networks are typically &lt;em>less&lt;/em> nested than a null that preserves the skew would be&amp;mdash;so an empirical network is more likely to come out looking significantly nested. The same caveat applies to any metric that is sensitive to the skew in marginal totals.&lt;/p>
+&lt;p>&lt;code>shuffle.web&lt;/code> has been used in some papers, e.g. Fortuna, M. A., and J. Bascompte. 2006. Habitat loss and the structure of plant-animal mutualistic networks. &lt;em>Ecology Letters&lt;/em> 9: 281-286.&lt;/p>
+&lt;h3 id="constant-marginal-totals-r2dtable">Constant marginal totals: &lt;code>r2dtable&lt;/code>&lt;/h3>
 &lt;p>Still, the &lt;code>shuffle.web&lt;/code> null model algorithm is not widely used these days.
 A major reason is that (again) some plants, and some pollinators, are much more common, and some are rare.
 And that skewed abundance distribution could be a &lt;em>big&lt;/em> driver of any nestedness we see in a system (as well as potentially other network metrics).
-To account for that, we can instead implement what we might call a &amp;ldquo;third-pass&amp;rdquo; algorithm that accounts for the empirically-observed number of interactions for each species, and holds those &amp;ldquo;marginal totals&amp;rdquo; constant.
+To account for that, we can instead implement what we might call a &amp;ldquo;third-pass&amp;rdquo; algorithm that holds each species&amp;rsquo; &lt;strong>marginal total&lt;/strong> (row or column sum) constant.
 In practice, this would be straightforward to do for just &lt;em>one&lt;/em> of the guilds in our network&amp;mdash;let&amp;rsquo;s say we do it for plants. We can take the total number of interactions for each plant species, and assign them randomly across the pollinators in the network. Easy-peasy.
 The problem is that we are trying to do this also at the same time for pollinators, and that is a lot trickier!
 Again, luckily we don&amp;rsquo;t have to code this by hand.
 This null model is implemented in the &lt;code>r2dtable&lt;/code> function in &lt;code>bipartite&lt;/code>.&lt;/p>
-&lt;h3 id="constant-link-number-and-degree">Constant link number and degree&lt;/h3>
-&lt;p>Taking our exploration of null models yet another step further, &lt;code>r2dtable&lt;/code> is very helpful in terms of accounting for the number of interactions that each species has.
-But accounting just for that does not necessarily give us the same number of &lt;em>links&lt;/em> (or put another way, &lt;em>connectance&lt;/em>) displayed by our data, as we described above.
-So a &amp;ldquo;fourth-pass&amp;rdquo; algorithm would hold multiple components constant relative to the empirical data:&lt;/p>
-&lt;ol>
-&lt;li>the total number of interactions in the whole network;&lt;/li>
-&lt;li>the degree of each plant and pollinator species; and&lt;/li>
-&lt;li>the number of links across the entire network / connectance.
-This is (at least theoretically) implemented in the &lt;code>swap.web&lt;/code> function in &lt;code>bipartite&lt;/code> and is a very commonly-used null model.
-This approach was first implemented in: Miklós, I. and Podani, J. (2004) Randomization of presence-absence matrices: comments and new algorithms. &lt;em>Ecology&lt;/em> 85, 86–92.&lt;/li>
-&lt;/ol>
+&lt;ul>
+&lt;li>&lt;strong>held constant:&lt;/strong> every row sum and every column sum (the marginal totals), and hence the grand total&lt;/li>
+&lt;li>&lt;strong>not held constant:&lt;/strong> connectance (the number of filled cells)&lt;/li>
+&lt;/ul>
+&lt;p>This is essentially the null model implied by the skewed-abundance argument (and the figure) at the start of this section. It is the right choice if the metric you want to test with a null model &lt;em>is&lt;/em> connectance. The downside is that connectance is free to move, and&amp;mdash;as covered in &lt;a href="#relationships-among-metrics">Relationships among metrics&lt;/a>&amp;mdash;a shift in connectance drags nestedness, modularity, and specialization along with it. So if you are testing one of &lt;em>those&lt;/em>, an &lt;code>r2dtable&lt;/code> null can mislead. How can the row and column sums be fixed and yet connectance still change? The same marginal totals can be &lt;em>concentrated&lt;/em> onto a few partners or &lt;em>spread&lt;/em> across many; &lt;code>r2dtable&lt;/code> draws tend to spread interactions out more than a real (often lopsided) network, raising connectance. The effect is small when the empirical margins are very constraining, larger in realistically-sized networks&amp;mdash;worth checking if you use it.&lt;/p>
+&lt;h3 id="constant-marginal-totals-and-connectance-swapweb">Constant marginal totals and connectance: &lt;code>swap.web&lt;/code>&lt;/h3>
+&lt;p>Taking our exploration of null models yet another step further, &lt;code>r2dtable&lt;/code> accounts for the number of interactions each species has, but does not give us back the same &lt;em>connectance&lt;/em> as our data.
+So a &amp;ldquo;fourth-pass&amp;rdquo; algorithm holds both constant, relative to the empirical network:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>held constant:&lt;/strong> the grand total (number of interactions), every marginal total (row and column sum), &lt;em>and&lt;/em> connectance (the number of links)&lt;/li>
+&lt;li>&lt;strong>not held constant:&lt;/strong> essentially only &lt;em>which&lt;/em> cells the interactions land in, subject to the constraints above&lt;/li>
+&lt;/ul>
+&lt;p>This is implemented in the &lt;code>swap.web&lt;/code> function in &lt;code>bipartite&lt;/code> and is a very commonly-used null model.
+Because it is highly constrained, comparisons against it are more straightforward to interpret than comparisons against looser nulls. The flip side is that for small or highly structured networks there may be very few valid randomizations&amp;mdash;in the extreme, a square network whose plant and pollinator marginal totals are both ${n, n-1, \dots, 1}$ has exactly &lt;em>one&lt;/em> valid arrangement (perfectly nested). That is rarely an issue for empirical networks, but it is worth confirming your randomizations are actually distinct.
+This approach was first implemented in: Miklós, I. and Podani, J. (2004) Randomization of presence-absence matrices: comments and new algorithms. &lt;em>Ecology&lt;/em> 85, 86–92.&lt;/p>
 &lt;p>There are other approaches as well, for example the &lt;code>vaznull&lt;/code> function uses an approach proposed by Diego Vázquez et al. in 2007 (&lt;em>Oikos&lt;/em> 116: 1120-1127).
 This algorithm weights the probability of selecting a cell (interaction) in the matrix by the abundance (number of empirically observed interactions) of both the plant and the pollinator.
 While similar to the &lt;code>r2dtable&lt;/code> algorithm in that regard, it does not hold the row and column sums to be absolutely constant, even though they are weighted by interaction abundance.
-The &lt;code>vaznull&lt;/code> algorithm is also supposed to maintain equal or close-to-equal connectance, like &lt;code>swapweb&lt;/code>.&lt;/p>
+The &lt;code>vaznull&lt;/code> algorithm is also supposed to maintain equal or close-to-equal connectance, like &lt;code>swap.web&lt;/code>.&lt;/p>
 &lt;h3 id="comparing-null-models">Comparing null models&lt;/h3>
 &lt;p>Ultimately, however, it’s important to understand that every null model has drawbacks. In particular, more constrained is not always better.&lt;/p>
 &lt;p>The more things that are held constant, the fewer potential randomizations there are that can be done that meet all of the criteria.
 For some unusually structured networks (especially for small networks) the number of possible permutations becomes very small for highly constrained algorithms like &lt;code>swap.web&lt;/code>.
 Moreover, the &lt;code>swap.web&lt;/code> and &lt;code>vaznull&lt;/code> approaches have been criticized for biasing some &amp;ldquo;swaps&amp;rdquo; of interactions (i.e. some swaps are more likely than others, when they shouldn&amp;rsquo;t be).
 There is to our knowledge no &amp;ldquo;perfect&amp;rdquo; null model implementation but it&amp;rsquo;s also good to know that network null models are also implemented in other packages, notably there are &amp;gt;25 null model algorithms implemented in the &lt;code>vegan&lt;/code> package.
-To learn more, check out the documentation of the &lt;code>commsim&lt;/code> function: &lt;code>?vegan::commsimm&lt;/code>.&lt;/p>
+To learn more, check out the documentation of the &lt;code>commsim&lt;/code> function: &lt;code>?vegan::commsim&lt;/code>.&lt;/p>
 &lt;h3 id="graphical-implementation">Graphical implementation&lt;/h3>
-&lt;p>Let&amp;rsquo;s delve into how to use these algorithms in practice, starting by graphically implementing a null model analysis (we discuss how to calculate a &lt;code>\(p\)&lt;/code>-value for this procedure below).
+&lt;p>Let&amp;rsquo;s delve into how to use these algorithms in practice, starting by graphically implementing a null model analysis (we discuss how to calculate a $p$-value for this procedure below).
 For this graphical analysis, we&amp;rsquo;ll focus on NODF (again, a metric of nestedness) in the &amp;ldquo;Safariland&amp;rdquo; plant-pollinator network dataset that is included in the &lt;code>bipartite&lt;/code> package (code below altered slightly from Carsten Dormann&amp;rsquo;s &lt;code>bipartite&lt;/code> vignette). We will use the &lt;code>swap.web&lt;/code> algorithm and create 999 null networks to compare with the empirical &amp;ldquo;Safariland&amp;rdquo; dataset.
 We will plot the NODF value of the empirical dataset as a red vertical line, and display the distribution of the null networks with a density plot (we could just as easily display it as a histogram as an alternative, code included but commented out). Here is the code:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Load the &amp;#39;Safariland&amp;#39; data from the bipartite package&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">data&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># seed so the numbers quoted in the text match the rendered output&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">set.seed&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">20260904&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Iobs&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">networklevel&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Safariland&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">index&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;NODF&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">[[1]]&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
@@ -1701,12 +1281,12 @@ We will plot the NODF value of the empirical dataset as a red vertical line, and
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">abline&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">v&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Iobs&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">col&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;red&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">lwd&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">2&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/wkshp_networks_files/figure-html/null model NODF-1.png" width="672" />
-&lt;p>What we see is that the NODF (nestedness) value of the empirical dataset&amp;mdash;the red line&amp;mdash;is somewhere in the middle of the distribution of the null-model NODF scores.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;img src="https://models4data2theory.github.io/courses/wkshp_networks_files/figure-html/null model NODF-1.png" alt="" width="672" />
+&lt;p>What we see is that the NODF (nestedness) value of the empirical dataset&amp;mdash;the red line&amp;mdash;sits within the bulk of the null-model NODF distribution (it is a bit above the null mean, but well inside the spread of null values).
 That is, our empirical value would likely not be considered either more or less nested than chance alone.&lt;/p>
 &lt;h3 id="checking-results">Checking results&lt;/h3>
-&lt;p>Before we get to &lt;code>\(p\)&lt;/code>-values, it is always worth checking if the null model we are using actually has the properties that we want.
-Relative to the empirical network, the &lt;code>swap.web&lt;/code> algorithm is supposed to: 1) maintain the connectance; and 2) maintain the row and column sums.
+&lt;p>Before we get to $p$-values, it is always worth checking if the null model we are using actually has the properties that we want.
+Relative to the empirical network, the &lt;code>swap.web&lt;/code> algorithm is supposed to: 1) maintain the connectance; and 2) maintain the row and column sums (the marginal totals).
 Let&amp;rsquo;s check that it is actually doing that. We&amp;rsquo;ll calculate the mean and standard deviation of connectance across all 999 networks;
 we should be getting an exact or very close to exact match with our empirical connectance, and a standard deviation that is either zero (meaning all of the null networks have the exact same connectance) or very very small.
 We can then compare the row and column sums.&lt;/p>
@@ -1724,7 +1304,7 @@ We can then compare the row and column sums.&lt;/p>
 &lt;/code>&lt;/pre>&lt;p>Looks great: connectance is exactly the same between the two, and the standard deviation in connectance in the null networks is zero, meaning that each and every null network has the exact same connectance as our empirical network.&lt;/p>
 &lt;p>Still, it is worth trying this, because sometimes&amp;mdash;even in recent versions of &lt;code>bipartite&lt;/code>&amp;mdash;we have had the experience where these null models do not perform exactly as expected.
 In those cases, usually if we start a new R session and re-try, it works&amp;hellip; but again, it is definitely worth checking.&lt;/p>
-&lt;p>Now let&amp;rsquo;s check the species degrees (row and column sums).
+&lt;p>Now let&amp;rsquo;s check the marginal totals (the row and column sums).
 This one is just a little trickier, because there is one value for &lt;em>each species&lt;/em> in the network, not just one numeric value for the entire network (as there was with connectance).
 To account for that, we will put the values&amp;mdash;for both the row and the column sums&amp;mdash;into a data frame, with rows as species and a column for each of the empirical data and the means of the null models.
 A nice way to check this formally is then to subtract those two columns;
@@ -1836,8 +1416,8 @@ if they are exactly the same (as they should be), then the difference for each v
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>Looks great&amp;mdash;all of the row sums (plant degrees) are the same between the null models and the empirical network.
-Again, the code above included all of the column sums (pollinator degrees), as well as a column for difference between empirical row/column sums and mean null model row/col sums.
+&lt;p>Looks great&amp;mdash;all of the row sums (plant interaction totals) are the same between the null models and the empirical network.
+Again, the code above included all of the column sums (pollinator interaction totals), as well as a column for difference between empirical row/column sums and mean null model row/col sums.
 We could easily assess if there were any departures from zero with this line of code: &lt;code>which(comper$difference!=0)&lt;/code>.
 If it returns &lt;code>integer(0)&lt;/code> you know that they match perfectly (in this case, they do).&lt;/p>
 &lt;p>Of course, we didn&amp;rsquo;t check out the standard deviations here, so there is a small chance that there is some variation across the null models
@@ -1851,45 +1431,44 @@ but that is something that would be easy to add to the code above if you were in
 &lt;p>while we didn&amp;rsquo;t do an explicit check to see if the total number of interactions is the same between the two, we couldn&amp;rsquo;t maintain the same row and column sums and also have a different total number of interactions, so we are safe there as well.&lt;/p>
 &lt;h3 id="p-values">p-values&lt;/h3>
 &lt;p>Our first pass at the null model analysis above was graphical.
-We can formalize this test in a very straightforward way, calculating a &lt;code>\(p\)&lt;/code>-value by assessing the &lt;em>rank&lt;/em> of the empirical value relative to the nulls.
+We can formalize this test in a very straightforward way, calculating a $p$-value by assessing the &lt;em>rank&lt;/em> of the empirical value relative to the nulls.
 Let&amp;rsquo;s imagine a case in which the empirical value was more-nested than almost all of the nulls.
-If we were to generate 99 nulls, and out of the 100 total networks we were assessing (the 99 nulls + the 1 empirical network), the empirical network was the 5th-most nested (i.e. 4 null models were more nested), then the &lt;code>\(p\)&lt;/code>-value would be exactly 0.05 (5 out of 100).
+If we were to generate 99 nulls, and out of the 100 total networks we were assessing (the 99 nulls + the 1 empirical network), the empirical network was the 5th-most nested (i.e. 4 null models were more nested), then the $p$-value would be exactly 0.05 (5 out of 100).
 One way of conceptualizing that is that if the empirical value was part of the same distribution as our null models, we could assign it a rank in that distribution at random.
 And there would only be a 5% chance ($p$ = 0.05) that the rank would be 5th or more extreme (4th, 3rd, 2nd, or 1st).&lt;/p>
-&lt;p>Similarly, if the empirical network were the most-nested of all, the &lt;code>\(p\)&lt;/code>-value would be 0.01 (1 out of 100).
+&lt;p>Similarly, if the empirical network were the most-nested of all, the $p$-value would be 0.01 (1 out of 100).
 Two lessons from that:
-first, it makes the &lt;code>\(p\)&lt;/code>-value calculations slightly easier if you generate {some power of 10 minus 1} null models, e.g. 99 or 999 or 9,999 null models.
+first, it makes the $p$-value calculations slightly easier if you generate {some power of 10 minus 1} null models, e.g. 99 or 999 or 9,999 null models.
 Still, that is not strictly required.
-And second, the more null models you calculate, the greater the &lt;em>precision&lt;/em> you have in your &lt;code>\(p\)&lt;/code>-value. The examples above were for 99 null models;
-if you were to use 9,999 nulls and your empirical network were the top-ranked one, the &lt;code>\(p\)&lt;/code>-value would be 0.0001 (1 in 10,000).
+And second, the more null models you calculate, the greater the &lt;em>precision&lt;/em> you have in your $p$-value. The examples above were for 99 null models;
+if you were to use 9,999 nulls and your empirical network were the top-ranked one, the $p$-value would be 0.0001 (1 in 10,000).
 The caveat there is that the more null models you calculate, the longer it takes.
-Typically if you&amp;rsquo;re after assessing statistical significance in the traditional sense, you will want to use more than 99 null models, as that is pretty coarse, especially since you can have slight variations in the &lt;code>\(p\)&lt;/code>-value if you re-run your null models.
-Still, once you get to 999 you should (usually) know if the &lt;code>\(p\)&lt;/code>-value is less than the standard &lt;code>\(\alpha\)&lt;/code> value of 0.05. If you have a borderline value, you might want to amp up the resolution by running more null models.&lt;/p>
-&lt;p>It&amp;rsquo;s also worth noting that the &lt;code>\(p\)&lt;/code>-values as described above are for a one-tailed test.
+Typically if you&amp;rsquo;re after assessing statistical significance in the traditional sense, you will want to use more than 99 null models, as that is pretty coarse, especially since you can have slight variations in the $p$-value if you re-run your null models.
+Still, once you get to 999 you should (usually) know if the $p$-value is less than the standard $\alpha$ value of 0.05. If you have a borderline value, you might want to amp up the resolution by running more null models.&lt;/p>
+&lt;p>It&amp;rsquo;s also worth noting that the $p$-values as described above are for a one-tailed test.
 For example, if you had the &lt;em>a priori&lt;/em> hypothesis that your empirical network was &lt;em>more&lt;/em> nested than you would expect by chance, then you could assess that with a one-tailed test.
 If you wanted to see if your network was &lt;em>either&lt;/em> more or less nested than chance alone, for the example with 99 null models, if your empirical data were either the most or the least nested, there is a 1 in 100 chance of &lt;em>either&lt;/em> of those situations happening.
-So you would need to multiply the &lt;code>\(p\)&lt;/code>-value by 2 to compensate:
-there is a 2 in 100 chance of either occurring, so the &lt;code>\(p\)&lt;/code>-value for either situation would be not 0.01, but 0.02.&lt;/p>
+So you would need to multiply the $p$-value by 2 to compensate:
+there is a 2 in 100 chance of either occurring, so the $p$-value for either situation would be not 0.01, but 0.02.&lt;/p>
 &lt;h4 id="p-value-calculation">p-value calculation&lt;/h4>
-&lt;p>With all of that in place, we can write code to calculate the (two-tailed) &lt;code>\(p\)&lt;/code>-value.
-A few things to note:&lt;/p>
+&lt;p>With all of that in place, we can write code to calculate the (two-tailed) $p$-value. The standard, symmetric way to do this (Davison &amp;amp; Hinkley 1997; Manly 2007) is:&lt;/p>
 &lt;ul>
-&lt;li>we use &lt;code>length(which())&lt;/code> to assess rank, by seeing how many null values are more-extreme than our empirical value&lt;/li>
-&lt;li>to properly assess the rank of the empirical data, we add 1 to the result of &lt;code>length(which())&lt;/code>
-&lt;ul>
-&lt;li>if there were say 11 null values that were smaller, the rank of the empirical data would then be 12th (not 11th)&lt;/li>
-&lt;li>adding 1 also corrects the situation where the empirical value is the most-extreme, i.e. zero null values would be less than the empirical value. In that case, we want the p-value to be (say) 0.001 or 0.0001, not 0.&lt;/li>
+&lt;li>count how many nulls are &lt;strong>at least as extreme as&lt;/strong> the empirical value on the &lt;em>low&lt;/em> side, and separately on the &lt;em>high&lt;/em> side&lt;/li>
+&lt;li>add 1 to each count (this counts the empirical value itself, and keeps the smallest possible $p$-value at $1/(N+1)$ rather than 0), and divide by $N + 1$&lt;/li>
+&lt;li>take the smaller of those two one-tailed $p$-values and double it (two-tailed), capping at 1&lt;/li>
 &lt;/ul>
-&lt;/li>
-&lt;li>because this is a two-tailed test, we assess if the rank of the empirical value is greater than &lt;em>or&lt;/em> less than the mean of the null distribution (using &lt;code>min&lt;/code> below)&lt;/li>
-&lt;li>again because of the two-tailed nature of the test, we multiply the value by 2 at the end&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># two-tailed p-value for permutation test with null models&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">pval&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nf">min&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">length&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">which&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Inulls&lt;/span> &lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">Iobs&lt;/span>&lt;span class="p">)),&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">length&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">which&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Iobs&lt;/span> &lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">Inulls&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">/&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">length&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Iobs&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Inulls&lt;/span>&lt;span class="p">)))&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="m">2&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;pre tabindex="0">&lt;code>## p = 0.36
-&lt;/code>&lt;/pre>&lt;p>In this case, we can see that the &lt;code>\(p\)&lt;/code>-value is 0.36, i.e. the Safariland network is not significantly nested relative to chance.&lt;/p>
+&lt;p>Wrapped in a small function:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># two-tailed permutation / null-model p-value&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">two_tailed_p&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">function&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">nulls&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">obs&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">n&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">length&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">nulls&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">p_low&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="nf">sum&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">nulls&lt;/span> &lt;span class="o">&amp;lt;=&lt;/span> &lt;span class="n">obs&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">n&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">p_high&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="nf">sum&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">nulls&lt;/span> &lt;span class="o">&amp;gt;=&lt;/span> &lt;span class="n">obs&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">n&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">min&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">2&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="nf">min&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">p_low&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">p_high&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">pval&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">two_tailed_p&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Inulls&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Iobs&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;pre tabindex="0">&lt;code>## p = 0.352
+&lt;/code>&lt;/pre>&lt;p>In this case the $p$-value is 0.352&amp;mdash;the Safariland network is not significantly more or less nested than chance under the &lt;code>swap.web&lt;/code> null model. (This is the same &lt;code>two_tailed_p()&lt;/code> helper used in the 2026 networks exercises.)&lt;/p>
 &lt;h2 id="take-home">Take-home&lt;/h2>
 &lt;p>Together these examples point to a few take-home messages:&lt;/p>
 &lt;ul>
@@ -1900,13 +1479,13 @@ A few things to note:&lt;/p>
 &lt;/ul>
 &lt;/li>
 &lt;li>always check your null models to make sure they are performing as expected&lt;/li>
-&lt;li>use a two-tailed &lt;code>\(p\)&lt;/code>-value as a default, unless you have laid out an &lt;em>a priori&lt;/em> hypothesis that includes directionality (e.g., &amp;ldquo;I hypothesize that this network will be less-nested than chance alone would predict&amp;rdquo;)&lt;/li>
+&lt;li>use a two-tailed $p$-value as a default, unless you have laid out an &lt;em>a priori&lt;/em> hypothesis that includes directionality (e.g., &amp;ldquo;I hypothesize that this network will be less-nested than chance alone would predict&amp;rdquo;)&lt;/li>
 &lt;/ul>
-&lt;h4 id="Ex10">Exercise 10&lt;/h4>
+&lt;h4 id="Ex8">Exercise 8&lt;/h4>
 &lt;p>Analyze NODF for the &amp;ldquo;Safariland&amp;rdquo; dataset using the &lt;code>r2dtable&lt;/code> null model,&lt;/p>
 &lt;ol>
 &lt;li>graphically and&lt;/li>
-&lt;li>by calculating the (two-tailed) &lt;code>\(p\)&lt;/code>-value.
+&lt;li>by calculating the (two-tailed) $p$-value.
 You should get a qualitatively different result relative to using &lt;code>swap.web&lt;/code>.
 Describe where the empirical value falls out relative to the null models.&lt;/li>
 &lt;/ol>
@@ -1931,11 +1510,17 @@ The latter means you need to take a slightly different approach when calculating
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">FUN&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">function&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">){&lt;/span>&lt;span class="nf">nestednodf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">$&lt;/span>&lt;span class="n">statistic[3]&lt;/span>&lt;span class="p">})&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>If you go for the &amp;ldquo;double bonus&amp;rdquo; round, you should get again a qualitatively different result relative to &lt;code>swap.web&lt;/code>.
 This is somewhat curious as the two methods are supposed to be very similar&amp;hellip;.&lt;/p>
-&lt;!-- =========================================================== -->
-&lt;!-- PROPOSING TO NOT INCLUDE THE TWO SECTIONS BELOW---THOUGHTS? -->
-&lt;!-- =========================================================== -->
-&lt;!-- 1.2.3 BB: using data to understand relationships (simple correlations even) among network metrics -->
-&lt;!-- 1.2.4 BB: sampling effects Potentially using Connor’s Oikos paper / drought impacts—nice in terms of relationships among metrics and also sampling effects (could even play around with? Probably too much time) -->
+&lt;h2 id="comparing-networks">Comparing networks&lt;/h2>
+&lt;p>Assessing a single network against a null model has its place, but it is limited. The more common&amp;mdash;and usually more interesting&amp;mdash;question is whether network metrics &lt;em>differ between&lt;/em> two or more empirical networks: drought vs. non-drought years, urban vs. rural sites, along an elevational gradient, and so on.&lt;/p>
+&lt;p>The obstacle is the one from &lt;a href="#relationships-among-metrics">Relationships among metrics&lt;/a>: it is very rare for two empirical networks to share species richness, number of interactions, and sampling effort, and those things strongly drive metric values on their own. So a raw difference in (say) connectance between two networks can easily be an artefact of one being smaller or less-sampled, rather than a real biological difference.&lt;/p>
+&lt;h3 id="why-not-just-use-z-scores">Why not just use $z$-scores?&lt;/h3>
+&lt;p>The long-standing fix was to compute a $z$-score for each empirical metric relative to its own null distribution, and then compare &lt;em>those&lt;/em> across datasets. Song, Rohr &amp;amp; Saavedra (2017, &lt;em>Journal of Animal Ecology&lt;/em>) showed that the $z$-score itself depends on network size, so this does not fully solve the problem. They proposed a size-corrected alternative, $NODF_c$&amp;mdash;but only for nestedness.&lt;/p>
+&lt;h3 id="downsampling">Downsampling&lt;/h3>
+&lt;p>A more general approach, which works for &lt;em>any&lt;/em> metric: make richness and sampling effort &lt;em>equal&lt;/em> across the networks by randomly &lt;strong>downsampling&lt;/strong> the larger or better-sampled network down to the size of the smaller one&amp;mdash;many times&amp;mdash;to build a distribution. Then compare the smaller network&amp;rsquo;s observed metric value to that distribution. Any difference that survives is more defensibly biological.&lt;/p>
+&lt;p>A worked example is Morozumi et al. (2022, &lt;em>Oikos&lt;/em>, &amp;ldquo;Simultaneous niche expansion and contraction in plant&amp;ndash;pollinator networks under drought&amp;rdquo;): three RMBL plant&amp;ndash;pollinator networks across two drought and three non-drought years. Drought years had far fewer interactions and lower richness (many plants did not bloom at all), which makes direct metric comparisons unreliable. Diet theory predicts pollinators broaden their floral niches under drought, which would show up as &lt;em>higher connectance&lt;/em>&amp;mdash;but lower-richness networks have higher connectance by default, so the raw pattern is confounded. Morozumi et al. downsampled the non-drought networks to a comparable number of interactions and/or species as the drought networks, and compared. A useful variant keeps only the species present in &lt;em>both&lt;/em> conditions before downsampling, which helps separate &amp;ldquo;the set of species changed&amp;rdquo; from &amp;ldquo;the same species changed their behavior&amp;rdquo;.&lt;/p>
+&lt;p>The logic of the comparison, drawn schematically below with made-up data (in the style of Morozumi et al. 2022, Fig. 1): repeatedly downsample the larger (non-drought) network to the size of the smaller (drought) one to build a null distribution (grey), then see where the drought network&amp;rsquo;s observed metric (red) falls. If it lands inside the distribution the apparent drought effect was an artefact of size; if it falls in the tail, the difference is defensibly biological.&lt;/p>
+&lt;img src="https://models4data2theory.github.io/courses/wkshp_networks_files/figure-html/morozumi schematic-1.png" alt="" width="100%" />
+&lt;p>Exercise 2 in the workshop&amp;rsquo;s networks exercises walks through implementing this on the drought / non-drought RMBL data.&lt;/p>
 &lt;!-- Berry section ends here-->
 &lt;!-- ======================================= -->
 &lt;h2 id="structure--stability">Structure &amp;amp; Stability&lt;/h2>
@@ -1965,50 +1550,47 @@ However it has important limitations, including the assumption of a local equili
 &lt;!-- ======================================= -->
 &lt;h1 id="session-info">Session Info&lt;/h1>
 &lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">sessionInfo&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;pre tabindex="0">&lt;code>## R version 4.4.3 (2025-02-28)
-## Platform: aarch64-apple-darwin20
-## Running under: macOS Sequoia 15.6.1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;pre tabindex="0">&lt;code>## R version 4.6.0 (2026-04-24)
+## Platform: aarch64-apple-darwin23
+## Running under: macOS Sequoia 15.7.9
 ##
 ## Matrix products: default
-## BLAS: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib
-## LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib; LAPACK version 3.12.0
+## BLAS: /Library/Frameworks/R.framework/Versions/4.6/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.6/Resources/lib/libRlapack.dylib; LAPACK version 3.12.1
 ##
 ## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## [1] en_US/en_US/en_US/C/en_US/en_US
 ##
 ## time zone: America/Denver
 ## tzcode source: internal
 ##
 ## attached base packages:
-## [1] grid stats graphics grDevices utils datasets methods
-## [8] base
+## [1] stats graphics grDevices utils datasets methods base
 ##
 ## other attached packages:
-## [1] bipartite_2.20 sna_2.7-2 network_1.18.2
-## [4] statnet.common_4.9.0 kableExtra_1.4.0 lubridate_1.9.3
-## [7] forcats_1.0.0 stringr_1.5.1 dplyr_1.1.4
-## [10] purrr_1.0.2 readr_2.1.5 tidyr_1.3.1
-## [13] tibble_3.2.1 ggplot2_3.5.1 tidyverse_2.0.0
-## [16] gridGraphics_0.5-1 rmarkdown_2.28 viridis_0.6.5
-## [19] viridisLite_0.4.2 vegan_2.6-8 lattice_0.22-6
-## [22] permute_0.9-7 evaluate_0.24.0 knitr_1.48
-## [25] igraph_2.0.3
+## [1] bipartite_2.24 sna_2.8 network_1.20.0
+## [4] statnet.common_4.13.0 kableExtra_1.4.0 lubridate_1.9.5
+## [7] forcats_1.0.1 stringr_1.6.0 dplyr_1.2.1
+## [10] purrr_1.2.2 readr_2.2.0 tidyr_1.3.2
+## [13] tibble_3.3.1 ggplot2_4.0.3 tidyverse_2.0.0
+## [16] vegan_2.7-3 permute_0.9-10 knitr_1.51
 ##
 ## loaded via a namespace (and not attached):
-## [1] dotCall64_1.1-1 spam_2.10-0 gtable_0.3.5 xfun_0.47
-## [5] bslib_0.7.0 tzdb_0.4.0 vctrs_0.6.5 tools_4.4.3
-## [9] generics_0.1.3 parallel_4.4.3 fansi_1.0.6 highr_0.11
-## [13] cluster_2.1.8 pkgconfig_2.0.3 Matrix_1.7-2 lifecycle_1.0.4
-## [17] compiler_4.4.3 fields_16.2 munsell_0.5.1 maps_3.4.2
-## [21] htmltools_0.5.8.1 sass_0.4.9 yaml_2.3.8 pillar_1.9.0
-## [25] jquerylib_0.1.4 MASS_7.3-64 cachem_1.0.8 nlme_3.1-167
-## [29] tidyselect_1.2.1 digest_0.6.35 stringi_1.8.4 bookdown_0.39
-## [33] splines_4.4.3 fastmap_1.1.1 colorspace_2.1-0 cli_3.6.2
-## [37] magrittr_2.0.3 utf8_1.2.4 withr_3.0.0 scales_1.3.0
-## [41] timechange_0.3.0 gridExtra_2.3 blogdown_1.19 hms_1.1.3
-## [45] coda_0.19-4.1 mgcv_1.9-1 rlang_1.1.3 Rcpp_1.0.13
-## [49] glue_1.7.0 xml2_1.3.6 svglite_2.1.3 rstudioapi_0.16.0
-## [53] jsonlite_1.8.9 R6_2.5.1 systemfonts_1.0.6
+## [1] dotCall64_1.2 spam_2.11-3 gtable_0.3.6 xfun_0.60
+## [5] bslib_0.10.0 lattice_0.22-9 tzdb_0.5.0 vctrs_0.7.3
+## [9] tools_4.6.0 generics_0.1.4 parallel_4.6.0 cluster_2.1.8.2
+## [13] pkgconfig_2.0.3 Matrix_1.7-5 RColorBrewer_1.1-3 S7_0.2.2
+## [17] lifecycle_1.0.5 compiler_4.6.0 farver_2.1.2 fields_17.3
+## [21] textshaping_1.0.5 maps_3.4.3 htmltools_0.5.9 sass_0.4.10
+## [25] yaml_2.3.12 pillar_1.11.1 jquerylib_0.1.4 MASS_7.3-65
+## [29] cachem_1.1.0 nlme_3.1-169 tidyselect_1.2.1 digest_0.6.39
+## [33] stringi_1.8.7 bookdown_0.48 splines_4.6.0 fastmap_1.2.0
+## [37] grid_4.6.0 cli_3.6.6 magrittr_2.0.5 withr_3.0.2
+## [41] scales_1.4.0 timechange_0.4.0 rmarkdown_2.31 igraph_2.3.1
+## [45] otel_0.2.0 blogdown_1.24 hms_1.1.4 coda_0.19-4.1
+## [49] evaluate_1.0.5 viridisLite_0.4.3 mgcv_1.9-4 rlang_1.2.0
+## [53] Rcpp_1.1.1-1.1 glue_1.8.1 xml2_1.5.2 svglite_2.2.2
+## [57] rstudioapi_0.18.0 jsonlite_2.0.0 R6_2.6.1 systemfonts_1.3.2
 &lt;/code>&lt;/pre></description></item><item><title>Model fitting</title><link>https://models4data2theory.github.io/courses/wkshp_interactions/</link><pubDate>Sat, 31 Aug 2024 00:00:00 +0000</pubDate><guid>https://models4data2theory.github.io/courses/wkshp_interactions/</guid><description>&lt;p>&lt;em>Fitting models to data&lt;/em>&lt;/p>
 &lt;p>$$
 \newcommand{\L}{\mathcal{L}}
